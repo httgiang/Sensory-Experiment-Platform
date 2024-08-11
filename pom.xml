@@ -87,6 +87,7 @@
     </dependencies>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -106,7 +107,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>main.sensoryexpeirmentplatform/main.sensoryexperimentplatform.HelloApplication
+                            <mainClass>main.sensoryexpeirmentplatform/main.sensoryexperimentplatform.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
@@ -120,4 +121,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>

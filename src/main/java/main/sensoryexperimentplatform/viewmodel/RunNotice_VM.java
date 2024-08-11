@@ -20,11 +20,6 @@ public class RunNotice_VM {
     public StringProperty getContent(){
         return content;
     }
-
-    public void setNotice(Notice notice) {
-        this.notice = notice;
-    }
-
     public StringProperty buttonProperty() {
         return button;
     }

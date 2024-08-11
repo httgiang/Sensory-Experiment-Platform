@@ -138,6 +138,20 @@ public class RunController {
             try {
                 FXMLLoader loader;
                 // Vas view display
+                if (selectedObject instanceof Start){
+                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
+                    AnchorPane newContent = loader.load();
+                    AnchorPane.setTopAnchor(newContent, 0.0);
+                    AnchorPane.setBottomAnchor(newContent, 0.0);
+                    AnchorPane.setLeftAnchor(newContent, 0.0);
+                    AnchorPane.setRightAnchor(newContent, 0.0);
+                    content.getChildren().setAll(newContent);
+
+                    RunStartController controller = loader.getController();
+                    RunStartVM vm = new RunStartVM((Start) selectedObject);
+                    controller.setViewModel(vm);
+                    btn_Next.textProperty().bind(vm.buttonProperty());
+                }
                 if (selectedObject instanceof Vas) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
                     AnchorPane newContent = loader.load();

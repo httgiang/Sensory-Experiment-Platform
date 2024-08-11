@@ -9,14 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f94c3078-ef99-4a09-b4f4-0c5a4fda2f19" name="Changes" comment="update: ui: run_exp">
+    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Fix | start model - completed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunStart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Sensory_Expeirment_Platform_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Sensory_Expeirment_Platform_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Notice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Notice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunExperiment_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunExperiment_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,56 +29,49 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="thinhchau" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Merge" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-        &quot;lastFilter&quot;: {
-        }
-        }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="3b4e63b0-bfac-4c7e-b9c0-959d55cc3dec" />
-        <option name="url" value="https://github.com/tyri0n11/Sensory-Experiment-Platform.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tyri0n11&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tyri0n11/Sensory-Experiment-Platform.git&quot;,
+    &quot;accountId&quot;: &quot;21039361-6f69-4911-9e03-a3f256f95840&quot;
+  }
+}</component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
-        &quot;associatedIndex&quot;: 7
-        }</component>
-  <component name="ProjectId" id="2gfMpE8hYQXVyt7Njo1xE7lNGtc" />
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2jd6iT1LatN2jwu3Nq3qPNmCjrK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -83,141 +79,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DataAccess.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RunExperiment.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SensoryExperimentPlatform.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TasteTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestArduino.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.sensoryexperimentplatform.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;3007&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/DSA/PracticeDSA&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.SensoryExperimentPlatform.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "3007",
+    "go.import.settings.migrated": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/PC/Desktop/Tyr1on/Sensory-Experiment-Platform/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.10018553",
+    "project.structure.side.proportion": "0.12518194",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino" />
-      <recent name="C:\Users\USER\OneDrive - VietNam National University - HCM INTERNATIONAL UNIVERSITY\Desktop\Respositories\Sensory Expeirment Platform\results" />
-      <recent name="C:\Users\USER\OneDrive - VietNam National University - HCM INTERNATIONAL UNIVERSITY\Desktop\Respositories\Sensory Expeirment Platform\src\main\resources\static\images" />
-      <recent name="C:\Users\USER\OneDrive - VietNam National University - HCM INTERNATIONAL UNIVERSITY\Desktop\Respositories\Sensory Expeirment Platform\src\main\resources\static\fonts" />
-      <recent name="C:\Users\USER\OneDrive - VietNam National University - HCM INTERNATIONAL UNIVERSITY\Desktop\Respositories\Sensory Expeirment Platform\src\main\resources\static" />
+      <recent name="C:\Users\PC\Desktop\Tyr1on\Sensory-Experiment-Platform\src\main\resources\main\sensoryexperimentplatform" />
+      <recent name="D:\Project\Sensory\Sensory-Experiment-Platform\src\main\java\main\sensoryexperimentplatform\sound" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\SmartScaleProject\src\main\resources\main\sensoryexperimentplatform" />
-      <recent name="C:\Users\USER\OneDrive - VietNam National University - HCM INTERNATIONAL UNIVERSITY\Desktop\Respositories\Sensory Expeirment Platform\src\main\resources\static\stylesheets" />
+      <recent name="D:\Project\Sensory\Sensory-Experiment-Platform\src\main\java\main\sensoryexperimentplatform\sound" />
+      <recent name="D:\Project\Sensory\Sensory-Experiment-Platform\src\main\resources\static\images" />
+      <recent name="D:\Project\Sensory\Sensory-Experiment-Platform\src\main\resources\main\sensoryexperimentplatform" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="main.sensoryexperimentplatform.viewmodel" />
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="main.sensoryexperimentplatform" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main.sensoryexperimentplatform.Main">
-    <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
-      <option name="appName" />
-      <option name="appServicePlanName" />
-      <option name="appServicePlanResourceGroup" />
-      <option name="appSettingsKey" value="55445813-6ea4-4cdc-bbc2-f7b25ae17588" />
-      <option name="artifact" />
-      <option name="debugOptions" />
-      <option name="deployment" />
-      <option name="deploymentStagingDirectoryPath" />
-      <option name="funcPath" />
-      <option name="functionHostArguments" />
-      <option name="hostJsonPath" />
-      <option name="insightsName" />
-      <option name="instrumentationKey" />
-      <option name="javaVersion" />
-      <option name="localSettingsJsonPath" />
-      <option name="moduleName" />
-      <option name="os" />
-      <option name="pricingTier" />
-      <option name="providerMap">
-        <map />
-      </option>
-      <option name="region" />
-      <option name="resourceGroup" />
-      <option name="stagingFolder" />
-      <option name="subscription" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataAccess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.models.DataAccess" />
-      <module name="Sensory-Expeirment-Platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.controllers.Main" />
-      <module name="Sensory-Expeirment-Platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SensoryExperimentPlatform" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.SensoryExperimentPlatform" />
-      <module name="Sensory-Expeirment-Platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TasteTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.models.TasteTest" />
-      <module name="Sensory-Expeirment-Platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.models.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main.sensoryexperimentplatform.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.Main" />
       <module name="Sensory-Expeirment-Platform" />
       <extension name="coverage">
@@ -230,20 +132,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.main.sensoryexperimentplatform.Main" />
-      <item itemvalue="Application.DataAccess" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.SensoryExperimentPlatform" />
-      <item itemvalue="Application.TasteTest" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main.sensoryexperimentplatform.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.DataAccess" />
-        <item itemvalue="Application.SensoryExperimentPlatform" />
-        <item itemvalue="Application.TasteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -258,343 +149,44 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f94c3078-ef99-4a09-b4f4-0c5a4fda2f19" name="Changes" comment="" />
-      <created>1716084363027</created>
+      <changelist id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="" />
+      <created>1721704735198</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1716084363027</updated>
-      <workItem from="1716084364098" duration="2984000" />
-      <workItem from="1716093260329" duration="921000" />
-      <workItem from="1716124956703" duration="2389000" />
-      <workItem from="1716131018411" duration="282000" />
-      <workItem from="1716132925097" duration="484000" />
-      <workItem from="1716168538056" duration="4659000" />
-      <workItem from="1716206311453" duration="2313000" />
-      <workItem from="1716218483418" duration="3469000" />
-      <workItem from="1716257085079" duration="4227000" />
-      <workItem from="1716273124655" duration="3523000" />
-      <workItem from="1716276679530" duration="1777000" />
-      <workItem from="1716289889033" duration="22994000" />
-      <workItem from="1716341816877" duration="4721000" />
-      <workItem from="1716364512653" duration="68000" />
-      <workItem from="1716382762774" duration="9101000" />
-      <workItem from="1716434905694" duration="5802000" />
-      <workItem from="1716443943499" duration="4589000" />
-      <workItem from="1716451937034" duration="79000" />
-      <workItem from="1716469722523" duration="22000" />
-      <workItem from="1716470459041" duration="2912000" />
-      <workItem from="1716473387962" duration="9119000" />
-      <workItem from="1716511290006" duration="1710000" />
-      <workItem from="1716523262601" duration="5362000" />
-      <workItem from="1716562656104" duration="5394000" />
-      <workItem from="1716599777864" duration="20278000" />
-      <workItem from="1716689043283" duration="7271000" />
-      <workItem from="1716731759942" duration="446000" />
-      <workItem from="1716912605073" duration="2507000" />
-      <workItem from="1717075141480" duration="9348000" />
-      <workItem from="1717419706508" duration="3039000" />
-      <workItem from="1717507880938" duration="1625000" />
-      <workItem from="1717569491741" duration="9597000" />
-      <workItem from="1717600683833" duration="2699000" />
-      <workItem from="1717638341965" duration="4869000" />
-      <workItem from="1717652651393" duration="9968000" />
-      <workItem from="1717682781345" duration="676000" />
-      <workItem from="1717722990309" duration="4931000" />
-      <workItem from="1717761206734" duration="10229000" />
-      <workItem from="1717807899906" duration="2120000" />
-      <workItem from="1718111009681" duration="4543000" />
-      <workItem from="1718157231791" duration="2452000" />
-      <workItem from="1718175936704" duration="12328000" />
-      <workItem from="1718241808252" duration="405000" />
-      <workItem from="1718245033376" duration="22000" />
-      <workItem from="1718253791816" duration="3222000" />
-      <workItem from="1718257619795" duration="762000" />
-      <workItem from="1718263510876" duration="1724000" />
-      <workItem from="1719675146836" duration="5000" />
-      <workItem from="1720241426312" duration="8597000" />
-      <workItem from="1720539358603" duration="1367000" />
-      <workItem from="1720540847406" duration="218000" />
-      <workItem from="1720541148476" duration="2304000" />
-      <workItem from="1721030622711" duration="2757000" />
-      <workItem from="1722341214993" duration="2553000" />
-      <workItem from="1722489964403" duration="13397000" />
-      <workItem from="1722826237475" duration="3184000" />
-      <workItem from="1722871380463" duration="113000" />
-      <workItem from="1722910959244" duration="2361000" />
+      <updated>1721704735198</updated>
+      <workItem from="1721704737291" duration="2605000" />
+      <workItem from="1721876370967" duration="8783000" />
+      <workItem from="1721913688464" duration="6979000" />
+      <workItem from="1722070760221" duration="364000" />
+      <workItem from="1722232966189" duration="17831000" />
+      <workItem from="1722262262385" duration="965000" />
+      <workItem from="1722263317027" duration="3029000" />
+      <workItem from="1722267423260" duration="7231000" />
+      <workItem from="1722341221746" duration="5529000" />
+      <workItem from="1723335688344" duration="3792000" />
     </task>
-    <task id="LOCAL-00001" summary="initialization: first touch">
-      <option name="closed" value="true" />
-      <created>1716084629913</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1716084629913</updated>
-    </task>
-    <task id="LOCAL-00002" summary="structure: define structure">
-      <option name="closed" value="true" />
-      <created>1716086577773</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1716086577773</updated>
-    </task>
-    <task id="LOCAL-00003" summary="structure: add images">
-      <option name="closed" value="true" />
-      <created>1716086706510</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1716086706510</updated>
-    </task>
-    <task id="LOCAL-00004" summary="structure: rename application">
-      <option name="closed" value="true" />
-      <created>1716093332363</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1716093332363</updated>
-    </task>
-    <task id="LOCAL-00005" summary="feat: build Run feature (UI, Controller)">
-      <option name="closed" value="true" />
-      <created>1716315542917</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1716315542917</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update: add controller">
-      <option name="closed" value="true" />
-      <created>1716316587538</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1716316587538</updated>
-    </task>
-    <task id="LOCAL-00007" summary="build: select obj from list view - feat: Run Experiment">
-      <option name="closed" value="true" />
-      <created>1716321622677</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716321622677</updated>
-    </task>
-    <task id="LOCAL-00008" summary="build: select obj from list view - feat: Run Experiment">
-      <option name="closed" value="true" />
-      <created>1716382813979</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1716382813979</updated>
-    </task>
-    <task id="LOCAL-00009" summary="feat: run timer stage">
-      <option name="closed" value="true" />
-      <created>1716477528567</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1716477528567</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Build: Run experiment _ v1">
-      <option name="closed" value="true" />
-      <created>1716619704246</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1716619704246</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Build: Run experiment _ v1.1">
-      <option name="closed" value="true" />
-      <created>1716914901876</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1716914901876</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Build: Run experiment _ v1.4.responsive">
-      <option name="closed" value="true" />
-      <created>1717578944161</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1717578944161</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Build: Run experiment _ v1.5">
-      <option name="closed" value="true" />
-      <created>1717579647550</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1717579647550</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Build: Run experiment _ v1.6 make them responsive">
-      <option name="closed" value="true" />
-      <created>1717603357349</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1717603357349</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Build: Run experiment _ v1.7">
-      <option name="closed" value="true" />
-      <created>1717668738537</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1717668738537</updated>
-    </task>
-    <task id="LOCAL-00016" summary="feat: store result files in specific directories">
-      <option name="closed" value="true" />
-      <created>1717736248056</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1717736248056</updated>
-    </task>
-    <task id="LOCAL-00017" summary="feat: fill name dialog v0.1">
-      <option name="closed" value="true" />
-      <created>1717781730066</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1717781730066</updated>
-    </task>
-    <task id="LOCAL-00018" summary="merge 10/06/2024">
-      <option name="closed" value="true" />
-      <created>1718032251613</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1718032251613</updated>
-    </task>
-    <task id="LOCAL-00019" summary="sth that idk :v">
-      <option name="closed" value="true" />
-      <created>1718111277033</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1718111277033</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Update: run experiment_v2.0">
-      <option name="closed" value="true" />
-      <created>1718209126842</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1718209126842</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Update: run experiment_v2.0.1">
-      <option name="closed" value="true" />
-      <created>1718209465817</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1718209465817</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Update: run experiment_v2.1">
-      <option name="closed" value="true" />
-      <created>1718258374075</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1718258374075</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="thinhchau" />
-                </option>
-              </RecentGroup>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="thinhchau" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initialization: first touch" />
-    <MESSAGE value="structure: define structure" />
-    <MESSAGE value="structure: add images" />
-    <MESSAGE value="structure: rename application" />
-    <MESSAGE value="feat: build Run feature (UI, Controller)" />
-    <MESSAGE value="update: add controller" />
-    <MESSAGE value="build: select obj from list view - feat: Run Experiment" />
-    <MESSAGE value="feat: run timer stage" />
-    <MESSAGE value="Build: Run experiment _ v1" />
-    <MESSAGE value="Build: Run experiment _ v1.2" />
-    <MESSAGE value="Build: Run experiment _ v1.4.responsive" />
-    <MESSAGE value="Build: Run experiment _ v1.5" />
-    <MESSAGE value="Build: Run experiment _ v1.6 make them responsive" />
-    <MESSAGE value="Build: Run experiment _ v1.1" />
-    <MESSAGE value="Build: Run experiment _ v1.7" />
-    <MESSAGE value="feat: store result files in specific directories" />
-    <MESSAGE value="feat: fill name dialog v0.1" />
-    <MESSAGE value="merge 10/06/2024" />
-    <MESSAGE value="sth that idk :v" />
-    <MESSAGE value="Update: run experiment_v2.0" />
-    <MESSAGE value="Update: run experiment_v2.0.1" />
-    <MESSAGE value="Update: run experiment_v2.1" />
-    <MESSAGE value="publish: SenseXP_version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="publish: SenseXP_version 1" />
+    <MESSAGE value="Fix | start model - completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix | start model - completed" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/Main.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/dashBoard_VM.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
