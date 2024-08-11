@@ -71,6 +71,7 @@ public class AddSoundController {
         viewModel.addListSoundshow(txt_name.getText());
         viewModel.loadSound(txt_name.getText(), txt_file.getText());
         NotiAddSound.notifyObject();
+        viewModel.exportSound(txt_name.getText(), txt_file.getText());
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();}
     }

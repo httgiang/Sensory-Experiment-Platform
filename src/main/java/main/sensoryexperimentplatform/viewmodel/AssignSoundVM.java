@@ -23,9 +23,7 @@ public class AssignSoundVM {
 
 
     }
-    public void getSoundPath(){
-       sound.getSoundFilePath();
-    }
+
 
 
     public ArrayList<String> getListNameshow() {
@@ -43,12 +41,6 @@ public class AssignSoundVM {
     }
 
 
-    public ArrayList<String> getSoundFilePaths(){
-      return sound.getSoundFilePath();
-    }
-    public void  addSoundFilePath(String soundPath){
-       sound.getSoundFilePath().add(soundPath);
-    }
 
     public String getSelectedSoundName() {
         return selectedSoundName;
@@ -57,8 +49,11 @@ public class AssignSoundVM {
     public void setSelectedSoundName(String selectedSoundName) {
         this.selectedSoundName = selectedSoundName;
     }
+    //for testing
+
     public Sound getSound(){
         return sound;
     }
+
 
 }

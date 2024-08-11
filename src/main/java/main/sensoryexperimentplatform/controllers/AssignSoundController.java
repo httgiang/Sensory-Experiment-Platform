@@ -116,7 +116,6 @@ public class AssignSoundController {
         @Override
         public void updateItem(String obj, boolean empty) {
             super.updateItem(obj, empty);
-            System.out.println("Updating cell: " + obj); // Debugging
             if (empty || obj == null) {
                 setText(null);
                 setGraphic(null);
@@ -175,7 +174,8 @@ public class AssignSoundController {
             String soundName = selectedRadioButton.getText();
             audibleSoundVM.setSoundName(soundName);
             Stage currentStage = (Stage) btn_save2.getScene().getWindow();
-            currentStage.close();}
+            currentStage.close();
+        }
     }
 
     @FXML
