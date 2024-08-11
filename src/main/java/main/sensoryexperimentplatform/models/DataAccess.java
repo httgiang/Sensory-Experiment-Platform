@@ -52,312 +52,6 @@ public class DataAccess {
 
 
 
-    public static Experiment getImportedExperiment(String file_path) throws IOException {
-        Experiment currentExperiment = new Experiment("default","default","default","default",0,0,"default");
-        Start currentStart = new Start("default","default","default",false,null, null,0,100,null);
-        currentExperiment.addStart(currentStart);
-        try (BufferedReader reader = new BufferedReader(new FileReader(file_path))) {
-            String line;
-            RatingContainer rc = null;
-            boolean isContainer = false;
-
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("ExperimentName")) {
-                    currentExperiment.setExperimentName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimenterName")) {
-                    currentExperiment.setCreatorName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimentID:")) {
-                    currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
-
-                } else if (line.startsWith("Created on")) {
-                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("Version")) {
-                    int version = Integer.parseInt(line.split(": ")[1].trim());
-                    currentExperiment.version = version;
-
-                } else if (line.startsWith("startExperiment:")) {
-                    Pattern patternExperiment = Pattern.compile("startExperiment\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = patternExperiment.matcher(line);
-
-                    if (matcher.find()) {
-                        currentStart.setTitle(matcher.group(0));
-                        currentStart.setContent(matcher.group(1));
-                    }
-                } else if (line.startsWith("noticeStage")) {
-                    Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
-                    Matcher matcher = noticePattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addNoticeStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5))
-                        );
-                    }
-                } else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = inputPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
-                    }
-                } else if (line.startsWith("wait")) {
-                    Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = timerPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addTimerStage(matcher.group(1),
-                                matcher.group(2),
-                                Boolean.parseBoolean(matcher.group(3))
-                        );
-                    }
-                } else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = vasPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addVasStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        } else {
-                            currentExperiment.addVasStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        }
-                    }
-                } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = glmsPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addGlmsStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        } else {
-                            currentExperiment.addGlmsStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        }
-                    }
-                } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = questionPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addQuestionStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                Boolean.parseBoolean(matcher.group(4))
-                        );
-                    }
-                } else if (line.startsWith("ratingsContainer")) {
-                    Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = ratingsContainerPattern.matcher(line);
-
-                    isContainer = true;
-                    if (matcher.find()) {
-                        currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
-                                Integer.parseInt(matcher.group(2))
-                        );
-                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
-                    }
-                } else if (line.startsWith("endRatingsContainer")) {
-                    rc = null;
-                    isContainer = false;
-                } else if (line.startsWith("endExperiment()")) {
-                    initializeCaches(currentExperiment.getExperimentName(),currentExperiment.getVersion());
-                    currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    return currentExperiment;
-                }
-            }
-        }
-        return currentExperiment;
-    }
-    public static Experiment getExperimentIndividually() throws IOException {
-        Experiment currentExperiment = new Experiment("null","null","null","null",1,000,null);
-        Start currentStart = new Start("default","default","default",false,null, null,0,100,null);
-        currentExperiment.addStart(currentStart);
-        try (BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))) {
-            String line;
-            RatingContainer rc = null;
-            boolean isContainer = false;
-
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("ExperimentName")) {
-                    currentExperiment.setExperimentName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimenterName")) {
-                    currentExperiment.setCreatorName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimentID:")) {
-                    currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
-
-                } else if (line.startsWith("Created on")) {
-                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("Version")) {
-                    int version = Integer.parseInt(line.split(": ")[1].trim());
-                    currentExperiment.version = version;
-
-                } else if (line.startsWith("startExperiment:")) {
-                    Pattern patternExperiment = Pattern.compile("startExperiment\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = patternExperiment.matcher(line);
-
-                    if (matcher.find()) {
-                        currentStart.setTitle(matcher.group(0));
-                        currentStart.setContent(matcher.group(1));
-                    }
-                } else if (line.startsWith("noticeStage")) {
-                    Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
-                    Matcher matcher = noticePattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addNoticeStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5))
-                        );
-                    }
-                } else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = inputPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
-                    }
-                } else if (line.startsWith("wait")) {
-                    Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = timerPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addTimerStage(matcher.group(1),
-                                matcher.group(2),
-                                Boolean.parseBoolean(matcher.group(3))
-                        );
-                    }
-                }   else if(line.startsWith("audio")){
-                    Pattern audiblePattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = audiblePattern.matcher(line);
-                    if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4));
-                    }
-                }
-
-                else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = vasPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addVasStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        } else {
-                            currentExperiment.addVasStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        }
-                    }
-                } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = glmsPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addGlmsStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        } else {
-                            currentExperiment.addGlmsStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        }
-                    }
-                } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = questionPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addQuestionStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                Boolean.parseBoolean(matcher.group(4))
-                        );
-                    }
-                } else if (line.startsWith("ratingsContainer")) {
-                    Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = ratingsContainerPattern.matcher(line);
-
-                    isContainer = true;
-                    if (matcher.find()) {
-                        currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
-                                Integer.parseInt(matcher.group(2))
-                        );
-                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
-                    }
-                } else if (line.startsWith("endRatingsContainer")) {
-                    rc = null;
-                    isContainer = false;
-                } else if (line.startsWith("endExperiment()")) {
-                    initializeCaches(currentExperiment.getExperimentName(),currentExperiment.getVersion());
-                    currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    return currentExperiment;
-                }
-            }
-        }
-        return currentExperiment;
-    }
     private static void initializeCaches(String experimentName, int version){
         File resultsDirectory = new File("results");
         if (!resultsDirectory.exists()) {
@@ -367,6 +61,8 @@ public class DataAccess {
         File experimentDirectory = new File("results/" + experimentName+"_"+version);
         if (!experimentDirectory.exists()) {
             experimentDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
+        } else {
+            System.out.println("Experiment's result directory already exists");
         }
     }
     //Save results of conducted experiment
@@ -436,9 +132,8 @@ public class DataAccess {
         RatingContainer rc = null;
         boolean isContainer = false;
         String line;
-        Start currentStart = new Start("default","default","default",false,null, null,0,100,null);
-        currentExperiment.addStart(currentStart);
-        //notice, input, timer, vas, glms, question, rating container, course
+
+        //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
             while ((line = reader.readLine()) != null ){
@@ -463,8 +158,7 @@ public class DataAccess {
                     Matcher matcher = patternExperiment.matcher(line);
 
                     if (matcher.find()) {
-                        currentStart.setTitle(matcher.group(0));
-                        currentStart.setContent(matcher.group(1));
+                        currentExperiment.addStartStage(matcher.group(1), matcher.group(2), matcher.group(3));
                     }
                 } else if (line.startsWith("noticeStage")) {
                     Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
@@ -495,14 +189,16 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(3))
                         );
                     }
-                } else if(line.startsWith("audio")){
-                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                }
+                else if(line.startsWith("audio")){
+                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = audioPattern.matcher(line);
                     if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4));
+                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
 
                 }
+
                 else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
@@ -584,7 +280,6 @@ public class DataAccess {
                     listOfExperiment.addExperiment(currentExperiment);
                     initializeCaches(currentExperiment.getExperimentName(),currentExperiment.getVersion());
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    System.out.println(DataAccess.countingResults(currentExperiment));
                     currentExperiment = new Experiment(null,null,null,null,1,000,null);
                 }
             }
@@ -595,7 +290,6 @@ public class DataAccess {
         Experiment currentExperiment = new Experiment(null,null,null,null,1,000,null);
         RatingContainer rc = null;
         boolean isContainer = false;
-        System.out.println (currentExperiment.getStart().getTitle());
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
 
@@ -620,10 +314,8 @@ public class DataAccess {
                 } else if (line.startsWith("startExperiment")) {
                     Pattern patternExperiment = Pattern.compile("startExperiment\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = patternExperiment.matcher(line);
-
                     if (matcher.find()) {
-                        currentExperiment.getStart().setTitle(matcher.group(0));
-                        currentExperiment.getStart().setContent(matcher.group(1));
+                        currentExperiment.addStartStage(matcher.group(1), matcher.group(2), matcher.group(3));
                     }
                 } else if (line.startsWith("noticeStage")) {
                     Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
@@ -654,14 +346,15 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(3))
                         );
                     }
-                }
-                else if(line.startsWith("audio")){
-                    Pattern audiblePattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+
+                } else if(line.startsWith("audio")){
+                    Pattern audiblePattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = audiblePattern.matcher(line);
                     if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4));
+                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
-                }else if (line.startsWith("vasStage")) {
+
+                } else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 

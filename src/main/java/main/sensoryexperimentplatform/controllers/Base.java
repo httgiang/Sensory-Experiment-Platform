@@ -50,9 +50,6 @@ public class Base implements Initializable {
             AnchorPane.setLeftAnchor(newContent, 0.0);
             AnchorPane.setRightAnchor(newContent, 0.0);
             mainContent.getChildren().setAll(newContent);
-            DashBoardController controller = new DashBoardController();
-            //this.controller = loader.getController();
-           // controller.initialize(this);
         }
         catch (IOException e){
             e.printStackTrace();
@@ -73,16 +70,6 @@ public class Base implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/Test.fxml"));
-//        AnchorPane newContent = null;
-//        try{
-//            newContent = loader.load();
-//            TestController view=  loader.getController();
-//        }
-//        catch (IOException e){
-//            e.printStackTrace();
-//        }
-//        mainContent.getChildren().setAll(newContent);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/DashBoard.fxml"));
         AnchorPane newContent = null;
@@ -114,6 +101,7 @@ public class Base implements Initializable {
                 DataAccess.importExperiment(filePath);
             }
         }
+        DataAccess.updateFile();
     }
 
     @FXML

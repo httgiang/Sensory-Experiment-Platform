@@ -28,9 +28,25 @@ public class AddAudibleSoundController {
 //    }
     public void bindViewModel(){
         txt_buttonText.textProperty().bindBidirectional(viewModel.buttonTextProperty());
-        txt_helpText.textProperty().bindBidirectional(viewModel.contentProperty());
-        txt_content.textProperty().bindBidirectional(viewModel.helpTextProperty());
+        txt_helpText.textProperty().bindBidirectional(viewModel.helpTextProperty());
+        txt_content.textProperty().bindBidirectional(viewModel.contentProperty());
         txt_title.textProperty().bindBidirectional(viewModel.titleProperty());
+
+        txt_title.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setTitle(newValue);
+        });
+
+        txt_helpText.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setHelpText(newValue);
+        });
+
+        txt_content.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setContent(newValue);
+        });
+
+        txt_buttonText.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setButtonText(newValue);
+        });
 
 
     }

@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.Periodic;
 import java.io.IOException;
 import java.util.Stack;
 
-public class PeriodicVM implements choose{
+public class PeriodicVM implements Stages {
     private Course course;
     private SimpleStringProperty amoutEveryAfter;
     private SimpleStringProperty daiLuongAmount;
@@ -98,7 +98,7 @@ public class PeriodicVM implements choose{
     }
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddPeriodicStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -107,12 +107,13 @@ public class PeriodicVM implements choose{
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 
     @Override
-    public String getTitle() {
+    public String toString() {
         return course.getPeriodic().getTime() +" "+ course.getPeriodic().getAmount() +" "+ course.getPeriodic().getDaiLuong();
     }
+
 }

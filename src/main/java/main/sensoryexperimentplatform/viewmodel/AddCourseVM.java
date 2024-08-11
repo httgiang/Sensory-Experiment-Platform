@@ -13,7 +13,7 @@ import main.sensoryexperimentplatform.models.Experiment;
 import java.io.IOException;
 import java.util.Stack;
 
-public class AddCourseVM implements choose{
+public class AddCourseVM implements Stages {
     private StringProperty txt_button;
     private StringProperty txt_content;
     private StringProperty  txt_help;
@@ -146,16 +146,16 @@ public class AddCourseVM implements choose{
     }
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
 
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                 Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
-                                 Button  btn_addTimer, Button btn_AddQuestionStage,
-                                 Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+                                  Button  btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddCourse.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -169,7 +169,8 @@ public class AddCourseVM implements choose{
     }
 
     @Override
-    public String getTitle() {
+    public String toString() {
         return txt_title.get();
     }
+
 }

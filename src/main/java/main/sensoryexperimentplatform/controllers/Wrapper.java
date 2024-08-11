@@ -1,13 +1,13 @@
 package main.sensoryexperimentplatform.controllers;
 
-import main.sensoryexperimentplatform.viewmodel.choose;
+import main.sensoryexperimentplatform.viewmodel.Stages;
 
 public class Wrapper {
     private String key;
-    private choose choose;
-    public Wrapper (String key, choose choose){
+    private Stages Stages;
+    public Wrapper (String key, Stages Stages){
         this.key = key;
-        this.choose = choose;
+        this.Stages = Stages;
     }
 
     public String getKey() {
@@ -18,11 +18,11 @@ public class Wrapper {
         this.key = key;
     }
 
-    public choose getChoose() {
-        return choose;
+    public Stages getChoose() {
+        return Stages;
     }
 
-    public void setChoose(main.sensoryexperimentplatform.viewmodel.choose choose) {
-        this.choose = choose;
+    public void setChoose(Stages Stages) {
+        this.Stages = Stages;
     }
 }

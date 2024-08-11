@@ -41,14 +41,15 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-tile-alignment: center;
-    -fx-text-fill: #545454;
+    -fx-text-fill: #397E82;
+    -fx-font-weight: 700;
 
 }
 
 .slider .track{
-    -progress : 0.2;
+    -fx-progress : 0.2;
     -fx-background-radius: 14px;
     -fx-pref-height: 28px;
     -fx-background-color: #D5E9EA;
-;
+
 }

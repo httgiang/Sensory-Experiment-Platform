@@ -15,7 +15,7 @@ import main.sensoryexperimentplatform.models.Timer;
 import java.io.IOException;
 import java.util.Stack;
 
-public class timerStage_VM implements choose{
+public class timerStage_VM implements Stages {
     private Timer timer;
     private StringProperty txt_instruction;
     private StringProperty txt_timewait;
@@ -23,7 +23,7 @@ public class timerStage_VM implements choose{
     private Experiment experiment;
     public timerStage_VM(Experiment experiment){
         this.experiment = experiment;
-        timer = new Timer("1", "Please Wait",false);
+        timer = new Timer("0", "Please Wait",false);
         txt_instruction = new SimpleStringProperty(timer.getInstruction());
         txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
         cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
@@ -83,7 +83,7 @@ public class timerStage_VM implements choose{
     }
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("TimerStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -92,12 +92,13 @@ public class timerStage_VM implements choose{
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 
     @Override
-    public String getTitle() {
-        return "[Waiting] "+txt_instruction.get();
+    public String toString() {
+        return "[Waiting] "+ txt_instruction.get();
     }
+
 }

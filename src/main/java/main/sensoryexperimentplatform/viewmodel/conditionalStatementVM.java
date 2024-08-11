@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.NoticeStageController;
 import main.sensoryexperimentplatform.controllers.conditionalStatementController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.conditionalStatement;
@@ -13,7 +12,7 @@ import main.sensoryexperimentplatform.models.conditionalStatement;
 import java.io.IOException;
 import java.util.Stack;
 
-public class conditionalStatementVM implements choose {
+public class conditionalStatementVM implements Stages {
     private  conditionalStatement ConditionalStatement;
 
     private SimpleStringProperty value1Text;
@@ -100,7 +99,7 @@ public class conditionalStatementVM implements choose {
 
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddConditionalStatement.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -110,7 +109,7 @@ public class conditionalStatementVM implements choose {
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> rating) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> rating) throws IOException {
 
     }
 
@@ -121,10 +120,13 @@ public class conditionalStatementVM implements choose {
 
 
     @Override
-    public String getTitle() {
-        return  "If "+ ConditionalStatement.getVariable1Choice() + " " + ConditionalStatement.getCompare() + " Then " + ConditionalStatement.getVariable2Choice() ;
-
+    public String toString() {
+        return "If "+ ConditionalStatement.getVariable1Choice() + " " + ConditionalStatement.getCompare() + " Then " + ConditionalStatement.getVariable2Choice() ;
     }
+
+
+
+
     public String getTitle2(){
         return "Else";
     }

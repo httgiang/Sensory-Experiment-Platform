@@ -18,7 +18,7 @@ import main.sensoryexperimentplatform.models.containerObject;
 import java.io.IOException;
 import java.util.Stack;
 
-public class ratingContainer_VM implements choose{
+public class ratingContainer_VM implements Stages {
     private RatingContainer ratingContainer;
     private IntegerProperty minTime;
     private BooleanProperty isRandomize;
@@ -80,15 +80,15 @@ public class ratingContainer_VM implements choose{
 
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
 
     }
     @Override
-    public void modifyWithButton(AnchorPane propertiesPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                 Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+    public void handleMenuButtons(AnchorPane propertiesPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
-                                 Button btn_addTimer, Button btn_AddQuestionStage,
-                                 Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> rating) throws IOException {
+                                  Button btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> rating) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         propertiesPane.getChildren().setAll(newContent);
@@ -112,11 +112,13 @@ public class ratingContainer_VM implements choose{
 //               AddNoticeStage controller = fxmlLoader.getController();
     }
 
+
     @Override
-    public String getTitle() {
-        if (isRandomize.get()){
+    public String toString() {
+        if (isRandomize.get()) {
             return "Ratings container - Randomised";
         }
         return "Ratings container";
     }
+
 }

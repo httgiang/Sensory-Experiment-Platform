@@ -8,7 +8,6 @@ import main.sensoryexperimentplatform.models.Sound;
 
 public class AddSoundVM {
     private Sound sound;
-    private Experiment experiment;
 
     public AddSoundVM(){
         this.sound = SoundSingleton.getInstance();

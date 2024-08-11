@@ -8,18 +8,30 @@ public class Start extends Stage{
     private long StartOfStageDelay;
     private long EndOfStageDelay;
     private Color disableButtonColor;
+    private String title, content;
 
-
-
-    public Start(String title, String content, String buttonText,Boolean requireBalance, Color backGroundColor, Color TextColor
+    public Start(String title, String content, String buttonText, Boolean requireBalance, Color backGroundColor, Color TextColor
     , long StartOfStageDelay, long EndOfStageDelay,Color disableButtonColor ) {
         super(title, content);
+        this.title = title;
+        this.content = content;
         this.backGroundColor = backGroundColor;
         this.buttonText = buttonText;
         this.StartOfStageDelay = StartOfStageDelay;
         this.EndOfStageDelay = EndOfStageDelay;
         this.requireBalance = requireBalance;
         this.disableButtonColor = disableButtonColor;
+    }
+    public Start(Start start){
+        super(start.title, start.content);
+        this.title = start.title;
+        this.content = start.content;
+        this.backGroundColor = start.backGroundColor;
+        this.buttonText = start.buttonText;
+        this.StartOfStageDelay = start.StartOfStageDelay;
+        this.EndOfStageDelay = start.EndOfStageDelay;
+        this.requireBalance = start.requireBalance;
+        this.disableButtonColor = start.disableButtonColor;
     }
 
     public String getButtonText() {
@@ -76,5 +88,21 @@ public class Start extends Stage{
 
     public void setDisableButtonColor(Color disableButtonColor) {
         this.disableButtonColor = disableButtonColor;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    @Override
+    public String toString(){
+        return "startExperiment(\"" + getTitle() + "\",\"" + getContent() + "\",\"" +
+                buttonText + "\")";
     }
 }

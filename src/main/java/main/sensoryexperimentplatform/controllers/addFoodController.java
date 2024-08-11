@@ -12,14 +12,7 @@ import main.sensoryexperimentplatform.viewmodel.FoodTasteVM;
 public class addFoodController {
     private FoodTasteVM viewModel;
     private NotiForAddFood notiForAddFood;
-    @FXML
-    private Label FileLabel;
 
-    @FXML
-    private Label ImportSoundLabel;
-
-    @FXML
-    private AnchorPane ImportSoundPane;
 
     @FXML
     private Button btn_cancel;

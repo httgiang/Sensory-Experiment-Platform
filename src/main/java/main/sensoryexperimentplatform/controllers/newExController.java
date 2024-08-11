@@ -2,15 +2,11 @@ package main.sensoryexperimentplatform.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.sensoryexperimentplatform.viewmodel.dashBoard_VM;
 import main.sensoryexperimentplatform.viewmodel.newEx_VM;
-import main.sensoryexperimentplatform.models.Experiment;
 
 public class newExController {
     newEx_VM viewModel;

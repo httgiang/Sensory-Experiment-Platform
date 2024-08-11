@@ -17,17 +17,31 @@ public class AudibleInstruction extends Stage {
 
     private String buttonText;
     private String helpText;
+    private String soundName;
+    private Sound SoundManager;
 
 
 
-    public AudibleInstruction(String title, String content, String buttonText,String helpText){
+    public AudibleInstruction(String title, String content, String buttonText,String helpText,String soundName){
       super(title, content);
       this.content=content;
       this.title= title;
         this.buttonText= buttonText;
         this.helpText = helpText;
+        this.soundName= soundName;
+        this.SoundManager = new Sound();
 
 
+    }
+
+    public AudibleInstruction(AudibleInstruction o) {
+        super(o.title, o.content);
+        this.title= o.getTitle();
+        this.content= o.getContent();
+        this.buttonText= o.getButtonText();
+        this.helpText = o.getHelpText();
+        this.soundName= o.getSoundName();
+        this.SoundManager = new Sound();
     }
 
     public String getTitle() {
@@ -61,12 +75,23 @@ public class AudibleInstruction extends Stage {
         this.helpText = helpText;
     }
 
+    public String getSoundName(){
+        return soundName;
+    }
+    public void setSoundName(String soundName){
+        this.soundName = soundName;
+    }
 
 
+    public void playSound(String name) {
+       SoundManager.playSound(name);
+    }
+
+    @Override
     public String toString() {
 
             return "audio(\"" + title + "\",\"" + content +
-                    "\",\"" + buttonText + "\",\"" + helpText + "\")";
+                    "\",\"" + buttonText + "\",\"" + helpText + "\",\""+ soundName + "\")";
         }
     }
 

@@ -3,11 +3,11 @@ package main.sensoryexperimentplatform.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.viewmodel.glmsStage_VM;
+import main.sensoryexperimentplatform.viewmodel.GLMSStage_VM;
 
 public class GLMSController {
 
-    private glmsStage_VM glmsStageVm;
+    private GLMSStage_VM glmsStageVm;
     @FXML
     private CheckBox checkB_sound;
 
@@ -65,7 +65,7 @@ public class GLMSController {
         checkB_swap.selectedProperty().bindBidirectional(glmsStageVm.checkB_swapProperty());
     }
 
-    public void setViewModel(glmsStage_VM glms) {
+    public void setViewModel(GLMSStage_VM glms) {
         this.glmsStageVm = glms;
         bind();
     }

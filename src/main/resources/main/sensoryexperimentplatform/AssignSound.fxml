@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="789.0" stylesheets="@../../static/stylesheets/AddSound_CSS.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AssignSoundController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="789.0" stylesheets="@../../static/stylesheets/AddSound_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AssignSoundController">
     <children>
               <AnchorPane fx:id="showSound" prefHeight="698.0" prefWidth="770.0">
                   <children>
-                      <AnchorPane layoutX="598.0" layoutY="49.0" prefHeight="569.0" prefWidth="171.0">
+                      <AnchorPane layoutX="598.0" layoutY="52.0" prefHeight="569.0" prefWidth="171.0">
                           <children>
-                              <Button fx:id="btn_play" layoutX="18.0" layoutY="14.0" mnemonicParsing="false" onAction="#btn_play" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Play" />
+                              <Button fx:id="btn_play" layoutX="18.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_play" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Play" />
                               <Button fx:id="btn_stop" layoutX="18.0" layoutY="73.0" mnemonicParsing="false" onAction="#btn_stop" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Stop" />
-                              <Button fx:id="btn_refresh" layoutX="18.0" layoutY="132.0" mnemonicParsing="false" onAction="#btn_refesh" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Refesh" />
+                              <Button fx:id="btn_refresh" layoutX="18.0" layoutY="132.0" mnemonicParsing="false" onAction="#btn_refesh" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Refresh" />
                               <Button fx:id="btn_add" layoutX="18.0" layoutY="192.0" mnemonicParsing="false" onAction="#AddButton" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Add" />
                               <Button fx:id="btn_remove" layoutX="18.0" layoutY="252.0" mnemonicParsing="false" onAction="#btn_remove" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Remove" />
                               <Button fx:id="btn_save2" layoutX="8.0" layoutY="504.0" mnemonicParsing="false" onAction="#btn_save" prefHeight="52.0" prefWidth="156.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Save" />

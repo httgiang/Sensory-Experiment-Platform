@@ -46,7 +46,9 @@ public class RunExperiment_VM {
         stages = experiment.getStages();
         stringSet = new LinkedHashSet<>();
         int index = 0;
+
         for (Object o : stages) {
+            if (o instanceof Stage) {
                 if (o instanceof Timer) {
                     String key = index + " Wait";
                     objectsMap.put(key, o);
@@ -54,53 +56,47 @@ public class RunExperiment_VM {
                     objectList.add(o); // Thêm đối tượng vào objectList
                     index++;
                     count++;
-                } else if (o instanceof Vas) {
-                    String temp = "Vas";
+                } else {
+                    String temp = " ";
+                    if (o instanceof Vas)
+                        temp = "Vas";
+                    if (o instanceof gLMS)
+                        temp = "GLMS";
+                    if (o instanceof Notice)
+                        temp = "Notice";
+                    if (o instanceof AudibleInstruction)
+                        temp = "audio";
+
                     String key = index + " " + temp;
                     objectsMap.put(key, o);
                     stringSet.add(key);
                     objectList.add(o);
                     index++;
                     count++;
-                } else if (o instanceof gLMS) {
-                    String temp = "GLMS";
-                    String key = index + " " + temp;
-                    objectsMap.put(key, o);
-                    stringSet.add(key);
-                    objectList.add(o);
-                    index++;
-                    count++;
-                } else if (o instanceof Notice) {
-                    String temp = "Notice";
-                    String key = index + " " + temp;
-                    objectsMap.put(key, o);
-                    stringSet.add(key);
-                    objectList.add(o);
-                    index++;
-                    count++;
-                } else if (o instanceof RatingContainer) {
-                    int i = 0;
-                    for (Object subO : ((RatingContainer) o).container) {
-                        if (subO instanceof Vas) {
-                            String subKey = "\t" + index + "." + i;
-                            objectsMap.put(subKey, subO);
-                            stringSet.add(subKey);
-                            objectList.add(subO); // Thêm đối tượng con vào objectList
-                            i++;
-                            count++;
-                        }
-                        else if (subO instanceof gLMS) {
-                            String subKey = "\t" + index + "." + i;
-                            objectsMap.put(subKey, subO);
-                            stringSet.add(subKey);
-                            objectList.add(subO); // Thêm đối tượng con vào objectList
-                            i++;
-                            count++;
-                        }
+                }
+            }
+            if (o instanceof RatingContainer) {
+                int i = 0;
+                for (Object subO : ((RatingContainer) o).container) {
+                    if (subO instanceof Vas) {
+                        String subKey = "\t" + index + "." + i;
+                        objectsMap.put(subKey, subO);
+                        stringSet.add(subKey);
+                        objectList.add(subO); // Thêm đối tượng con vào objectList
+                        i++;
+                        count++;
+                    }
+                    if (subO instanceof gLMS) {
+                        String subKey = "\t" + index + "." + i;
+                        objectsMap.put(subKey, subO);
+                        stringSet.add(subKey);
+                        objectList.add(subO); // Thêm đối tượng con vào objectList
+                        i++;
+                        count++;
                     }
                 }
+            }
         }
-
         items.setAll(stringSet);
     }
     public ObservableList<String> getItems() {

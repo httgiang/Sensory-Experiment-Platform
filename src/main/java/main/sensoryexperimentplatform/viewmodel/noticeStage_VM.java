@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -15,7 +16,7 @@ import main.sensoryexperimentplatform.models.Notice;
 import java.io.IOException;
 import java.util.Stack;
 
-public class noticeStage_VM implements choose{
+public class noticeStage_VM implements Stages {
     private StringProperty buttonText ;
 
     private StringProperty helpText ;
@@ -39,7 +40,7 @@ public class noticeStage_VM implements choose{
     }
     public noticeStage_VM(Experiment experiment) {
         this.experiment = experiment;
-        this.notice = new Notice("User input", "This is question","this is button", "hell00",false);
+        this.notice = new Notice("User input", null,null, null,false);
         this.buttonText = new SimpleStringProperty(notice.getButtonText());
         this.helpText = new SimpleStringProperty(notice.getHelpText());
         this.alert = new SimpleBooleanProperty(notice.isAlert());
@@ -107,11 +108,13 @@ public class noticeStage_VM implements choose{
 
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddNoticeStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
 
+
+      //  System.out.println("Children in anchorPane after setting new content: " + anchorPane.getChildren().getFirst().getAccessibleRole());
         NoticeStageController controller = fxmlLoader.getController();
         controller.setNoticeStage_vm(this);
 
@@ -119,12 +122,12 @@ public class noticeStage_VM implements choose{
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 
     @Override
-    public String getTitle() {
-        return "[Instruction] "+ titleText.get();
+    public String toString() {
+       return "[Instruction] "+ titleText.get();
     }
 }

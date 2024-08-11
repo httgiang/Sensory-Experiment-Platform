@@ -15,7 +15,7 @@ import main.sensoryexperimentplatform.models.gLMS;
 import java.io.IOException;
 import java.util.Stack;
 
-public class glmsStage_VM implements choose {
+public class GLMSStage_VM implements Stages {
     private StringProperty txt_question;
     private StringProperty txt_LowAncTxt;
     private StringProperty txt_yes;
@@ -24,7 +24,7 @@ public class glmsStage_VM implements choose {
     private BooleanProperty checkB_sound;
     private Experiment experiment;
     private gLMS glms;
-    public glmsStage_VM(Experiment experiment){
+    public GLMSStage_VM(Experiment experiment){
         this.experiment = experiment;
         this.glms = new gLMS("User Input",null,null,null, false);;
         txt_help = new SimpleStringProperty(glms.getHelpText());
@@ -40,7 +40,7 @@ public class glmsStage_VM implements choose {
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
         experiment.addGlmsStage(glms);
     }
-    public glmsStage_VM(gLMS glms){
+    public GLMSStage_VM(gLMS glms){
         this.glms = glms;
         txt_help = new SimpleStringProperty(glms.getHelpText());
         txt_LowAncTxt = new SimpleStringProperty(glms.getButtonText());
@@ -55,7 +55,7 @@ public class glmsStage_VM implements choose {
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
     }
 
-    public glmsStage_VM(ratingContainer_VM rating) {
+    public GLMSStage_VM(ratingContainer_VM rating) {
         this.glms = new gLMS("User Input",null,null,null, false);;
         txt_help = new SimpleStringProperty(glms.getHelpText());
         txt_LowAncTxt = new SimpleStringProperty(glms.getButtonText());
@@ -146,7 +146,7 @@ public class glmsStage_VM implements choose {
     }
 
     @Override
-    public void modify(AnchorPane anchorpane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorpane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("GLMS.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorpane.getChildren().setAll(newContent);
@@ -155,12 +155,12 @@ public class glmsStage_VM implements choose {
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 
     @Override
-    public String getTitle() {
-        return "[GLMS] "+ txt_question.get();
+    public String toString(){
+            return "[GLMS] "+ txt_question.get();
     }
 }

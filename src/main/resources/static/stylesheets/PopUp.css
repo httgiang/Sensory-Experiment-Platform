@@ -1,3 +1,59 @@
+.anchor-pane{
+
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16px;
+    -fx-border-width: 2px;
+    -fx-border-color: #000000;
+    -fx-box-shadow: inset 0px -20px 0px rgba(0, 0, 0, 0.25);
+    -fx-border-radius: 14px;
+
+}
+#labelDelPrompt{
+
+
+    -fx-font-family: 'Ubuntu';
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 24px;
+    -fx-line-height: 28px;
+    /* identical to box height */
+
+    -fx-text-fill: #000000;
+
+
+}
+.button{
+    -fx-align-items: center;
+    -fx-padding: 8px 23px;
+
+    -fx-pref-width: 132px;
+    -fx-prefheight: 57px;
+
+    -fx-background-color: #F1F6FB;
+    -fx-box-shadow: inset 0px 5px 5px rgba(85, 91, 110, 0.15);
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+
+    -fx-font-family: 'Montserrat';
+    -fx-font-style: normal;
+    -fx-font-weight: 600;
+    -fx-font-size: 22px;
+    -fx-line-height: 27px;
+    -fx-text-align: center;
+
+    -fx-text-fill: #0E0E0E;
+
+
+}
+.button:hover{
+    -fx-background-color: #D5E9EA;
+}
+
+.button:selected{
+    -fx-background-color: #D5E9EA;
+    -fx-border-color: #397E82;
+    -fx-border-width: 2px;
+}
 #labelWaiting{
     /* Waiting for you */
 

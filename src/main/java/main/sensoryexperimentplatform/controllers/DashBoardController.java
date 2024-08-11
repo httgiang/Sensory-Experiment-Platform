@@ -8,33 +8,33 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.viewmodel.FillName_VM;
-import main.sensoryexperimentplatform.viewmodel.RunExperiment_VM;
-import main.sensoryexperimentplatform.viewmodel.dashBoard_VM;
+import main.sensoryexperimentplatform.viewmodel.DashBoard_VM;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.listOfExperiment;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Stack;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class DashBoardController {
 
     private static final int ITEMS_PER_PAGE = 6;
-    private dashBoard_VM dashBoard_vm;
+    private DashBoard_VM dashBoard_vm;
 
     private ScheduledExecutorService executorService;
     private long startTime, elapsedTime;
@@ -72,7 +72,7 @@ public class DashBoardController {
 
     public void initialize() {
         //this.base = base;
-       dashBoard_vm = new dashBoard_VM();
+       dashBoard_vm = new DashBoard_VM();
        bindViewModel();
        bindColumnWidths();
        setupPaginationListener();
@@ -157,7 +157,15 @@ public class DashBoardController {
                             });
                             edit.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
-                                editExperiment(selectedExperiment);
+                                try {
+                                    editExperiment(selectedExperiment);
+                                } catch (UnsupportedAudioFileException e) {
+                                    throw new RuntimeException(e);
+                                } catch (LineUnavailableException e) {
+                                    throw new RuntimeException(e);
+                                } catch (URISyntaxException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
                             run.setOnAction((ActionEvent) ->{
                                 Experiment selectedExperiment = getTableView().getItems().get(getIndex());
@@ -247,13 +255,13 @@ public class DashBoardController {
     }
 
 
-    private void editExperiment(Experiment c) {
+    private void editExperiment(Experiment c) throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 //        c.updateVersion();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/Test.fxml"));
+        loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/EditExperiment.fxml"));
         Parent root = null;
         try{
-            TestController controller = new TestController();
+            EditExpController controller = new EditExpController();
             root = loader.load();
             controller = loader.getController();
             controller.setExperiment(c);
@@ -279,9 +287,6 @@ public class DashBoardController {
         Parent root = fxmlLoader.load();
 
         Stage stage = new Stage();
-        stage.setTitle("New experiment");
-        newExController controller = fxmlLoader.getController();
-        controller.initialize();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.Vas;
 import java.io.IOException;
 import java.util.Stack;
 
-public class vasStage_VM implements choose {
+public class vasStage_VM implements Stages {
     private Experiment experiment;
     private StringProperty questionText;
     private StringProperty lowAnchorText;
@@ -272,7 +272,7 @@ public class vasStage_VM implements choose {
     }
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("VasStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -282,13 +282,13 @@ public class vasStage_VM implements choose {
 
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
 
     }
 
     @Override
-    public String getTitle() {
-        return "[VAS]" +getQuestionText();
+    public String toString(){
+        return "[VAS] " + getQuestionText();
     }
 }

@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.Input;
 import java.io.IOException;
 import java.util.Stack;
 
-public class inputStage_VM implements choose{
+public class InputStage_VM implements Stages {
     private Input input;
     private Experiment experiment;
     //    private final ListProperty<Object> stages = new SimpleListProperty<>(FXCollections.observableArrayList());
@@ -21,9 +21,9 @@ public class inputStage_VM implements choose{
     private StringProperty button;
     private BooleanProperty alert;
 
-    public inputStage_VM(Experiment experiment){
+    public InputStage_VM(Experiment experiment){
         this.experiment = experiment;
-        this.input = new Input("User input", "This is question","this is button", false);
+        this.input = new Input("User input", null,null, false);
         title = new SimpleStringProperty(input.getTitle());
         content = new SimpleStringProperty(input.getContent());
         button = new SimpleStringProperty(input.getButtonText());
@@ -31,7 +31,7 @@ public class inputStage_VM implements choose{
         experiment.addInput(input);
 
     }
-    public inputStage_VM(Experiment experiment,Input input){
+    public InputStage_VM(Experiment experiment, Input input){
         this.input = input;
         this.experiment = experiment;
         title = new SimpleStringProperty(input.getTitle());
@@ -106,7 +106,7 @@ public class inputStage_VM implements choose{
     }
 
     @Override
-    public void modify(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("InputStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -117,11 +117,12 @@ public class inputStage_VM implements choose{
     }
 
     @Override
-    public void modifyWithButton(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
 
     }
     @Override
-    public String getTitle(){
-        return "[User Input] "+title.get();
+    public String toString(){
+        return "[User Input] "+ title.get();
     }
+
 }

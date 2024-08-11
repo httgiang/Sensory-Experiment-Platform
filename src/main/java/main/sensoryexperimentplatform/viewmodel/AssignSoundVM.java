@@ -13,13 +13,15 @@ import java.util.ArrayList;
 
 public class AssignSoundVM {
     private Sound sound;
-    private Experiment experiment;
+    private String selectedSoundName;
 
 
 
-    public AssignSoundVM(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
+
+    public AssignSoundVM() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.sound = SoundSingleton.getInstance();
-        this.experiment = experiment;
+
+
     }
     public void getSoundPath(){
        sound.getSoundFilePath();
@@ -27,7 +29,7 @@ public class AssignSoundVM {
 
 
     public ArrayList<String> getListNameshow() {
-        return sound.getSoundNameshow();
+        return new ArrayList<>(sound.getSoundNameshow());
     }
 
     public void playSound(String name) {
@@ -40,13 +42,23 @@ public class AssignSoundVM {
        sound.getSoundNameshow().remove(name);
     }
 
+
     public ArrayList<String> getSoundFilePaths(){
       return sound.getSoundFilePath();
     }
     public void  addSoundFilePath(String soundPath){
        sound.getSoundFilePath().add(soundPath);
     }
+
+    public String getSelectedSoundName() {
+        return selectedSoundName;
+    }
+
+    public void setSelectedSoundName(String selectedSoundName) {
+        this.selectedSoundName = selectedSoundName;
+    }
     public Sound getSound(){
         return sound;
     }
+
 }

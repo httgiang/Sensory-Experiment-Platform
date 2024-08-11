@@ -6,18 +6,17 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.sensoryexperimentplatform.utilz.Observer;
-import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.listOfExperiment;
 
 import java.util.List;
 
-public class dashBoard_VM implements Observer {
+public class DashBoard_VM implements Observer {
     //private ObservableList<Experiment> experiments;
     private ListProperty<Experiment> experiments;
     private int size;
 
-    public dashBoard_VM() {
+    public DashBoard_VM() {
         listOfExperiment.attach(this);
         experiments = new SimpleListProperty<>(FXCollections.observableArrayList());
 

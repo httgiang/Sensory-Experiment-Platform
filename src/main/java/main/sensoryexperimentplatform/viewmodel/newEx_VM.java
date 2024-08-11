@@ -23,7 +23,7 @@ public class newEx_VM implements Observer {
     private final ListProperty<Experiment> items = new SimpleListProperty<>(FXCollections.observableArrayList());
     
     public newEx_VM() {
-        this.experiment = new Experiment("Creator","Experiment","Description", "Note",1,000,DataAccess.getCurrentFormattedDate());
+        this.experiment = new Experiment(null,null,null, null,1,000,DataAccess.getCurrentFormattedDate());
         this.experimentName = new SimpleStringProperty(experiment.getExperimentName());
         this.creatorName = new SimpleStringProperty(experiment.getCreatorName());
         this.additionNote = new SimpleStringProperty(experiment.getNote());

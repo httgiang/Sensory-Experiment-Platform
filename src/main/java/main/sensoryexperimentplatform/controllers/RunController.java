@@ -230,6 +230,22 @@ public class RunController {
                     } ));
 
                 }
+                if (selectedObject instanceof AudibleInstruction) {
+                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
+                    AnchorPane newContent = loader.load();
+                    AnchorPane.setTopAnchor(newContent, 0.0);
+                    AnchorPane.setBottomAnchor(newContent, 0.0);
+                    AnchorPane.setLeftAnchor(newContent, 0.0);
+                    AnchorPane.setRightAnchor(newContent, 0.0);
+                    content.getChildren().setAll(newContent);
+                    btn_Next.setDisable(false);
+
+                    RunAudibleController controller = loader.getController();
+                    RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
+                    controller.setViewModel(vm);
+                    btn_Next.textProperty().bind(vm.buttonProperty());
+
+                }
                 if (currentIndex == viewModel.count - 1) {
                     btn_Next.setOnAction(event -> {
                         try {

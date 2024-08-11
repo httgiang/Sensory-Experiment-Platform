@@ -5,41 +5,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="598.0" maxWidth="867.0" minWidth="540.0" prefHeight="248.0" prefWidth="551.0" stylesheets="@../../static/stylesheets/Properties.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.questionStageController">
+<AnchorPane maxHeight="598.0" maxWidth="867.0" minWidth="540.0" prefHeight="248.0" prefWidth="551.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.questionStageController">
 
-   <children>
-                  <ScrollPane layoutY="12.0" prefHeight="224.0" prefWidth="540.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
-                      <content>
-                          <AnchorPane fx:id="lbl_righbutton" layoutX="10.0" minWidth="0.0" prefHeight="577.0" prefWidth="536.0" style="-fx-background-color: white; -fx-border-color: transparent;">
-                              <children>
-                                  <Label fx:id="lbl_question" layoutX="14.0" layoutY="44.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Question:" />
-                                  <Label layoutX="14.0" layoutY="83.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Left Button Text:" />
-                                  <Label fx:id="fontLabel" layoutX="14.0" layoutY="122.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Right Button Text:" />
-                                  <Label fx:id="lbl_leftbuttonValue" layoutX="14.0" layoutY="161.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Left Button Value:" />
-                                  <Label fx:id="lbl_rightButtonValue" layoutX="14.0" layoutY="200.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Right Button Value: " />
-                                  <Label fx:id="lbl_storeResponse" layoutX="14.0" layoutY="239.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Store Response In A:" />
-                  <Label fx:id="lbl_helpText" layoutX="14.0" layoutY="370.0" styleClass="propertiesText" text="Help Text:" />
-      
-                  <TextField fx:id="txt_question" layoutX="222.0" layoutY="42.0" prefHeight="30.0" prefWidth="300.0" promptText="Question" />
-                  <Label fx:id="lbl_leftbutton1" layoutX="14.0" layoutY="550.0" styleClass="propertiesText" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Play alert sound on the screen" />
-                  <TextField fx:id="txt_leftText" layoutX="222.0" layoutY="83.0" prefHeight="30.0" prefWidth="300.0" promptText="Left Button Text" />
-                  <TextField fx:id="txt_rightText" layoutX="222.0" layoutY="122.0" prefHeight="30.0" prefWidth="300.0" promptText="Right button text " />
-                  <TextField fx:id="txt_leftValue" layoutX="222.0" layoutY="161.0" prefHeight="30.0" prefWidth="300.0" promptText="Left Button Value" />
-                  <TextField fx:id="txt_rightValue" layoutX="222.0" layoutY="200.0" prefHeight="30.0" prefWidth="300.0" promptText="Right Button Value " />
-                  <RadioButton layoutX="200.0" layoutY="280.0" mnemonicParsing="false" text="Available " />
-                  <RadioButton layoutX="200.0" layoutY="320.0" mnemonicParsing="false" text="New" />
-                  <TextField layoutX="294.0" layoutY="320.0" prefHeight="30.0" prefWidth="210.0" promptText="New" />
-                  <TextField fx:id="txt_helpText" layoutX="222.0" layoutY="370.0" minHeight="160.0" minWidth="274.0" prefHeight="160.0" prefWidth="274.0" promptText="Help Text " />
-                  <CheckBox fx:id="cbx_alert" layoutX="250.0" layoutY="553.0" mnemonicParsing="false" />
-      
-                  <ComboBox layoutX="294.0" layoutY="274.0" prefHeight="30.0" prefWidth="210.0" />
-                  <Label fx:id="lblProperty" layoutX="13.0" layoutY="4.0" styleClass="property" text="Properities" />
-                              </children>
-                          </AnchorPane>
-                      </content>
-                  </ScrollPane>
-   </children>
+    <children>
+        <ScrollPane fitToWidth="true" layoutY="12.0" prefHeight="224.0" prefWidth="540.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+            <content>
+                <AnchorPane fx:id="lbl_righbutton" layoutX="10.0" minWidth="0.0" prefHeight="577.0" prefWidth="536.0" style="-fx-background-color: white; -fx-border-color: transparent;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+                    <children>
+                        <Label fx:id="lbl_question" layoutX="28.0" layoutY="64.0" text="Question:" />
+                        <Label layoutX="28.0" layoutY="114.0" text="Left Button Text:" />
+                        <Label fx:id="fontLabel" layoutX="28.0" layoutY="164.0" text="Right Button Text:" />
+                        <Label fx:id="lbl_leftbuttonValue" layoutX="28.0" layoutY="214.0" text="Left Button Value:" />
+                        <Label fx:id="lbl_rightButtonValue" layoutX="28.0" layoutY="264.0" text="Right Button Value: " />
+                        <Label fx:id="lbl_storeResponse" layoutX="28.0" layoutY="314.0" text="Store Response In A:" />
+                        <Label fx:id="lbl_helpText" layoutX="28.0" layoutY="454.0" text="Help Text:" />
+
+                        <TextField fx:id="txt_question" layoutX="222.0" layoutY="60.0" prefHeight="30.0" prefWidth="300.0" promptText="Question" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <Label fx:id="lbl_leftbutton1" layoutX="28.0" layoutY="634.0" text="Play alert sound on the screen" />
+                        <TextField fx:id="txt_leftText" layoutX="222.0" layoutY="110.0" prefHeight="30.0" prefWidth="300.0" promptText="Left Button Text" AnchorPane.leftAnchor="221.60000000000002" AnchorPane.rightAnchor="14.0" />
+                        <TextField fx:id="txt_rightText" layoutX="222.0" layoutY="160.0" prefHeight="30.0" prefWidth="300.0" promptText="Right button text " AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <TextField fx:id="txt_leftValue" layoutX="224.0" layoutY="210.0" prefHeight="30.0" prefWidth="294.0" promptText="Left Button Value" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <TextField fx:id="txt_rightValue" layoutX="222.0" layoutY="260.0" prefHeight="30.0" prefWidth="300.0" promptText="Right Button Value " AnchorPane.leftAnchor="223.20000000000002" AnchorPane.rightAnchor="14.0" />
+                        <RadioButton layoutX="100.0" layoutY="350.0" mnemonicParsing="false" text="Available " AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="60.0" />
+                        <RadioButton layoutX="100.0" layoutY="400.0" mnemonicParsing="false" text="New" AnchorPane.leftAnchor="100.8" AnchorPane.rightAnchor="60.7999999999999" />
+                        <TextField layoutX="222.0" layoutY="400.0" prefHeight="30.0" prefWidth="300.0" promptText="New" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <CheckBox fx:id="cbx_alert" layoutX="250.0" layoutY="634.0" mnemonicParsing="false" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="259.19999999999993" />
+
+                        <ComboBox layoutX="222.0" layoutY="350.0" prefHeight="30.0" prefWidth="295.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <Label fx:id="lblProperty" layoutX="28.0" layoutY="14.0" styleClass="property" text="Properities" />
+                  <TextArea fx:id="txt_HelpText" layoutX="222.0" layoutY="450.0" prefHeight="166.0" prefWidth="297.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="15.199999999999932" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
 </AnchorPane>

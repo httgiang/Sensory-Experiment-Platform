@@ -3,13 +3,37 @@
 
 .button:hover{
     -fx-background-color: #D5E9EA;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
+}
+.button{
+
+    -fx-gap: 10px;
+
+    -fx-background-color: #397E82;
+    -fx-box-shadow: inset 0px 5px 5px rgba(85, 91, 110, 0.15);;
+
+
+    -fx-border-radius: 20px 20px 20px 20px;
+
+    -fx-display: flex;
+    -fx-align-items: center;
+
+    -fx-padding: 4px 23px, 4px 23px;
+    -fx-background-radius: 10px 10px 10px 10px;
+
+
+    -fx-font-family: 'Montserrat';
+    -fx-font-style: normal;
+    -fx-font-weight: 600;
+    -fx-font-size: 18px;
+    -fx-line-height: 22px;
+    -fx-text-align: center;
+
+    -fx-text-fill: #FFFFFF;
+
+
 }
 
-.root {
-    -fx-font-family: 'Inter';
-    -fx-font-size: 14;
-}
 
 .stackpane{
     -fx-background-color: white;
@@ -99,36 +123,14 @@
 
     }
 
-    .button{
-
-        -fx-background-color: #397E82;
-
-        -fx-border-radius: 20px 20px 20px 20px;
-
-
-        -fx-font-family: 'Montserrat';
-        -fx-font-style: normal;
-        -fx-font-weight: 400;
-        -fx-font-size: 13px;
-        -fx-line-height: 16px;
-        -fx-display: flex;
-        -fx-align-items: center;
-
-        -fx-text-fill: #F7F6FE;
-        -fx-padding: 4px 23px, 4px 23px;
-        -fx-background-radius: 10px 10px 10px 10px;
 
 
 
 
-    }
-
-
-
-    .text-field {
-        -fx-border-color: black;
+    .text-field{
+        -fx-border-color: #696969;
         -fx-border-radius: 5px 5px 5px 5px;
-        -fx-alignment: center;
+        -fx-box-sizing: border-box;
     }
 
 
@@ -171,22 +173,6 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: cover; /* or contain depending on your preference */
-}
-#btn_cancel, #btn_save{
-    -fx-background-color: #397E82;
-    -fx-border-radius: 20px 20px 20px 20px;
-    /* Add */
-    -fx-font-family: 'Montserrat';
-    -fx-font-style: normal;
-    -fx-font-weight: 400;
-    -fx-font-size: 13px;
-    -fx-line-height: 16px;
-    -fx-display: flex;
-    -fx-align-items: center;
-
-    -fx-text-fill: #F7F6FE;
-    -fx-padding: 4px 23px, 4px 23px;
-    -fx-background-radius: 20px 20px 20px 20px;
 }
 
 

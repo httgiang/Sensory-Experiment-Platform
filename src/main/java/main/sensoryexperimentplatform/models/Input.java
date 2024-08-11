@@ -49,6 +49,7 @@ public class Input extends Stage{
 
     @Override
     public String toString() {
+        //inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)")
         return "inputStage(\"" + title + "\",\"" + content + "\",\"" +
                 buttonText + "\",\""+ alert + "\")";
     }
