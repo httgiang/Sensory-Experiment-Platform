@@ -7,17 +7,17 @@ import java.util.ArrayList;
 public class FoodTasteVM {
     private TasteTest tasteTest;
     private ArrayList<String> listFoods;
-    private ArrayList<String> listFoodsShow;
-    private ArrayList<String> listGLMSShow;
-    private ArrayList <String> listVasShow;
-    private ArrayList <String> listVas;
+    private ArrayList<String> foodOptions;
+    private ArrayList<String> gLMSOptions;
+    private ArrayList<String> vasOptions;
+    private ArrayList<String> listVas;
     private ArrayList<String> listGLMS;
 
     public ArrayList<String> getListGLMSShow() {
-        return listGLMSShow;
+        return gLMSOptions;
     }
     public ArrayList<String> getListVasShow() {
-        return listVasShow;
+        return vasOptions;
     }
 
     public ArrayList<String> getListVas() {
@@ -31,24 +31,24 @@ public class FoodTasteVM {
     public FoodTasteVM(TasteTest tasteTest){
         this.tasteTest = tasteTest;
         listFoods = tasteTest.getFoods();
-        listFoodsShow = tasteTest.getFoodsShow();
+        foodOptions = tasteTest.getFoodsShow();
         listVas = tasteTest.getVasList();
-        listGLMSShow = tasteTest.getGlmsListShow();
-        listVasShow = tasteTest.getVasListShow();
+        gLMSOptions = tasteTest.getGlmsListShow();
+        vasOptions = tasteTest.getVasListShow();
         listGLMS = tasteTest.getGlmsList();
     }
 
     public ArrayList<String> getListFoodsShow() {
-        return listFoodsShow;
+        return foodOptions;
     }
 
     public void addListFoodsShow(String food) {
-        listFoodsShow.add(food);
+        foodOptions.add(food);
         tasteTest.getFoodsShow().add(food);
     }
-    public void addVasShow(String food){listVasShow.add(food);
+    public void addVasShow(String food){vasOptions.add(food);
         tasteTest.getVasListShow().add(food);}
-    public void addGLMSShow (String food){listGLMSShow.add(food);
+    public void addGLMSShow (String food){gLMSOptions.add(food);
         tasteTest.getGlmsListShow().add(food);}
 
     public ArrayList<String> getListFoods() {

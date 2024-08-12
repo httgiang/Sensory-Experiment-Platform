@@ -22,9 +22,6 @@ public class listOfExperiment extends Observable {
     }
 
     public static void addExperiment(Experiment experiment) throws Exception {
-        for(Experiment e : getInstance()){
-            System.out.println(e);
-        }
         if(experimentsName.add(experiment.getExperimentName())){
             getInstance().add(experiment);
         }

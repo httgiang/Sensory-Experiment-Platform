@@ -90,6 +90,19 @@ public class TasteTest {
         this.randomizeFood =  randomizeFood;
         this.randomizeRatingVas = randomizeRatingVas;
         this.randomizeRatingGLMS = randomizeRatingGLMS;
+
+        initFoodOptions();
+        initGLMSOptions();
+        initVASOptions();
+
+        foods = new ArrayList<>();
+        list = new ArrayList<>();
+        vasList = new ArrayList<>();
+        glmsList = new ArrayList<>();
+        list.add(initialNotice);
+
+    }
+    private void initFoodOptions(){
         foodsShow = new ArrayList<>();
         foodsShow.add("Biscuits");
         foodsShow.add("Cake");
@@ -104,12 +117,10 @@ public class TasteTest {
         foodsShow.add("Soup");
         foodsShow.add("Tomatoes");
         foodsShow.add("Yoghurt");
-        foods = new ArrayList<>();
-        list = new ArrayList<>();
-        vasList = new ArrayList<>();
-        glmsList = new ArrayList<>();
+    }
+
+    private void initVASOptions(){
         vasListShow = new ArrayList<>();
-        glmsListShow = new ArrayList<>();
         vasListShow.add("Alcoholic");
         vasListShow.add("Bitter");
         vasListShow.add("Creamy");
@@ -122,6 +133,10 @@ public class TasteTest {
         vasListShow.add("Spicy");
         vasListShow.add("Strong");
         vasListShow.add("Sweet");
+    }
+
+    private void initGLMSOptions(){
+        glmsListShow = new ArrayList<>();
         glmsListShow.add("Alcoholic");
         glmsListShow.add("Bitter");
         glmsListShow.add("Creamy");
@@ -134,10 +149,7 @@ public class TasteTest {
         glmsListShow.add("Spicy");
         glmsListShow.add("Strong");
         glmsListShow.add("Sweet");
-        list.add(initialNotice);
-
     }
-
     public ArrayList<String> getFoodsShow() {
         return foodsShow;
     }
