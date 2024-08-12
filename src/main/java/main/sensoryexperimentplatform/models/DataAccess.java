@@ -254,15 +254,20 @@ public class DataAccess {
                             );
                         }
                     }
+                    //String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
+                    //                                 String helpText, boolean alert
                 } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
                         currentExperiment.addQuestionStage(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
-                                Boolean.parseBoolean(matcher.group(4))
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6),
+                                Boolean.parseBoolean(matcher.group(7))
                         );
                     }
                 } else if (line.startsWith("ratingsContainer")) {
@@ -410,14 +415,17 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
                         currentExperiment.addQuestionStage(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
-                                Boolean.parseBoolean(matcher.group(4))
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6),
+                                Boolean.parseBoolean(matcher.group(7))
                         );
                     }
                 } else if (line.startsWith("ratingsContainer")) {

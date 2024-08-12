@@ -126,10 +126,10 @@ public class Experiment {
         stages.add(stage);
     }
 
-    public void addQuestionStage(String question, String buttonText,
+    public void addQuestionStage(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
                                  String helpText, boolean alert){
 
-        Question stage = new Question(question, buttonText, helpText, alert);
+        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert);
 
         stages.add(stage);
     }

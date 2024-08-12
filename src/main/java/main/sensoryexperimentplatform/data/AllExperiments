@@ -683,13 +683,4 @@ endRatingsContainer()
 wait("3","Please Wait","true")
 endExperiment()
 
-ExperimentName: Testing again
-ExperimenterName: Quỳnh Anh
-ExperimentID: 0
-Created on: 12.08.2024
-Version: 21
-startExperiment("ê","This is the first stage of the experiment","yolo")
-glmsStage("doc la","nyol","null","null","true")
-vasStage("alo vn ","hehe","yolo","-50","100","rrrr","null","null","false","true")
-endExperiment()
 

@@ -296,6 +296,10 @@ public class EditExpController {
                     TimerStage_VM timerStageVm = new TimerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
                 }
+                else if (o instanceof Question) {
+                    QuestionStage_VM questionStage_vm = new QuestionStage_VM((Question) o);
+                    startStage.getChildren().add(new TreeItem<>(questionStage_vm));
+                }
 //                else if (o instanceof Periodic){
 //                    String key = "[" + o.getClass().getSimpleName() + "] " + ((Periodic) o).getTitle();
 //                    start.getChildren().add(new TreeItem<>(key));
