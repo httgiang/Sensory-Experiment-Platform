@@ -159,7 +159,9 @@ public class DataAccess {
                     Matcher matcher = patternExperiment.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addStartStage(matcher.group(1), matcher.group(2), matcher.group(3));
+                        currentExperiment.addStartStage(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3));
                     }
                 } else if (line.startsWith("noticeStage")) {
                     Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");

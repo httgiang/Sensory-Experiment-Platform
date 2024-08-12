@@ -15,14 +15,14 @@ public class Timer extends Stage{
         this.sound = new Sound();
     }
 
-    public Timer(String instruction, String time) {
-        super(instruction, time);
+    public Timer(String time, String instruction) {
+        super(time, instruction);
         timeToWait = Long.parseLong(time);
     }
 
     public Timer(Timer o) {
 
-        super(o.getInstruction(), o.getContent());
+        super(o.getTitle(), o.getContent());
         timeToWait = o.getTimeToWait();
     }
 
