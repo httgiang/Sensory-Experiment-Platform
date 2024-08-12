@@ -62,7 +62,7 @@ public class DataAccess {
         if (!experimentDirectory.exists()) {
             experimentDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
         } else {
-            System.out.println("Experiment's result directory already exists");
+//            System.out.println("Experiment's result directory already exists");
         }
     }
     //Save results of conducted experiment
@@ -70,6 +70,7 @@ public class DataAccess {
         // Create directory for the experiment results if it doesn't exist
         String experimentName = experiment.getExperimentName();
         int version = experiment.getVersion();
+        // catch does not exist file
         initializeCaches(experimentName,version);
         // Create file for saving results
         FileWriter writer = new FileWriter("results/" + experimentName+"_"+version + "/" + FILE_NAME + ".csv", false);

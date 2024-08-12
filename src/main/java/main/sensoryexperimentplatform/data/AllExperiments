@@ -682,17 +682,12 @@ vasStage("Vas outside","null","null","0","100","null","null","null","false","fal
 endRatingsContainer()
 endExperiment()
 
-ExperimentName: Good morning
-ExperimenterName: Quỳnh Anh
+ExperimentName: Testing again
+ExperimenterName: Quỳnh Anh 
 ExperimentID: 0
-Created on: 06.08.2024
-Version: 27
-startExperiment("hello","","null")
-noticeStage("xin chao nhe","day la quynh anh","goood guy ","null","false")
-audio("Default Notice Stage","null","null","null","stomp")
-audio("hello","null","null","null","boop")
-audio("nhign di","null","null","null","stomp")
-audio("1234","ụa alooo","null","null","stomp")
-audio("loo","null","null","null","stomp")
+Created on: 12.08.2024
+Version: 2
+startExperiment("Start Experiment","This is the first stage of the experiment","yolo")
+noticeStage("User input","null","null","null","false")
 endExperiment()
 

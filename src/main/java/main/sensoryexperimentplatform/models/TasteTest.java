@@ -176,6 +176,7 @@ public class TasteTest {
         return foods;
     }
 
+    //op: Arraylist<Object>
     public void generator(){
         for(String foodName : foods){
             String convertedConsumption = consumptionInstruction.replace("<food>","%s");
@@ -193,12 +194,10 @@ public class TasteTest {
             for(String taste : glmsList){
                 gLMS temp = getGLMS(foodName,taste);
                 currentFood.addGlmsRating(temp);
-                }
-
+            }
             list.add(currentFood);
             Notice notice2 = new Notice("Rinsing", endInStruction, initialNotice.getButtonText(), "", false);
             list.add(notice2);
-
             }
         }
     private gLMS getGLMS(String foodName, String taste){

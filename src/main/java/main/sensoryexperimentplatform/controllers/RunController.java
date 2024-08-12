@@ -152,7 +152,7 @@ public class RunController {
                     controller.setViewModel(vm);
                     btn_Next.textProperty().bind(vm.buttonProperty());
                 }
-                if (selectedObject instanceof Vas) {
+                else if (selectedObject instanceof Vas) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
                     AnchorPane newContent = loader.load();
                     AnchorPane.setTopAnchor(newContent, 0.0);
@@ -179,7 +179,7 @@ public class RunController {
 
                 }
                 // glms view display
-                if (selectedObject instanceof gLMS) {
+                else if (selectedObject instanceof gLMS) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
                     AnchorPane newContent = loader.load();
                     AnchorPane.setTopAnchor(newContent, 0.0);
@@ -205,7 +205,7 @@ public class RunController {
 
 
                 }
-                if (selectedObject instanceof Notice) {
+                else if (selectedObject instanceof Notice) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
                     AnchorPane newContent = loader.load();
                     AnchorPane.setTopAnchor(newContent, 0.0);
@@ -220,7 +220,7 @@ public class RunController {
                     controller.setViewModel(vm);
                     btn_Next.textProperty().bind(vm.buttonProperty());
                 }
-                if (selectedObject instanceof Timer) {
+                else if (selectedObject instanceof Timer) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
                     AnchorPane newContent = loader.load();
                     AnchorPane.setTopAnchor(newContent, 0.0);
@@ -244,7 +244,7 @@ public class RunController {
                     } ));
 
                 }
-                if (selectedObject instanceof AudibleInstruction) {
+                else if (selectedObject instanceof AudibleInstruction) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
                     AnchorPane newContent = loader.load();
                     AnchorPane.setTopAnchor(newContent, 0.0);
@@ -260,7 +260,7 @@ public class RunController {
                     btn_Next.textProperty().bind(vm.buttonProperty());
 
                 }
-                if (currentIndex == viewModel.count - 1) {
+                else if (currentIndex == viewModel.count - 1) {
                     btn_Next.setOnAction(event -> {
                         try {
                             handleFinalNext();

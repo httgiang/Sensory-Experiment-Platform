@@ -13,7 +13,7 @@ public class Food {
    public void addVasRating(Vas stage){
        vasContainer.addStage(stage);
    }
-  public void addGlmsRating(gLMS stage){
+    public void addGlmsRating(gLMS stage){
       glmsContainer.addStage(stage);
    }
     public String toString(){
