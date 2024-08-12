@@ -49,33 +49,32 @@ public class Experiment {
             if(o instanceof Start){
                 Start temp = new Start((Start) o);
                 stages.add(temp);
-            }
-            if (o instanceof Vas) {
+
+            }else if (o instanceof Vas) {
                 Vas temp = new Vas((Vas) o);
                 stages.add(temp);
-            }if (o instanceof gLMS) {
+
+            }else if (o instanceof gLMS) {
                 gLMS temp = new gLMS((gLMS) o);
                 stages.add(temp);
-            }if(o instanceof Notice) {
+
+            }else if(o instanceof Notice) {
                 Notice temp = new Notice((Notice) o);
                 stages.add(temp);
-            }if(o instanceof Timer) {
+
+            }else if(o instanceof Timer) {
                 Timer temp = new Timer((Timer) o);
                 stages.add(temp);
-            }if (o instanceof RatingContainer) {
+
+            }else if (o instanceof RatingContainer) {
                 RatingContainer ratingContainer = new RatingContainer((RatingContainer) o);
                 stages.add(ratingContainer);
-            }
-            if (o instanceof AudibleInstruction) {
+
+            }else if (o instanceof AudibleInstruction) {
                 AudibleInstruction audibleInstruction = new AudibleInstruction((AudibleInstruction) o);
                 stages.add(audibleInstruction);
+
             }
-            if(o instanceof Notice) {
-                Notice temp = new Notice((Notice) o);
-                stages.add(temp);
-            }if(o instanceof Timer) {
-                Timer temp = new Timer((Timer) o);
-                stages.add(temp);}
         }
     }
 
