@@ -181,7 +181,6 @@ public class EditExpController {
                     parent.getChildren().set(currentIndex, nextItem);
 
                     Object next = experiment.getStages().get(currentIndex + 1);
-                    System.out.println(next);
                     experiment.getStages().set(currentIndex + 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, next);
                 }
@@ -202,7 +201,6 @@ public class EditExpController {
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, lastItem);
                     Object last = experiment.getStages().get(currentIndex - 1);
-                    System.out.println(last);
                     experiment.getStages().set(currentIndex - 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, last);
                 }
