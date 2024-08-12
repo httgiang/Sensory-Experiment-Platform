@@ -24,8 +24,8 @@ public class Start extends Stage{
     }
     public Start(Start start){
         super(start.title, start.content);
-        this.title = start.title;
-        this.content = start.content;
+        this.title = start.getTitle();
+        this.content = start.getContent();
         this.backGroundColor = start.backGroundColor;
         this.buttonText = start.buttonText;
         this.StartOfStageDelay = start.StartOfStageDelay;
@@ -91,6 +91,16 @@ public class Start extends Stage{
     }
 
     @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @Override
     public String getTitle() {
         return title;
     }
@@ -102,6 +112,7 @@ public class Start extends Stage{
 
     @Override
     public String toString(){
+        System.out.println(getTitle()+"\t"+getContent());
         return "startExperiment(\"" + getTitle() + "\",\"" + getContent() + "\",\"" +
                 buttonText + "\")";
     }
