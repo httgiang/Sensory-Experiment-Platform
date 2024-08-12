@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -16,7 +15,7 @@ import main.sensoryexperimentplatform.models.Notice;
 import java.io.IOException;
 import java.util.Stack;
 
-public class noticeStage_VM implements Stages {
+public class NoticeStage_VM implements Stages {
     private StringProperty buttonText ;
 
     private StringProperty helpText ;
@@ -30,7 +29,7 @@ public class noticeStage_VM implements Stages {
 
     private Notice notice;
     private Experiment experiment;
-    public noticeStage_VM(Notice noticeStage) {
+    public NoticeStage_VM(Notice noticeStage) {
         this.notice = noticeStage;
         this.titleText = new SimpleStringProperty(noticeStage.getTitle());
         this.contentText = new SimpleStringProperty(noticeStage.getContent());
@@ -38,7 +37,7 @@ public class noticeStage_VM implements Stages {
         this.helpText = new SimpleStringProperty(noticeStage.getHelpText());
         this.alert = new SimpleBooleanProperty(noticeStage.isAlert());
     }
-    public noticeStage_VM(Experiment experiment) {
+    public NoticeStage_VM(Experiment experiment) {
         this.experiment = experiment;
         this.notice = new Notice("User input", null,null, null,false);
         this.buttonText = new SimpleStringProperty(notice.getButtonText());
@@ -85,6 +84,10 @@ public class noticeStage_VM implements Stages {
     public StringProperty contentProperty() {
         return contentText;
     }
+
+    public BooleanProperty alertProperty() {
+        return alert;
+    }
     public void setHelpText(String newValue) {
         notice.setHelpText(newValue);
     }
@@ -122,7 +125,7 @@ public class noticeStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 

@@ -6,10 +6,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.sensoryexperimentplatform.viewmodel.newEx_VM;
+import main.sensoryexperimentplatform.viewmodel.NewEx_VM;
 
 public class newExController {
-    newEx_VM viewModel;
+    NewEx_VM viewModel;
 
     @FXML
     private AnchorPane newExPane;
@@ -29,7 +29,7 @@ public class newExController {
     private TextField txt_creatorName;
 
     public void initialize(){
-        viewModel = new newEx_VM();
+        viewModel = new NewEx_VM();
         bindViewModel();
 
         AnchorPane.setTopAnchor(newExPane, 0.0);
@@ -56,7 +56,7 @@ public class newExController {
         txt_description.textProperty().bindBidirectional(viewModel.DescriptionProperty());
 
     }
-    public void setViewModel(newEx_VM viewModel){
+    public void setViewModel(NewEx_VM viewModel){
         this.viewModel = viewModel;
     }
 

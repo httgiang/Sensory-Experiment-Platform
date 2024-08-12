@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.listOfExperiment;
 
 import static java.util.Arrays.setAll;
 
-public class newEx_VM implements Observer {
+public class NewEx_VM implements Observer {
     private StringProperty experimentName;
     private StringProperty creatorName;
     private StringProperty additionNote;
@@ -22,7 +22,7 @@ public class newEx_VM implements Observer {
     private  listOfExperiment ListOfExperiment;
     private final ListProperty<Experiment> items = new SimpleListProperty<>(FXCollections.observableArrayList());
     
-    public newEx_VM() {
+    public NewEx_VM() {
         this.experiment = new Experiment(null,null,null, null,1,000,DataAccess.getCurrentFormattedDate());
         this.experimentName = new SimpleStringProperty(experiment.getExperimentName());
         this.creatorName = new SimpleStringProperty(experiment.getCreatorName());

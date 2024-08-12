@@ -17,6 +17,7 @@ public class Notice extends Stage {
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
+        this.sound = new Sound();
     }
 
     public Notice(Notice o) {
@@ -25,6 +26,7 @@ public class Notice extends Stage {
         this.buttonText = o.getButtonText();
         this.helpText = o.getHelpText();
         this.alert = o.isAlert();
+        this.sound = new Sound();
     }
 
     public boolean isAlert() {

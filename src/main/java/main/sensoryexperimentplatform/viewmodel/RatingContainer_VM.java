@@ -18,14 +18,14 @@ import main.sensoryexperimentplatform.models.containerObject;
 import java.io.IOException;
 import java.util.Stack;
 
-public class ratingContainer_VM implements Stages {
+public class RatingContainer_VM implements Stages {
     private RatingContainer ratingContainer;
     private IntegerProperty minTime;
     private BooleanProperty isRandomize;
     private Vas vas;
     private gLMS glms;
     private Experiment experiment;
-    public ratingContainer_VM(Experiment experiment){
+    public RatingContainer_VM(Experiment experiment){
         this.experiment = experiment;
         this.ratingContainer = new RatingContainer(false,0);
         minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
@@ -34,7 +34,7 @@ public class ratingContainer_VM implements Stages {
         isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
         experiment.addRatingContainerStage(ratingContainer);
     }
-    public ratingContainer_VM(RatingContainer rc){
+    public RatingContainer_VM(RatingContainer rc){
         this.ratingContainer = rc;
         minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
         minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
@@ -88,7 +88,7 @@ public class ratingContainer_VM implements Stages {
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> rating) throws IOException {
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> rating) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         propertiesPane.getChildren().setAll(newContent);

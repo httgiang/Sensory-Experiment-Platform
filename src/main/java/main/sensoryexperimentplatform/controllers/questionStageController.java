@@ -1,14 +1,12 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.viewmodel.questionStage_VM;
-import main.sensoryexperimentplatform.models.Question;
+import main.sensoryexperimentplatform.viewmodel.QuestionStage_VM;
 
 public class questionStageController {
-    private questionStage_VM viewModel;
+    private QuestionStage_VM viewModel;
 
     @FXML
     private CheckBox cbx_alert;
@@ -57,7 +55,7 @@ public class questionStageController {
     @FXML
     private TextField txt_question;
 
-    public void setQuestionStage_vm( questionStage_VM viewModel){
+    public void setQuestionStage_vm( QuestionStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
     }

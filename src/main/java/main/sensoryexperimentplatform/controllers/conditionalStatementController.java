@@ -4,10 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import main.sensoryexperimentplatform.viewmodel.conditionalStatementVM;
+import main.sensoryexperimentplatform.viewmodel.ConditionalStatementVM;
 
 public class conditionalStatementController {
-    conditionalStatementVM viewModel;
+    ConditionalStatementVM viewModel;
 
     @FXML
     private RadioButton cbx_value2;
@@ -42,7 +42,7 @@ public class conditionalStatementController {
 
     }
 
-    public void setViewModel(conditionalStatementVM viewModel) {
+    public void setViewModel(ConditionalStatementVM viewModel) {
         this.viewModel = viewModel;
         chx_variable1Choice.getItems().addAll("Scale Reading", "Bout Number","Total Eaten Over Course","Total Eaten Over Experiment");
         chx_variable2Choice.getItems().addAll("Scale Reading", "Bout Number","Total Eaten Over Course","Total Eaten Over Experiment");

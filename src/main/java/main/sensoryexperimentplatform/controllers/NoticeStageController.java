@@ -1,14 +1,15 @@
 package main.sensoryexperimentplatform.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import main.sensoryexperimentplatform.viewmodel.noticeStage_VM;
+import main.sensoryexperimentplatform.viewmodel.NoticeStage_VM;
 
 public class NoticeStageController {
-    private noticeStage_VM noticeStage_vm;
-    private noticeStage_VM viewModel;
+    private NoticeStage_VM noticeStage_vm;
+    private NoticeStage_VM viewModel;
 
     @FXML
     private TextField txt_buttonText;
@@ -21,6 +22,9 @@ public class NoticeStageController {
 
     @FXML
     private TextField txt_title;
+    @FXML
+    private CheckBox cbx_sound;
+
 
 
 
@@ -41,7 +45,7 @@ public class NoticeStageController {
 
 
 
-    public void setNoticeStage_vm( noticeStage_VM viewModel){
+    public void setNoticeStage_vm( NoticeStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
     }
@@ -52,6 +56,7 @@ public class NoticeStageController {
         txt_buttonText.textProperty().bindBidirectional(viewModel.buttonTextProperty());
         txt_title.textProperty().bindBidirectional(viewModel.titleProperty());
         txt_content.textProperty().bindBidirectional(viewModel.contentProperty());
+        cbx_sound.selectedProperty().bindBidirectional(viewModel.alertProperty());
         txt_buttonText.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setButtonText(newValue);
         });
@@ -65,6 +70,10 @@ public class NoticeStageController {
         });
         txt_title.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setTitle(newValue);
+        });
+
+        cbx_sound.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setAlert(newValue);
         });
 
 

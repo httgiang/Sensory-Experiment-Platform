@@ -15,13 +15,13 @@ import main.sensoryexperimentplatform.models.Timer;
 import java.io.IOException;
 import java.util.Stack;
 
-public class timerStage_VM implements Stages {
+public class TimerStage_VM implements Stages {
     private Timer timer;
     private StringProperty txt_instruction;
     private StringProperty txt_timewait;
     private BooleanProperty cb_alertSound;
     private Experiment experiment;
-    public timerStage_VM(Experiment experiment){
+    public TimerStage_VM(Experiment experiment){
         this.experiment = experiment;
         timer = new Timer("0", "Please Wait",false);
         txt_instruction = new SimpleStringProperty(timer.getInstruction());
@@ -32,7 +32,7 @@ public class timerStage_VM implements Stages {
         txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
         experiment.addTimerStage(timer);
     }
-    public timerStage_VM(Timer timer){
+    public TimerStage_VM(Timer timer){
         this.timer = timer;
         txt_instruction = new SimpleStringProperty(timer.getInstruction());
         txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
@@ -42,15 +42,15 @@ public class timerStage_VM implements Stages {
         txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
     }
 
-    private void onAlert(Boolean newValue) {
+    public void onAlert(Boolean newValue) {
         timer.setAlert(newValue);
     }
 
-    private void onInstruction(String newValue) {
+    public void onInstruction(String newValue) {
         timer.setInstruction(newValue);
     }
 
-    private void onTimeWait(String newValue) {
+    public void onTimeWait(String newValue) {
         timer.setTime(newValue);
     }
 
@@ -92,7 +92,7 @@ public class timerStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
 
     }
 

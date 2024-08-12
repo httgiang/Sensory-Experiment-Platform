@@ -4,12 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
-import main.sensoryexperimentplatform.viewmodel.timerStage_VM;
+import main.sensoryexperimentplatform.viewmodel.TimerStage_VM;
 
 import java.io.IOException;
 
 public class TimerController {
-    private timerStage_VM timerVM;
+    private TimerStage_VM timerVM;
 
     @FXML
     private CheckBox cb_alertSound;
@@ -24,12 +24,8 @@ public class TimerController {
     @FXML
     private StackPane TimerStackPane;
 
-    @FXML
-    void AddGLMSbutton(ActionEvent event) throws IOException {
-        new ScenseSwitch(TimerStackPane, "/fxml/GLMS.fxml");
-    }
 
-    public void setViewModel(timerStage_VM timerVM){
+    public void setViewModel(TimerStage_VM timerVM){
         this.timerVM = timerVM;
         bind();
     }
@@ -38,5 +34,20 @@ public class TimerController {
         txt_instruction.textProperty().bindBidirectional(timerVM.txt_instructionProperty());
         txt_timewait.textProperty().bindBidirectional(timerVM.txt_timewaitProperty());
         cb_alertSound.selectedProperty().bindBidirectional(timerVM.cb_alertSoundProperty());
+
+        txt_instruction.textProperty().addListener((observable, oldValue, newValue) ->{
+            timerVM.onInstruction(newValue);
+        });
+
+        txt_timewait.textProperty().addListener((observable, oldValue, newValue) ->{
+            timerVM.onTimeWait(newValue);
+        });
+
+        cb_alertSound.selectedProperty().addListener((observable, oldValue, newValue) ->{
+            timerVM.onAlert(newValue);
+        });
+
+
+
     }
 }

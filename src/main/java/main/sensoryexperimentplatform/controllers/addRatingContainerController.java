@@ -4,18 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
-import main.sensoryexperimentplatform.viewmodel.ratingContainer_VM;
+import main.sensoryexperimentplatform.viewmodel.RatingContainer_VM;
 
 public class addRatingContainerController {
 
 
     @FXML
     private CheckBox cbx_random;
-    private ratingContainer_VM viewModel;
+    private RatingContainer_VM viewModel;
 
     @FXML
     private TextField txt_minTime;
-    public void setViewModel(ratingContainer_VM viewModel) {
+    public void setViewModel(RatingContainer_VM viewModel) {
         this.viewModel = viewModel;
         bindViewModel();
     }

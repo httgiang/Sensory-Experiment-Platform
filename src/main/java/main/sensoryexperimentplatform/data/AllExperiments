@@ -680,14 +680,16 @@ glmsStage("GLMS 1","null","null","null","false")
 vasStage("Vas 3","null","null","0","100","null","null","null","false","false")
 vasStage("Vas outside","null","null","0","100","null","null","null","false","false")
 endRatingsContainer()
+wait("3","Please Wait","true")
 endExperiment()
 
 ExperimentName: Testing again
-ExperimenterName: Quỳnh Anh 
+ExperimenterName: Quỳnh Anh
 ExperimentID: 0
 Created on: 12.08.2024
-Version: 2
-startExperiment("Start Experiment","This is the first stage of the experiment","yolo")
-noticeStage("User input","null","null","null","false")
+Version: 5
+startExperiment("gif ","This is the first stage of the experiment","yolo")
+noticeStage("welcome to experiment","just enjoy ","hello ","null","true")
+wait("5","Please Wait","true")
 endExperiment()
 

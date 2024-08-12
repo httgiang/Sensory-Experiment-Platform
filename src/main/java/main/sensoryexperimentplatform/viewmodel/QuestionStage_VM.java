@@ -15,7 +15,7 @@ import main.sensoryexperimentplatform.models.Question;
 import java.io.IOException;
 import java.util.Stack;
 
-public class questionStage_VM implements Stages {
+public class QuestionStage_VM implements Stages {
     //Notice can chinh lai
     private StringProperty question ;
     private StringProperty leftText ;
@@ -28,7 +28,7 @@ public class questionStage_VM implements Stages {
     private Experiment experiment;
 
 
-    public questionStage_VM(Experiment experiment){
+    public QuestionStage_VM(Experiment experiment){
         this.experiment = experiment;
         this.questionStage = new Question("Question ",null,null,false);
         this.question = new SimpleStringProperty(questionStage.getQuestion());
@@ -115,7 +115,7 @@ public class questionStage_VM implements Stages {
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
 
 
 //               AddNoticeStage controller = fxmlLoader.getController();

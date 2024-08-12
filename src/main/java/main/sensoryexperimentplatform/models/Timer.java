@@ -6,11 +6,13 @@ public class Timer extends Stage{
     private long timeToWait;
     private String instruction;
     private final long durationInMillis = timeToWait * 60 * 1000;
+    private Sound sound;
     public Timer(String time, String instruction, boolean alert) {
         super(time, instruction);
         this.instruction = instruction;
         timeToWait = Long.parseLong(time);
         this.alert = alert;
+        this.sound = new Sound();
     }
 
     public Timer(String instruction, String time) {
@@ -71,6 +73,10 @@ public class Timer extends Stage{
     }
     public String getType(){
         return "Wait";
+    }
+
+    public void playAlertSound() {
+        sound.playSound("boop");
     }
 
     @Override
