@@ -294,41 +294,11 @@ public class EditExpController {
                 } else if (o instanceof Timer) {
                     timerStage_VM timerStageVm = new timerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
-                } else if (o instanceof Start){
                 }
-//                else if (o instanceof Periodic){
-//                    String key = "[" + o.getClass().getSimpleName() + "] " + ((Periodic) o).getTitle();
-//                    start.getChildren().add(new TreeItem<>(key));
-//
-//                    // Wrapper wrapper = new Wrapper(key, addCourseVM);
-//                    //displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-//                else if (o instanceof Periodic){
-//                    String key = "[" + o.getClass().getSimpleName() + "] " + ((Periodic) o).getTitle();
-//                    start.getChildren().add(new TreeItem<>(key));
-//
-//                    // Wrapper wrapper = new Wrapper(key, addCourseVM);
-//                    //displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-
             }
         }
         startStage.setExpanded(true);
     }
-
-
-
-//                else if (o instanceof conditionalStatement) {
-//                    String key = "If" +  ((conditionalStatement) o).getVariable1Choice();
-//                    startStage.getChildren().add( new TreeItem<>(key));
-//                    conditionalStatementVM ConditionalStatementVM = new conditionalStatementVM((conditionalStatement) o);
-//                    Wrapper wrapper = new Wrapper(key, ConditionalStatementVM);
-//                    displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-//            }
 
 
 

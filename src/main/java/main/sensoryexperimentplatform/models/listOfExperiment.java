@@ -34,8 +34,10 @@ public class listOfExperiment extends Observable {
 
     }
 
-    public static int getSize(){
-        return experiments.size();
+    public static void importExperiment(Experiment experiment){
+        if(!getInstance().contains(experiment)){
+            getInstance().add(experiment);
+        }
     }
 
 

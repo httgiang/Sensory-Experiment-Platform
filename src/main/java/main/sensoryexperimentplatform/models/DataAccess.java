@@ -277,7 +277,7 @@ public class DataAccess {
                     rc = null;
                     isContainer = false;
                 } else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
+                    listOfExperiment.importExperiment(currentExperiment);
                     initializeCaches(currentExperiment.getExperimentName(),currentExperiment.getVersion());
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
                     currentExperiment = new Experiment(null,null,null,null,1,000,null);
