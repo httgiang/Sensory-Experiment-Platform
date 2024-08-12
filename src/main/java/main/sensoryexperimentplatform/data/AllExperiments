@@ -690,5 +690,6 @@ Created on: 12.08.2024
 Version: 21
 startExperiment("ê","This is the first stage of the experiment","yolo")
 glmsStage("doc la","nyol","null","null","true")
+vasStage("alo vn ","hehe","yolo","-50","100","rrrr","null","null","false","true")
 endExperiment()
 
