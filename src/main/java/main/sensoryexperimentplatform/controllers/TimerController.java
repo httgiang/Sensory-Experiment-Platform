@@ -45,6 +45,7 @@ public class TimerController {
 
         cb_alertSound.selectedProperty().addListener((observable, oldValue, newValue) ->{
             timerVM.onAlert(newValue);
+
         });
 
 

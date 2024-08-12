@@ -21,9 +21,11 @@ public class Timer extends Stage{
     }
 
     public Timer(Timer o) {
-
         super(o.getTitle(), o.getContent());
-        timeToWait = o.getTimeToWait();
+        this.timeToWait = o.getTimeToWait();
+        this.alert = o.isAlert();
+        this.instruction = o.getInstruction();
+        this.sound = new Sound();
     }
 
 
