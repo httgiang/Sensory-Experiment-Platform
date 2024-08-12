@@ -10,19 +10,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Fix | start model - completed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunQuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunQuestion_CSS.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/questionStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/questionStageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.23.52.712.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.23.52.712.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.24.13.417.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.24.13.417.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_18/1_2024.08.12.17.38.05.890.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_18/ddd_2024.08.12.16.23.34.230.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_21/alo_2024.08.12.17.47.51.883.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_21/f_2024.08.12.17.39.58.216.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_22/dddđ_2024.08.12.17.39.31.430.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_5/cccccccc_2024.08.12.13.16.18.911.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_5/ddd_2024.08.12.13.58.16.103.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_5/ffffffffff_2024.08.12.13.28.22.755.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_5/hello qanh_2024.08.12.14.00.21.605.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_5/x_2024.08.12.13.18.25.135.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/cx_2024.08.12.14.05.27.985.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/ddd_2024.08.12.14.23.13.898.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/dđ_2024.08.12.14.20.02.999.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/k_2024.08.12.14.12.49.976.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/true_2024.08.12.14.09.56.597.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/xx_2024.08.12.14.30.03.645.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_6/xxxxxxxx_2024.08.12.14.31.22.962.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_7/           _2024.08.12.14.40.32.094.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_7/cccc_2024.08.12.14.13.30.327.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_7/ccccccccccc_2024.08.12.14.29.21.385.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_8/00000000_2024.08.12.14.32.01.416.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_8/hả_2024.08.12.14.32.13.277.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_9/ccc_2024.08.12.14.46.37.820.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing again_9/ccccccc_2024.08.12.14.56.06.734.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing_2/dddd_2024.08.12.13.32.01.227.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing_3/cccc_2024.08.08.12.01.28.761.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing_3/cccccc_2024.08.08.12.03.54.857.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing_3/m_2024.08.08.12.53.00.117.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunQuestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/QuestionStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/QuestionStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunExperiment_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunExperiment_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunQuestion_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunQuestion_CSS.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +202,8 @@
       <workItem from="1723439066486" duration="4701000" />
       <workItem from="1723454415061" duration="45000" />
       <workItem from="1723454558307" duration="6895000" />
-      <workItem from="1723464162331" duration="3655000" />
+      <workItem from="1723464162331" duration="4778000" />
+      <workItem from="1723474851366" duration="4475000" />
     </task>
     <servers />
   </component>

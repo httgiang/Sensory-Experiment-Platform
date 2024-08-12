@@ -75,6 +75,11 @@ public class Experiment {
                 stages.add(audibleInstruction);
 
             }
+            else if (o instanceof Question) {
+                Question question = new Question((Question) o);
+                stages.add(question);
+
+            }
         }
     }
 

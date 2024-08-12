@@ -4,7 +4,7 @@
     -fx-text-fill: #397E82;
     -fx-alignment: CENTER;
 }
-#titleTxt,#title_lbl {
+#titleTxt,#title_lbl,#txt_question {
     -fx-font-size: 36px;
 }
 .progress-bar{

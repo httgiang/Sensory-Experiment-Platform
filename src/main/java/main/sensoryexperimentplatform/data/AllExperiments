@@ -683,4 +683,13 @@ endRatingsContainer()
 wait("3","Please Wait","true")
 endExperiment()
 
+ExperimentName: null
+ExperimenterName: qanh
+ExperimentID: 0
+Created on: 12.08.2024
+Version: 2
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+noticeStage("yolo","null","null","null","false")
+questionStage("uj ki vai","1","1","null","null","null","true")
+endExperiment()
 

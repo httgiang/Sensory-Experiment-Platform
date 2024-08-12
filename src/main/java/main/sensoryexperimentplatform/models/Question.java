@@ -8,6 +8,7 @@ public class Question extends Stage {
     private String leftButtonValue;
     private String rightButtonValue;
     private boolean alert;
+    private Sound sound;
 
     public Question(String title, String content) {
         super(title, content);
@@ -23,6 +24,19 @@ public class Question extends Stage {
         this.rightButtonValue = rightButtonValue;
         this.helpText = helpText;
         this.alert = alert;
+        sound = new Sound();
+    }
+
+    public Question(Question o) {
+        super(o.getQuestion(),o.getRightButtonText());
+        question = o.getQuestion();
+       leftButtonText = o.getLeftButtonText();
+       rightButtonText = o.getRightButtonText();
+      leftButtonValue = o.getLeftButtonValue();
+       rightButtonValue = o.getRightButtonValue();
+        helpText = o.getHelpText();
+        alert = o.isAlert();
+        sound = new Sound();
     }
 
     public String getQuestion() {
@@ -99,6 +113,10 @@ public class Question extends Stage {
 
     public void setRightButtonValue(String rightButtonValue) {
         this.rightButtonValue = rightButtonValue;
+    }
+
+    public void playSound(){
+        sound.playSound("boop");
     }
 
     @Override

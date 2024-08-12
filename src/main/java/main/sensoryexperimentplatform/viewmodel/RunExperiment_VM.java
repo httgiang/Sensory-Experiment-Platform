@@ -64,6 +64,8 @@ public class RunExperiment_VM {
                         temp = "Notice";
                     else if (o instanceof AudibleInstruction)
                         temp = "audio";
+                    else if (o instanceof Question)
+                        temp = "questionStage";
                     else if (o instanceof Start)
                         temp = "Start";
 
