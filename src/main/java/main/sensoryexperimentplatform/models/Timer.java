@@ -22,9 +22,9 @@ public class Timer extends Stage{
 
     public Timer(Timer o) {
         super(o.getTitle(), o.getContent());
-        this.timeToWait = o.getTimeToWait();
-        this.alert = o.isAlert();
-        this.instruction = o.getInstruction();
+        timeToWait = o.getTimeToWait();
+        alert = o.isAlert();
+        instruction = o.getInstruction();
         this.sound = new Sound();
     }
 
@@ -42,19 +42,33 @@ public class Timer extends Stage{
             isRunning = true;
         }
     }
+    @Override
+    public String getTitle() {
+        return title;
+    }
+    @Override
+    public String getContent() {
+        return content;
+    }
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    @Override
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public long getTimeToWait() {
         return timeToWait;
     }
 
-    public void setTimeToWait(long timeToWait) {
-        this.timeToWait = timeToWait;
-    }
-
-    public String getInstruction() {
+    public String getInstruction()
+    {
         return instruction;
     }
 
+//setter for instruction
     public void setInstruction(String instruction) {
         this.instruction = instruction;
     }
@@ -62,10 +76,11 @@ public class Timer extends Stage{
     public boolean isAlert() {
         return alert;
     }
-
+// setter for setAlert
     public void setAlert(boolean alert) {
         this.alert = alert;
     }
+    //setter for set time
     public void setTime(String time){
         timeToWait = Long.parseLong(time);
     }
@@ -83,7 +98,7 @@ public class Timer extends Stage{
 
     @Override
     public String toString() {
-        return "wait(\""+ getFormattedElapsed() + "\",\"" + this.content  + "\",\"" + alert + "\")";
+        return "wait(\""+ getFormattedElapsed() + "\",\"" + instruction  + "\",\"" + alert + "\")";
     }
 
 

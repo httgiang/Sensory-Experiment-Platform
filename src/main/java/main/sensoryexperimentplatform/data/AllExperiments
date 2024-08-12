@@ -687,9 +687,8 @@ ExperimentName: Testing again
 ExperimenterName: Quỳnh Anh
 ExperimentID: 0
 Created on: 12.08.2024
-Version: 9
+Version: 17
 startExperiment("ê","This is the first stage of the experiment","yolo")
-noticeStage("ụa alo","just enjoy ","hello ","null","true")
-wait("1","Please Wait","true")
+wait("4","alo alo","true")
 endExperiment()
 

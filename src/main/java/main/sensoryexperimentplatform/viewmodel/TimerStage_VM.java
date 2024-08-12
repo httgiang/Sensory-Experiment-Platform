@@ -27,9 +27,9 @@ public class TimerStage_VM implements Stages {
         txt_instruction = new SimpleStringProperty(timer.getInstruction());
         txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
         cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
-        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
-        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
-        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
+//        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
+//        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
+//        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
         experiment.addTimerStage(timer);
     }
     public TimerStage_VM(Timer timer){
@@ -37,9 +37,10 @@ public class TimerStage_VM implements Stages {
         txt_instruction = new SimpleStringProperty(timer.getInstruction());
         txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
         cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
-        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
-        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
-        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
+
+//        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
+//        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
+//        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
     }
 
     public void onAlert(Boolean newValue) {

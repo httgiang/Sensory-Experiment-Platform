@@ -291,7 +291,8 @@ public class EditExpController {
                 } else if (o instanceof AudibleInstruction) {
                     AudibleSound_VM audibleSound_vm = new AudibleSound_VM((AudibleInstruction) o);
                     startStage.getChildren().add(new TreeItem<>(audibleSound_vm));
-                } else if (o instanceof Timer) {
+                }
+                else if (o instanceof Timer) {
                     TimerStage_VM timerStageVm = new TimerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
                 }
