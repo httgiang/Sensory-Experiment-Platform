@@ -687,8 +687,8 @@ ExperimentName: Testing again
 ExperimenterName: Quỳnh Anh
 ExperimentID: 0
 Created on: 12.08.2024
-Version: 17
+Version: 21
 startExperiment("ê","This is the first stage of the experiment","yolo")
-wait("4","alo alo","true")
+glmsStage("doc la","nyol","null","null","true")
 endExperiment()
 

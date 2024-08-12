@@ -8,6 +8,7 @@ public class gLMS extends Stage implements containerObject{
     private String helpText, conducted;
     private int result;
     private boolean alert;
+    private Sound sound;
 
     public gLMS(String title, String content){
         super(title,content);
@@ -25,7 +26,9 @@ public class gLMS extends Stage implements containerObject{
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
+        this.sound = new Sound();
         result=0;
+
     }
 
     public gLMS(gLMS stage) {
@@ -35,6 +38,7 @@ public class gLMS extends Stage implements containerObject{
         this.buttonText = stage.getButtonText();
         this.helpText = stage.getHelpText();
         this.alert = stage.getAlert();
+        this.sound=new Sound();
         result=0;
     }
 
@@ -101,6 +105,10 @@ public class gLMS extends Stage implements containerObject{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void playAlertSound(){
+        sound.playSound("boop");
     }
     public String getType(){
         return "GLMS";
