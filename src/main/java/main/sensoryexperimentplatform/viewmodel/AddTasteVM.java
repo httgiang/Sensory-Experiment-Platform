@@ -41,7 +41,7 @@ public class AddTasteVM implements Stages {
     public AddTasteVM(TasteTest model){
         this.model = model;
         initBinding(model);
-
+        model.generateTasteTest();
         initListener();
     }
     public AddTasteVM(Experiment experiment){
@@ -53,7 +53,7 @@ public class AddTasteVM implements Stages {
         initBinding(model);
         initListener();
 
-        model.generateTasteTest();
+
         experiment.addNewTasteTest(model);
         for(Object o : experiment.getStages()){
             System.out.println(o);

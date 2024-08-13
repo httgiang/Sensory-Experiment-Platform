@@ -170,6 +170,10 @@ public class TasteTest{
                 endInstruction + "\",\"" + timeWait + "\",\"" + isRandomizedFood + "\",\"" + isRandomizedRatings + "\",\"" + isAlert + "\")";
     }
 
+    public ArrayList<Object> getStages() {
+        return stages;
+    }
+
     public String getNoticeStageContent() {
         return noticeStageContent;
     }

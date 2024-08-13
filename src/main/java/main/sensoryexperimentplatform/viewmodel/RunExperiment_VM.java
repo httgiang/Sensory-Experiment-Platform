@@ -96,6 +96,11 @@ public class RunExperiment_VM {
                     }
                 }
             }
+            if(o instanceof TasteTest){
+                for(Object sub0 : ((TasteTest) o).getStages()){
+
+                }
+            }
         }
         items.setAll(stringSet);
     }
