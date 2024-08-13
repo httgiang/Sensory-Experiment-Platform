@@ -8,14 +8,13 @@ import main.sensoryexperimentplatform.models.*;
 import main.sensoryexperimentplatform.models.Timer;
 
 import java.util.*;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class RunExperiment_VM {
     private Experiment experiment;
 
     public double count = 0.0;
 
-    private String file_name;
+    private String uid;
 
     private ListProperty<String> items;
 
@@ -27,9 +26,9 @@ public class RunExperiment_VM {
 
     private Set<String> stringSet;
 
-    public RunExperiment_VM(Experiment e, String file_name){
+    public RunExperiment_VM(Experiment e, String uid){
         this.experiment = e;
-        this.file_name = file_name;
+        this.uid = uid;
         items = new SimpleListProperty<>(FXCollections.observableArrayList());
         objectsMap = new HashMap<>();
         objectList = new ArrayList<>();
@@ -38,8 +37,8 @@ public class RunExperiment_VM {
         loadItems();
     }
 
-    public String getFileName() {
-        return file_name;
+    public String getUid() {
+        return uid;
     }
 
     public void loadItems() {

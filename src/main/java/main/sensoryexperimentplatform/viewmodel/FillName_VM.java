@@ -5,20 +5,20 @@ import javafx.beans.property.StringProperty;
 import main.sensoryexperimentplatform.models.Experiment;
 
 public class FillName_VM {
-    private StringProperty file_name;
+    private StringProperty uid;
     private Experiment experiment;
     public FillName_VM (Experiment experiment){
         this.experiment = experiment;
-        file_name = new SimpleStringProperty("");
+        uid = new SimpleStringProperty("");
 
     }
 
-    public StringProperty fileName(){
-        return file_name;
+    public StringProperty uid(){
+        return uid;
     }
 
-    public String getFileName() {
-        return file_name.get();
+    public String getUid() {
+        return uid.get();
     }
 
     public Experiment getExperiment() {

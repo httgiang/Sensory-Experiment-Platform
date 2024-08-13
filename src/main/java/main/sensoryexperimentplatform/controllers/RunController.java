@@ -19,7 +19,7 @@ import java.util.concurrent.*;
 
 
 public class RunController {
-    private String FILE_NAME;
+    private String uid;
     double processed = 0.0;
 
     private ScheduledExecutorService executorService;
@@ -49,7 +49,7 @@ public class RunController {
     public void setViewModel(RunExperiment_VM viewModel){
         this.viewModel = viewModel;
         this.experiment = viewModel.getExperiment();
-        this.FILE_NAME = viewModel.getFileName()+"_"+DataAccess.getCurrentFormattedTime();;
+        this.uid = viewModel.getUid();
         //viewModel.getFileName()+"_"+DataAccess.getCurrentFormattedTime();
         startTimer();
         bindViewModel();
@@ -114,7 +114,7 @@ public class RunController {
         }
         if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
             showList.getSelectionModel().select(selectedIndex + 1);
-            DataAccess.quickSave(experiment, FILE_NAME);
+            DataAccess.quickSave(experiment, uid);
         }
         updateProgress(showList.getSelectionModel().getSelectedIndex());
     }
@@ -294,7 +294,7 @@ public class RunController {
     }
     private void handleFinalNext() throws IOException {
         stopTimer();
-        DataAccess.quickSave(experiment, FILE_NAME);
+        DataAccess.quickSave(experiment, uid);
         autoClose();
     }
 

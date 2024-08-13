@@ -32,7 +32,8 @@ public class AudibleSound_VM implements Stages {
     public AudibleSound_VM(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.experiment = experiment;
         this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null);
-        this.sound = new Sound();
+        // if there exits any bug this maybe a problem
+        this.sound = SoundSingleton.getInstance();
         this.title = new SimpleStringProperty(audibleInstruction.getTitle());
         this.content = new SimpleStringProperty(audibleInstruction.getContent());
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
@@ -49,7 +50,7 @@ public class AudibleSound_VM implements Stages {
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
         this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
         this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
-        this.sound = sound;
+        this.sound = SoundSingleton.getInstance();
 
     }
 
@@ -92,7 +93,6 @@ public class AudibleSound_VM implements Stages {
     public void setContent(String newValue) {
         audibleInstruction.setContent(newValue);
     }
-
     public void setSoundName(String name) {
         audibleInstruction.setSoundName(name);
     }
@@ -101,6 +101,10 @@ public class AudibleSound_VM implements Stages {
     }
     public StringProperty soundNameProperty() {
         return soundName;
+    }
+
+    public void setAssignSoundVM(AssignSoundVM assignSoundVM) {
+        this.assignSoundVM = assignSoundVM;
     }
 
     public AudibleInstruction getAudibleInstruction(){
@@ -116,6 +120,7 @@ public class AudibleSound_VM implements Stages {
     public void loadInterface(AnchorPane anchorPane,Stack<AddTasteVM> stack, Stack <AddCourseVM> add) throws IOException {
 
     }
+
 
     @Override
     public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack <AddCourseVM> add, Button button1, Button button2, Button btn_assignSound, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {

@@ -58,7 +58,6 @@ public class AssignSoundController {
     private ListView<String> SoundList;
     private RadioButton selectedRadioButton;
     private AudibleSound_VM audibleSoundVM;
-    private RunAudible_VM runAudibleVm;
 
 
     public void setViewModel(AssignSoundVM viewModel, AudibleSound_VM audibleSoundVM){

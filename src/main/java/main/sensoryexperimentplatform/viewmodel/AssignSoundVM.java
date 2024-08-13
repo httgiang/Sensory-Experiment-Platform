@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class AssignSoundVM {
     private Sound sound;
     private String selectedSoundName;
+    private AudibleSound_VM audibleSound_vm;
 
 
 
@@ -39,6 +40,8 @@ public class AssignSoundVM {
     public void removeSound(String name) {
        sound.getSoundNameshow().remove(name);
     }
+
+
 
 
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="coverPane" prefHeight="682.0" prefWidth="1309.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.ShowResultController">
+   <children>
+                <TableView fx:id="tableView" layoutX="5.0" layoutY="21.0" prefHeight="682.0" prefWidth="1318.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="uidColumn" maxWidth="1.7976931348623157E308" prefWidth="50.0" text="UID" />
+                        <TableColumn fx:id="typeColumn" maxWidth="1.7976931348623157E308" prefWidth="140.0" text="Type" />
+                        <TableColumn fx:id="timeColumn" maxWidth="1.7976931348623157E308" prefWidth="135.0" text="Time" />
+                        <TableColumn fx:id="resultColumn" maxWidth="1.7976931348623157E308" prefWidth="125.0" text="Result" />
+                        <TableColumn fx:id="questionColumn" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Question" />
+                        <TableColumn fx:id="lowAnchorColumn" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Low Anchor" />
+                        <TableColumn fx:id="highAnchorColumn" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="High Anchor" />
+            <TableColumn fx:id="lowValueColumn" maxWidth="1.7976931348623157E308" prefWidth="125.0" text="Low Value" />
+            <TableColumn fx:id="highValueColumn" maxWidth="1.7976931348623157E308" prefWidth="125.0" text="High Value" />
+                    </columns>
+                </TableView>
+   </children>
+   <padding>
+      <Insets right="10.0" />
+   </padding>
+</AnchorPane>
