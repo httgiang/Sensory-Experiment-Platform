@@ -15,7 +15,7 @@ import main.sensoryexperimentplatform.models.Question;
 import java.io.IOException;
 import java.util.Stack;
 
-public class questionStage_VM implements Stages {
+public class QuestionStage_VM implements Stages {
     //Notice can chinh lai
     private StringProperty question ;
     private StringProperty leftText ;
@@ -28,17 +28,28 @@ public class questionStage_VM implements Stages {
     private Experiment experiment;
 
 
-    public questionStage_VM(Experiment experiment){
+    public QuestionStage_VM(Experiment experiment){
         this.experiment = experiment;
-        this.questionStage = new Question("Question ",null,null,false);
+        this.questionStage = new Question("Question ",null,null,null,null,null,false);
         this.question = new SimpleStringProperty(questionStage.getQuestion());
-        this.leftText = new SimpleStringProperty();
-        this.rightText = new SimpleStringProperty();
-        this.leftValue = new SimpleStringProperty();
-        this.rightValue = new SimpleStringProperty();
-        this.helpText = new SimpleStringProperty();
+        this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
+        this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
         experiment.addQuestion(questionStage);
+    }
+    public  QuestionStage_VM(Question questionStage){
+        this.questionStage = questionStage;
+        this.question = new SimpleStringProperty(questionStage.getQuestion());
+        this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
+        this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.helpText = new SimpleStringProperty(questionStage.getHelpText());
+        this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+
     }
 
 
@@ -96,6 +107,15 @@ public class questionStage_VM implements Stages {
     public void setHelpText(String newValue) {
         questionStage.setContent(newValue);
     }
+    public void setLeftText(String newValue) {questionStage.setLeftButtonText(newValue);
+    }
+    public void setRightText(String newValue) {questionStage.setRightButtonText(newValue);
+    }
+    public void setLeftValue(String newValue) {questionStage.setLeftButtonText(newValue);
+    }
+    public void setRightValue(String newValue) {questionStage.setRightButtonText(newValue);
+    }
+
     public Question getQuestionStage(){
         return questionStage;
     }
@@ -115,7 +135,7 @@ public class questionStage_VM implements Stages {
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
 
 
 //               AddNoticeStage controller = fxmlLoader.getController();

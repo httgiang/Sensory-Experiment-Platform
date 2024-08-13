@@ -12,7 +12,11 @@ public class RunNoticeController {
 
     public void setViewModel(RunNotice_VM viewModel){
         this.viewModel = viewModel;
+
         bindViewModel();
+        if (viewModel.getAlert().get()) {
+           viewModel.playSound();
+        }
     }
     private void bindViewModel(){
         titleTxt.textProperty().bind(viewModel.getTitle());

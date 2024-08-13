@@ -75,6 +75,15 @@ public class Experiment {
                 stages.add(audibleInstruction);
 
             }
+            else if (o instanceof Question) {
+                Question question = new Question((Question) o);
+                stages.add(question);
+
+            }
+            else if (o instanceof Input){
+                Input input = new Input((Input) o);
+                stages.add(input);
+            }
         }
     }
 
@@ -126,10 +135,10 @@ public class Experiment {
         stages.add(stage);
     }
 
-    public void addQuestionStage(String question, String buttonText,
+    public void addQuestionStage(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
                                  String helpText, boolean alert){
 
-        Question stage = new Question(question, buttonText, helpText, alert);
+        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert);
 
         stages.add(stage);
     }

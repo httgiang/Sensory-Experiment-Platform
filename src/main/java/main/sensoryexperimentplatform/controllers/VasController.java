@@ -2,11 +2,10 @@ package main.sensoryexperimentplatform.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.viewmodel.vasStage_VM;
+import main.sensoryexperimentplatform.viewmodel.VasStage_VM;
 
 public class VasController {
-    private vasStage_VM vasStageVM;
+    private VasStage_VM vasStageVM;
 
     @FXML
     private CheckBox checkB_sound;
@@ -57,7 +56,7 @@ public class VasController {
         checkB_sound.selectedProperty().bindBidirectional(vasStageVM.checkB_soundProperty());
         checkB_swap.selectedProperty().bindBidirectional(vasStageVM.checkB_swapProperty());
     }
-    public void setViewModel(vasStage_VM vas){
+    public void setViewModel(VasStage_VM vas){
         this.vasStageVM = vas;
         bind();
 

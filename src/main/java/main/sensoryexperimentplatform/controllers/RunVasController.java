@@ -28,6 +28,10 @@ public class RunVasController {
     public void setViewModel(RunVas_VM viewModel) {
         this.viewModel = viewModel;
         bindViewModel();
+        if(viewModel.alertProperty().get()) {
+            viewModel.playAlertSound();
+
+        }
 
         Tooltip tooltip = new Tooltip("Help text here!");
         if (viewModel.helpTextProperty().get() != null) {

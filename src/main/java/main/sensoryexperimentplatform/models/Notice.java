@@ -5,6 +5,7 @@ public class Notice extends Stage {
     private String content;
     private String helpText;
     private boolean alert;
+    private Sound sound;
 
     public Notice(String title, String content) {
         super(title,content);
@@ -16,6 +17,7 @@ public class Notice extends Stage {
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
+        this.sound = new Sound();
     }
 
     public Notice(Notice o) {
@@ -24,6 +26,7 @@ public class Notice extends Stage {
         this.buttonText = o.getButtonText();
         this.helpText = o.getHelpText();
         this.alert = o.isAlert();
+        this.sound = new Sound();
     }
 
     public boolean isAlert() {
@@ -65,6 +68,11 @@ public class Notice extends Stage {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public void playSound(){
+        sound.playSound("boop");
+    }
+
 
     public String getType(){
         return "Notice";

@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.conditionalStatement;
 import java.io.IOException;
 import java.util.Stack;
 
-public class conditionalStatementVM implements Stages {
+public class ConditionalStatementVM implements Stages {
     private  conditionalStatement ConditionalStatement;
 
     private SimpleStringProperty value1Text;
@@ -21,7 +21,7 @@ public class conditionalStatementVM implements Stages {
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
     private Experiment experiment;
-    public conditionalStatementVM( conditionalStatement ConditionalStatement){
+    public ConditionalStatementVM(conditionalStatement ConditionalStatement){
         this.ConditionalStatement = new conditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
         value1Text = new SimpleStringProperty(ConditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(ConditionalStatement.getValue2Text());
@@ -34,7 +34,7 @@ public class conditionalStatementVM implements Stages {
         variable2Choice.addListener((observableValue, oldValue, newValue)->setVariable2Choice(newValue));
         compare.addListener((observableValue, oldValue, newValue)->setCompare(newValue));
     }
-    public conditionalStatementVM( Experiment experiment){
+    public ConditionalStatementVM(Experiment experiment){
         this.experiment = experiment;
         this.ConditionalStatement = new conditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
         experiment.addConditionalStatement(ConditionalStatement);
@@ -109,7 +109,7 @@ public class conditionalStatementVM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> rating) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> rating) throws IOException {
 
     }
 

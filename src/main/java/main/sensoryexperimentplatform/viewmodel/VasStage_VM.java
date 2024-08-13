@@ -12,7 +12,7 @@ import main.sensoryexperimentplatform.models.Vas;
 import java.io.IOException;
 import java.util.Stack;
 
-public class vasStage_VM implements Stages {
+public class VasStage_VM implements Stages {
     private Experiment experiment;
     private StringProperty questionText;
     private StringProperty lowAnchorText;
@@ -27,7 +27,7 @@ public class vasStage_VM implements Stages {
     private BooleanProperty checkB_swap;
     private final BooleanProperty alert = new SimpleBooleanProperty(true);
     private Vas vas;
-    public vasStage_VM(Vas vas){
+    public VasStage_VM(Vas vas){
         this.vas= vas;
         lowAnchorText = new SimpleStringProperty(vas.getLowAnchorText());
         highAnchorText = new SimpleStringProperty(vas.getHighAnchorText());
@@ -53,7 +53,7 @@ public class vasStage_VM implements Stages {
         questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
     }
 
-    public vasStage_VM(Experiment experiment) {
+    public VasStage_VM(Experiment experiment) {
         this.experiment = experiment;
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
@@ -82,7 +82,7 @@ public class vasStage_VM implements Stages {
         experiment.addVasStage(vas);
     }
 
-    public vasStage_VM(ratingContainer_VM rating) {
+    public VasStage_VM(RatingContainer_VM rating) {
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
         rating.addContainerStage(vas);
@@ -282,7 +282,7 @@ public class vasStage_VM implements Stages {
 
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<ratingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
 
 
     }

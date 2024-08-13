@@ -1,48 +1,20 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.viewmodel.questionStage_VM;
-import main.sensoryexperimentplatform.models.Question;
+import main.sensoryexperimentplatform.viewmodel.QuestionStage_VM;
 
 public class questionStageController {
-    private questionStage_VM viewModel;
+    private QuestionStage_VM viewModel;
 
     @FXML
     private CheckBox cbx_alert;
 
-    @FXML
-    private Label fontLabel;
+
 
     @FXML
-    private Label lblProperty;
-
-    @FXML
-    private Label lbl_helpText;
-
-    @FXML
-    private Label lbl_leftbutton1;
-
-    @FXML
-    private Label lbl_leftbuttonValue;
-
-    @FXML
-    private Label lbl_question;
-
-    @FXML
-    private AnchorPane lbl_righbutton;
-
-    @FXML
-    private Label lbl_rightButtonValue;
-
-    @FXML
-    private Label lbl_storeResponse;
-
-    @FXML
-    private TextArea txt_helpText;
-
+    private TextArea txt_HelpText;
     @FXML
     private TextField txt_leftText;
 
@@ -57,12 +29,12 @@ public class questionStageController {
     @FXML
     private TextField txt_question;
 
-    public void setQuestionStage_vm( questionStage_VM viewModel){
+    public void setQuestionStage_vm( QuestionStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
     }
     public void bindViewModel(){
-        txt_helpText.textProperty().bindBidirectional(viewModel.helpTextProperty());
+        txt_HelpText.textProperty().bindBidirectional(viewModel.helpTextProperty());
         txt_leftText.textProperty().bindBidirectional(viewModel.leftTextProperty());
         txt_rightText.textProperty().bindBidirectional(viewModel.rightTextProperty());
         txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
@@ -70,15 +42,30 @@ public class questionStageController {
         txt_rightValue.textProperty().bindBidirectional(viewModel.rightValueProperty());
         cbx_alert.selectedProperty().bindBidirectional(viewModel.alertProperty());
 
-        txt_helpText.textProperty().addListener((observable, oldValue, newValue) -> {
+        txt_HelpText.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setHelpText(newValue);
-            System.out.println(viewModel.getHelpText());
 //
 //
         });
         cbx_alert.selectedProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setAlert(newValue);
 
+        });
+        txt_question.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setQuestion(newValue);
+
+        });
+        txt_leftValue.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setLeftValue(newValue);
+        });
+        txt_rightValue.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setRightValue(newValue);
+        });
+        txt_leftText.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setLeftText(newValue);
+        });
+        txt_rightText.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setRightText(newValue);
         });
 
     }

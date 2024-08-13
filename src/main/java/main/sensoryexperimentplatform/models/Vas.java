@@ -1,11 +1,14 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Vas extends Stage implements containerObject{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;
     private int result;
     private String conducted;
     private boolean alert, isSwap;
+    private Sound sound;
 
     public Vas(String title, String lowAnchorText, String highAnchorText,
                int lowAnchorValue, int highAnchorValue, String buttonText,
@@ -20,6 +23,7 @@ public class Vas extends Stage implements containerObject{
         this.helpText = helpText;
         this.isSwap = isSwap;
         this.alert = alert;
+        sound = new Sound();
         setDefaultResult();
     }
     public Vas(Vas v){
@@ -32,6 +36,7 @@ public class Vas extends Stage implements containerObject{
         this.isSwap = v.getIsSwap();
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
+        sound = new Sound();
         setDefaultResult();
     }
 
@@ -140,6 +145,10 @@ public class Vas extends Stage implements containerObject{
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void playAlertSound(){
+        sound.playSound("boop");
     }
     @Override
     public String toString() {

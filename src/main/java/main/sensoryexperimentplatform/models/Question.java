@@ -1,20 +1,44 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Question extends Stage {
-    private String question, buttonText, helpText;
+    private String question;
+    private String leftButtonText;
+    private String helpText;
+    private String rightButtonText;
+    private String leftButtonValue;
+    private String rightButtonValue;
     private boolean alert;
+    private Sound sound;
 
     public Question(String title, String content) {
         super(title, content);
     }
 
-    public Question(String question, String buttonText,
+    public Question(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
                     String helpText, boolean alert) {
-        super(question, buttonText);
+        super(question,rightButtonText);
         this.question = question;
-        this.buttonText = buttonText;
+        this.leftButtonText = leftButtonText;
+        this.rightButtonText = rightButtonText;
+        this.leftButtonValue = leftButtonValue;
+        this.rightButtonValue = rightButtonValue;
         this.helpText = helpText;
         this.alert = alert;
+        sound = new Sound();
+    }
+
+    public Question(Question o) {
+        super(o.getQuestion(),o.getRightButtonText());
+        question = o.getQuestion();
+        leftButtonText = o.getLeftButtonText();
+        rightButtonText = o.getRightButtonText();
+        leftButtonValue = o.getLeftButtonValue();
+        rightButtonValue = o.getRightButtonValue();
+        helpText = o.getHelpText();
+        alert = o.isAlert();
+        sound = new Sound();
     }
 
     public String getQuestion() {
@@ -25,13 +49,6 @@ public class Question extends Stage {
         this.question = question;
     }
 
-    public String getButtonText() {
-        return buttonText;
-    }
-
-    public void setButtonText(String buttonText) {
-        this.buttonText = buttonText;
-    }
 
     public String getHelpText() {
         return helpText;
@@ -68,10 +85,45 @@ public class Question extends Stage {
     public String getType() {
         return "Question";
     }
+    public String getRightButtonText() {
+        return rightButtonText;
+    }
+
+    public void setRightButtonText(String rightButtonText) {
+        this.rightButtonText = rightButtonText;
+    }
+
+    public String getLeftButtonText() {
+        return leftButtonText;
+    }
+
+    public void setLeftButtonText(String leftButtonText) {
+        this.leftButtonText = leftButtonText;
+    }
+
+    public String getLeftButtonValue() {
+        return leftButtonValue;
+    }
+
+    public void setLeftButtonValue(String leftButtonValue) {
+        this.leftButtonValue = leftButtonValue;
+    }
+
+    public String getRightButtonValue() {
+        return rightButtonValue;
+    }
+
+    public void setRightButtonValue(String rightButtonValue) {
+        this.rightButtonValue = rightButtonValue;
+    }
+
+    public void playSound(){
+        sound.playSound("boop");
+    }
 
     @Override
     public String toString() {
-        return "questionStage(\"" + question + "\",\"" + buttonText +
-                "\",\"" + helpText + "\",\"" + alert + "\")";
+        return "questionStage(\"" + question + "\",\"" + leftButtonText +
+                "\",\"" + rightButtonText +  "\",\"" + leftButtonValue +  "\",\"" + rightButtonValue +  "\",\"" + helpText + "\",\"" + alert + "\")";
     }
 }

@@ -4,15 +4,12 @@ import javafx.beans.property.*;
 import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.gLMS;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 public class RunGLMS_VM {
     private gLMS stage;
     private StringProperty question, help, conducted;
     private DoubleProperty sliderValue;
     private StringProperty button;
+    private BooleanProperty alert;
 
     public RunGLMS_VM(gLMS stage){
         this.stage = stage;
@@ -21,6 +18,7 @@ public class RunGLMS_VM {
         button = new SimpleStringProperty(stage.getButtonText());
         sliderValue = new SimpleDoubleProperty(stage.getResult());
         conducted = new SimpleStringProperty(stage.getConducted());
+        alert = new SimpleBooleanProperty(stage.getAlert());
 
         sliderValue.addListener(((observableValue, oldValue, newValue) ->{
             setResult(newValue.intValue());
@@ -52,7 +50,15 @@ public class RunGLMS_VM {
         return sliderValue;
     }
 
+    public BooleanProperty alertProperty() {
+        return alert;
+    }
+
     public StringProperty conductedTextProperty() {
         return conducted;
+    }
+
+    public void playAlertSound(){
+        stage.playAlertSound();
     }
 }

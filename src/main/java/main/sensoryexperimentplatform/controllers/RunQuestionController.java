@@ -1,44 +1,34 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import main.sensoryexperimentplatform.viewmodel.RunGLMS_VM;
+import main.sensoryexperimentplatform.viewmodel.RunQuestion_VM;
 
-public class RunGLMSController {
+public class RunQuestionController {
 
-    @FXML
-    private Slider mySlider;
-    @FXML
-    private Label questionlbl;
     @FXML
     private ImageView help_image;
 
-    private RunGLMS_VM viewModel;
+    @FXML
+    private Label txt_question;
 
+    private RunQuestion_VM viewModel;
 
-
-    public void setViewModel(RunGLMS_VM viewModel) {
+    public void setViewModel(RunQuestion_VM viewModel){
         this.viewModel = viewModel;
-
-        Tooltip helpTooltip = new Tooltip(viewModel.helpProperty().get());
-
         bindViewModel();
-
-        Tooltip tooltip = new Tooltip("Help text here!");
-        if(viewModel.alertProperty().get()){
-            viewModel.playAlertSound();
+        if(viewModel.playAlertProperty().get()){
+            viewModel.playAlert();
         }
-        if (viewModel.helpProperty().get() != null) {
-            tooltip.setText(viewModel.helpProperty().get());
+        Tooltip tooltip = new Tooltip("Help text here!");
+        if (viewModel.helpTextProperty().get() != null) {
+            tooltip.setText(viewModel.helpTextProperty().get());
         }
 
         tooltip.setStyle(
@@ -75,19 +65,10 @@ public class RunGLMSController {
         javafx.geometry.Bounds bounds = imageView.localToScreen(imageView.getBoundsInLocal());
 
         // Show the tooltip at the top-left position of the ImageView
-        tooltip.show(imageView, bounds.getMinX() -250, bounds.getMinY() - tooltip.getHeight());
+        tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
-
-
-
-
-    private void bindViewModel() {
-        // Bind viewModel properties to the labels
-        questionlbl.textProperty().bind(viewModel.questionProperty());
-
-        // Two-way binding between slider value and viewModel.sliderValueProperty()
-        Bindings.bindBidirectional(mySlider.valueProperty(), viewModel.sliderValueProperty());
-
+    private void bindViewModel(){
+        txt_question.textProperty().bindBidirectional(viewModel.questionTextProperty());
     }
 
 }

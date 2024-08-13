@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.models.Timer;
-import main.sensoryexperimentplatform.viewmodel.noticeStage_VM;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.viewmodel.NoticeStage_VM;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
 
@@ -65,7 +65,7 @@ public class EditExpController {
 
     @FXML
     private AnchorPane propertiesPane;
-    private Stack<ratingContainer_VM> rating;
+    private Stack<RatingContainer_VM> rating;
     @FXML
     private TreeView<Stages> treeView;
 
@@ -255,11 +255,11 @@ public class EditExpController {
             for (Object o : stages) {
 
                 if (o instanceof Vas) {
-                    vasStage_VM vasStageVm = new vasStage_VM((Vas) o);
+                    VasStage_VM vasStageVm = new VasStage_VM((Vas) o);
                     startStage.getChildren().add(new TreeItem<>(vasStageVm));
 
                 } else if (o instanceof Notice) {
-                    noticeStage_VM noticeStage_vm = new noticeStage_VM((Notice) o);
+                    NoticeStage_VM noticeStage_vm = new NoticeStage_VM((Notice) o);
                     startStage.getChildren().add(new TreeItem<>(noticeStage_vm));
 
                 } else if (o instanceof gLMS) {
@@ -267,13 +267,13 @@ public class EditExpController {
                     startStage.getChildren().add(new TreeItem<>(glmsStageVm));
 
                 } else if (o instanceof RatingContainer) {
-                    ratingContainer_VM ratingContainerVm = new ratingContainer_VM((RatingContainer) o);
+                    RatingContainer_VM ratingContainerVm = new RatingContainer_VM((RatingContainer) o);
                     TreeItem<Stages> itemRating = new TreeItem<>(ratingContainerVm);
                     startStage.getChildren().add(itemRating);
 
                     for (Object subO : ((RatingContainer) o).container) {
                         if (subO instanceof Vas) {
-                            vasStage_VM vasStageVm = new vasStage_VM((Vas) subO);
+                            VasStage_VM vasStageVm = new VasStage_VM((Vas) subO);
                             itemRating.getChildren().add(new TreeItem<>(vasStageVm));
 
                         } else if (subO instanceof gLMS) {
@@ -290,13 +290,19 @@ public class EditExpController {
                 } else if (o instanceof AudibleInstruction) {
                     AudibleSound_VM audibleSound_vm = new AudibleSound_VM((AudibleInstruction) o);
                     startStage.getChildren().add(new TreeItem<>(audibleSound_vm));
-                } else if (o instanceof Timer) {
-                    timerStage_VM timerStageVm = new timerStage_VM((Timer) o);
+                }
+                else if (o instanceof Timer) {
+                    TimerStage_VM timerStageVm = new TimerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
                 } else if( o instanceof TasteTest){
                     AddTasteVM addTasteVM = new AddTasteVM((TasteTest) o);
                     startStage.getChildren().add(new TreeItem<>(addTasteVM));
                 }
+                else if (o instanceof Question) {
+                    QuestionStage_VM questionStage_vm = new QuestionStage_VM((Question) o);
+                    startStage.getChildren().add(new TreeItem<>(questionStage_vm));
+                }
+
             }
         }
         startStage.setExpanded(true);
@@ -330,7 +336,7 @@ public class EditExpController {
     @FXML
     void addConditionalStatement(ActionEvent event) {
 
-        conditionalStatementVM conditionalStatementVM = new conditionalStatementVM(experiment);
+        ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
 
         ifConditional = new TreeItem<>(conditionalStatementVM);
         elseConditional = new TreeItem<>(conditionalStatementVM);
@@ -385,7 +391,7 @@ public class EditExpController {
 
     @FXML
     void addNoticeStage(ActionEvent event) {
-        noticeStage_VM noticeStage_vm = new noticeStage_VM(experiment);
+        NoticeStage_VM noticeStage_vm = new NoticeStage_VM(experiment);
         addNewTreeItem(noticeStage_vm);
     }
 
@@ -401,13 +407,13 @@ public class EditExpController {
 
     @FXML
     void addQuestionStage(ActionEvent event) {
-        questionStage_VM questionStage_vm = new questionStage_VM(experiment);
+        QuestionStage_VM questionStage_vm = new QuestionStage_VM(experiment);
         addNewTreeItem(questionStage_vm);
    }
 
     @FXML
     void addRatingContainer(ActionEvent event) throws IOException {
-        ratingContainer_VM ratingContainer_vm = new ratingContainer_VM(experiment);
+        RatingContainer_VM ratingContainer_vm = new RatingContainer_VM(experiment);
         ratingContainerItems = new TreeItem<>(ratingContainer_vm);
         startStage.getChildren().add(ratingContainerItems);
     }
@@ -420,19 +426,19 @@ public class EditExpController {
 
    @FXML
    void addTimer(ActionEvent event) {
-        timerStage_VM timerStageVm = new timerStage_VM(experiment);
+        TimerStage_VM timerStageVm = new TimerStage_VM(experiment);
         addNewTreeItem(timerStageVm);
 
    }
 
    @FXML
    void addVasStage(ActionEvent event) {
-        vasStage_VM vasStageVm ;
+        VasStage_VM vasStageVm ;
         if (!rating.isEmpty()){
-            vasStageVm =  new vasStage_VM(rating.get(0));
+            vasStageVm =  new VasStage_VM(rating.get(0));
         }
         else {
-            vasStageVm = new vasStage_VM(experiment);
+            vasStageVm = new VasStage_VM(experiment);
         }
         addNewTreeItem(vasStageVm);
 

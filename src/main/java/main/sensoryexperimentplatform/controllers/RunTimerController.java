@@ -27,6 +27,9 @@ public class RunTimerController {
         isTimeLineFull = new SimpleBooleanProperty(false);
         bindViewModel();
         startTimer();
+        if(viewModel.isAlert().get()){
+            viewModel.playAlertSound();
+        }
     }
 
     private void bindViewModel(){
