@@ -19,6 +19,7 @@ import main.sensoryexperimentplatform.models.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -160,10 +161,15 @@ public class EditExpController {
         if (selectedItem != null) {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
+                int currentIndex = parent.getChildren().indexOf(selectedItem);
+                Object curr = experiment.getStages().get(currentIndex);
+
                 parent.getChildren().remove(selectedItem);
+                experiment.getStages().remove(curr);
+
+
             } else {
-                // If it's a root item, remove it from the TreeView directly
-                treeView.getRoot().getChildren().remove(selectedItem);
+                JOptionPane.showMessageDialog(null, "Cannot delete start stage");
             }
         }
     }
@@ -174,7 +180,6 @@ public class EditExpController {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                System.out.println(currentIndex);
                 if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
                     TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
                     parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
@@ -247,9 +252,8 @@ public class EditExpController {
             startStage = new TreeItem<>(startVM);
             treeView.setRoot(startStage);
 
-
             for (Object o : stages) {
-
+                System.out.println(o);
                 if (o instanceof Vas) {
                     vasStage_VM vasStageVm = new vasStage_VM((Vas) o);
                     startStage.getChildren().add(new TreeItem<>(vasStageVm));
@@ -280,9 +284,6 @@ public class EditExpController {
                 } else if (o instanceof Input) {
                     InputStage_VM inputStage_vm = new InputStage_VM(experiment,(Input) o);
                     startStage.getChildren().add(new TreeItem<>(inputStage_vm));
-                } else if (o instanceof TasteTest) {
-                    AddTasteVM inputStage_vm = new AddTasteVM((TasteTest) o);
-                    startStage.getChildren().add(new TreeItem<>(inputStage_vm));
                 } else if (o instanceof Course) {
                     AddCourseVM addCourseVM = new AddCourseVM((Course) o);
                     startStage.getChildren().add(new TreeItem<>(addCourseVM));
@@ -292,6 +293,10 @@ public class EditExpController {
                 } else if (o instanceof Timer) {
                     timerStage_VM timerStageVm = new timerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
+                } else if( o instanceof TasteTest){
+                    System.out.println("THERE IS TASTE TEST");
+                    AddTasteVM addTasteVM = new AddTasteVM((TasteTest) o);
+                    startStage.getChildren().add(new TreeItem<>(addTasteVM));
                 }
             }
         }

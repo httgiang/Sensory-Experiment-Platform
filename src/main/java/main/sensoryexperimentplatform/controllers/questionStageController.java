@@ -41,7 +41,7 @@ public class questionStageController {
     private Label lbl_storeResponse;
 
     @FXML
-    private TextField txt_helpText;
+    private TextArea txt_helpText;
 
     @FXML
     private TextField txt_leftText;

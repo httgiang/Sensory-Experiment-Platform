@@ -355,7 +355,28 @@ public class DataAccess {
                         currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
 
-                } else if (line.startsWith("vasStage")) {
+                } else if (line.startsWith("tasteTest")){
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = audiblePattern.matcher(line);
+
+                    if (matcher.find()) {
+                        currentExperiment.addTasteTest(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                Integer.parseInt(matcher.group(6)),
+                                Integer.parseInt(matcher.group(7)),
+                                matcher.group(8),
+                                Boolean.parseBoolean(matcher.group(9)),
+                                matcher.group(10),
+                                matcher.group(11),
+                                Integer.parseInt(matcher.group(12)),
+                                Boolean.parseBoolean(matcher.group(13)),
+                                Boolean.parseBoolean(matcher.group(14)),
+                                Boolean.parseBoolean(matcher.group(15)));
+                    }
+                }else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 

@@ -213,7 +213,7 @@ public class StartVM implements Stages {
 
     @Override
     public String toString(){
-        if (start.getTitle() == null){
+        if (start == null){
             return "Start experiment";
         }
         else {

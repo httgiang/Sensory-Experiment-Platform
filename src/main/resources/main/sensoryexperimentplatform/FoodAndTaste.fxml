@@ -14,8 +14,8 @@
                 <Label fx:id="SoundSelectTionLabel" layoutX="24.0" layoutY="14.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Taste Test Item Selection" />
                   <Button fx:id="btn_play" layoutX="80.0" layoutY="603.0" mnemonicParsing="false" onAction="#Add" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Add" />
                   <Button fx:id="btn_stop" layoutX="240.0" layoutY="603.0" mnemonicParsing="false" onAction="#SelectAll" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Select All" />
-                  <Button fx:id="btn_refresh" layoutX="400.0" layoutY="603.0" mnemonicParsing="false" onAction="#SelectNone" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Select None" />
-                  <Button fx:id="btn_remove" layoutX="560.0" layoutY="603.0" mnemonicParsing="false" onAction="#Close" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Save" />
+                  <Button fx:id="btn_refresh" layoutX="400.0" layoutY="603.0" mnemonicParsing="false" onAction="#SelectNone" prefHeight="52.0" prefWidth="166.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Select None" />
+                  <Button fx:id="btn_remove" layoutX="589.0" layoutY="603.0" mnemonicParsing="false" onAction="#save" prefHeight="52.0" prefWidth="136.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Save" />
             <ListView fx:id="foodView" layoutX="60.0" layoutY="110.0" prefHeight="471.0" prefWidth="200.0" />
             <ListView fx:id="vasTable" layoutX="283.0" layoutY="140.0" prefHeight="442.0" prefWidth="232.0" />
             <ListView fx:id="glmsTable" layoutX="515.0" layoutY="140.0" prefHeight="442.0" prefWidth="232.0" />

@@ -15,6 +15,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.models.Food;
 import main.sensoryexperimentplatform.viewmodel.FoodTasteVM;
 
 import java.io.IOException;
@@ -217,23 +218,31 @@ public class FoodAndTasteController {
     }
 
     @FXML
-    void Close(ActionEvent event) {
+    void save(ActionEvent event) {
         for (XCell a:xcell){
             if (a.getSelect()){
+                System.out.println("selected food " + a.getName());
                 viewModel.addListFoods(a.getName());
                // JOptionPane.showMessageDialog(null,a.getName());
             }
         }
         for (XCell a: glmscell){
+
             if (a.getSelect()){
+                System.out.println("selected glms " + a.getName());
                 viewModel.addGLMS(a.getName());
             }
         }
         for (XCell a: vascell){
+
             if (a.getSelect()){
+                System.out.println("select vas" + a.getName());
                 viewModel.addVas(a.getName());
             }
         }
+
+
+
         Stage currentStage = (Stage) btn_play.getScene().getWindow();
         currentStage.close();
     }
@@ -282,6 +291,7 @@ public class FoodAndTasteController {
             }
         }
     }
+
 
 
 }

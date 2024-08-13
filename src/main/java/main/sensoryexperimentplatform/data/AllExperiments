@@ -105,3 +105,12 @@ endRatingsContainer()
 noticeStage("Thank you","That completes this part of the study\, please call your experimenter.","End","","false")
 endExperiment()
 
+ExperimentName: Demo
+ExperimenterName: Giang
+ExperimentID: 0
+Created on: 13.08.2024
+Version: 6
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+tasteTest("Please help","Consumption instruction","How <taste> is <food>?","Low Anchor Text","High Anchor Text","0","100","null","false","null","End instruction","1","true","true","true")
+endExperiment()
+

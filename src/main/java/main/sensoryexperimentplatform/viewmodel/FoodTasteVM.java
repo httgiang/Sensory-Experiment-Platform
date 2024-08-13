@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import main.sensoryexperimentplatform.models.TasteTest;
+import main.sensoryexperimentplatform.models.*;
 
 import java.util.ArrayList;
 
@@ -31,10 +31,10 @@ public class FoodTasteVM {
     public FoodTasteVM(TasteTest tasteTest){
         this.tasteTest = tasteTest;
         listFoods = tasteTest.getFoods();
-        foodOptions = tasteTest.getFoodsShow();
+        foodOptions = tasteTest.getFoodOptions();
         listVas = tasteTest.getVasList();
-        gLMSOptions = tasteTest.getGlmsListShow();
-        vasOptions = tasteTest.getVasListShow();
+        gLMSOptions = tasteTest.getGLMSOptions();
+        vasOptions = tasteTest.getVasOptions();
         listGLMS = tasteTest.getGlmsList();
     }
 
@@ -44,12 +44,12 @@ public class FoodTasteVM {
 
     public void addListFoodsShow(String food) {
         foodOptions.add(food);
-        tasteTest.getFoodsShow().add(food);
+        tasteTest.getFoodOptions().add(food);
     }
     public void addVasShow(String food){vasOptions.add(food);
-        tasteTest.getVasListShow().add(food);}
+        tasteTest.getVasOptions().add(food);}
     public void addGLMSShow (String food){gLMSOptions.add(food);
-        tasteTest.getGlmsListShow().add(food);}
+        tasteTest.getGLMSOptions().add(food);}
 
     public ArrayList<String> getListFoods() {
         return listFoods;
@@ -65,5 +65,6 @@ public class FoodTasteVM {
     public void addGLMS(String food){
         listGLMS.add(food);
     }
+
 
 }

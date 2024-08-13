@@ -145,14 +145,16 @@ public class Experiment {
                              String lowAnchorText, String highAnchorText, int lowAnchorValue,
                              int highAnchorValue, String buttonText,
                              boolean isSwap, String helpText, String endInstruction,
-                             int timeWait, boolean randomizeFood, boolean randomizeRatingVas, boolean randomizeRatingGLMS){
+                             int timeWait, boolean randomizeFood, boolean randomizeRatings, boolean isAlert){
         TasteTest tasteTest = new TasteTest( noticeStageContent,  consumptionInstruction,  question,
                  lowAnchorText,  highAnchorText,  lowAnchorValue,highAnchorValue,  buttonText, isSwap,  helpText,  endInstruction,
-         timeWait,  randomizeFood,  randomizeRatingVas,  randomizeRatingGLMS);
+         timeWait,  randomizeFood,  randomizeRatings, isAlert);
+        stages.add(tasteTest);
+    }
+    public void addNewTasteTest(TasteTest tasteTest){
         stages.add(tasteTest);
     }
     // Audible instruction stage
-
     public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName) {
         AudibleInstruction temp = new AudibleInstruction(title, content, buttonText, helpText,soundName);
         stages.add(temp);
@@ -298,8 +300,13 @@ public class Experiment {
             return null;
         }
         else {
-            return (Start)stages.get(0);
+            for(Object stage : stages){
+                if(stage instanceof Start){
+                    return (Start)stage;
+                }
+            }
         }
+        return null;
     }
 
     public void addStart(Start start) {
