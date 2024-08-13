@@ -23,5 +23,8 @@ public class AddSoundVM {
 
         sound.getSoundNameshow().add(name);
     }
+    public void exportSound(String name, String filePath){
+        sound.exportSoundToFolder(name,filePath,"SoundFolder");
+    }
 
 }

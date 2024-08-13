@@ -19,6 +19,7 @@ import main.sensoryexperimentplatform.models.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -160,10 +161,15 @@ public class EditExpController {
         if (selectedItem != null) {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
+                int currentIndex = parent.getChildren().indexOf(selectedItem);
+                Object curr = experiment.getStages().get(currentIndex);
+
                 parent.getChildren().remove(selectedItem);
+                experiment.getStages().remove(curr);
+
+
             } else {
-                // If it's a root item, remove it from the TreeView directly
-                treeView.getRoot().getChildren().remove(selectedItem);
+                JOptionPane.showMessageDialog(null, "Cannot delete start stage");
             }
         }
     }
@@ -174,14 +180,12 @@ public class EditExpController {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                System.out.println(currentIndex);
                 if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
                     TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
                     parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, nextItem);
 
                     Object next = experiment.getStages().get(currentIndex + 1);
-                    System.out.println(next);
                     experiment.getStages().set(currentIndex + 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, next);
                 }
@@ -202,7 +206,6 @@ public class EditExpController {
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, lastItem);
                     Object last = experiment.getStages().get(currentIndex - 1);
-                    System.out.println(last);
                     experiment.getStages().set(currentIndex - 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, last);
                 }
@@ -249,7 +252,6 @@ public class EditExpController {
             startStage = new TreeItem<>(startVM);
             treeView.setRoot(startStage);
 
-
             for (Object o : stages) {
 
                 if (o instanceof Vas) {
@@ -282,9 +284,6 @@ public class EditExpController {
                 } else if (o instanceof Input) {
                     InputStage_VM inputStage_vm = new InputStage_VM(experiment,(Input) o);
                     startStage.getChildren().add(new TreeItem<>(inputStage_vm));
-                } else if (o instanceof TasteTest) {
-                    AddTasteVM inputStage_vm = new AddTasteVM((TasteTest) o);
-                    startStage.getChildren().add(new TreeItem<>(inputStage_vm));
                 } else if (o instanceof Course) {
                     AddCourseVM addCourseVM = new AddCourseVM((Course) o);
                     startStage.getChildren().add(new TreeItem<>(addCourseVM));
@@ -294,42 +293,14 @@ public class EditExpController {
                 } else if (o instanceof Timer) {
                     timerStage_VM timerStageVm = new timerStage_VM((Timer) o);
                     startStage.getChildren().add(new TreeItem<>(timerStageVm));
+                } else if( o instanceof TasteTest){
+                    AddTasteVM addTasteVM = new AddTasteVM((TasteTest) o);
+                    startStage.getChildren().add(new TreeItem<>(addTasteVM));
                 }
-//                else if (o instanceof Periodic){
-//                    String key = "[" + o.getClass().getSimpleName() + "] " + ((Periodic) o).getTitle();
-//                    start.getChildren().add(new TreeItem<>(key));
-//
-//                    // Wrapper wrapper = new Wrapper(key, addCourseVM);
-//                    //displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-//                else if (o instanceof Periodic){
-//                    String key = "[" + o.getClass().getSimpleName() + "] " + ((Periodic) o).getTitle();
-//                    start.getChildren().add(new TreeItem<>(key));
-//
-//                    // Wrapper wrapper = new Wrapper(key, addCourseVM);
-//                    //displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-
             }
         }
         startStage.setExpanded(true);
     }
-
-
-
-//                else if (o instanceof conditionalStatement) {
-//                    String key = "If" +  ((conditionalStatement) o).getVariable1Choice();
-//                    startStage.getChildren().add( new TreeItem<>(key));
-//                    conditionalStatementVM ConditionalStatementVM = new conditionalStatementVM((conditionalStatement) o);
-//                    Wrapper wrapper = new Wrapper(key, ConditionalStatementVM);
-//                    displayedItems.put(index, wrapper);
-//                    index++;
-//                }
-//            }
-
-
 
     @FXML
     void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {

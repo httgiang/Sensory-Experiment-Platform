@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.addTasteController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.TasteTest;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
 import java.util.Stack;
 
 public class AddTasteVM implements Stages {
+    private StringProperty txt_initialNotice;
+    private StringProperty txt_consumptionInst;
+    private StringProperty txt_question;
     private StringProperty txt_inital;
     private StringProperty txt_help;
     private StringProperty txt_endInstruction;
@@ -24,7 +26,7 @@ public class AddTasteVM implements Stages {
     private  BooleanProperty checkbox_randomrate;
     private  BooleanProperty checkbox_playalert;
     private StringProperty txt_howtaste;
-    private StringProperty txt_consumpins;
+
     private StringProperty txt_lowanchortext;
     private StringProperty txt_highanchortext;
     private StringProperty txt_lowacnhorvalue;
@@ -37,134 +39,158 @@ public class AddTasteVM implements Stages {
         return model;
     }
     public AddTasteVM(TasteTest model){
-        this.model= model;
-        txt_buttontext = new SimpleStringProperty(model.returnsampleVas().getButtonText());
-        txt_consumpins = new SimpleStringProperty(model.getConsumptionInstruction());
-        txt_inital = new SimpleStringProperty(model.getConsumptionInstruction());
-        txt_highacnhorvalue = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getHighAnchorValue()));
-        txt_highanchortext = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getHighAnchorText()));
-        txt_endInstruction = new SimpleStringProperty();
-        txt_lowacnhorvalue = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getLowAnchorValue()));
-        txt_howtaste = new SimpleStringProperty(model.returnsampleVas().getTitle());
-        txt_timetowait = new SimpleStringProperty(String.valueOf(model.getTimeWait()));
-        txt_help = new SimpleStringProperty(model.getSampleGLMS().getHelpText());
-        txt_lowanchortext = new SimpleStringProperty(model.returnsampleVas().getLowAnchorText());
-        checkbox_playalert = new SimpleBooleanProperty(model.getSampleGLMS().getAlert());
-        checkbox_randomfood = new SimpleBooleanProperty(model.isRandomizeFood());
-        checkbox_swappole = new SimpleBooleanProperty(model.returnsampleVas().getIsSwap());
-        checkbox_randomrate = new SimpleBooleanProperty(model.isRandomizeRatingGLMS());
-        txt_consumpins.addListener((observableValue, oldValue, newValue) -> onCon(newValue));
-        txt_buttontext.addListener((observableValue, oldValue, newValue) -> onButton(newValue));
-        txt_howtaste.addListener((observableValue, oldValue, newValue) -> onHowTaste(newValue));
-        txt_highacnhorvalue.addListener((observableValue, oldValue, newValue) -> onHighVal(newValue));
-        txt_highanchortext.addListener((observableValue, oldValue, newValue) -> onHighText(newValue));
-        txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
-        txt_lowacnhorvalue.addListener((observableValue, oldValue, newValue) -> onLowVal(newValue));
-        txt_lowanchortext.addListener((observableValue, oldValue, newValue) -> onLowText(newValue));
-        checkbox_playalert.addListener((observableValue, oldValue, newValue) -> onPlayAlert(newValue));
-        checkbox_randomrate.addListener((observableValue, oldValue, newValue) -> onRandomrate(newValue));
-        checkbox_randomfood.addListener((observableValue, oldValue, newValue) -> onRandomFood(newValue));
-        txt_timetowait.addListener((observableValue, oldValue, newValue) -> onTime(newValue));
-        txt_inital.addListener((observableValue, oldValue, newValue) -> onInitial(newValue));
+        this.model = model;
+        initBinding(model);
+        model.generateTasteTest();
+        initListener();
     }
     public AddTasteVM(Experiment experiment){
         this.experiment = experiment;
-        model = new TasteTest(null,null,null,null,null,0,100,null, false, null,null, 1,false, false, false);
-        txt_buttontext = new SimpleStringProperty(model.returnsampleVas().getButtonText());
-        txt_consumpins = new SimpleStringProperty(model.getConsumptionInstruction());
-        txt_inital = new SimpleStringProperty(model.getConsumptionInstruction());
-        txt_highacnhorvalue = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getHighAnchorValue()));
-        txt_highanchortext = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getHighAnchorText()));
-        txt_endInstruction = new SimpleStringProperty();
-        txt_lowacnhorvalue = new SimpleStringProperty(String.valueOf(model.returnsampleVas().getLowAnchorValue()));
-        txt_howtaste = new SimpleStringProperty(model.returnsampleVas().getTitle());
-        txt_timetowait = new SimpleStringProperty(String.valueOf(model.getTimeWait()));
+        model = new TasteTest("Please call the experimenter for the samples","Consumption instruction","How <taste> is <food>?",
+                "Low Anchor Text","High Anchor Text",0,100,
+                "Continue", false, "","End instruction", 1,
+                false, false, false);
+        initBinding(model);
+        initListener();
+
+
+        experiment.addNewTasteTest(model);
+        for(Object o : experiment.getStages()){
+            System.out.println(o);
+        }
+    }
+
+
+    private void initBinding(TasteTest model){
+        txt_initialNotice = new SimpleStringProperty(model.getNoticeStageContent());
+        txt_consumptionInst = new SimpleStringProperty(model.getConsumptionInstruction());
+        txt_question = new SimpleStringProperty(model.getQuestion());
+
+        txt_lowanchortext = new SimpleStringProperty(model.getSampleVas().getLowAnchorText());
+        txt_highanchortext = new SimpleStringProperty(String.valueOf(model.getSampleVas().getHighAnchorText()));
+        txt_lowacnhorvalue = new SimpleStringProperty(String.valueOf(model.getSampleVas().getLowAnchorValue()));
+        txt_highacnhorvalue = new SimpleStringProperty(String.valueOf(model.getSampleVas().getHighAnchorValue()));
+
+        txt_buttontext = new SimpleStringProperty(model.getSampleVas().getButtonText());
+        checkbox_swappole = new SimpleBooleanProperty(model.getSampleVas().getIsSwap());
         txt_help = new SimpleStringProperty(model.getSampleGLMS().getHelpText());
-        txt_lowanchortext = new SimpleStringProperty(model.returnsampleVas().getLowAnchorText());
+        txt_endInstruction = new SimpleStringProperty(model.getEndInstruction());
+        txt_timetowait = new SimpleStringProperty(String.valueOf(model.getTimeWait()));
+
         checkbox_playalert = new SimpleBooleanProperty(model.getSampleGLMS().getAlert());
-        checkbox_randomfood = new SimpleBooleanProperty(model.isRandomizeFood());
-        checkbox_swappole = new SimpleBooleanProperty(model.returnsampleVas().getIsSwap());
-        checkbox_randomrate = new SimpleBooleanProperty(model.isRandomizeRatingGLMS());
-        txt_consumpins.addListener((observableValue, oldValue, newValue) -> onCon(newValue));
-        txt_buttontext.addListener((observableValue, oldValue, newValue) -> onButton(newValue));
-        txt_howtaste.addListener((observableValue, oldValue, newValue) -> onHowTaste(newValue));
-        txt_highacnhorvalue.addListener((observableValue, oldValue, newValue) -> onHighVal(newValue));
-        txt_highanchortext.addListener((observableValue, oldValue, newValue) -> onHighText(newValue));
-        txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
-        txt_lowacnhorvalue.addListener((observableValue, oldValue, newValue) -> onLowVal(newValue));
+        checkbox_randomfood = new SimpleBooleanProperty(model.isRandomizedFood());
+        checkbox_randomrate = new SimpleBooleanProperty(model.isRandomizeRatings());
+    }
+    private void initListener(){
+        txt_initialNotice.addListener((observableValue, oldValue, newValue) -> onInitialNotice(newValue));
+        txt_consumptionInst.addListener((observableValue, oldValue, newValue) -> onConsumptionInst(newValue));
+        txt_question.addListener((observableValue, oldValue, newValue) -> onQuestion(newValue));
+
         txt_lowanchortext.addListener((observableValue, oldValue, newValue) -> onLowText(newValue));
-        checkbox_playalert.addListener((observableValue, oldValue, newValue) -> onPlayAlert(newValue));
-        checkbox_randomrate.addListener((observableValue, oldValue, newValue) -> onRandomrate(newValue));
-        checkbox_randomfood.addListener((observableValue, oldValue, newValue) -> onRandomFood(newValue));
+        txt_highanchortext.addListener((observableValue, oldValue, newValue) -> onHighText(newValue));
+        txt_highacnhorvalue.addListener((observableValue, oldValue, newValue) -> onHighVal(newValue));
+        txt_lowacnhorvalue.addListener((observableValue, oldValue, newValue) -> onLowVal(newValue));
+
+        txt_buttontext.addListener((observableValue, oldValue, newValue) -> onButtonText(newValue));
+        checkbox_swappole.addListener((observableValue, oldValue, newValue) -> onSwap(newValue));
+        txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
+        txt_endInstruction.addListener((observableValue, oldValue, newValue) -> onEndInst(newValue));
         txt_timetowait.addListener((observableValue, oldValue, newValue) -> onTime(newValue));
-        txt_inital.addListener((observableValue, oldValue, newValue) -> onInitial(newValue));
+
+
+        checkbox_playalert.addListener((observableValue, oldValue, newValue) -> onPlayAlert(newValue));
+        checkbox_randomrate.addListener((observableValue, oldValue, newValue) -> onRandomRating(newValue));
+        checkbox_randomfood.addListener((observableValue, oldValue, newValue) -> onRandomFood(newValue));
+
+    }
+    private void onInitialNotice(String newValue) {
+        model.setNoticeStageContent(newValue);
     }
 
-
-    private void onInitial(String newValue) {
-        model.setEndInStruction(newValue);
-    }
-
-    private void onCon(String newValue) {
+    private void onConsumptionInst(String newValue) {
         model.setConsumptionInstruction(newValue);
     }
-
-    private void onButton(String newValue) {
-        model.returnsampleVas().setButtonText(newValue);
+    private void onQuestion(String newValue){
+        model.setQuestion(newValue);
     }
 
+    private void onButtonText(String newValue) {
+        model.getSampleVas().setButtonText(newValue);
+    }
+    private void onSwap(Boolean newValue){
+        model.setSwap(newValue);
+    }
+
+    private void onEndInst(String newValue){
+        model.setEndInstruction(newValue);
+
+    }
     private void onTime(String newValue) {
         model.setTime(Integer.parseInt(newValue));
     }
 
     private void onRandomFood(Boolean newValue) {
-        model.setRandomizeFood(newValue);
+        model.setRandomizedFood(newValue);
     }
 
-    private void onRandomrate(Boolean newValue) {
-        model.setRandomizeRatingGLMS(newValue);
-        model.setRandomizeRatingGLMS(newValue);
+    private void onRandomRating(Boolean newValue) {
+        model.setRandomizeRatings(newValue);
     }
 
     private void onPlayAlert(Boolean newValue) {
-        model.getSampleGLMS().setAlert(newValue);
-        model.returnsampleVas().setAlert(newValue);
+        model.setAlert(newValue);
     }
 
     private void onLowText(String newValue) {
-        model.returnsampleVas().setLowAnchorText(newValue);
+        model.getSampleVas().setLowAnchorText(newValue);
     }
 
     private void onLowVal(String newValue) {
-        model.returnsampleVas().setHighAnchorValue(Integer.parseInt(newValue));
+        model.getSampleVas().setHighAnchorValue(Integer.parseInt(newValue));
     }
 
     private void onHelp(String newValue) {
         model.getSampleGLMS().setHelpText(newValue);
-        model.returnsampleVas().setHelpText(newValue);
+        model.getSampleVas().setHelpText(newValue);
     }
 
 
     private void onHighText(String newValue) {
-        model.returnsampleVas().setHighAnchorText(newValue);
+        model.getSampleVas().setHighAnchorText(newValue);
     }
 
     private void onHighVal(String newValue) {
-        model.returnsampleVas().setHighAnchorValue(Integer.parseInt(newValue));
+        model.getSampleVas().setHighAnchorValue(Integer.parseInt(newValue));
     }
 
-    private void onHowTaste(String newValue) {
-        model.getSampleGLMS().setTitle(newValue);
-        model.returnsampleVas().setTitle(newValue);
+    public String getTxt_initialNotice() {
+        return txt_initialNotice.get();
+    }
+
+    public StringProperty txt_initialNoticeProperty() {
+        return txt_initialNotice;
+    }
+
+    public String getTxt_consumptionInst() {
+        return txt_consumptionInst.get();
+    }
+
+    public StringProperty txt_consumptionInstProperty() {
+        return txt_consumptionInst;
+    }
+
+    public String getTxt_question() {
+        return txt_question.get();
+    }
+
+    public StringProperty txt_questionProperty() {
+        return txt_question;
     }
 
     public String getTxt_inital() {
         return txt_inital.get();
     }
 
-    public StringProperty txt_initalProperty() {
-        return txt_inital;
-    }
 
     public String getTxt_help() {
         return txt_help.get();
@@ -172,6 +198,30 @@ public class AddTasteVM implements Stages {
 
     public StringProperty txt_helpProperty() {
         return txt_help;
+    }
+
+    public String getTxt_endInstruction() {
+        return txt_endInstruction.get();
+    }
+
+    public StringProperty txt_endInstructionProperty() {
+        return txt_endInstruction;
+    }
+
+    public String getTxt_timetowait() {
+        return txt_timetowait.get();
+    }
+
+    public StringProperty txt_timetowaitProperty() {
+        return txt_timetowait;
+    }
+
+    public boolean isCheckbox_randomfood() {
+        return checkbox_randomfood.get();
+    }
+
+    public BooleanProperty checkbox_randomfoodProperty() {
+        return checkbox_randomfood;
     }
 
     public boolean isCheckbox_randomrate() {
@@ -182,20 +232,20 @@ public class AddTasteVM implements Stages {
         return checkbox_randomrate;
     }
 
+    public boolean isCheckbox_playalert() {
+        return checkbox_playalert.get();
+    }
+
+    public BooleanProperty checkbox_playalertProperty() {
+        return checkbox_playalert;
+    }
+
     public String getTxt_howtaste() {
         return txt_howtaste.get();
     }
 
     public StringProperty txt_howtasteProperty() {
         return txt_howtaste;
-    }
-
-    public String getTxt_lowacnhorvalue() {
-        return txt_lowacnhorvalue.get();
-    }
-
-    public StringProperty txt_lowacnhorvalueProperty() {
-        return txt_lowacnhorvalue;
     }
 
     public String getTxt_lowanchortext() {
@@ -214,36 +264,12 @@ public class AddTasteVM implements Stages {
         return txt_highanchortext;
     }
 
-    public boolean isCheckbox_playalert() {
-        return checkbox_playalert.get();
+    public String getTxt_lowacnhorvalue() {
+        return txt_lowacnhorvalue.get();
     }
 
-    public BooleanProperty checkbox_playalertProperty() {
-        return checkbox_playalert;
-    }
-
-    public String getTxt_consumpins() {
-        return txt_consumpins.get();
-    }
-
-    public StringProperty txt_consumpinsProperty() {
-        return txt_consumpins;
-    }
-
-    public boolean isCheckbox_swappole() {
-        return checkbox_swappole.get();
-    }
-
-    public BooleanProperty checkbox_swappoleProperty() {
-        return checkbox_swappole;
-    }
-
-    public boolean isCheckbox_randomfood() {
-        return checkbox_randomfood.get();
-    }
-
-    public BooleanProperty checkbox_randomfoodProperty() {
-        return checkbox_randomfood;
+    public StringProperty txt_lowacnhorvalueProperty() {
+        return txt_lowacnhorvalue;
     }
 
     public String getTxt_highacnhorvalue() {
@@ -254,14 +280,6 @@ public class AddTasteVM implements Stages {
         return txt_highacnhorvalue;
     }
 
-    public String getTxt_timetowait() {
-        return txt_timetowait.get();
-    }
-
-    public StringProperty txt_timetowaitProperty() {
-        return txt_timetowait;
-    }
-
     public String getTxt_buttontext() {
         return txt_buttontext.get();
     }
@@ -270,12 +288,20 @@ public class AddTasteVM implements Stages {
         return txt_buttontext;
     }
 
-    public String getTxt_endInstruction() {
-        return txt_endInstruction.get();
+    public boolean isCheckbox_swappole() {
+        return checkbox_swappole.get();
     }
 
-    public StringProperty txt_endInstructionProperty() {
-        return txt_endInstruction;
+    public BooleanProperty checkbox_swappoleProperty() {
+        return checkbox_swappole;
+    }
+
+    public TasteTest getModel() {
+        return model;
+    }
+
+    public Experiment getExperiment() {
+        return experiment;
     }
 
     @Override
@@ -288,15 +314,16 @@ public class AddTasteVM implements Stages {
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         addTasteController controller = fxmlLoader.getController();
-        btn_addFoodAndTaste.setDisable(false);
         controller.setViewModel(this);
+        btn_addFoodAndTaste.setDisable(false);
+
         stack.push(this);
 
     }
 
     @Override
     public String toString() {
-        return "[Taste Test]";
+        return "Taste test";
     }
 
 }

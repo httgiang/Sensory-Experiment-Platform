@@ -3,17 +3,18 @@ package main.sensoryexperimentplatform.models;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Sound {
-    private ArrayList<String> soundFilePaths;
+    private static final long serialVersionUID = 1L; // for serialization
 
-
-    private Map<String, Clip> soundMap;
-    //sound name for showing
-    private java.util.ArrayList<String> soundNameshow; // for the appearance of sound
+    private Map<String, String> soundFilePathMap; // To store file paths for serialization
+    private transient Map<String, Clip> soundMap; // transient to avoid serialization
+    private ArrayList<String> soundNameshow; // for the appearance of sound
 
 
     public Sound(){
@@ -33,12 +34,7 @@ public class Sound {
     }
 
 
-    public  ArrayList<String>getSoundFilePath(){
-        return soundFilePaths;
-    }
-    public void addSoundFilePath(String sound){
-        soundFilePaths.add(sound);
-    }
+
     public Map<String, Clip> getSoundMap() {
         return soundMap;
     }
@@ -84,6 +80,43 @@ public class Sound {
             }
         }
     }
+    public void exportSoundToFolder(String name, String filePath, String folderPath) {
+        File sourceFile = new File(filePath);
+        File targetFile = new File(folderPath + File.separator + sourceFile.getName());
+
+        try {
+            Files.copy(sourceFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void loadSoundsFromFolder(String folderPath) {
+        File folder = new File(folderPath);
+
+        if (!folder.exists() || !folder.isDirectory()) {
+            throw new IllegalArgumentException("Invalid folder path: " + folderPath);
+        }
+
+
+        File[] files = folder.listFiles();
+
+
+        if (files == null) {
+            throw new IllegalStateException("Unable to list files in the folder: " + folderPath);
+        }
+        for (File file : files) {
+            if (file.isFile() && file.getName().endsWith(".wav")) {
+                String fileName = file.getName();
+                String soundName = fileName.substring(0, fileName.lastIndexOf('.'));
+                loadSound(soundName, file.getAbsolutePath());
+            }
+        }
+    }
+
+
+
 
 
 

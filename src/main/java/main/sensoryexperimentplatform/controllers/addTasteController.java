@@ -9,7 +9,8 @@ import main.sensoryexperimentplatform.viewmodel.AddTasteVM;
 public class addTasteController {
 
     @FXML
-    private CheckBox cbox;
+    private CheckBox cb_swapPole;
+
     @FXML
     private CheckBox checkbox_playalert;
 
@@ -20,10 +21,13 @@ public class addTasteController {
     private CheckBox checkbox_randomrate;
 
     @FXML
-    private TextField txt_buttontext;
+    private TextField txt_HighAnchorText;
 
     @FXML
-    private TextField txt_consumpins;
+    private TextField txt_buttonText;
+
+    @FXML
+    private TextField txt_comsumptionInst;
 
     @FXML
     private TextField txt_endInstruction;
@@ -32,50 +36,47 @@ public class addTasteController {
     private TextArea txt_help;
 
     @FXML
-    private TextField txt_highacnhorvalue;
+    private TextField txt_highAnchorValue;
 
     @FXML
-    private TextField txt_highanchortext;
+    private TextField txt_initialNotice;
 
     @FXML
-    private CheckBox checkbox_swappol;
+    private TextField txt_lowAnchorText;
 
     @FXML
-    private TextField txt_howtaste;
+    private TextField txt_lowAnchorValue;
 
     @FXML
-    private TextField txt_inital;
+    private TextField txt_question;
 
     @FXML
-    private TextField txt_lowacnhorvalue;
+    private TextField txt_timeWait;
 
-    @FXML
-    private TextField txt_lowanchortext;
-
-    @FXML
-    private TextField txt_timetowait;
     private AddTasteVM addVM;
 
-    public void init() {
-        txt_inital.textProperty().bindBidirectional(addVM.txt_initalProperty());
-        txt_buttontext.textProperty().bindBidirectional(addVM.txt_buttontextProperty());
-        txt_consumpins.textProperty().bindBidirectional(addVM.txt_consumpinsProperty());
+    public void initializeBinding() {
+        txt_initialNotice.textProperty().bindBidirectional(addVM.txt_initialNoticeProperty());
+        txt_comsumptionInst.textProperty().bindBidirectional(addVM.txt_consumptionInstProperty());
+        txt_question.textProperty().bindBidirectional(addVM.txt_questionProperty());
+
+        txt_lowAnchorText.textProperty().bindBidirectional(addVM.txt_lowanchortextProperty());
+        txt_HighAnchorText.textProperty().bindBidirectional(addVM.txt_highanchortextProperty());
+        txt_lowAnchorValue.textProperty().bindBidirectional(addVM.txt_lowacnhorvalueProperty());
+        txt_highAnchorValue.textProperty().bindBidirectional(addVM.txt_highacnhorvalueProperty());
+
+        txt_buttonText.textProperty().bindBidirectional(addVM.txt_buttontextProperty());
+        cb_swapPole.selectedProperty().bindBidirectional(addVM.checkbox_swappoleProperty());
         txt_help.textProperty().bindBidirectional(addVM.txt_helpProperty());
         txt_endInstruction.textProperty().bindBidirectional(addVM.txt_endInstructionProperty());
-        txt_howtaste.textProperty().bindBidirectional(addVM.txt_howtasteProperty());
-        txt_timetowait.textProperty().bindBidirectional(addVM.txt_timetowaitProperty());
+        txt_timeWait.textProperty().bindBidirectional(addVM.txt_timetowaitProperty());
         checkbox_randomfood.selectedProperty().bindBidirectional(addVM.checkbox_randomfoodProperty());
         checkbox_playalert.selectedProperty().bindBidirectional(addVM.checkbox_playalertProperty());
-        checkbox_swappol.selectedProperty().bindBidirectional(addVM.checkbox_swappoleProperty());
-        txt_highacnhorvalue.textProperty().bindBidirectional(addVM.txt_highacnhorvalueProperty());
-        txt_lowacnhorvalue.textProperty().bindBidirectional(addVM.txt_lowacnhorvalueProperty());
         checkbox_randomrate.selectedProperty().bindBidirectional(addVM.checkbox_randomrateProperty());
-        txt_lowanchortext.textProperty().bindBidirectional(addVM.txt_lowanchortextProperty());
-        txt_highanchortext.textProperty().bindBidirectional(addVM.txt_highanchortextProperty());
     }
 
     public void setViewModel(AddTasteVM view) {
         addVM = view;
-        init();
+        initializeBinding();
     }
 }
