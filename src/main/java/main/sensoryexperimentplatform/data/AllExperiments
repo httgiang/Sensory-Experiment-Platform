@@ -185,9 +185,39 @@ endExperiment()
 ExperimentName: testing
 ExperimenterName: Thinh
 ExperimentID: 0
+Created on: 01.08.2024
+Version: 3
+startExperiment("null","","null")
+ratingsContainer("false","0")
+vasStage("Vas1","null","null","0","100","null","null","null","false","false")
+glmsStage("GLMS 1","null","null","null","false")
+vasStage("Vas 3","null","null","0","100","null","null","null","false","false")
+vasStage("Vas outside","null","null","0","100","null","null","null","false","false")
+endRatingsContainer()
+endExperiment()
+
+ExperimentName: Good morning
+ExperimenterName: Quỳnh Anh
+ExperimentID: 0
+Created on: 06.08.2024
+Version: 27
+startExperiment("hello","","null")
+noticeStage("xin chao nhe","day la quynh anh","goood guy ","null","false")
+audio("Default Notice Stage","null","null","null","stomp")
+audio("hello","null","null","null","boop")
+audio("nhign di","null","null","null","stomp")
+audio("1234","ụa alooo","null","null","stomp")
+audio("loo","null","null","null","stomp")
+endExperiment()
+
+ExperimentName: Demo_130824
+ExperimenterName: Tyr1on
+ExperimentID: 0
 Created on: 13.08.2024
-Version: 2
+Version: 7
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-vasStage("random question","Not Good","Good","0","100","End","null","null","false","false")
+tasteTest("Please call the experimenter for the food","Swallow it now!","How <taste> is the <food>?","Low Anchor Text","High Anchor Text","0","100","null","false","null","Spit them out !!!","0","false","false","false")
+inputStage("Please enter sth","OK","no ","true")
+questionStage("Black or White","White","Black","null","null","null","true")
 endExperiment()
 
