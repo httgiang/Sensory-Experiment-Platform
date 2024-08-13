@@ -690,7 +690,6 @@ Created on: 12.08.2024
 Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 inputStage("gì vại tr đất ơi","button ne","help text ne ","true")
-questionStage("yolo","yes","no","null","null","null","false")
 inputStage("thêm gì dô đại đại ","null","null","false")
 endExperiment()
 
