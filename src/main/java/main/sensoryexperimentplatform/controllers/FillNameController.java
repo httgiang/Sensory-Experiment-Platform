@@ -24,16 +24,16 @@ public class FillNameController {
     private FillName_VM viewModel;
 
     @FXML
-    private TextField file_name;
+    private TextField uid;
     public void setViewModel(FillName_VM viewModel){
         this.viewModel = viewModel;
-        Bindings.bindBidirectional(file_name.textProperty(), viewModel.fileName());
+        Bindings.bindBidirectional(uid.textProperty(), viewModel.uid());
     }
 
     @FXML
     void handleApproveBtn(MouseEvent event) throws IOException, CloneNotSupportedException {
         Experiment experiment = new Experiment(viewModel.getExperiment());
-        runExperiment(experiment, viewModel.getFileName());
+        runExperiment(experiment, viewModel.getUid());
         close();
     }
 
@@ -42,19 +42,16 @@ public class FillNameController {
         close();
     }
     void close(){
-        Stage stage = (Stage) file_name.getScene().getWindow();
+        Stage stage = (Stage) uid.getScene().getWindow();
         stage.close();
     }
-    public String getFileName(){
-        return file_name.getText();
-    }
 
-    private void runExperiment(Experiment experiment, String file_name) throws IOException, CloneNotSupportedException {
+    private void runExperiment(Experiment experiment, String uid) throws IOException, CloneNotSupportedException {
         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunExperiment.fxml"));
         Parent root = loader.load();
 
         RunController controller = loader.getController(); // Get the controller from the loader
-        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, file_name);
+        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
         controller.setViewModel(viewModel);
 
         Stage stage = new Stage();

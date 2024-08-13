@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import static main.sensoryexperimentplatform.utilz.Constants.*;
 
 public class DataAccess {
+    private String uid;
     public static String getCurrentFormattedTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS");
         Date now = new Date();
@@ -66,26 +67,25 @@ public class DataAccess {
         }
     }
     //Save results of conducted experiment
-    public static void quickSave(Experiment experiment, String FILE_NAME) throws IOException {
+    public static void quickSave(Experiment experiment, String uid) throws IOException {
         // Create directory for the experiment results if it doesn't exist
         String experimentName = experiment.getExperimentName();
         int version = experiment.getVersion();
         // catch does not exist file
         initializeCaches(experimentName,version);
         // Create file for saving results
-        FileWriter writer = new FileWriter("results/" + experimentName+"_"+version + "/" + FILE_NAME + ".csv", false);
-
-        writer.write("Heading,Time,Vas/GLMS Result,Question,Low Anchor, High Anchor, Low Value, High Value\n");
+        FileWriter writer = new FileWriter("results/" + experimentName+"_"+version + ".csv", false);
+//        writer.write("Heading,Time,Vas/GLMS Result,Question,Low Anchor, High Anchor, Low Value, High Value\n");
 
         for (Object o : experiment.getStages()) {
             if(o instanceof RatingContainer){
                 for(Object subO : ((RatingContainer) o).getContainer()){
-                    saveResult(writer,subO);
+                    saveResult(writer,subO,uid);
                 }
             }
-            saveResult(writer,o);
+            saveResult(writer,o,uid);
         }
-        writer.write("Elapsed Time," + experiment.elapsedTime + ", seconds");
+//        writer.write("Elapsed Time," + experiment.elapsedTime + ", seconds");
 
 
         writer.flush();
@@ -93,9 +93,9 @@ public class DataAccess {
         experiment.setNumber_of_results(countingResults(experiment));
     }
     // quickSave func use this
-    private static void saveResult(Writer writer, Object subO) throws IOException {
+    private static void saveResult(Writer writer, Object subO, String uid) throws IOException {
         if( subO instanceof Vas){
-            writer.append("Vas,")
+            writer.append(uid).append(",").append("Vas,")
                     .append(((Vas) subO).getConducted())
                     .append(",")
                     .append(String.valueOf(((Vas) subO).getResult()).trim())
@@ -112,7 +112,7 @@ public class DataAccess {
             writer.append("\n");
         }
         if( subO instanceof gLMS){
-            writer.append("GLMS ,")
+            writer.append(uid).append(",").append("GLMS ,")
                     .append(((gLMS) subO).getConducted())
                     .append(",")
                     .append(String.format("%d",((gLMS) subO).getResult()))

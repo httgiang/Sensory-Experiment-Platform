@@ -23,6 +23,7 @@ import main.sensoryexperimentplatform.viewmodel.FillName_VM;
 import main.sensoryexperimentplatform.viewmodel.DashBoard_VM;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.listOfExperiment;
+import main.sensoryexperimentplatform.viewmodel.ShowResultVM;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -108,7 +109,7 @@ public class DashBoardController {
         Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>> cellFactory = new Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>>() {
             @Override
             public TableCell<Experiment, String> call(final TableColumn<Experiment, String> param) {
-                final TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
+                 TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
                     @Override
                     public void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
@@ -119,14 +120,16 @@ public class DashBoardController {
                             FXMLLoader runloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/runButton.fxml"));
                             FXMLLoader editloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/editButton.fxml"));
                             FXMLLoader deleteloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/deleteButton.fxml"));
-
+                            FXMLLoader resultLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/resultButton.fxml"));
                             final Button delete;
                             final Button edit;
                             final Button run;
+                            final Button result;
                             try {
                                 run = runloader.load();
                                 edit = editloader.load();
                                 delete = deleteloader.load();
+                                result = resultLoader.load();
 //
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
@@ -146,6 +149,19 @@ public class DashBoardController {
                                             + "-glyph-size:28px;"
                                             + "-fx-background-color: transparent"
                             );
+                            result.setStyle(
+                                    " -fx-cursor: hand ;"
+                                    + "-glyph-size:28px;"
+                                    + "-fx-background-color: transparent"
+                            );
+                            result.setOnAction((ActionEvent event) -> {
+                                selectedExperiment = getTableView().getItems().get(getIndex());
+                                try{
+                                    showResultEx(selectedExperiment);
+                                } catch (Exception e){
+
+                                }
+                            });
 
                             delete.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
@@ -190,11 +206,12 @@ public class DashBoardController {
                                     throw new RuntimeException(e);
                                 }
                             });
-                            HBox managebtn = new HBox(run, edit,delete);
+                            HBox managebtn = new HBox(run, edit,delete, result);
                             managebtn.setStyle("-fx-alignment:center");
                             HBox.setMargin(run, new Insets(2, 2, 0, 3));
                             HBox.setMargin(edit, new Insets(2, 3, 0, 2));
                             HBox.setMargin(delete, new Insets(2, 4, 0, 2));
+                            HBox.setMargin(result, new Insets(2, 5, 0, 2));
 //                            HBox.setMargin(edit, new Insets(2, 5, 0, 3));
                             setGraphic(managebtn);
                         }
@@ -254,6 +271,24 @@ public class DashBoardController {
         }
     }
 
+    private void showResultEx(Experiment e) throws IOException {
+        try {
+            FXMLLoader showResult = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/ResultTableEx.fxml"));
+            Parent root = showResult.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Data");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.err.println("Error loading FXML: " + ex.getMessage());
+        }
+
+    }
 
     private void editExperiment(Experiment c) throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 //        c.updateVersion();
