@@ -1,7 +1,10 @@
 package main.sensoryexperimentplatform.models;
 
-import java.awt.*;
 import java.io.*;
+import java.nio.file.*;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +15,6 @@ import java.util.regex.Pattern;
 import static main.sensoryexperimentplatform.utilz.Constants.*;
 
 public class DataAccess {
-    private String uid;
     public static String getCurrentFormattedTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss.SSS");
         Date now = new Date();
@@ -53,13 +55,13 @@ public class DataAccess {
 
 
 
-    private static void initializeCaches(String experimentName, int version){
-        File resultsDirectory = new File("results");
+    private static void initializeCaches(String experimentName, int version) throws IOException {
+        File resultsDirectory = new File("src/results");
         if (!resultsDirectory.exists()) {
             resultsDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
         }
         // Create directory for the experiment if it doesn't exist
-        File experimentDirectory = new File("results/" + experimentName+"_"+version);
+        File experimentDirectory = new File("src/results/" + experimentName+"_"+version);
         if (!experimentDirectory.exists()) {
             experimentDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
         } else {
@@ -71,26 +73,50 @@ public class DataAccess {
         // Create directory for the experiment results if it doesn't exist
         String experimentName = experiment.getExperimentName();
         int version = experiment.getVersion();
-        // catch does not exist file
-        initializeCaches(experimentName,version);
-        // Create file for saving results
-        FileWriter writer = new FileWriter("results/" + experimentName+"_"+version + ".csv", false);
-//        writer.write("Heading,Time,Vas/GLMS Result,Question,Low Anchor, High Anchor, Low Value, High Value\n");
+        initializeCaches(experimentName, version);
+
+        // Create or open the file for saving results
+        String resultFilePath = "src/results/" + experimentName + "_" + version + ".csv";
+        FileWriter writer = new FileWriter(resultFilePath, false);
+
+        // Write existing data to the file
+        writeExistedData(writer, experiment);
+
+        // Create a new file for the specific UID
+        FileWriter writer2 = new FileWriter("src/results/" + experimentName + "_" + version + "/" + uid + ".csv", false);
 
         for (Object o : experiment.getStages()) {
-            if(o instanceof RatingContainer){
-                for(Object subO : ((RatingContainer) o).getContainer()){
-                    saveResult(writer,subO,uid);
+            if (o instanceof RatingContainer) {
+                for (Object subO : ((RatingContainer) o).getContainer()) {
+                    saveResult(writer, subO, uid);
+                    saveResult(writer2, subO, uid);
                 }
             }
-            saveResult(writer,o,uid);
+            saveResult(writer, o, uid);
+            saveResult(writer2, o, uid);
         }
-//        writer.write("Elapsed Time," + experiment.elapsedTime + ", seconds");
-
 
         writer.flush();
         writer.close();
         experiment.setNumber_of_results(countingResults(experiment));
+    }
+    private static void writeExistedData(Writer writer, Experiment experiment) throws IOException {
+        String directoryPath = "src/results/" + experiment.getExperimentName() + "_" + experiment.getVersion();
+        try (Stream<Path> paths = Files.walk(Paths.get(directoryPath))) {
+            List<Path> csvFiles = paths.filter(Files::isRegularFile)
+                    .filter(path -> path.toString().endsWith(".csv"))
+                    .collect(Collectors.toList());
+
+            for (Path csvFile : csvFiles) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(csvFile.toFile()))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        writer.write(line);
+                        writer.write("\n");
+                    }
+                }
+            }
+        }
     }
     // quickSave func use this
     private static void saveResult(Writer writer, Object subO, String uid) throws IOException {
@@ -121,10 +147,10 @@ public class DataAccess {
             writer.append("\n");
         }
     }
-    public static int countingResults(Experiment experiment){
+    public static int countingResults(Experiment experiment) throws IOException {
         String directory = experiment.getExperimentName() + "_" + experiment.getVersion();
         initializeCaches(experiment.getExperimentName(),experiment.getVersion());
-        int numOfResults = Objects.requireNonNull(new File("results/" + directory).list()).length;
+        int numOfResults = Objects.requireNonNull(new File("src/results/" + directory).list()).length;
         return numOfResults;
     }
 

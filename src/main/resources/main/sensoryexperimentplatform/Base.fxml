@@ -78,7 +78,7 @@
                       <children>
                           <Label layoutX="54.0" prefHeight="62.0" prefWidth="282.0" styleClass="lbl_EditExperiment" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Edit experiment" />
                           <Button fx:id="btn_menu" layoutX="8.0" layoutY="11.0" mnemonicParsing="false" onAction="#toggleDashboard" prefHeight="22.0" prefWidth="47.0" text=" " />
-                  <AnchorPane fx:id="mainContent" layoutY="72.0" prefHeight="700.0" prefWidth="951.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="72.0" />
+                  <AnchorPane fx:id="mainContent" layoutX="9.0" layoutY="72.0" prefHeight="700.0" prefWidth="996.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="72.0" />
                       </children>
                <BorderPane.margin>
                   <Insets right="10.0" />

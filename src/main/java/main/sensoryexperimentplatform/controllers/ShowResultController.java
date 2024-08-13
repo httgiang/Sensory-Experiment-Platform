@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.SurveyDataLoader;
 import main.sensoryexperimentplatform.models.SurveyEntry;
+import main.sensoryexperimentplatform.viewmodel.ShowResultVM;
 
 public class ShowResultController {
 
@@ -31,11 +33,19 @@ public class ShowResultController {
     @FXML
     private TableColumn<SurveyEntry, Integer> highValueColumn;
 
+    private String FILE_PATH;
+    private ShowResultVM viewModel;
     @FXML
     public void initialize() {
         setupTableColumns();
-        loadSurveyData();
         bindColumnWidths();
+    }
+    public void setViewModel(ShowResultVM viewModel) {
+        this.viewModel = viewModel;
+        //load items to table
+        if (this.viewModel != null) {
+            tableView.setItems(SurveyDataLoader.loadSurveyData(viewModel.getFilePath()));
+        }
     }
 
     private void setupTableColumns() {
@@ -49,11 +59,6 @@ public class ShowResultController {
         highAnchorColumn.setCellValueFactory(new PropertyValueFactory<>("highAnchor"));
         lowValueColumn.setCellValueFactory(new PropertyValueFactory<>("lowValue"));
         highValueColumn.setCellValueFactory(new PropertyValueFactory<>("highValue"));
-    }
-
-    private void loadSurveyData() {
-        // Load the data from the CSV file into the TableView
-        tableView.setItems(SurveyDataLoader.loadSurveyData("results/Taste Screener 2019_20_1.csv"));
     }
 
     private void bindColumnWidths() {

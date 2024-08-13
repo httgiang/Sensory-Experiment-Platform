@@ -10,16 +10,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Fix | start model - completed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunStart.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Sensory_Expeirment_Platform_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Sensory_Expeirment_Platform_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort_9/afadfaf.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort_9/hhh.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort_9/qanhhhhhhhhhhhhhhh.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort_9/test_04_06.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup_8/1_2024.08.09.00.11.56.877.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_10/1_2024.07.25.12.36.50.223.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_6/1_2024.08.06.09.20.22.262.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_7/111_2024.07.23.10.31.12.113.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_7/1_2024.07.25.12.45.27.473.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_7/1_2024.07.25.12.48.48.316.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_7/240_2024.07.23.10.30.26.602.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course_9/jjj.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Ella - Mood Ratings_0/1_2024.07.25.23.23.36.720.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Ella - Mood Ratings_2/he_2024.08.06.01.20.17.813.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Good morning_22/fff_2024.08.08.01.00.33.530.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast_7/1_2024.07.26.14.01.11.213.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast_7/1_2024.08.06.09.37.19.394.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast_8/1_2024.08.05.22.20.59.143.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast_8/1_2024.08.05.22.37.24.728.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast_8/quỳnh anh _2024.08.06.09.35.57.135.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings_2/1_2024.07.25.12.44.09.494.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test_27/11_2024.07.18.15.26.28.755.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test_27/1_2024.07.15.15.19.48.866.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test_27/53005.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test_27/999_2024.07.18.15.26.17.026.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test_27/Porridge_taste test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/1231_2024.06.13.14.55.31.556.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/123_2024.06.13.14.33.04.381.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/123_2024.06.13.14.33.55.876.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/123_2024.06.13.14.34.46.043.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/123_2024.06.13.14.35.27.609.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/123_2024.06.13.14.37.19.419.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/13141_2024.06.13.14.52.16.677.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/1411_2024.06.13.14.55.01.885.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/141_2024.06.13.14.48.45.624.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/141_2024.06.13.14.53.22.947.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/141_2024.06.13.14.54.05.592.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/1424_2024.06.13.14.52.53.849.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/411_2024.06.13.14.50.41.381.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/Giang.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/Taste Screener 2019_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/g.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_1/k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20_9/535006.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.23.52.712.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Test_2/1_2024.08.09.08.24.13.417.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/demo_28/091_2024.07.29.08.30.02.408.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/ShowResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/ShowResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ShowResultVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ShowResultVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/Base.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/Base.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/DashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/DashBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/ResultTableEx.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/ResultTableEx.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,31 +126,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.SensoryExperimentPlatform.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "3007",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Tyr1on/Sensory-Experiment-Platform/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.10018553",
-    "project.structure.side.proportion": "0.12518194",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SensoryExperimentPlatform.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;3007&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Tyr1on/Sensory-Experiment-Platform/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.10018553&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.12518194&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Tyr1on\Sensory-Experiment-Platform\src\main\resources\main\sensoryexperimentplatform" />
@@ -188,5 +235,20 @@
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java</url>
+          <line>108</line>
+          <properties class="main.sensoryexperimentplatform.controllers.RunController" method="handleBtnNext">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

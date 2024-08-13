@@ -112,9 +112,12 @@ public class RunController {
         if (selectedIndex == -1){
             showList.getSelectionModel().select(0);
         }
-        if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
+        else if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
             showList.getSelectionModel().select(selectedIndex + 1);
             DataAccess.quickSave(experiment, uid);
+        }
+        else if(selectedIndex == showList.getItems().size() - 1){
+            handleFinalNext();
         }
         updateProgress(showList.getSelectionModel().getSelectedIndex());
     }
@@ -260,15 +263,15 @@ public class RunController {
                     btn_Next.textProperty().bind(vm.buttonProperty());
 
                 }
-                else if (currentIndex == viewModel.count - 1) {
-                    btn_Next.setOnAction(event -> {
-                        try {
-                            handleFinalNext();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-                }
+//                else if (currentIndex == viewModel.count - 1) {
+//                    btn_Next.setOnAction(event -> {
+//                        try {
+//                            handleFinalNext();
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    });
+//                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -276,7 +279,7 @@ public class RunController {
     }
     private void handleFinalNext() throws IOException {
         stopTimer();
-        DataAccess.quickSave(experiment, uid);
+//        DataAccess.quickSave(experiment, uid);
         autoClose();
     }
 

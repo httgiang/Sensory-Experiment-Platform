@@ -10,23 +10,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="dashBoardPane" prefHeight="682.0" prefWidth="981.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.DashBoardController">
+<AnchorPane fx:id="dashBoardPane" prefHeight="700.0" prefWidth="996.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.DashBoardController">
    <children>
                 <ComboBox fx:id="DropDown" layoutX="52.0" layoutY="18.0" prefHeight="31.0" prefWidth="63.0" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="18.0" />
                 <Label fx:id="ShowLabel" layoutX="0.9999999999999787" layoutY="23.2" text="Show" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="23.2" />
                 <Label fx:id="EntriesLabel" layoutX="121.0" layoutY="23.0" text="entries" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="23.0" />
                 <TextField fx:id="searchBar" layoutX="171.0" layoutY="18.0" prefHeight="32.0" prefWidth="441.0" promptText="Search" style="-fx-text-alignment: LEFT;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="354.6" AnchorPane.topAnchor="18.0" />
                 <Button fx:id="btn_AddExperiment" layoutX="690.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_addEx" stylesheets="@/static/stylesheets/DashBoard_CSS.css" text="+ Add Experiment" AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="19.0" />
-                <TableView fx:id="contentTable" layoutY="82.0" prefHeight="536.0" prefWidth="993.0" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="82.0">
+                <TableView fx:id="contentTable" layoutY="82.0" prefHeight="552.0" prefWidth="1007.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="82.0">
                     <columns>
                         <TableColumn fx:id="lbl_iD" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="ID" />
                         <TableColumn fx:id="lbl_creator" maxWidth="1.7976931348623157E308" prefWidth="140.0" text="Creator " />
                         <TableColumn fx:id="lbl_experimentName" maxWidth="1.7976931348623157E308" prefWidth="179.0" text="Experiment Name" />
                         <TableColumn fx:id="lbl_currentVersion" maxWidth="1.7976931348623157E308" prefWidth="161.0" text="Version " />
                         <TableColumn fx:id="lbl_result" maxWidth="1.7976931348623157E308" prefWidth="88.0" text="Result" />
-                        <TableColumn fx:id="lbl_createDate" maxWidth="1.7976931348623157E308" prefWidth="147.0" text="Create Date" />
+                        <TableColumn fx:id="lbl_createDate" maxWidth="1.7976931348623157E308" prefWidth="147.0" text="Created on" />
                         <TableColumn fx:id="lbl_Option" maxWidth="1.7976931348623157E308" prefWidth="188.8001708984375" text="Options" />
                     </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
                 </TableView>
       <Button fx:id="btn_redo" layoutX="879.0" layoutY="19.0" mnemonicParsing="false" onAction="#redo" text="Redo" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="19.0" />
       <Pagination fx:id="pagination" layoutX="-3.2" layoutY="72.8" pageCount="0" prefHeight="599.0" prefWidth="989.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0" />
