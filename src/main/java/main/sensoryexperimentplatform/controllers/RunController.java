@@ -220,6 +220,23 @@ public class RunController {
                     controller.setViewModel(vm);
                     btn_Next.textProperty().bind(vm.buttonProperty());
                 }
+                else if (selectedObject instanceof Input) {
+                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunInputStage.fxml"));
+                    AnchorPane newContent = loader.load();
+                    AnchorPane.setTopAnchor(newContent, 0.0);
+                    AnchorPane.setBottomAnchor(newContent, 0.0);
+                    AnchorPane.setLeftAnchor(newContent, 0.0);
+                    AnchorPane.setRightAnchor(newContent, 0.0);
+                    content.getChildren().setAll(newContent);
+                    btn_Next.setDisable(false);
+
+
+                  RunInputController controller = loader.getController();
+                  RunInputVM vm = new RunInputVM((Input) selectedObject);
+                    controller.setViewModel(vm);
+                    btn_Next.textProperty().bind(vm.getButtonText());
+
+                }
                 else if (selectedObject instanceof Question) {
                     loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
                     AnchorPane newContent = loader.load();

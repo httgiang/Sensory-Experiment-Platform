@@ -1,10 +1,14 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Input extends Stage{
     private String buttonText;
     private String helpText;
     private String questionText;
+    private Sound sound;
     private boolean alert;
+
     public Input(String title, String content) {
         super(title, content);
     }
@@ -14,6 +18,16 @@ public class Input extends Stage{
         this.helpText = helpText;
         this.questionText = questionText;
         this.alert = alert;
+        this.sound = new Sound();
+    }
+
+    public Input(Input o) {
+        super(o.getQuestionText(), o.getButtonText());
+        buttonText = o.getButtonText();
+        helpText = o.getHelpText();
+        questionText = o.getQuestionText();
+        alert = o.isAlert();
+        this.sound = new Sound();
     }
 
     public boolean isAlert() {
@@ -58,6 +72,10 @@ public class Input extends Stage{
     public String getQuestionText() {return questionText;}
 
     public void setQuestionText(String questionText) {this.questionText = questionText;}
+
+    public void playSound(){
+        sound.playSound("boop");
+    }
 
     @Override
     public String toString() {

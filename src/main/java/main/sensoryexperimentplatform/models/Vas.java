@@ -1,5 +1,7 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Vas extends Stage implements containerObject{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;

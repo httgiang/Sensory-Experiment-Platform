@@ -1,5 +1,7 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Question extends Stage {
     private String question;
     private String leftButtonText;

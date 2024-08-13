@@ -80,6 +80,10 @@ public class Experiment {
                 stages.add(question);
 
             }
+            else if (o instanceof Input){
+                Input input = new Input((Input) o);
+                stages.add(input);
+            }
         }
     }
 

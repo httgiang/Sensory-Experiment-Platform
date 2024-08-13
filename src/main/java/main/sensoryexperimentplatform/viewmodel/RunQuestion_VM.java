@@ -10,8 +10,8 @@ public class RunQuestion_VM {
     private Question question;
     private StringProperty questionText,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText;
     private BooleanProperty playAlert;
-    //String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-    //                    String helpText, boolean alert
+
+
     public RunQuestion_VM(Question question) {
         this.question = question;
         questionText = new SimpleStringProperty(question.getQuestion());
@@ -21,8 +21,9 @@ public class RunQuestion_VM {
         playAlert = new SimpleBooleanProperty(question.isAlert());
 
     }
+
     public StringProperty questionTextProperty() {
-        System.out.println(questionText);
+
         return questionText;
     }
     public StringProperty leftButtonTextProperty() {

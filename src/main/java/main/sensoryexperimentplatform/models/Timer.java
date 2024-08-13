@@ -1,5 +1,7 @@
 package main.sensoryexperimentplatform.models;
 
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
 public class Timer extends Stage{
     private boolean alert;
     private boolean isRunning = true;
