@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="970.0" stylesheets="/static/stylesheets/RunNotice_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="530.0" prefWidth="970.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="rating" layoutX="325.0" layoutY="122.0" prefHeight="143.0" prefWidth="321.0" text="Start Rating" textAlignment="JUSTIFY">
          <font>
