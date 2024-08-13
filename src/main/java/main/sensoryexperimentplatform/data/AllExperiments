@@ -691,5 +691,6 @@ Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 noticeStage("yolo","null","null","null","false")
 questionStage("uj ki vai","1","1","null","null","null","true")
+inputStage("gì vại tr đất ơi","button ne","help text ne ","true")
 endExperiment()
 

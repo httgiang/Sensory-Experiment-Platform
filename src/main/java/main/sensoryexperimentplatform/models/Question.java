@@ -30,10 +30,10 @@ public class Question extends Stage {
     public Question(Question o) {
         super(o.getQuestion(),o.getRightButtonText());
         question = o.getQuestion();
-       leftButtonText = o.getLeftButtonText();
-       rightButtonText = o.getRightButtonText();
-      leftButtonValue = o.getLeftButtonValue();
-       rightButtonValue = o.getRightButtonValue();
+        leftButtonText = o.getLeftButtonText();
+        rightButtonText = o.getRightButtonText();
+        leftButtonValue = o.getLeftButtonValue();
+        rightButtonValue = o.getRightButtonValue();
         helpText = o.getHelpText();
         alert = o.isAlert();
         sound = new Sound();

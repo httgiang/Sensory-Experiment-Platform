@@ -26,13 +26,13 @@ public class InputStageController {
     public void setViewModel(InputStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
-        System.out.println("sdv");
+        System.out.println("yolo");
     }
 
     public void bindViewModel(){
         txt_buttonText.textProperty().bindBidirectional(viewModel.buttonTextProperty());
-        txt_helptext.textProperty().bindBidirectional(viewModel.contentProperty());
-        txt_question.textProperty().bindBidirectional(viewModel.titleProperty());
+        txt_helptext.textProperty().bindBidirectional(viewModel.helpTextProperty());
+        txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
         cbx_playsound.selectedProperty().bindBidirectional(viewModel.alertProperty());
 
         // Add listeners for immediate update
