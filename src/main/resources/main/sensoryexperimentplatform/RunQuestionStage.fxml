@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/t add " xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunQuestionController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunQuestionController">
     <children>
         <Label fx:id="txt_question" layoutX="20.0" layoutY="20.0" minHeight="65.0" minWidth="1217.0" text="question" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1128.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
@@ -15,12 +15,12 @@
             <Image url="@../../static/images/Help_outline.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_right" layoutX="319.0" layoutY="239.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="275.0" wrapText="true" AnchorPane.leftAnchor="319.0" AnchorPane.topAnchor="239.0">
+      <Button fx:id="btn_right" layoutX="645.0" layoutY="203.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="275.0" wrapText="true" AnchorPane.rightAnchor="337.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btn_left" layoutX="739.0" layoutY="239.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="275.0" wrapText="true" AnchorPane.leftAnchor="739.0" AnchorPane.topAnchor="239.0">
+      <Button fx:id="btn_left" layoutX="321.0" layoutY="203.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="275.0" wrapText="true" AnchorPane.leftAnchor="321.0">
          <font>
             <Font size="20.0" />
          </font>
