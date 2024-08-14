@@ -74,14 +74,10 @@ public class DataAccess {
         String experimentName = experiment.getExperimentName();
         int version = experiment.getVersion();
         initializeCaches(experimentName, version);
-
         // Create or open the file for saving results
         String resultFilePath = "src/results/" + experimentName + "_" + version + ".csv";
-        FileWriter writer = new FileWriter(resultFilePath, false);
-
         // Create a new file for the specific UID
         FileWriter writer2 = new FileWriter("src/results/" + experimentName + "_" + version + "/" + uid + ".csv", false);
-
         for (Object o : experiment.getStages()) {
             if (o instanceof RatingContainer) {
                 for (Object subO : ((RatingContainer) o).getContainer()) {
@@ -90,10 +86,14 @@ public class DataAccess {
             }
             saveResult(writer2, o, uid);
         }
+        writer2.flush();
+        writer2.close();
+        FileWriter writer = new FileWriter(resultFilePath, false);
         // Write existing data to the file - this file stores all conducted surveys
         writeExistedData(writer, experiment);
         writer.flush();
         writer.close();
+
         experiment.setNumber_of_results(countingResults(experiment));
     }
     private static void writeExistedData(Writer writer, Experiment experiment) throws IOException {
