@@ -9,6 +9,7 @@ import main.sensoryexperimentplatform.models.Notice;
 public class RunNotice_VM {
     private Notice notice;
     private StringProperty title, content, button;
+    private StringProperty helpText;
     private BooleanProperty alert;
 
     public RunNotice_VM(Notice notice){
@@ -16,6 +17,7 @@ public class RunNotice_VM {
         button = new SimpleStringProperty(notice.getButtonText());
         title = new SimpleStringProperty(notice.getTitle());
         content = new SimpleStringProperty(notice.getContent());
+        helpText = new SimpleStringProperty(notice.getHelpText());
         alert = new SimpleBooleanProperty(notice.isAlert());
     }
     public StringProperty getTitle(){
@@ -26,6 +28,9 @@ public class RunNotice_VM {
     }
     public StringProperty buttonProperty() {
         return button;
+    }
+    public StringProperty getHelpText(){
+        return helpText;
     }
     public BooleanProperty getAlert(){
         return alert;
