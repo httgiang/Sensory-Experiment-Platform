@@ -691,5 +691,6 @@ Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 inputStage("gì vại tr đất ơi","button ne","help text ne ","true")
 inputStage("thêm gì dô đại đại ","null","null","false")
+questionStage("ai biết gì mà hỏi","hỏi đi mà","ừm không hỏi thì thôi","null","null","null","true")
 endExperiment()
 
