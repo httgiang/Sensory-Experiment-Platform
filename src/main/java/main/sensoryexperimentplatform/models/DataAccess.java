@@ -79,23 +79,19 @@ public class DataAccess {
         String resultFilePath = "src/results/" + experimentName + "_" + version + ".csv";
         FileWriter writer = new FileWriter(resultFilePath, false);
 
-        // Write existing data to the file
-        writeExistedData(writer, experiment);
-
         // Create a new file for the specific UID
         FileWriter writer2 = new FileWriter("src/results/" + experimentName + "_" + version + "/" + uid + ".csv", false);
 
         for (Object o : experiment.getStages()) {
             if (o instanceof RatingContainer) {
                 for (Object subO : ((RatingContainer) o).getContainer()) {
-                    saveResult(writer, subO, uid);
                     saveResult(writer2, subO, uid);
                 }
             }
-            saveResult(writer, o, uid);
             saveResult(writer2, o, uid);
         }
-
+        // Write existing data to the file - this file stores all conducted surveys
+        writeExistedData(writer, experiment);
         writer.flush();
         writer.close();
         experiment.setNumber_of_results(countingResults(experiment));
