@@ -25,8 +25,10 @@ public class Main extends Application {
         primaryStage.setTitle("Sense XP");
 
         primaryStage.setScene(scene);
+        primaryStage.setHeight(850);
+        primaryStage.setWidth(1450);
 
-        primaryStage.sizeToScene();
+//        primaryStage.sizeToScene();
 
         primaryStage.show();
 

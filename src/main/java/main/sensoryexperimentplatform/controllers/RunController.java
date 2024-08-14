@@ -107,18 +107,17 @@ public class RunController {
 
     @FXML
     void handleBtnNext(MouseEvent event) throws IOException {
-
         int selectedIndex = showList.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1){
             showList.getSelectionModel().select(0);
         }
-        else if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
+        if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
             showList.getSelectionModel().select(selectedIndex + 1);
-            DataAccess.quickSave(experiment, uid);
         }
-        else if(selectedIndex == showList.getItems().size() - 1){
+        if(selectedIndex == showList.getItems().size() - 1){
             handleFinalNext();
         }
+        DataAccess.quickSave(experiment, uid);
         updateProgress(showList.getSelectionModel().getSelectedIndex());
     }
 
