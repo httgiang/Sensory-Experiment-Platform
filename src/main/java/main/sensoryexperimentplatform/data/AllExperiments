@@ -332,7 +332,7 @@ wait("3","Please Wait","true")
 endExperiment()
 
 ExperimentName: tui di test
-ExperimenterName: quynh anh 
+ExperimenterName: quynh anh
 ExperimentID: 0
 Created on: 16.08.2024
 Version: 1
@@ -342,5 +342,15 @@ audio("Default Notice Stage","null","null","null","boop")
 noticeStage("haha","null","null","null","false")
 questionStage("Question ","1","2","1","2","null","false")
 inputStage("tới","null","null","false")
+endExperiment()
+
+ExperimentName: test 2
+ExperimenterName: qanh
+ExperimentID: 0
+Created on: 16.08.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+vasStage("User input","null","null","0","100","null","null","null","false","false")
+glmsStage("User Input","null","null","null","false")
 endExperiment()
 
