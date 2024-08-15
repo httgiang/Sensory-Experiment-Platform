@@ -53,12 +53,14 @@ public class FillNameController {
         RunController controller = loader.getController(); // Get the controller from the loader
         RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
         controller.setViewModel(viewModel);
+//        for(Object o : experiment.getStages()){
+//            System.out.println("load items " + o);
+//        }
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setOnCloseRequest((WindowEvent event) -> {
             // Perform any necessary cleanup here
-            System.out.println("Experiment is closing");
             stage.close();
             controller.stopTimer();
 //            scene.getWindow().hide();

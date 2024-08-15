@@ -6,65 +6,85 @@ import java.util.ArrayList;
 
 public class FoodTasteVM {
     private TasteTest tasteTest;
-    private ArrayList<String> listFoods;
+
+
+    //THE LISTS OF DISPLAYED OPTIONS FOR FOOD AND TASTE
     private ArrayList<String> foodOptions;
     private ArrayList<String> gLMSOptions;
     private ArrayList<String> vasOptions;
-    private ArrayList<String> listVas;
-    private ArrayList<String> listGLMS;
 
-    public ArrayList<String> getListGLMSShow() {
-        return gLMSOptions;
-    }
-    public ArrayList<String> getListVasShow() {
-        return vasOptions;
-    }
 
-    public ArrayList<String> getListVas() {
-        return listVas;
-    }
 
-    public ArrayList<String> getListGLMS() {
-        return listGLMS;
-    }
+    //THE LIST OF SELECTIONS OF USER
+    private ArrayList<String> selectedFoods;
+    private ArrayList<String> selectedVAS;
+    private ArrayList<String> selectedGLMS;
+
 
     public FoodTasteVM(TasteTest tasteTest){
         this.tasteTest = tasteTest;
-        listFoods = tasteTest.getFoods();
         foodOptions = tasteTest.getFoodOptions();
-        listVas = tasteTest.getVasList();
         gLMSOptions = tasteTest.getGLMSOptions();
         vasOptions = tasteTest.getVasOptions();
-        listGLMS = tasteTest.getGlmsList();
+
+        selectedFoods = tasteTest.getSelectedFoods();
+        selectedVAS = tasteTest.getSelectedVAS();
+        selectedGLMS = tasteTest.getSelectedGLMS();
     }
 
-    public ArrayList<String> getListFoodsShow() {
+    public ArrayList<String> getSelectedFoods() {
+        return selectedFoods;
+    }
+
+    public ArrayList<String> getSelectedVAS() {
+        return selectedVAS;
+    }
+
+    public ArrayList<String> getSelectedGLMS() {
+        return selectedGLMS;
+    }
+
+    public ArrayList<String> getGLMSOptions() {
+        return gLMSOptions;
+    }
+    public ArrayList<String> getVASOptions() {
+        return vasOptions;
+    }
+
+    public ArrayList<String> getFoodOptions() {
         return foodOptions;
     }
 
-    public void addListFoodsShow(String food) {
+    public void addFoodOptions(String food) {
         foodOptions.add(food);
         tasteTest.getFoodOptions().add(food);
     }
-    public void addVasShow(String food){vasOptions.add(food);
+    public void addVASOptions(String food){vasOptions.add(food);
         tasteTest.getVasOptions().add(food);}
-    public void addGLMSShow (String food){gLMSOptions.add(food);
+    public void addGLMSOptions(String food){gLMSOptions.add(food);
         tasteTest.getGLMSOptions().add(food);}
 
-    public ArrayList<String> getListFoods() {
-        return listFoods;
+    public void addSelectedFoods(String food) {
+        if(!selectedFoods.contains(food)){
+            selectedFoods.add(food);
+            tasteTest.getSelectedFoods().add(food);
+        }
+
+    }
+    public void addSelectedVAS(String tasteVas){
+        if(!selectedVAS.contains(tasteVas)){
+            selectedVAS.add(tasteVas);
+            tasteTest.getSelectedVAS().add(tasteVas);
+        }
+    }
+    public void addSelectedGLMS(String tasteGLMS){
+        if(!selectedGLMS.contains(tasteGLMS)){
+            selectedGLMS.add(tasteGLMS);
+            tasteTest.getSelectedGLMS().add(tasteGLMS);
+        }
     }
 
-    public void addListFoods(String food) {
-        listFoods.add(food);
-        tasteTest.getFoods().add(food);
+    public TasteTest getTasteTest() {
+        return tasteTest;
     }
-    public void addVas(String food){
-        listVas.add(food);
-    }
-    public void addGLMS(String food){
-        listGLMS.add(food);
-    }
-
-
 }

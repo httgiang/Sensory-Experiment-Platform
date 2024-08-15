@@ -31,7 +31,7 @@ public class addGLMS {
     private NotiForAddFood notiForAddFood;
     @FXML
     private void btn_save(ActionEvent event) {
-        viewModel.addGLMSShow(txt_file.getText());
+        viewModel.addGLMSOptions(txt_file.getText());
         notiForAddFood.notifyObject();
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();

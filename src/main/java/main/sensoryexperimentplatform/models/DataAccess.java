@@ -324,6 +324,7 @@ public class DataAccess {
     public static void loadExperiments() throws Exception{
         Experiment currentExperiment = new Experiment(null,null,null,null,1,000,null);
         RatingContainer rc = null;
+        TasteTest tasteTest = null;
         boolean isContainer = false;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
@@ -388,29 +389,54 @@ public class DataAccess {
                     if (matcher.find()) {
                         currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
-
                 } else if (line.startsWith("tasteTest")){
-                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = audiblePattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addTasteTest(matcher.group(1),
+                        tasteTest = new TasteTest(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
                                 matcher.group(5),
-                                Integer.parseInt(matcher.group(6)),
-                                Integer.parseInt(matcher.group(7)),
+                                matcher.group(6),
+                                matcher.group(7),
                                 matcher.group(8),
-                                Boolean.parseBoolean(matcher.group(9)),
-                                matcher.group(10),
-                                matcher.group(11),
-                                Integer.parseInt(matcher.group(12)),
+                                Integer.parseInt(matcher.group(9)),
+                                Integer.parseInt(matcher.group(10)),
+                                Boolean.parseBoolean(matcher.group(11)),
+                                Boolean.parseBoolean(matcher.group(12)),
                                 Boolean.parseBoolean(matcher.group(13)),
-                                Boolean.parseBoolean(matcher.group(14)),
+                                Integer.parseInt(matcher.group(14)),
                                 Boolean.parseBoolean(matcher.group(15)));
+
+                        String[] foods = matcher.group(16).split(",");
+                        for (String food : foods) {
+                            if (!food.isEmpty()) {
+                                tasteTest.getSelectedFoods().add(food.trim());
+                            }
+                        }
+
+                        String[] vas = matcher.group(17).split(",");
+                        for (String vasItem : vas) {
+                            if (!vasItem.isEmpty()) {
+                                tasteTest.getSelectedVAS().add(vasItem.trim());
+                            }
+                        }
+
+                        String[] glms = matcher.group(18).split(",");
+                        for (String glmsItem : glms) {
+                            if (!glmsItem.isEmpty()) {
+                                tasteTest.getSelectedGLMS().add(glmsItem.trim());
+                            }
+                        }
+
+                        currentExperiment.addNewTasteTest(tasteTest);
+
                     }
-                }else if (line.startsWith("vasStage")) {
+                }
+
+                else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 

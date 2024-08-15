@@ -41,23 +41,19 @@ public class AddTasteVM implements Stages {
     public AddTasteVM(TasteTest model){
         this.model = model;
         initBinding(model);
-        model.generateTasteTest();
         initListener();
+        for(Object o : model.getStages()){
+            System.out.println("taste test con: " + o);
+        }
     }
     public AddTasteVM(Experiment experiment){
         this.experiment = experiment;
-        model = new TasteTest("Please call the experimenter for the samples","Consumption instruction","How <taste> is <food>?",
-                "Low Anchor Text","High Anchor Text",0,100,
-                "Continue", false, "","End instruction", 1,
-                false, false, false);
+        model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
+                "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
+                0,100, false, false, false, 0, false);
         initBinding(model);
         initListener();
-
-
         experiment.addNewTasteTest(model);
-        for(Object o : experiment.getStages()){
-            System.out.println(o);
-        }
     }
 
 

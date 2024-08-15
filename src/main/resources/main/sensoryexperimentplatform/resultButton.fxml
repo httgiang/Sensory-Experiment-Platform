@@ -13,7 +13,7 @@
             </image>
         </ImageView>
     </graphic>
-    <tooltip>
-        <Tooltip text="Runs experiment" />
-    </tooltip>
+   <tooltip>
+      <Tooltip text="View results" />
+   </tooltip>
 </Button>

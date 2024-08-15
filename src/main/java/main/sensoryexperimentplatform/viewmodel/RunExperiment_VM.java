@@ -69,7 +69,6 @@ public class RunExperiment_VM {
                         temp = "Start";
                     else if (o instanceof Input)
                         temp = "inputStage";
-
                     String key = index + " " + temp;
                     objectsMap.put(key, o);
                     stringSet.add(key);
@@ -100,11 +99,41 @@ public class RunExperiment_VM {
                 }
             }
             if(o instanceof TasteTest){
-                for(Object sub0 : ((TasteTest) o).getStages()){
-
+                for(Object subO : ((TasteTest) o).getStages()){
+                    int i = 0;
+                    if (subO instanceof Notice) {
+                        String subKey = "\t" + index + "." + i;
+                        objectsMap.put(subKey, subO);
+                        stringSet.add(subKey);
+                        objectList.add(subO); // Thêm đối tượng con vào objectList
+                        i++;
+                        count++;
+                    }
+                    if (subO instanceof RatingContainer) {
+                        int j = 0;
+                        for (Object containerObject : ((RatingContainer) o).container) {
+                            if (containerObject instanceof Vas) {
+                                String subKey = "\t" + i + "." + j;
+                                objectsMap.put(subKey, containerObject);
+                                stringSet.add(subKey);
+                                objectList.add(containerObject); // Thêm đối tượng con vào objectList
+                                j++;
+                                count++;
+                            }
+                            if (containerObject instanceof gLMS) {
+                                String subKey = "\t" + i + "." + j;
+                                objectsMap.put(subKey, containerObject);
+                                stringSet.add(subKey);
+                                objectList.add(containerObject); // Thêm đối tượng con vào objectList
+                                j++;
+                                count++;
+                            }
+                        }
+                    }
                 }
             }
         }
+
         items.setAll(stringSet);
     }
     public ObservableList<String> getItems() {

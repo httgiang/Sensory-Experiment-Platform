@@ -45,7 +45,7 @@ public class Data {
                             news.get(count).addTimer(titleEn, contentEn);
                             break;
                         case 4:
-                            news.get(count).addVas(titleEn, contentEn);
+                            news.get(count).addSelectedVAS(titleEn, contentEn);
                             break;
                         case 5:
                             news.get(count).addgLMS(titleEn, contentEn);

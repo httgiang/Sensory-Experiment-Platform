@@ -185,7 +185,7 @@ public class DashBoardController {
                                 }
                             });
                             run.setOnAction((ActionEvent) ->{
-                                Experiment selectedExperiment = getTableView().getItems().get(getIndex());
+                                selectedExperiment = getTableView().getItems().get(getIndex());
                                 try {
                                     FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/fill_name.fxml"));
                                     Parent root = fillNameLoader.load();

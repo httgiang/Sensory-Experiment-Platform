@@ -98,7 +98,6 @@ public class RatingContainer_VM implements Stages {
         btn_addFoodAndTaste.setDisable(true);
         btn_addAudibleInstruction.setDisable(true);
         btn_addInput.setDisable(true);
-        btn_addInput.setDisable(true);
         btn_noticeStage.setDisable(true);
         btn_addTimer.setDisable(true);
         btn_AddQuestionStage.setDisable(true);

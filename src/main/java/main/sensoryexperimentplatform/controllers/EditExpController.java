@@ -154,67 +154,6 @@ public class EditExpController {
         });
     }
 
-    //THREE RIGHT-SIDE BUTTONS
-    @FXML
-    void delete(ActionEvent event) {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            TreeItem<Stages> parent = selectedItem.getParent();
-            if (parent != null) {
-                int currentIndex = parent.getChildren().indexOf(selectedItem);
-                Object curr = experiment.getStages().get(currentIndex);
-
-                parent.getChildren().remove(selectedItem);
-                experiment.getStages().remove(curr);
-
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot delete start stage");
-            }
-        }
-    }
-    @FXML
-    void down(ActionEvent event) {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            TreeItem<Stages> parent = selectedItem.getParent();
-            if (parent != null) {
-                int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
-                    TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
-                    parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
-                    parent.getChildren().set(currentIndex, nextItem);
-
-                    Object next = experiment.getStages().get(currentIndex + 1);
-                    experiment.getStages().set(currentIndex + 1, experiment.getStages().get(currentIndex));
-                    experiment.getStages().set(currentIndex, next);
-                }
-                 treeView.getSelectionModel().select(currentIndex + 1);
-            }
-        }
-    }
-
-    @FXML
-    void up(ActionEvent event) {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            TreeItem<Stages> parent = selectedItem.getParent();
-            if (parent != null) {
-                int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
-                    TreeItem<Stages> lastItem = parent.getChildren().get(currentIndex - 1);
-                    parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
-                    parent.getChildren().set(currentIndex, lastItem);
-                    Object last = experiment.getStages().get(currentIndex - 1);
-                    experiment.getStages().set(currentIndex - 1, experiment.getStages().get(currentIndex));
-                    experiment.getStages().set(currentIndex, last);
-                }
-                treeView.getSelectionModel().select(currentIndex);
-            }
-        }
-    }
-
-//
 
 
     private void showPropertiesPane(TreeItem<Stages> selectedItem) throws IOException
@@ -253,7 +192,6 @@ public class EditExpController {
             treeView.setRoot(startStage);
 
             for (Object o : stages) {
-
                 if (o instanceof Vas) {
                     VasStage_VM vasStageVm = new VasStage_VM((Vas) o);
                     startStage.getChildren().add(new TreeItem<>(vasStageVm));
@@ -308,14 +246,7 @@ public class EditExpController {
         startStage.setExpanded(true);
     }
 
-    @FXML
-    void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 
-        AudibleSound_VM audibleSound_vm = new AudibleSound_VM(experiment);
-        selectAudibleSound_vm = audibleSound_vm;
-
-        addNewTreeItem(audibleSound_vm);
-    }
 
     void addNewTreeItem(Stages stages){
         TreeItem<Stages> parent = treeView.getSelectionModel().getSelectedItem();
@@ -334,6 +265,15 @@ public class EditExpController {
 
     }
     @FXML
+    void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
+
+        AudibleSound_VM audibleSound_vm = new AudibleSound_VM(experiment);
+        selectAudibleSound_vm = audibleSound_vm;
+
+        addNewTreeItem(audibleSound_vm);
+    }
+
+    @FXML
     void addConditionalStatement(ActionEvent event) {
 
         ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
@@ -344,21 +284,25 @@ public class EditExpController {
         startStage.getChildren().add(elseConditional);
 
        }
-//
+
    @FXML
     void addCourse(ActionEvent event) {
         AddCourseVM addCourseVM = new AddCourseVM(experiment);
 
         addNewTreeItem(addCourseVM);
      }
-//
+
     @FXML
     void addFoodAndTaste(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("FoodAndTaste.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Add Food and Taste");
-        TasteTest taste = addTasteVMS.get(0).getTastetest();
+
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+
+        AddTasteVM tasteTestVM = (AddTasteVM) selectedItem.getValue();
+        TasteTest taste = tasteTestVM.getModel();
         FoodAndTasteController controller = fxmlLoader.getController();
         FoodTasteVM foodTasteVM = new FoodTasteVM(taste);
         controller.setViewModel(foodTasteVM);
@@ -367,7 +311,7 @@ public class EditExpController {
 
         stage.show();
     }
-//
+
     @FXML
     void addGLMSStage(ActionEvent event) {
 
@@ -471,6 +415,66 @@ public class EditExpController {
 
 
 
+    //THREE RIGHT-SIDE BUTTONS
+    @FXML
+    void delete(ActionEvent event) throws Exception {
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null && selectedItem != startStage) {
+            TreeItem<Stages> parent = selectedItem.getParent();
+            if (parent != null) {
+                int currentIndex = parent.getChildren().indexOf(selectedItem);
+                Object curr = experiment.getStages().get(currentIndex);
+
+                parent.getChildren().remove(selectedItem);
+                experiment.getStages().remove(curr);
+
+                DataAccess.updateFile();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Cannot delete start stage");
+            }
+        }
+    }
+    @FXML
+    void down(ActionEvent event) {
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            TreeItem<Stages> parent = selectedItem.getParent();
+            if (parent != null) {
+                int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
+                    TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
+                    parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
+                    parent.getChildren().set(currentIndex, nextItem);
+
+                    Object next = experiment.getStages().get(currentIndex + 1);
+                    experiment.getStages().set(currentIndex + 1, experiment.getStages().get(currentIndex));
+                    experiment.getStages().set(currentIndex, next);
+                }
+                treeView.getSelectionModel().select(currentIndex + 1);
+            }
+        }
+    }
+
+    @FXML
+    void up(ActionEvent event) {
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            TreeItem<Stages> parent = selectedItem.getParent();
+            if (parent != null) {
+                int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
+                    TreeItem<Stages> lastItem = parent.getChildren().get(currentIndex - 1);
+                    parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
+                    parent.getChildren().set(currentIndex, lastItem);
+                    Object last = experiment.getStages().get(currentIndex - 1);
+                    experiment.getStages().set(currentIndex - 1, experiment.getStages().get(currentIndex));
+                    experiment.getStages().set(currentIndex, last);
+                }
+                treeView.getSelectionModel().select(currentIndex);
+            }
+        }
+    }
 
 
     @FXML
