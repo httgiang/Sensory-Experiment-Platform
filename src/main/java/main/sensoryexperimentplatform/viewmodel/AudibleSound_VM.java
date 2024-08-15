@@ -107,9 +107,6 @@ public class AudibleSound_VM implements Stages {
         this.assignSoundVM = assignSoundVM;
     }
 
-    public AudibleInstruction getAudibleInstruction(){
-        return audibleInstruction;
-    }
 
 
 

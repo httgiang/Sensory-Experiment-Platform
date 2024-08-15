@@ -6,7 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import main.sensoryexperimentplatform.viewmodel.AddTasteVM;
 
-public class addTasteController {
+public class AddTasteController {
 
     @FXML
     private CheckBox cbox;

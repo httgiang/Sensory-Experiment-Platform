@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.questionStageController;
+import main.sensoryexperimentplatform.controllers.QuestionStageController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Question;
 
@@ -126,7 +126,7 @@ public class QuestionStage_VM implements Stages {
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
 //               Question question = new Question("NULL","NULL","NULL",false);
-        questionStageController controller = fxmlLoader.getController();
+        QuestionStageController controller = fxmlLoader.getController();
         controller.setQuestionStage_vm(this);
     }
 

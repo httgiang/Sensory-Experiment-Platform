@@ -2,10 +2,9 @@ package main.sensoryexperimentplatform.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.viewmodel.QuestionStage_VM;
 
-public class questionStageController {
+public class QuestionStageController {
     private QuestionStage_VM viewModel;
 
     @FXML

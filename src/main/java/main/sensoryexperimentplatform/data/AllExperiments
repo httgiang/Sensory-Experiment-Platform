@@ -695,12 +695,13 @@ questionStage("ai biết gì mà hỏi","hỏi đi mà","ừm không hỏi thì 
 endExperiment()
 
 ExperimentName: test helptext
-ExperimenterName: Quỳnh Anh 
+ExperimenterName: Quỳnh Anh
 ExperimentID: 0
 Created on: 14.08.2024
 Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 vasStage("yolo","null","null","0","100","null","null","ụa ","false","false")
 glmsStage("alo","null","null","cứu bé","false")
+audio("Default Notice Stage","null","null","null","stomp")
 endExperiment()
 

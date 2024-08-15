@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.addTasteController;
+import main.sensoryexperimentplatform.controllers.AddTasteController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.TasteTest;
 
@@ -287,7 +287,7 @@ public class AddTasteVM implements Stages {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddTasteTest.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
-        addTasteController controller = fxmlLoader.getController();
+        AddTasteController controller = fxmlLoader.getController();
         btn_addFoodAndTaste.setDisable(false);
         controller.setViewModel(this);
         stack.push(this);
