@@ -73,7 +73,6 @@ public class VasStage_VM implements Stages {
         helpText.addListener((observableValue, oldValue, newValue) -> onHelpText(newValue));
         buttonText.addListener((observableValue, oldValue, newValue) -> {
             onButtonText(newValue);
-//            System.out.println(vas);
         });
 
         highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));

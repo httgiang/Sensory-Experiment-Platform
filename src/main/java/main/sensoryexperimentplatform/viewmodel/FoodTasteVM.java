@@ -1,5 +1,8 @@
 package main.sensoryexperimentplatform.viewmodel;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.ObservableList;
 import main.sensoryexperimentplatform.models.*;
 
 import java.util.ArrayList;
@@ -9,80 +12,138 @@ public class FoodTasteVM {
 
 
     //THE LISTS OF DISPLAYED OPTIONS FOR FOOD AND TASTE
-    private ArrayList<String> foodOptions;
-    private ArrayList<String> gLMSOptions;
-    private ArrayList<String> vasOptions;
+    private ListProperty<String> foodOptions;
+    private ListProperty<String> gLMSOptions;
+    private ListProperty<String> vasOptions;
 
 
 
     //THE LIST OF SELECTIONS OF USER
-    private ArrayList<String> selectedFoods;
-    private ArrayList<String> selectedVAS;
-    private ArrayList<String> selectedGLMS;
+    private ListProperty<String> selectedFoods;
+    private ListProperty<String>  selectedVAS;
+    private ListProperty<String> selectedGLMS;
 
 
     public FoodTasteVM(TasteTest tasteTest){
         this.tasteTest = tasteTest;
-        foodOptions = tasteTest.getFoodOptions();
-        gLMSOptions = tasteTest.getGLMSOptions();
-        vasOptions = tasteTest.getVasOptions();
+        foodOptions = new SimpleListProperty<>(tasteTest.getFoodOptions());
+        gLMSOptions = new SimpleListProperty<>(tasteTest.getGLMSOptions());
+        vasOptions = new SimpleListProperty<>(tasteTest.getVasOptions());
 
-        selectedFoods = tasteTest.getSelectedFoods();
-        selectedVAS = tasteTest.getSelectedVAS();
-        selectedGLMS = tasteTest.getSelectedGLMS();
+        selectedFoods = new SimpleListProperty<>(tasteTest.getSelectedFoods());
+        selectedVAS = new SimpleListProperty<>(tasteTest.getSelectedVAS());
+        selectedGLMS = new SimpleListProperty<>(tasteTest.getSelectedGLMS());
+
+        initBinding();
+    }
+    private void initBinding(){
+        foodOptions.addListener((observableValue, oldValue, newValue) -> changeFoodOptions(newValue));
+        gLMSOptions.addListener((observableValue, oldValue, newValue) -> changeGLMSOptions(newValue));
+        vasOptions.addListener((observableValue, oldValue, newValue) -> changeVASOptions(newValue));
+        selectedFoods.addListener((observableValue, oldValue, newValue) -> changeSelectedFoods(newValue));
+        selectedVAS.addListener((observableValue, oldValue, newValue) -> changeSelectedVAS(newValue));
+        selectedGLMS.addListener((observableValue, oldValue, newValue) -> changeSelectedGLMS(newValue));
     }
 
-    public ArrayList<String> getSelectedFoods() {
-        return selectedFoods;
+    private void changeVASOptions(ObservableList<String> newValue) {
+        tasteTest.setVasOptions(newValue);
     }
 
-    public ArrayList<String> getSelectedVAS() {
-        return selectedVAS;
+    private void changeGLMSOptions(ObservableList<String> newValue) {
+        tasteTest.setGLMSOptions(newValue);
     }
 
-    public ArrayList<String> getSelectedGLMS() {
-        return selectedGLMS;
+    private void changeFoodOptions(ObservableList<String> newValue) {
+        tasteTest.setFoodOptions(newValue);
     }
 
-    public ArrayList<String> getGLMSOptions() {
-        return gLMSOptions;
-    }
-    public ArrayList<String> getVASOptions() {
-        return vasOptions;
+    private void changeSelectedGLMS(ObservableList<String> newValue) {
+        tasteTest.setSelectedGLMS(newValue);
     }
 
-    public ArrayList<String> getFoodOptions() {
+    private void changeSelectedVAS(ObservableList<String> newValue) {
+        tasteTest.setSelectedVAS(newValue);
+    }
+
+    private void changeSelectedFoods(ObservableList<String> newValue) {
+        tasteTest.setSelectedFoods(newValue);
+    }
+
+    public ObservableList<String> getFoodOptions() {
+        return foodOptions.get();
+    }
+
+    public ListProperty<String> foodOptionsProperty() {
         return foodOptions;
     }
 
+    public ObservableList<String> getgLMSOptions() {
+        return gLMSOptions.get();
+    }
+
+    public ListProperty<String> gLMSOptionsProperty() {
+        return gLMSOptions;
+    }
+
+    public ObservableList<String> getVasOptions() {
+        return vasOptions.get();
+    }
+
+    public ListProperty<String> vasOptionsProperty() {
+        return vasOptions;
+    }
+
+    public ObservableList<String> getSelectedFoods() {
+        return selectedFoods.get();
+    }
+
+    public ListProperty<String> selectedFoodsProperty() {
+        return selectedFoods;
+    }
+
+    public ObservableList<String> getSelectedVAS() {
+        return selectedVAS.get();
+    }
+
+    public ListProperty<String> selectedVASProperty() {
+        return selectedVAS;
+    }
+
+    public ObservableList<String> getSelectedGLMS() {
+        return selectedGLMS.get();
+    }
+
+    public ListProperty<String> selectedGLMSProperty() {
+        return selectedGLMS;
+    }
+
+
     public void addFoodOptions(String food) {
         foodOptions.add(food);
-        tasteTest.getFoodOptions().add(food);
     }
-    public void addVASOptions(String food){vasOptions.add(food);
-        tasteTest.getVasOptions().add(food);}
-    public void addGLMSOptions(String food){gLMSOptions.add(food);
-        tasteTest.getGLMSOptions().add(food);}
+    public void addVASOptions(String vasRatings){vasOptions.add(vasRatings);}
+    public void addGLMSOptions(String gLMSRatings)
+        {gLMSOptions.add(gLMSRatings);}
 
-    public void addSelectedFoods(String food) {
-        if(!selectedFoods.contains(food)){
-            selectedFoods.add(food);
-            tasteTest.getSelectedFoods().add(food);
-        }
-
-    }
-    public void addSelectedVAS(String tasteVas){
-        if(!selectedVAS.contains(tasteVas)){
-            selectedVAS.add(tasteVas);
-            tasteTest.getSelectedVAS().add(tasteVas);
-        }
-    }
-    public void addSelectedGLMS(String tasteGLMS){
-        if(!selectedGLMS.contains(tasteGLMS)){
-            selectedGLMS.add(tasteGLMS);
-            tasteTest.getSelectedGLMS().add(tasteGLMS);
-        }
-    }
+//    public void addSelectedFoods(String food) {
+//        if(!selectedFoods.contains(food)){
+//            selectedFoods.add(food);
+//            tasteTest.getSelectedFoods().add(food);
+//        }
+//
+//    }
+//    public void addSelectedVAS(String tasteVas){
+//        if(!selectedVAS.contains(tasteVas)){
+//            selectedVAS.add(tasteVas);
+//            tasteTest.getSelectedVAS().add(tasteVas);
+//        }
+//    }
+//    public void addSelectedGLMS(String tasteGLMS){
+//        if(!selectedGLMS.contains(tasteGLMS)){
+//            selectedGLMS.add(tasteGLMS);
+//            tasteTest.getSelectedGLMS().add(tasteGLMS);
+//        }
+//    }
 
     public TasteTest getTasteTest() {
         return tasteTest;

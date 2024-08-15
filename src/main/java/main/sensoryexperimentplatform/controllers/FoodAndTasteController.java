@@ -1,9 +1,9 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.collections.FXCollections;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 import javafx.event.*;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.viewmodel.FoodTasteVM;
 
 import java.io.IOException;
@@ -32,9 +33,9 @@ public class FoodAndTasteController {
     @FXML
     private ListView<String> vasList;
 
-    private ObservableList<String> selectedFoods;
-    private ObservableList<String> selectedGLMS;
-    private ObservableList<String> selectedVAS;
+    private ListProperty<String> selectedFoods = new SimpleListProperty<>();
+    private ListProperty<String> selectedGLMS = new SimpleListProperty<>();
+    private ListProperty<String>  selectedVAS = new SimpleListProperty<>();
 
 
     private int clickOnListView = 1;
@@ -105,24 +106,16 @@ public class FoodAndTasteController {
         }
     }
 
-    private void clearAllLists(){
-        selectedFoods.clear();
-        selectedVAS.clear();
-        selectedGLMS.clear();
-        vasList.getItems().clear();
-        glmsList.getItems().clear();
-        foodsList.getItems().clear();
-    }
 
 
-    private void populateOptions(){
-        foodsList.getItems().addAll(foodTasteVM.getVASOptions());
-        glmsList.getItems().addAll(foodTasteVM.getVASOptions());
-        vasList.getItems().addAll(foodTasteVM.getVASOptions());
+    private void bindingAllLists(){
+        foodsList.itemsProperty().bindBidirectional(foodTasteVM.foodOptionsProperty());
+        glmsList.itemsProperty().bindBidirectional(foodTasteVM.gLMSOptionsProperty());
+        vasList.itemsProperty().bindBidirectional(foodTasteVM.vasOptionsProperty());
 
-        selectedVAS.addAll(foodTasteVM.getSelectedVAS());
-        selectedGLMS.addAll(foodTasteVM.getSelectedGLMS());
-        selectedFoods.addAll(foodTasteVM.getSelectedFoods());
+        selectedFoods.bindBidirectional(foodTasteVM.selectedFoodsProperty());
+        selectedVAS.bindBidirectional(foodTasteVM.selectedVASProperty());
+        selectedGLMS.bindBidirectional(foodTasteVM.selectedGLMSProperty());
     }
 
     private void initCells(){
@@ -131,11 +124,8 @@ public class FoodAndTasteController {
         vasList.setCellFactory(listView -> new Cell(selectedVAS));
     }
 
-    private void initBinding(){
-
-    }
     public void loadItems(){
-        populateOptions();
+        bindingAllLists();
 
         foodsList.setOnMouseClicked(event -> {
             clickOnListView = 1; //CLICK ON FOODS
@@ -155,9 +145,6 @@ public class FoodAndTasteController {
         xcell = new ArrayList<>();
         vascell = new ArrayList<>();
         glmscell = new ArrayList<>();
-        selectedVAS = FXCollections.observableArrayList();
-        selectedGLMS = FXCollections.observableArrayList();
-        selectedFoods = FXCollections.observableArrayList();
         loadItems();
 
     }
@@ -170,7 +157,7 @@ public class FoodAndTasteController {
             Stage stage = new Stage();
             stage.setTitle("Add Food");
             addFoodController controller = fxmlLoader.getController();
-            controller.setViewModel(foodTasteVM, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -180,9 +167,9 @@ public class FoodAndTasteController {
             FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddGLMS.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Add GLMS");
+            stage.setTitle("Add VAS");
             addGLMS controller = fxmlLoader.getController();
-            controller.setViewModel(foodTasteVM, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -194,7 +181,7 @@ public class FoodAndTasteController {
             Stage stage = new Stage();
             stage.setTitle("Add GLMS");
             addVas controller = fxmlLoader.getController();
-            controller.setViewModel(foodTasteVM, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -204,27 +191,8 @@ public class FoodAndTasteController {
     }
 
     @FXML
-    void save(ActionEvent event) {
-        for (Cell a:xcell){
-            if (a.getSelect()){
-                foodTasteVM.addSelectedFoods(a.getName());
-               // JOptionPane.showMessageDialog(null,a.getName());
-            }
-        }
-        for (Cell a: glmscell){
-
-            if (a.getSelect()){
-                foodTasteVM.addSelectedGLMS(a.getName());
-            }
-        }
-        for (Cell a: vascell){
-
-            if (a.getSelect()){
-                foodTasteVM.addSelectedVAS(a.getName());
-            }
-        }
-
-        foodTasteVM.getTasteTest().generateTasteTest();
+    void save(ActionEvent event) throws Exception {
+        DataAccess.updateFile();
 
         Stage currentStage = (Stage) btn_play.getScene().getWindow();
         currentStage.close();

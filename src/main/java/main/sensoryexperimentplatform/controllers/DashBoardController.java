@@ -239,6 +239,9 @@ public class DashBoardController {
     private void setupPagination() {
         int totalPages = (int) Math.ceil((double) dashBoard_vm.getExperiments().size() / ITEMS_PER_PAGE);
 
+        if(totalPages == 0){
+            totalPages = 1;
+        }
         pagination.setPageCount(totalPages);
         pagination.setLayoutX(dashBoardPane.getWidth() / 2.0 - pagination.getWidth() / 2.0);
 

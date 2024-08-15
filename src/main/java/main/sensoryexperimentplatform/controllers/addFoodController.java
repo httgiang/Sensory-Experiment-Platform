@@ -9,7 +9,6 @@ import main.sensoryexperimentplatform.viewmodel.FoodTasteVM;
 
 public class addFoodController {
     private FoodTasteVM viewModel;
-    private NotiForAddFood notiForAddFood;
 
 
     @FXML
@@ -30,13 +29,11 @@ public class addFoodController {
     @FXML
     void btn_save(ActionEvent event) {
         viewModel.addFoodOptions(txt_file.getText());
-        notiForAddFood.notifyObject();
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();
     }
-    public void setViewModel(FoodTasteVM viewModel, FoodAndTasteController FoodAndTasteController) {
+    public void setViewModel(FoodTasteVM viewModel) {
         this.viewModel = viewModel;
-        notiForAddFood = new NotiForAddFood(FoodAndTasteController);
 
     }
 }
