@@ -8,6 +8,8 @@ public class Input extends Stage{
     private String questionText;
     private Sound sound;
     private boolean alert;
+
+
     private String result;
 
     public Input(String title, String content) {
@@ -49,13 +51,16 @@ public class Input extends Stage{
         this.buttonText = buttonText;
     }
 
+    public String getResult() {
+        return result;
+    }
+
     public void setResult(String result) {
         this.result = result;
     }
 
-    public String getResult() {
-        return result;
-    }
+
+
 
     public String getTitle() {
         return title;
