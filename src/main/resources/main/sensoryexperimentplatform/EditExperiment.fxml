@@ -28,7 +28,7 @@
                 <Button fx:id="btn_AddQuestionStage" layoutX="25.0" layoutY="567.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#addQuestionStage" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" text="Add Question Stage" />
             </children>
         </AnchorPane>
-        <TreeView fx:id="treeView" layoutX="307.0" layoutY="21.0" maxHeight="578.0" prefHeight="574.0" prefWidth="561.0" stylesheets="@../../static/stylesheets/TreeView.css" AnchorPane.leftAnchor="307.19999999999993" AnchorPane.rightAnchor="107.39999999999998" AnchorPane.topAnchor="21.0" />
+        <TreeView fx:id="treeView" layoutX="307.0" layoutY="21.0" maxHeight="578.0" prefHeight="574.0" prefWidth="561.0" stylesheets="@../../static/stylesheets/TreeView.css" AnchorPane.bottomAnchor="77.80000000000007" AnchorPane.leftAnchor="307.19999999999993" AnchorPane.rightAnchor="107.39999999999998" AnchorPane.topAnchor="21.0" />
         <AnchorPane layoutX="896.0" layoutY="23.0" maxHeight="550.0" maxWidth="79.0" minHeight="550.0" minWidth="79.0" prefHeight="513.0" prefWidth="82.0" AnchorPane.bottomAnchor="99.60000000000002" AnchorPane.rightAnchor="0.7999999999999972">
             <children>
                 <Button fx:id="btn_up" layoutX="9.0" layoutY="169.0" mnemonicParsing="false" onAction="#up" prefHeight="54.0" prefWidth="59.0" styleClass="btn_up" text=" " AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="10.999999999999986">

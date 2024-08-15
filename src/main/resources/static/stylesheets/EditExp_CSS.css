@@ -37,28 +37,24 @@
 }
 
 .btn_up{
-    /*-fx-pref-height: 55px;*/
-    /*-fx-pref-width: 55px;*/
+
     -fx-background-image: url('/static/images/btn_up.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: cover; /* or contain depending on your preference */
+    -fx-background-size: contain; /* or contain depending on your preference */
 }
 .btn_down{
-    /*-fx-pref-height: 55;*/
-    /*-fx-pref-width: 55;*/
     -fx-background-image: url('/static/images/btn_down.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: cover; /* or contain depending on your preference */
+    -fx-background-size: contain; /* or contain depending on your preference */
 }
 .btn_cross{
-    /*-fx-pref-height: 55;*/
-    /*-fx-pref-width: 55;*/
+
     -fx-background-image: url('/static/images/cross.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: cover; /* or contain depending on your preference */
+    -fx-background-size: contain; /* or contain depending on your preference */
 }
 #btn_menu{
     -fx-pref-height: 39;
