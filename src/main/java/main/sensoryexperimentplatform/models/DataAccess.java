@@ -129,9 +129,9 @@ public class DataAccess {
         }
         if( subO instanceof Input){
             writer.append(uid).append(",").append("input ,")
-                    .append(((Question) subO).getResult())
+                    .append(((Input) subO).getResult())
                     .append(",")
-                    .append(((Question) subO).getQuestion());
+                    .append(((Input) subO).getQuestionText());
             writer.append("\n");
         }
 

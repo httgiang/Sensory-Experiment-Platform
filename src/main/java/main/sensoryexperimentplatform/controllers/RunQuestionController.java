@@ -67,8 +67,8 @@ public class RunQuestionController {
         });
 
         // Attach event handlers to buttons
-        btn_left.setOnAction(event -> handleButtonClick(viewModel.leftButtonValueProperty().get()));
-        btn_right.setOnAction(event -> handleButtonClick(viewModel.rightButtonValueProperty().get()));
+        btn_left.setOnMouseClicked(event -> handleButtonClick(viewModel.leftButtonValueProperty().get()));
+        btn_right.setOnMouseClicked(event -> handleButtonClick(viewModel.rightButtonValueProperty().get()));
 
     }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
@@ -86,7 +86,6 @@ public class RunQuestionController {
 
     private void handleButtonClick(String buttonIdentifier) {
         viewModel.setResult(buttonIdentifier);
-
     }
 
 }

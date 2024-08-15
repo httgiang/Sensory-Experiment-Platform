@@ -9,15 +9,6 @@ public class Question extends Stage {
     private String rightButtonValue;
     private boolean alert;
     private Sound sound;
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
     private String result;
 
     public Question(String title, String content) {
@@ -113,6 +104,14 @@ public class Question extends Stage {
 
     public void setRightButtonValue(String rightButtonValue) {
         this.rightButtonValue = rightButtonValue;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public void playSound(){

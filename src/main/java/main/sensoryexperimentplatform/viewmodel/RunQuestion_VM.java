@@ -23,6 +23,7 @@ public class RunQuestion_VM {
         playAlert = new SimpleBooleanProperty(question.isAlert());
         leftButtonValue = new SimpleStringProperty(question.getLeftButtonValue());
         rightButtonValue = new SimpleStringProperty(question.getRightButtonValue());
+        result = new SimpleStringProperty(question.getResult());
     }
 
     public StringProperty questionTextProperty() {
@@ -38,17 +39,14 @@ public class RunQuestion_VM {
     public StringProperty rightButtonValueProperty() {
         return rightButtonValue;
     }
+    public StringProperty resultProperty() {
+        return result;
+    }
 
     public void setResult(String result) {
         question.setResult(result);
     }
 
-    public String getLeftButtonValue(){
-        return leftButtonValue.get();
-    }
-    public String getRightButtonValue(){
-        return rightButtonValue.get();
-    }
 
     public StringProperty rightButtonTextProperty() {
         return rightButtonText;
