@@ -31,6 +31,7 @@ public class RunGLMS_VM {
     public void setDate(){
         stage.setConducted(DataAccess.getCurrentFormattedTime());
     }
+
     public void setResult(int result){
         stage.setResult(result);
     }

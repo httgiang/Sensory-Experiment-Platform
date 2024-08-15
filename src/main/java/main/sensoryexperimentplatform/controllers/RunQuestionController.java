@@ -66,6 +66,10 @@ public class RunQuestionController {
             }
         });
 
+        // Attach event handlers to buttons
+        btn_left.setOnAction(event -> handleButtonClick(viewModel.leftButtonValueProperty().get()));
+        btn_right.setOnAction(event -> handleButtonClick(viewModel.rightButtonValueProperty().get()));
+
     }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
         // Get the bounds of the ImageView
@@ -78,6 +82,11 @@ public class RunQuestionController {
         txt_question.textProperty().bindBidirectional(viewModel.questionTextProperty());
         btn_left.textProperty().bindBidirectional(viewModel.leftButtonTextProperty());
         btn_right.textProperty().bindBidirectional(viewModel.rightButtonTextProperty());
+    }
+
+    private void handleButtonClick(String buttonIdentifier) {
+        viewModel.setResult(buttonIdentifier);
+
     }
 
 }

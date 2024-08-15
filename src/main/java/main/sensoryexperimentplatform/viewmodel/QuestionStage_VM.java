@@ -34,8 +34,8 @@ public class QuestionStage_VM implements Stages {
         this.question = new SimpleStringProperty(questionStage.getQuestion());
         this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
         this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
-        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
-        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonValue());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
         experiment.addQuestion(questionStage);
@@ -45,8 +45,8 @@ public class QuestionStage_VM implements Stages {
         this.question = new SimpleStringProperty(questionStage.getQuestion());
         this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
         this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
-        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
-        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonValue());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
 
@@ -111,9 +111,9 @@ public class QuestionStage_VM implements Stages {
     }
     public void setRightText(String newValue) {questionStage.setRightButtonText(newValue);
     }
-    public void setLeftValue(String newValue) {questionStage.setLeftButtonText(newValue);
+    public void setLeftValue(String newValue) {questionStage.setLeftButtonValue(newValue);
     }
-    public void setRightValue(String newValue) {questionStage.setRightButtonText(newValue);
+    public void setRightValue(String newValue) {questionStage.setRightButtonValue(newValue);
     }
 
     public Question getQuestionStage(){

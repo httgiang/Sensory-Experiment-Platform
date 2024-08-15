@@ -683,25 +683,12 @@ endRatingsContainer()
 wait("3","Please Wait","true")
 endExperiment()
 
-ExperimentName: null
-ExperimenterName: qanh
+ExperimentName: d
+ExperimenterName: ali
 ExperimentID: 0
-Created on: 12.08.2024
-Version: 2
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-inputStage("gì vại tr đất ơi","button ne","help text ne ","true")
-inputStage("thêm gì dô đại đại ","null","null","false")
-questionStage("ai biết gì mà hỏi","hỏi đi mà","ừm không hỏi thì thôi","null","null","null","true")
-endExperiment()
-
-ExperimentName: test helptext
-ExperimenterName: Quỳnh Anh
-ExperimentID: 0
-Created on: 14.08.2024
-Version: 1
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-vasStage("yolo","null","null","0","100","null","null","ụa ","false","false")
-glmsStage("alo","null","null","cứu bé","false")
-audio("Default Notice Stage","null","null","null","stomp")
+Created on: 15.08.2024
+Version: 4
+startExperiment("qanh","","null")
+questionStage("Question ","alo","ola","alo","aloha","null","true")
 endExperiment()
 
