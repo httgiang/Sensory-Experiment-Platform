@@ -108,11 +108,6 @@ public class AudibleSound_VM implements Stages {
     }
 
 
-
-
-
-
-
     @Override
     public void loadInterface(AnchorPane anchorPane,Stack<AddTasteVM> stack, Stack <AddCourseVM> add) throws IOException {
 

@@ -127,6 +127,13 @@ public class DataAccess {
                     .append(((Question) subO).getQuestion());
             writer.append("\n");
         }
+        if( subO instanceof Input){
+            writer.append(uid).append(",").append("input ,")
+                    .append(((Question) subO).getResult())
+                    .append(",")
+                    .append(((Question) subO).getQuestion());
+            writer.append("\n");
+        }
 
     }
     public static int countingResults(Experiment experiment){
