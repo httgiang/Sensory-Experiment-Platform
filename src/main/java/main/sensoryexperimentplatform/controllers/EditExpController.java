@@ -166,12 +166,12 @@ public class EditExpController {
         propertiesPane.setVisible(true);
         treeView.setMaxHeight(311);
 
-        stages.loadInterface(propertiesPane, addTasteVMS, addCourseVMS);
-        stages.handleMenuButtons(propertiesPane, addTasteVMS, addCourseVMS, btn_AddPeriodicStage, btn_AddCourse, btn_assignSound,
+        stages.loadInterface(propertiesPane);
+        stages.handleMenuButtons(btn_AddPeriodicStage, btn_AddCourse, btn_assignSound,
                 btn_addFoodAndTaste, btn_addAudibleInstruction
                 , btn_addInput, btn_noticeStage,
                 btn_addTimer, btn_AddQuestionStage,
-                btn_addRatingContainer, btn_addTasteTest, btn_AddConditionalStatement, rating
+                btn_addRatingContainer, btn_addTasteTest, btn_AddConditionalStatement
         );
 
 
@@ -314,15 +314,13 @@ public class EditExpController {
 
     @FXML
     void addGLMSStage(ActionEvent event) {
-
         GLMSStage_VM glmsStage_VM;
-        if (!rating.isEmpty()){
-            glmsStage_VM = new  GLMSStage_VM(rating.get(0));
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem == ratingContainerItems){
+            glmsStage_VM = new GLMSStage_VM((RatingContainer_VM) ratingContainerItems.getValue());
+        } else {
+            glmsStage_VM = new GLMSStage_VM(experiment);
         }
-        else {
-            glmsStage_VM = new  GLMSStage_VM(experiment);
-        }
-
         addNewTreeItem(glmsStage_VM);
     }
 
@@ -342,11 +340,11 @@ public class EditExpController {
 
     @FXML
     void addPeriodicStage(ActionEvent event) {
-        Course course = addCourseVMS.get(0).getCourse();
-        //PeriodicVM periodicVM = new PeriodicVM();
-        PeriodicVM periodicVM = new PeriodicVM(course);
-     
-        addNewTreeItem(periodicVM);
+//        Course course = addCourseVMS.get(0).getCourse();
+//        //PeriodicVM periodicVM = new PeriodicVM();
+//        PeriodicVM periodicVM = new PeriodicVM(course);
+//
+//        addNewTreeItem(periodicVM);
       }
 
     @FXML
@@ -377,11 +375,11 @@ public class EditExpController {
 
    @FXML
    void addVasStage(ActionEvent event) {
-        VasStage_VM vasStageVm ;
-        if (!rating.isEmpty()){
-            vasStageVm =  new VasStage_VM(rating.get(0));
-        }
-        else {
+        VasStage_VM vasStageVm;
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem == ratingContainerItems){
+            vasStageVm = new VasStage_VM((RatingContainer_VM) ratingContainerItems.getValue());
+        } else {
             vasStageVm = new VasStage_VM(experiment);
         }
         addNewTreeItem(vasStageVm);

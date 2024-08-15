@@ -84,7 +84,7 @@ public class TimerStage_VM implements Stages {
     }
 
     @Override
-    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("TimerStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -93,7 +93,7 @@ public class TimerStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
 
     }
 

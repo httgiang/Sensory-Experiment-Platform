@@ -155,6 +155,7 @@ public class Experiment {
 
     public void addNewTasteTest(TasteTest tasteTest){
         stages.add(tasteTest);
+        tasteTest.generateTasteTest();
     }
     // Audible instruction stage
     public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName) {

@@ -151,7 +151,6 @@ public class TasteTest{
             String consumptionInst = convertConsumptionInstruction(food);
             Notice subNotice = new Notice("Taste Test",consumptionInst, initialNotice.getButtonText(), "",false);
             stages.add(subNotice);
-           //Food currFood = new Food(food, isRandomizedRatings, isRandomizedRatings, timeWait);
             for(String taste : selectedVAS){
                 Vas vas = getVas(food, taste);
                 stages.add(vas);
@@ -195,41 +194,6 @@ public class TasteTest{
                 sampleVas.getContent(),sampleVas.getHelpText(), sampleVas.getIsSwap(), sampleVas.getAlert());
     }
 
-
-    public String serializeSelectedFoods(StringBuilder builder){
-        builder.append("{");
-        for (int i = 0; i < selectedFoods.size(); i++) {
-            if(i < selectedFoods.size() - 1){
-                builder.append(selectedFoods.get(i)).append(",");
-            } else {
-                builder.append(selectedFoods.get(i)).append("}").append("\",\"");
-            }
-        }
-        return builder.toString();
-    }
-    public String serializeSelectedVAS(StringBuilder builder){
-        builder.append("{");
-        for (int i = 0; i < selectedVAS.size(); i++) {
-            if(i < selectedVAS.size() - 1){
-                builder.append(selectedVAS.get(i)).append(",");
-            } else {
-                builder.append(selectedVAS.get(i)).append("}").append("\",\"");
-            }
-        }
-        return builder.toString();
-    }
-
-    public String serializeSelectedGLMS(StringBuilder builder){
-        builder.append("{");
-        for (int i = 0; i < selectedGLMS.size(); i++) {
-            if(i < selectedGLMS.size() - 1){
-                builder.append(selectedGLMS.get(i)).append(",");
-            } else {
-                builder.append(selectedGLMS.get(i)).append("}").append("\",\"");
-            }
-        }
-        return builder.toString();
-    }
     public String serializeTasteTest(StringBuilder builder) {
 
         // Serialize the basic information of the TasteTest
@@ -263,10 +227,6 @@ public class TasteTest{
     }
     @Override
     public String toString(){
-//        tasteTest("Please call your experimenter for the soup","How <taste> is the <food>","Please take a mouthful of the soup\, count to 5 and then swallow","That completes the tasting","Not at all","The most I have ever tasted","Rating Completed","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel." +
-//                " ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__",
-//                "0","100","False","False","True","0","False",
-//                "{Soup}","{filling,Pleasant,Salty,Savoury,Strong,Sweet}","{}","{}")
 
         StringBuilder builder = new StringBuilder();
         return serializeTasteTest(builder);

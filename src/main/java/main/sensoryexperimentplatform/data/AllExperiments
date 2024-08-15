@@ -147,8 +147,18 @@ ExperimentName: TTDEMO
 ExperimenterName: Giang
 ExperimentID: 0
 Created on: 15.08.2024
-Version: 2
+Version: 4
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","null","null","0","100","false","true","true","1","true","{Strong,Strong,Sweet,Sweet,Novel,Novel,Pleasant,Pleasant,Savoury,Savoury,Spicy,Spicy,Strong,Strong,Sweet,Sweet}","{Strong,Sweet,Savoury,Sour,Pleasant,Pleasant,Salty,Salty,Salty,Salty,Sour,Sour,Spicy,Spicy}","{Strong,Sweet,Savoury,Sour}")
+ratingsContainer("false","0")
+vasStage("User input","null","null","0","100","null","null","null","false","false")
+glmsStage("User Input","null","null","null","false")
+endRatingsContainer()
+ratingsContainer("false","0")
+glmsStage("User Input","null","null","null","false")
+glmsStage("User Input","null","null","null","false")
+glmsStage("User Input","null","null","null","false")
+glmsStage("User Input","null","null","null","false")
+endRatingsContainer()
 endExperiment()
 
