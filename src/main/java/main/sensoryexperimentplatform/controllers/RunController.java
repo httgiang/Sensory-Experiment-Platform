@@ -57,7 +57,7 @@ public class RunController {
         this.experiment = experiment;
         this.uid = uId;
         loadItems();
-        startTimer();
+      //  startTimer();
         bindViewModel();
     }
 
