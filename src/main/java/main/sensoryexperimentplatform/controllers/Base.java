@@ -91,7 +91,7 @@ public class Base implements Initializable {
     @FXML
     void importExperiment() throws Exception {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
+//        fileChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SIPM Files", "*.sipm")); // Accept all file types
         List<File> files = fileChooser.showOpenMultipleDialog(null);
 
@@ -107,7 +107,7 @@ public class Base implements Initializable {
     @FXML
     void exportExperiment(){
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
+//        fileChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SIPM Files", "*.sipm"));
 
         File file = fileChooser.showSaveDialog(null);

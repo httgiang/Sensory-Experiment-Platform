@@ -93,7 +93,11 @@ public class TimerStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+    public void handleMenuButtons(Button button1, Button button2, Button button3,
+                                  Button button4, Button button5, Button button6,
+                                  Button button7, Button button8, Button button9,
+                                  Button button10, Button button11, Button button12)
+            throws IOException {
         button1.setDisable(true);
         button3.setDisable(true);
         button4.setDisable(true);

@@ -294,7 +294,7 @@ public class AddTasteVM implements Stages {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddTasteTest.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
-        addTasteController controller = fxmlLoader.getController();
+        AddTasteController controller = fxmlLoader.getController();
         controller.setViewModel(this);
     }
 
