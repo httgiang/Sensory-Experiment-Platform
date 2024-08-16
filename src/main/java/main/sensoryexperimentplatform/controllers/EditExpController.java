@@ -12,6 +12,7 @@ import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.models.Timer;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.utilz.PopUpType.*;
 import main.sensoryexperimentplatform.viewmodel.NoticeStage_VM;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
@@ -23,6 +24,8 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
+
+import static main.sensoryexperimentplatform.utilz.PopUpType.*;
 
 public class EditExpController {
     @FXML
@@ -65,7 +68,6 @@ public class EditExpController {
 
     @FXML
     private AnchorPane propertiesPane;
-    private Stack<RatingContainer_VM> rating;
     @FXML
     private TreeView<Stages> treeView;
 
@@ -79,8 +81,6 @@ public class EditExpController {
     private TreeItem<Stages> ifConditional;
     private TreeItem<Stages> elseConditional;
 
-    private Stack<AddTasteVM> addTasteVMS;
-    private Stack<AddCourseVM> addCourseVMS;
     private AudibleSound_VM selectAudibleSound_vm;
     private Experiment originalExperiment;
     private Experiment experiment;
@@ -88,9 +88,8 @@ public class EditExpController {
 
 
     public void initialize() {
-        initializeStack();
 
-        initialDisablingButtons();
+      //  initialDisablingButtons();
 
         setUpTreeViewListener();
 
@@ -103,8 +102,6 @@ public class EditExpController {
             if (newValue != null && newValue != oldValue) {
 
                 try {
-                    addTasteVMS.clear();
-                    addCourseVMS.clear();
                     btn_addFoodAndTaste.setDisable(true);
                     showPropertiesPane(newValue);
                 } catch (Exception e) {
@@ -115,11 +112,6 @@ public class EditExpController {
 
     }
 
-    private void initializeStack(){
-        rating = new Stack<>();
-        addTasteVMS = new Stack<>();
-        addCourseVMS = new Stack<>();
-    }
     private void initialDisablingButtons() {
         btn_assignSound.setDisable(true);
         btn_AddPeriodicStage.setDisable(true);
@@ -421,25 +413,28 @@ public class EditExpController {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if (currentIndex == 0) {
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete start stage", experiment);
+                    return;
+                }
                 Object curr = experiment.getStages().get(currentIndex);
-
                 parent.getChildren().remove(selectedItem);
                 experiment.getStages().remove(curr);
-
                 DataAccess.updateFile();
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Cannot delete start stage");
             }
         }
     }
     @FXML
-    void down(ActionEvent event) {
+    void down(ActionEvent event) throws IOException {
         TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<Stages> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if(currentIndex == parent.getChildren().size() - 1){
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
+                    return;
+                }
                 if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
                     TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
                     parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
@@ -455,7 +450,7 @@ public class EditExpController {
     }
 
     @FXML
-    void up(ActionEvent event) {
+    void up(ActionEvent event) throws IOException {
         TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<Stages> parent = selectedItem.getParent();
@@ -470,6 +465,8 @@ public class EditExpController {
                     experiment.getStages().set(currentIndex, last);
                 }
                 treeView.getSelectionModel().select(currentIndex);
+            } else {
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
             }
         }
     }
@@ -479,6 +476,8 @@ public class EditExpController {
     void save(ActionEvent event) throws Exception {
         DataAccess.updateFile();
         this.experiment.version++;
+
+        PopUpVM popUpSuccess = new PopUpVM(SUCCESS, "You successfully saved the experiment!", experiment);
     }
 
     @FXML

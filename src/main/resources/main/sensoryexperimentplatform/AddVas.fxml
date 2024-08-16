@@ -11,7 +11,7 @@
             <children>
                 <Label fx:id="FileLabel" layoutX="22.0" layoutY="48.0" text="Please type the name of the new taste below" />
                 <TextField fx:id="txt_file" layoutX="29.0" layoutY="91.0" prefHeight="30.0" prefWidth="445.0" />
-                <Label fx:id="ImportSoundLabel" layoutX="22.0" layoutY="14.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Add Food" />
+                <Label fx:id="ImportSoundLabel" layoutX="22.0" layoutY="14.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Add VAS ratings" />
                 <Button fx:id="btn_save" layoutX="245.0" layoutY="140.0" mnemonicParsing="false" onAction="#btn_save" prefHeight="33.0" prefWidth="90.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Save" />
                 <Button fx:id="btn_cancel" layoutX="363.0" layoutY="140.0" mnemonicParsing="false" onAction="#btn_cancel" prefHeight="35.0" prefWidth="110.0" stylesheets="@/static/stylesheets/AddSound_CSS.css" text="Cancel" />
             </children>

@@ -18,14 +18,12 @@ public class AddTasteVM implements Stages {
     private StringProperty txt_initialNotice;
     private StringProperty txt_consumptionInst;
     private StringProperty txt_question;
-    private StringProperty txt_inital;
     private StringProperty txt_help;
     private StringProperty txt_endInstruction;
     private StringProperty txt_timetowait;
     private  BooleanProperty checkbox_randomfood;
     private  BooleanProperty checkbox_randomrate;
     private  BooleanProperty checkbox_playalert;
-    private StringProperty txt_howtaste;
 
     private StringProperty txt_lowanchortext;
     private StringProperty txt_highanchortext;
@@ -183,9 +181,6 @@ public class AddTasteVM implements Stages {
         return txt_question;
     }
 
-    public String getTxt_inital() {
-        return txt_inital.get();
-    }
 
 
     public String getTxt_help() {
@@ -236,13 +231,7 @@ public class AddTasteVM implements Stages {
         return checkbox_playalert;
     }
 
-    public String getTxt_howtaste() {
-        return txt_howtaste.get();
-    }
 
-    public StringProperty txt_howtasteProperty() {
-        return txt_howtaste;
-    }
 
     public String getTxt_lowanchortext() {
         return txt_lowanchortext.get();

@@ -1,19 +1,32 @@
 .anchor-pane{
-
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 16px;
-    -fx-border-width: 2px;
-    -fx-border-color: #000000;
-    -fx-box-shadow: inset 0px -20px 0px rgba(0, 0, 0, 0.25);
-    -fx-border-radius: 14px;
+    -fx-background-color: #F0F0F0;
+    /*-fx-background-radius: 16px;*/
+    /*-fx-border-width: 2px;*/
+    /*-fx-border-color: #000000;*/
+    /*-fx-box-shadow: inset 0px -20px 0px rgba(0, 0, 0, 0.25);*/
+    /*-fx-border-radius: 14px;*/
 
 }
+.label{
+    -fx-position: absolute;
+    -fx-font-family: 'Montserrat';
+    -fx-font-style: normal;
+    -fx-font-weight: 500;
+    -fx-font-size: 20px;
+    -fx-line-height: 29px;
+    -fx-text-alignment: center;
+    -fx-tile-alignment: center;
+    -fx-alignment: center;
+
+    -fx-text-fill: #000000;
+}
+
 #labelDelPrompt{
 
 
     -fx-font-family: 'Ubuntu';
     -fx-font-style: normal;
-    -fx-font-weight: 400;
+    -fx-font-weight: 700;
     -fx-font-size: 24px;
     -fx-line-height: 28px;
     /* identical to box height */
@@ -46,7 +59,8 @@
 
 }
 .button:hover{
-    -fx-background-color: #D5E9EA;
+    -fx-background-color: #397E82;
+    -fx-text-fill: #F0F0F0;
 }
 
 .button:selected{
@@ -119,18 +133,15 @@
 }
 
 #labelError{
-    /* Error Message */
-
-    -fx-position: absolute;
     -fx-max-width: 354px;
     -fx-max-height: 59px;
     -fx-left: 248px;
     -fx-top: 289px;
 
-    -fx-font-family: 'Montserrat';
+    -fx-font-family: Montserrat;
     -fx-font-style: normal;
-    -fx-font-weight: 600;
-    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-font-size: 45px;
     -fx-line-height: 59px;
     /* identical to box height */
 
@@ -139,10 +150,10 @@
 #lbl_goodjob{
     -fx-text-fill: #000;
     -fx-font-family: Montserrat;
-    -fx-font-size: 48px;
+    -fx-font-size: 45px;
+    -fx-line-height: 59px;
     -fx-font-style: normal;
     -fx-font-weight: bold;
-    -fx-line-height: normal;
 }
 #lbl_username{
     -fx-text-fill: #397E82;
