@@ -9,7 +9,7 @@
     <graphic>
         <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../static/images/btn_export.png" />
+                <Image url="@../../static/images/viewResultsbutton.png" />
             </image>
         </ImageView>
     </graphic>

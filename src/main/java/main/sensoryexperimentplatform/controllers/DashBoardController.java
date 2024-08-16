@@ -100,10 +100,16 @@ public class DashBoardController {
         contentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, selectedExperiment) -> {
             this.selectedExperiment = selectedExperiment;
         });
+
+        initButtonsInTable();
+
+
+    }
+    private void initButtonsInTable(){
         Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>> cellFactory = new Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>>() {
             @Override
             public TableCell<Experiment, String> call(final TableColumn<Experiment, String> param) {
-                 TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
+                TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
                     @Override
                     public void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
@@ -128,26 +134,26 @@ public class DashBoardController {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                            run.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            +"-fx-background-color: transparent"
-                            );
-                            edit.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            + "-fx-background-color: transparent"
-                            );
-                            delete.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            + "-fx-background-color: transparent"
-                            );
-                            result.setStyle(
-                                    " -fx-cursor: hand ;"
-                                    + "-glyph-size:28px;"
-                                    + "-fx-background-color: transparent"
-                            );
+//                            run.setStyle(
+//                                    " -fx-cursor: hand ;"
+//                                            + "-glyph-size:28px;"
+//                                            +"-fx-background-color: transparent"
+//                            );
+//                            edit.setStyle(
+//                                    " -fx-cursor: hand ;"
+//                                            + "-glyph-size:28px;"
+//                                            + "-fx-background-color: transparent"
+//                            );
+//                            delete.setStyle(
+//                                    " -fx-cursor: hand ;"
+//                                            + "-glyph-size:28px;"
+//                                            + "-fx-background-color: transparent"
+//                            );
+//                            result.setStyle(
+//                                    " -fx-cursor: hand ;"
+//                                    + "-glyph-size:28px;"
+//                                    + "-fx-background-color: transparent"
+//                            );
                             result.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try{
@@ -216,13 +222,6 @@ public class DashBoardController {
             }
         };
         lbl_Option.setCellFactory(cellFactory);
-
-
-        // Bind the TableView items to the ViewModel items
-       // System.out.println(dashBoard_vm.getExperiments().size());
-      //contentTable.setItems(dashBoard_vm.getExperiments());
-     //   setupPagination();
-
     }
     private void setupPaginationListener() {
         dashBoard_vm.experimentsProperty().addListener((ListChangeListener<Experiment>) change -> {
@@ -254,6 +253,7 @@ public class DashBoardController {
             );
             contentTable.setItems(itemsForPage);
         }
+        initButtonsInTable();
 
         return contentTable;
     }
