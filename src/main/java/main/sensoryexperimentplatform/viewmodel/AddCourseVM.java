@@ -19,24 +19,34 @@ public class AddCourseVM implements Stages {
     private StringProperty  txt_help;
     private StringProperty txt_quantity;
     private StringProperty  txt_refill;
-
+    private StringProperty txt_duration;
+    private StringProperty txt_endStatement;
     private StringProperty txt_title;
     private Experiment experiment;
     private Course course;
 
-    public AddCourseVM( Experiment experiment){
+    public AddCourseVM(Experiment experiment){
         this.experiment = experiment;
-        this.course = new Course("Start Eating Stage","User Input","User Input",0,0,0, "User Input", "User Input" );
-        txt_button = new SimpleStringProperty(course.getButtonText());
-        txt_help = new SimpleStringProperty(course.getHelpText());
-        txt_quantity = new SimpleStringProperty(String.valueOf(course.getQuantity()));
-        txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
+        this.course = new Course("Start eating stage","Please contact experimenter","Finished",0,0,0,
+                "Please remember while eating:\\" +
+                        "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
+                        "\\Please also do not lean on the placemat.\\" +
+                        "Click on Meal Finished ONLY when you are sure you have had enough food.",
+                "Stop eating stage" );
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
+        txt_button = new SimpleStringProperty(course.getButtonText());
+        txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
+        txt_quantity = new SimpleStringProperty(String.valueOf(course.getQuantity()));
+        txt_duration = new SimpleStringProperty(String.valueOf(course.getDuration()));
+        txt_help = new SimpleStringProperty(course.getHelpText());
+        txt_endStatement = new SimpleStringProperty(course.getEndStatement());
+
+
         txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelpTextChange(newValue));
-        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(newValue));
-        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(newValue));
+        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(Integer.parseInt(newValue)));
+        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
         //txt_help = new SimpleStringProperty(model.getHelp)
@@ -51,13 +61,15 @@ public class AddCourseVM implements Stages {
         txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
+
         txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelpTextChange(newValue));
-        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(newValue));
-        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(newValue));
+        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(Integer.parseInt(newValue)));
+        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
         //txt_help = new SimpleStringProperty(model.getHelp)
+
         if(experiment != null){
             experiment.addCourse(course);
         }
@@ -129,12 +141,12 @@ public class AddCourseVM implements Stages {
         course.setTitle(newValue);
     }
 
-    private void onRefillTextChange(String newValue) {
-        course.setRefillWeight(Integer.parseInt(newValue));
+    private void onRefillTextChange(int newValue) {
+        course.setRefillWeight(newValue);
     }
 
-    private void onQuantityChange(String newValue) {
-        course.setQuantity(Integer.parseInt(newValue));
+    private void onQuantityChange(int newValue) {
+        course.setQuantity(newValue);
     }
 
     private void onHelpTextChange(String newValue) {

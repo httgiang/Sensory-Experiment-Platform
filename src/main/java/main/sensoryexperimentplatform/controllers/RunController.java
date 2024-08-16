@@ -50,6 +50,7 @@ public class RunController {
         this.viewModel = viewModel;
         this.experiment = viewModel.getExperiment();
         this.uid = viewModel.getUid();
+        System.out.println(experiment.getStages());
         //viewModel.getFileName()+"_"+DataAccess.getCurrentFormattedTime();
         startTimer();
         bindViewModel();
@@ -297,15 +298,21 @@ public class RunController {
                     btn_Next.textProperty().bind(vm.buttonProperty());
 
                 }
-//                else if (currentIndex == viewModel.count - 1) {
-//                    btn_Next.setOnAction(event -> {
-//                        try {
-//                            handleFinalNext();
-//                        } catch (IOException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    });
-//                }
+                else if (selectedObject instanceof Course) {
+                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunCourse.fxml"));
+                    AnchorPane newContent = loader.load();
+                    AnchorPane.setTopAnchor(newContent, 0.0);
+                    AnchorPane.setBottomAnchor(newContent, 0.0);
+                    AnchorPane.setLeftAnchor(newContent, 0.0);
+                    AnchorPane.setRightAnchor(newContent, 0.0);
+                    content.getChildren().setAll(newContent);
+
+                    RunCourseController controller = loader.getController();
+                    RunCourseVM viewModel = new RunCourseVM((Course) selectedObject);
+                    controller.setViewModel(viewModel);
+                    btn_Next.textProperty().bind(viewModel.buttonProperty());
+
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -313,7 +320,6 @@ public class RunController {
     }
     private void handleFinalNext() throws IOException {
         stopTimer();
-//        DataAccess.quickSave(experiment, uid);
         autoClose();
     }
 

@@ -69,6 +69,8 @@ public class RunExperiment_VM {
                         temp = "Start";
                     else if (o instanceof Input)
                         temp = "inputStage";
+                    else if (o instanceof Course)
+                        temp = "courseStage";
 
                     String key = index + " " + temp;
                     objectsMap.put(key, o);

@@ -240,6 +240,7 @@ public class EditExpController {
 
     private void loadItems() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         ArrayList<Object> stages = experiment.getStages();
+        System.out.println(stages);
 
         if (experiment.getStages().isEmpty()) {
             Stages startVM = new StartVM(experiment);
@@ -302,7 +303,6 @@ public class EditExpController {
                     QuestionStage_VM questionStage_vm = new QuestionStage_VM((Question) o);
                     startStage.getChildren().add(new TreeItem<>(questionStage_vm));
                 }
-
             }
         }
         startStage.setExpanded(true);
@@ -348,7 +348,6 @@ public class EditExpController {
    @FXML
     void addCourse(ActionEvent event) {
         AddCourseVM addCourseVM = new AddCourseVM(experiment);
-
         addNewTreeItem(addCourseVM);
      }
 //

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="javafx_demo1">
+    <output-path>$PROJECT_DIR$/out/artifacts/javafx_demo1</output-path>
+    <root id="root">
+      <element id="archive" name="Sensory_Expeirment_Platform.jar">
+        <element id="module-output" name="Sensory-Expeirment-Platform" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -55,7 +55,7 @@ public class DashBoardController {
     private TableColumn<Experiment, String> lbl_iD;
 
     @FXML
-    private TableColumn<Experiment, String> lbl_result;
+    private TableColumn<Experiment, Integer> lbl_result;
     @FXML
     private TableColumn<Experiment, String> lbl_createDate;
 
@@ -85,8 +85,8 @@ public class DashBoardController {
         lbl_experimentName.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.25)); // 20% of table width
         lbl_currentVersion.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 12.5% of table width
         lbl_result.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 10% of table width
-        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 20% of table width
-        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.20)); // 25% of table width
+        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.12)); // 20% of table width
+        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.18)); // 25% of table width
     }
 
 

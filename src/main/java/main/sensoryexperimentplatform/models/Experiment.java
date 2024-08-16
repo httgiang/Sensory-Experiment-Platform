@@ -84,6 +84,10 @@ public class Experiment {
                 Input input = new Input((Input) o);
                 stages.add(input);
             }
+            else if (o instanceof Course){
+                Course course = new Course((Course) o);
+                stages.add(course);
+            }
         }
     }
 
@@ -167,17 +171,13 @@ public class Experiment {
         AudibleInstruction temp = new AudibleInstruction(title, content, buttonText, helpText,soundName);
         stages.add(temp);
     }
-
-    //start eating stage
-    public void addCourse(String title, String content, String buttonText,
-                          int weight, int quantity,long duration,
-                          String helpText, String endState){
-
-        Course stage = new Course(title,content,buttonText,
-                weight,duration,quantity,helpText,endState);
-    }
     public void addCourse (Course course){
         stages.add(course);
+    }
+    public void addCourseStage(String title, String content,String buttonText, int refillWeight,
+                               int duration, int quantity, String helpText,String endStatement){
+        Course temp = new Course(title,content,buttonText,refillWeight,duration,quantity,helpText,endStatement);
+        stages.add(temp);
     }
     public void addQuestion (Question question){
         stages.add(question);
@@ -275,6 +275,7 @@ public class Experiment {
     public String stagesToString(){
         StringBuilder sb = new StringBuilder();
         for(Object o : stages){
+            System.out.println(o.toString());
             sb.append(o.toString()).append("\n");
         }
         return sb.toString();
