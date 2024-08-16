@@ -134,26 +134,6 @@ public class DashBoardController {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-//                            run.setStyle(
-//                                    " -fx-cursor: hand ;"
-//                                            + "-glyph-size:28px;"
-//                                            +"-fx-background-color: transparent"
-//                            );
-//                            edit.setStyle(
-//                                    " -fx-cursor: hand ;"
-//                                            + "-glyph-size:28px;"
-//                                            + "-fx-background-color: transparent"
-//                            );
-//                            delete.setStyle(
-//                                    " -fx-cursor: hand ;"
-//                                            + "-glyph-size:28px;"
-//                                            + "-fx-background-color: transparent"
-//                            );
-//                            result.setStyle(
-//                                    " -fx-cursor: hand ;"
-//                                    + "-glyph-size:28px;"
-//                                    + "-fx-background-color: transparent"
-//                            );
                             result.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try{

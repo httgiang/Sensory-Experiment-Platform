@@ -141,7 +141,7 @@
     -fx-font-family: Montserrat;
     -fx-font-style: normal;
     -fx-font-weight: bold;
-    -fx-font-size: 45px;
+    -fx-font-size: 40px;
     -fx-line-height: 59px;
     /* identical to box height */
 
@@ -150,7 +150,7 @@
 #lbl_goodjob{
     -fx-text-fill: #000;
     -fx-font-family: Montserrat;
-    -fx-font-size: 45px;
+    -fx-font-size: 40px;
     -fx-line-height: 59px;
     -fx-font-style: normal;
     -fx-font-weight: bold;
