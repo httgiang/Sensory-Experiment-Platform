@@ -155,7 +155,19 @@ public class GLMSStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
 
     }
 

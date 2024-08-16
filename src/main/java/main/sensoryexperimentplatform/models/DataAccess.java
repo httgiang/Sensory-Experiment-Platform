@@ -159,6 +159,21 @@ public class DataAccess {
                     .append(((gLMS) subO).getTitle());
             writer.append("\n");
         }
+        if( subO instanceof Question){
+            writer.append(uid).append(",").append("questionStage ,")
+                    .append(((Question) subO).getResult())
+                    .append(",")
+                    .append(((Question) subO).getQuestion());
+            writer.append("\n");
+        }
+        if( subO instanceof Input){
+            writer.append(uid).append(",").append("input ,")
+                    .append(((Input) subO).getResult())
+                    .append(",")
+                    .append(((Input) subO).getQuestionText());
+            writer.append("\n");
+        }
+
     }
     public static int countingResults(Experiment experiment) throws IOException {
         String directory = experiment.getExperimentName();

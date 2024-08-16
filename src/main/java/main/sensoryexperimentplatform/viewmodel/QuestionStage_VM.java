@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.questionStageController;
+import main.sensoryexperimentplatform.controllers.QuestionStageController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Question;
 
@@ -34,8 +34,8 @@ public class QuestionStage_VM implements Stages {
         this.question = new SimpleStringProperty(questionStage.getQuestion());
         this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
         this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
-        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
-        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonValue());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
         experiment.addQuestion(questionStage);
@@ -45,8 +45,8 @@ public class QuestionStage_VM implements Stages {
         this.question = new SimpleStringProperty(questionStage.getQuestion());
         this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
         this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
-        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonText());
-        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonText());
+        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonValue());
+        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
 
@@ -111,9 +111,9 @@ public class QuestionStage_VM implements Stages {
     }
     public void setRightText(String newValue) {questionStage.setRightButtonText(newValue);
     }
-    public void setLeftValue(String newValue) {questionStage.setLeftButtonText(newValue);
+    public void setLeftValue(String newValue) {questionStage.setLeftButtonValue(newValue);
     }
-    public void setRightValue(String newValue) {questionStage.setRightButtonText(newValue);
+    public void setRightValue(String newValue) {questionStage.setRightButtonValue(newValue);
     }
 
     public Question getQuestionStage(){
@@ -126,7 +126,7 @@ public class QuestionStage_VM implements Stages {
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
 //               Question question = new Question("NULL","NULL","NULL",false);
-        questionStageController controller = fxmlLoader.getController();
+        QuestionStageController controller = fxmlLoader.getController();
         controller.setQuestionStage_vm(this);
     }
 
@@ -137,8 +137,18 @@ public class QuestionStage_VM implements Stages {
                                   Button btn_addTimer, Button btn_AddQuestionStage,
                                   Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
 
-
-//               AddNoticeStage controller = fxmlLoader.getController();
+        btn_AddPeriodicStage.setDisable(true);
+        btn_AddCourse.setDisable(false);
+        btn_assignSound.setDisable(true);
+        btn_addFoodAndTaste.setDisable(true);
+        btn_addAudibleInstruction.setDisable(false);
+        btn_addInput.setDisable(false);
+        btn_noticeStage.setDisable(false);
+        btn_addTimer.setDisable(false);
+        btn_AddQuestionStage.setDisable(false);
+        btn_addRatingContainer.setDisable(false);
+        btn_addTasteTest.setDisable(false);
+        btn_AddConditionalStatement.setDisable(false);
     }
 
     @Override

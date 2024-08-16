@@ -1,0 +1,6 @@
+Heading,Time,Vas/GLMS Result,Question,Low Anchor, High Anchor, Low Value, High Value
+Vas,2024.08.16.01.18.52.734,100,Vas1,null,null,0,100
+GLMS ,2024.08.16.01.18.54.709,54,GLMS 1
+Vas,2024.08.16.01.18.56.919,88,Vas 3,null,null,0,100
+Vas,2024.08.16.01.18.59.492,100,Vas outside,null,null,0,100
+Elapsed Time,11, seconds

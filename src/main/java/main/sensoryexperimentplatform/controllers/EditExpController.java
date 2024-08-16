@@ -380,18 +380,24 @@ public class EditExpController {
     @FXML
     void assignSound(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        AudibleSound_VM audible = null;
+        if (selectedItem != null) {
+            audible = (AudibleSound_VM) selectedItem.getValue();
+        }
+
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AssignSound.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         AssignSoundController controller = fxmlLoader.getController();
         AssignSoundVM viewModel = new AssignSoundVM();
-
-        controller.setViewModel(viewModel,selectAudibleSound_vm);
+        controller.setViewModel(viewModel, audible);
         stage.setTitle("Add Sound");
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
 
     }
 

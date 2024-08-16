@@ -8,7 +8,7 @@ import main.sensoryexperimentplatform.models.Input;
 
 public class RunInputVM {
     private Input input;
-    private StringProperty questionText,buttonText,HelpText;
+    private StringProperty questionText,buttonText,HelpText,result;
     private BooleanProperty playAlert;
 
     public RunInputVM(Input input) {
@@ -17,6 +17,8 @@ public class RunInputVM {
         buttonText = new SimpleStringProperty(input.getButtonText());
         HelpText = new SimpleStringProperty(input.getHelpText());
         playAlert = new SimpleBooleanProperty(input.isAlert());
+        result = new SimpleStringProperty(input.getResult());
+
     }
 
     public StringProperty getQuestionText() {
@@ -28,6 +30,12 @@ public class RunInputVM {
     public StringProperty getHelpText() {
         return HelpText;
     }
+    public StringProperty getResult() {
+        return result;
+    }
+   public void setResult(String result) {
+       input.setResult(result);
+   }
     public BooleanProperty getPlayAlert() {
         return playAlert;
     }

@@ -3,6 +3,7 @@ package main.sensoryexperimentplatform.controllers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -10,10 +11,16 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.RunQuestion_VM;
 
+
 public class RunQuestionController {
 
     @FXML
     private ImageView help_image;
+    @FXML
+    private Button btn_left;
+
+    @FXML
+    private Button btn_right;
 
     @FXML
     private Label txt_question;
@@ -59,6 +66,10 @@ public class RunQuestionController {
             }
         });
 
+        // Attach event handlers to buttons
+        btn_left.setOnMouseClicked(event -> handleButtonClick(viewModel.leftButtonValueProperty().get()));
+        btn_right.setOnMouseClicked(event -> handleButtonClick(viewModel.rightButtonValueProperty().get()));
+
     }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
         // Get the bounds of the ImageView
@@ -69,6 +80,12 @@ public class RunQuestionController {
     }
     private void bindViewModel(){
         txt_question.textProperty().bindBidirectional(viewModel.questionTextProperty());
+        btn_left.textProperty().bindBidirectional(viewModel.leftButtonTextProperty());
+        btn_right.textProperty().bindBidirectional(viewModel.rightButtonTextProperty());
+    }
+
+    private void handleButtonClick(String buttonIdentifier) {
+        viewModel.setResult(buttonIdentifier);
     }
 
 }

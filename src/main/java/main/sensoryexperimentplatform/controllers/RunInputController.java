@@ -10,8 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.RunInputVM;
+
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class RunInputController {
 
@@ -52,6 +56,15 @@ public class RunInputController {
         tooltip.setWrapText(true);
         tooltip.setMaxWidth(250);
 
+        txt_input.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                // Save result when Enter is pressed
+                setResult(txt_input.getText());
+                event.consume(); // Consume the event to prevent further processing
+            }
+        });
+
+
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
@@ -69,6 +82,9 @@ public class RunInputController {
 
 
     }
+    public void setResult(String input){
+        viewModel.setResult(input);
+    }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
         // Get the bounds of the ImageView
         javafx.geometry.Bounds bounds = imageView.localToScreen(imageView.getBoundsInLocal());
@@ -77,8 +93,8 @@ public class RunInputController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
 
-    private void bindViewModel(){
+    private void bindViewModel() {
         txt_question.textProperty().bindBidirectional(viewModel.getQuestionText());
-    }
 
+    }
 }

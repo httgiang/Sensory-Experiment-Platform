@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.addTasteController;
+import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
@@ -299,8 +299,16 @@ public class AddTasteVM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3, Button btn_addFoodAndTaste, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+    public void handleMenuButtons(Button button1, Button button2,
+                                  Button btn_assignSound,
+                                  Button btn_addFoodAndTaste,
+                                  Button button5, Button button6,
+                                  Button button7, Button button8,
+                                  Button button9, Button button10,
+                                  Button button11, Button button12)
+            throws IOException {
         btn_addFoodAndTaste.setDisable(false);
+        btn_assignSound.setDisable(true);
     }
 
     @Override
