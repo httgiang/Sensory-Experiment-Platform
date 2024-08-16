@@ -475,25 +475,26 @@ public class EditExpController {
     @FXML
     void assignSound(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 
-        ArrayList<Object> stages = experiment.getStages();
+        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        AudibleSound_VM audible = null;
+        if (selectedItem != null) {
+            audible = (AudibleSound_VM) selectedItem.getValue();
+        }
 
-        for (Object o : stages) {
-            if (o instanceof AudibleInstruction) {
-                AudibleSound_VM audibleSound_vm = new AudibleSound_VM((AudibleInstruction) o);
-                FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AssignSound.fxml"));
-                Parent root = fxmlLoader.load();
-                Stage stage = new Stage();
-                AssignSoundController controller = fxmlLoader.getController();
-                AssignSoundVM viewModel = new AssignSoundVM();
-                controller.setViewModel(viewModel,audibleSound_vm);
-                stage.setTitle("Add Sound");
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AssignSound.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        AssignSoundController controller = fxmlLoader.getController();
+        AssignSoundVM viewModel = new AssignSoundVM();
+        controller.setViewModel(viewModel, audible);
+        stage.setTitle("Add Sound");
 
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-            }
-        }    }
+
+    }
 
     public void setExperiment(Experiment c) throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
         this.experiment = c;

@@ -352,5 +352,6 @@ Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
 glmsStage("User Input","null","null","null","false")
+audio("hello vn ","null","null","null","stomp")
 endExperiment()
 
