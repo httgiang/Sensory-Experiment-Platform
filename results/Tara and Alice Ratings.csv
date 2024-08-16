@@ -1,1 +1,10 @@
-uid,type,time,result,question,lowAnchorText,highAnchorText,lowAnchorValue,highAnchorValue
+1,Vas,null,50,How hungry do you feel right now?,Not at all hungry,Extremely hungry,0,100
+1,Vas,null,50,How full do you feel right now?,Not at all full,Extremely full,0,100
+1,Vas,null,50,How thirsty do you feel right now?,Not at all thirsty,Extremely thirsty,0,100
+1,Vas,null,50,How strong is your desire to eat right now?,Very weak,Very strong,0,100
+1,Vas,null,50,How much do you think you could eat right now?,Nothing at all,A large amount,0,100
+1,Vas,null,50,How clearheaded do you feel right now?,Not at all clearheaded,Extremely clearheaded,0,100
+1,Vas,null,50,How tired do you feel right now?,Not at all tired,Extremely tired,0,100
+1,Vas,null,50,How headachy do you feel right now?,Not at all headachy,Extremely headachy,0,100
+1,Vas,null,50,How calm do you feel right now?,Not at all calm,Extremely calm,0,100
+1,Vas,null,50,How energetic do you feel right now?,Not at all energetic,Extremely energetic,0,100

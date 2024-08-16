@@ -4,9 +4,15 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunNoticeController;
 import main.sensoryexperimentplatform.models.Notice;
 
-public class RunNotice_VM {
+import java.io.IOException;
+
+public class RunNotice_VM implements RunStages{
     private Notice notice;
     private StringProperty title, content, button;
     private StringProperty helpText;
@@ -37,5 +43,16 @@ public class RunNotice_VM {
     }
     public void playSound(){
         notice.playSound();
+    }
+
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunNoticeController controller = loader.getController();
+
+        controller.setViewModel(this);
     }
 }

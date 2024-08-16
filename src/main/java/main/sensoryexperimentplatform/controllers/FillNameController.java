@@ -51,11 +51,10 @@ public class FillNameController {
         Parent root = loader.load();
 
         RunController controller = loader.getController(); // Get the controller from the loader
-        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
-        controller.setViewModel(viewModel);
-//        for(Object o : experiment.getStages()){
-//            System.out.println("load items " + o);
-//        }
+        controller.setExperiment(experiment, uid);
+//        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
+//        controller.setViewModel(viewModel);
+
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);

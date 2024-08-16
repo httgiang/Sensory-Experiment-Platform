@@ -13,7 +13,7 @@ import main.sensoryexperimentplatform.models.Experiment;
 import java.io.IOException;
 import java.util.Stack;
 
-public class AddCourseVM implements Stages {
+public class AddCourseVM implements Stages{
     private StringProperty txt_button;
     private StringProperty txt_content;
     private StringProperty  txt_help;

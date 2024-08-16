@@ -4,9 +4,15 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunQuestionController;
 import main.sensoryexperimentplatform.models.Question;
 
-public class RunQuestion_VM {
+import java.io.IOException;
+
+public class RunQuestion_VM implements RunStages {
     private Question question;
     private StringProperty questionText,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText;
     private BooleanProperty playAlert;
@@ -24,6 +30,16 @@ public class RunQuestion_VM {
         leftButtonValue = new SimpleStringProperty(question.getLeftButtonValue());
         rightButtonValue = new SimpleStringProperty(question.getRightButtonValue());
         result = new SimpleStringProperty(question.getResult());
+    }
+
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunQuestionController controller = loader.getController();
+        controller.setViewModel(this);
     }
 
     public StringProperty questionTextProperty() {
@@ -60,4 +76,6 @@ public class RunQuestion_VM {
     public void playAlert(){
         question.playSound();
     }
+
+
 }

@@ -102,7 +102,6 @@ public class EditExpController {
             if (newValue != null && newValue != oldValue) {
 
                 try {
-                    btn_addFoodAndTaste.setDisable(true);
                     showPropertiesPane(newValue);
                 } catch (Exception e) {
                     throw new RuntimeException(e);

@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage; // Explicit import for JavaFX Stage
-import javafx.stage.WindowEvent;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
@@ -28,7 +27,7 @@ public class RunController {
     private AnchorPane content;
 
     @FXML
-    private Button btn_Next;
+    private Button btn_next;
 
     @FXML
     private Button btn_back;
@@ -40,21 +39,214 @@ public class RunController {
     private ProgressBar progress_bar;
 
     @FXML
-    private ListView<String> showList;
-
-    private RunExperiment_VM viewModel;
+    private ListView<RunStages> listView;
     private Experiment experiment;
 
 
-    public void setViewModel(RunExperiment_VM viewModel){
-        this.viewModel = viewModel;
-        this.experiment = viewModel.getExperiment();
-        this.uid = viewModel.getUid();
-        System.out.println(experiment.getStages());
-        //viewModel.getFileName()+"_"+DataAccess.getCurrentFormattedTime();
+//    public void setViewModel(RunExperiment_VM viewModel){
+//        this.viewModel = viewModel;
+//        this.experiment = viewModel.getExperiment();
+//        this.uid = viewModel.getUid();
+//        System.out.println(experiment.getStages());
+//        //viewModel.getFileName()+"_"+DataAccess.getCurrentFormattedTime();
+//        startTimer();
+//        bindViewModel();
+//    }
+
+    public void setExperiment(Experiment experiment, String uId) throws IOException {
+        this.experiment = experiment;
+        this.uid = uId;
+        loadItems();
         startTimer();
         bindViewModel();
     }
+
+
+
+
+    private void bindViewModel() throws IOException {
+
+        //listView.itemsProperty().bind(viewModel.itemsProperty());
+        listView.setVisible(false);
+
+        // Add selection listener
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                // Handle item selection (e.g., show detail view)
+                try {
+                    showRunningPane(newValue);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        if (!listView.getItems().isEmpty()) {
+            listView.getSelectionModel().selectFirst();
+            showRunningPane(listView.getItems().get(0));
+        }
+    }
+    @FXML
+    void handleBtnBack(MouseEvent event) {
+        int selectedIndex = listView.getSelectionModel().getSelectedIndex();
+        listView.getSelectionModel().select(selectedIndex - 1);
+        //updateProgress(listView.getSelectionModel().getSelectedIndex());
+    }
+
+    private void showRunningPane(RunStages selectedItem) throws IOException {
+        RunStages runStages = selectedItem;
+
+
+        if (runStages == null) return;
+
+        content.getChildren().clear();
+        runStages.loadInterface(content);
+        //setResponsive(content);
+        listView.setVisible(true);
+
+    }
+
+
+    private void loadItems() {
+        //Object selectedObject = viewModel.getObjectByKey(item);
+        for(Object selectedObject : experiment.getStages()){
+//            updateProgress(listView.getSelectionModel().getSelectedIndex());
+//            if (selectedObject != null) {
+//                int currentIndex = viewModel.getIndexOfObject(selectedObject);
+//                if (currentIndex >= 0) {
+//                    if (currentIndex > processed) {
+//                        processed = currentIndex;
+//                        updateProgress(currentIndex);
+//                    }
+//                } else {
+//                    processed++;
+//                    updateProgress(processed);
+//                }
+//                content.getChildren().clear();
+
+                try {
+                    if (selectedObject instanceof Start){
+                        RunStartVM vm = new RunStartVM((Start) selectedObject);
+                        //showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+                    }
+                    else if (selectedObject instanceof Vas) {
+                        RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+
+                        if (vm.conductedTextProperty().get() == null){
+                            btn_next.setDisable(true);
+                        }else btn_next.setDisable(false);
+
+                        vm.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+                            if (newValue != null) {
+                                btn_next.setDisable(false);
+                            }
+                        });
+
+                    }
+                    // glms view display
+                    else if (selectedObject instanceof gLMS) {
+                        RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+
+                        if (vm.conductedTextProperty().get() == null){
+                            btn_next.setDisable(true);
+                        }else btn_next.setDisable(false);
+
+                        vm.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+                            if (newValue != null) {
+                                btn_next.setDisable(false);
+                            }
+                        });
+
+
+                    }
+                    else if (selectedObject instanceof Notice) {
+                        RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.setDisable(false);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+                    }
+                    else if (selectedObject instanceof Input) {
+                        btn_next.setDisable(false);
+                        RunInputVM vm = new RunInputVM((Input) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.getButtonText());
+
+                    }
+                    else if (selectedObject instanceof Question) {
+                        btn_next.setDisable(false);
+                        RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                    }
+                    else if (selectedObject instanceof Timer) {
+//                        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
+//                        AnchorPane newContent = loader.load();
+//                        setResponsive(newContent);
+//                        content.getChildren().setAll(newContent);
+//
+//
+//                        RunTimerController controller = loader.getController();
+//                        RunTimer_VM viewModel = new RunTimer_VM((Timer) selectedObject);
+//                        controller.setViewModel(viewModel);
+//                        btn_back.setVisible(controller.getTimeLineCheck());
+//                        btn_next.setVisible(controller.getTimeLineCheck());
+//                        btn_next.setDisable(false);
+//
+//                        controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
+//                            btn_back.setVisible(newValue);
+//                            btn_next.setVisible(newValue);
+//                            listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
+//                        } ));
+
+                    }
+                    else if (selectedObject instanceof AudibleInstruction) {
+
+                        btn_next.setDisable(false);
+                        RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+
+                    }
+                    else if (selectedObject instanceof Course) {
+                        RunCourseVM vm = new RunCourseVM((Course) selectedObject);
+                        showRunningPane(vm);
+                        listView.getItems().add(vm);
+                        btn_next.textProperty().bind(vm.buttonProperty());
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    private void setResponsive(AnchorPane newContent){
+        AnchorPane.setTopAnchor(newContent, 0.0);
+        AnchorPane.setBottomAnchor(newContent, 0.0);
+        AnchorPane.setLeftAnchor(newContent, 0.0);
+        AnchorPane.setRightAnchor(newContent, 0.0);
+    }
+    private void handleFinalNext() throws IOException {
+        stopTimer();
+        autoClose();
+    }
+
+    private void autoClose() {
+        Stage stage = (Stage) content.getScene().getWindow();
+        stopTimer();
+        stage.close();
+    }
+
 
     //timer tracks the experiment
     private void startTimer() {
@@ -77,248 +269,24 @@ public class RunController {
             executorService.shutdown();
         }
     }
-    private void updateProgress(double processed){
-
-        progress_bar.setProgress(processed/(viewModel.count - 1));
-    }
-
-    private void bindViewModel() {
-
-        showList.itemsProperty().bind(viewModel.itemsProperty());
-        showList.setVisible(false);
-
-        // Add selection listener
-        showList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                // Handle item selection (e.g., show detail view)
-                showDetailView(newValue);
-            }
-        });
-        if (!showList.getItems().isEmpty()) {
-            showList.getSelectionModel().selectFirst();
-            showDetailView(showList.getItems().get(0));
-        }
-    }
-    @FXML
-    void handleBtnBack(MouseEvent event) {
-        int selectedIndex = showList.getSelectionModel().getSelectedIndex();
-        showList.getSelectionModel().select(selectedIndex - 1);
-        updateProgress(showList.getSelectionModel().getSelectedIndex());
-    }
-
+//    private void updateProgress(double processed){
+//
+//        progress_bar.setProgress(processed/(viewModel.count - 1));
+//    }
     @FXML
     void handleBtnNext(MouseEvent event) throws IOException {
-        int selectedIndex = showList.getSelectionModel().getSelectedIndex();
+        int selectedIndex = listView.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1){
-            showList.getSelectionModel().select(0);
+            listView.getSelectionModel().select(0);
         }
-        if (selectedIndex >= 0 && selectedIndex < showList.getItems().size() - 1) {
-            showList.getSelectionModel().select(selectedIndex + 1);
+        if (selectedIndex >= 0 && selectedIndex < listView.getItems().size() - 1) {
+            listView.getSelectionModel().select(selectedIndex + 1);
         }
-        if(selectedIndex == showList.getItems().size() - 1){
+        if(selectedIndex == listView.getItems().size() - 1){
             handleFinalNext();
         }
         DataAccess.quickSave(experiment, uid);
-        updateProgress(showList.getSelectionModel().getSelectedIndex());
-    }
-
-    private void showDetailView(String item) {
-        Object selectedObject = viewModel.getObjectByKey(item);
-        updateProgress(showList.getSelectionModel().getSelectedIndex());
-        if (selectedObject != null) {
-            int currentIndex = viewModel.getIndexOfObject(selectedObject);
-            if (currentIndex >= 0) {
-                if (currentIndex > processed) {
-                    processed = currentIndex;
-                    updateProgress(currentIndex);
-                }
-            } else {
-                processed++;
-                updateProgress(processed);
-            }
-            content.getChildren().clear();
-
-            try {
-                FXMLLoader loader;
-                // Vas view display
-                if (selectedObject instanceof Start){
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-
-                    RunStartController controller = loader.getController();
-                    RunStartVM vm = new RunStartVM((Start) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-                }
-                else if (selectedObject instanceof Vas) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-
-
-                    RunVasController controller = loader.getController();
-                    RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-
-                    if (vm.conductedTextProperty().get() == null){
-                        btn_Next.setDisable(true);
-                    }else btn_Next.setDisable(false);
-
-                    vm.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
-                        if (newValue != null) {
-                            btn_Next.setDisable(false);
-                        }
-                    });
-
-                }
-                // glms view display
-                else if (selectedObject instanceof gLMS) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-
-                    RunGLMSController controller = loader.getController();
-                    RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-
-                    if (vm.conductedTextProperty().get() == null){
-                        btn_Next.setDisable(true);
-                    }else btn_Next.setDisable(false);
-
-                    vm.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
-                        if (newValue != null) {
-                            btn_Next.setDisable(false);
-                        }
-                    });
-
-
-                }
-                else if (selectedObject instanceof Notice) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-                    btn_Next.setDisable(false);
-
-                    RunNoticeController controller = loader.getController();
-                    RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-                }
-                else if (selectedObject instanceof Input) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunInputStage.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-                    btn_Next.setDisable(false);
-
-
-                  RunInputController controller = loader.getController();
-                  RunInputVM vm = new RunInputVM((Input) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.getButtonText());
-
-                }
-                else if (selectedObject instanceof Question) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-                    btn_Next.setDisable(false);
-
-                    RunQuestionController controller = loader.getController();
-                    RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
-                    controller.setViewModel(vm);
-
-                }
-                else if (selectedObject instanceof Timer) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-
-
-                    RunTimerController controller = loader.getController();
-                    RunTimer_VM viewModel = new RunTimer_VM((Timer) selectedObject);
-                    controller.setViewModel(viewModel);
-                    btn_back.setVisible(controller.getTimeLineCheck());
-                    btn_Next.setVisible(controller.getTimeLineCheck());
-                    btn_Next.setDisable(false);
-
-                    controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
-                        btn_back.setVisible(newValue);
-                        btn_Next.setVisible(newValue);
-                        showList.getSelectionModel().select(showList.getSelectionModel().getSelectedIndex() + 1);
-                    } ));
-
-                }
-                else if (selectedObject instanceof AudibleInstruction) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-                    btn_Next.setDisable(false);
-
-                    RunAudibleController controller = loader.getController();
-                    RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-
-                }
-                else if (selectedObject instanceof TasteTest) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
-                    AnchorPane newContent = loader.load();
-                    setResponsive(newContent);
-                    content.getChildren().setAll(newContent);
-                    btn_Next.setDisable(false);
-
-                    RunAudibleController controller = loader.getController();
-                    RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
-                    controller.setViewModel(vm);
-                    btn_Next.textProperty().bind(vm.buttonProperty());
-
-                }
-                else if (selectedObject instanceof Course) {
-                    loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunCourse.fxml"));
-                    AnchorPane newContent = loader.load();
-                    AnchorPane.setTopAnchor(newContent, 0.0);
-                    AnchorPane.setBottomAnchor(newContent, 0.0);
-                    AnchorPane.setLeftAnchor(newContent, 0.0);
-                    AnchorPane.setRightAnchor(newContent, 0.0);
-                    content.getChildren().setAll(newContent);
-
-                    RunCourseController controller = loader.getController();
-                    RunCourseVM viewModel = new RunCourseVM((Course) selectedObject);
-                    controller.setViewModel(viewModel);
-                    btn_Next.textProperty().bind(viewModel.buttonProperty());
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    private void setResponsive(AnchorPane newContent){
-        AnchorPane.setTopAnchor(newContent, 0.0);
-        AnchorPane.setBottomAnchor(newContent, 0.0);
-        AnchorPane.setLeftAnchor(newContent, 0.0);
-        AnchorPane.setRightAnchor(newContent, 0.0);
-    }
-    private void handleFinalNext() throws IOException {
-        stopTimer();
-        autoClose();
-    }
-
-    private void autoClose() {
-        Stage stage = (Stage) content.getScene().getWindow();
-        stopTimer();
-        stage.close();
+       // updateProgress(listView.getSelectionModel().getSelectedIndex());
     }
 
 }

@@ -14,14 +14,14 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btn_Next" layoutY="762.0" mnemonicParsing="false" onMouseClicked="#handleBtnNext" prefHeight="60.0" prefWidth="160.0" text="Next" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="108.0">
+      <Button fx:id="btn_next" layoutY="762.0" mnemonicParsing="false" onMouseClicked="#handleBtnNext" prefHeight="60.0" prefWidth="160.0" text="Next" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="108.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
       <AnchorPane fx:id="content" layoutX="15.0" layoutY="201.0" minHeight="361.0" minWidth="971.0" prefHeight="538.0" prefWidth="1250.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="201.0" />
       <ProgressBar fx:id="progress_bar" layoutX="36.0" layoutY="-32.8" prefHeight="17.0" prefWidth="1158.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="173.0" />
-      <ListView fx:id="showList" focusTraversable="false" prefHeight="610.0" prefWidth="0.0" />
+      <ListView fx:id="listView" focusTraversable="false" prefHeight="610.0" prefWidth="0.0" />
       <Label fx:id="elapsedTime_label" layoutX="14.0" layoutY="14.0" prefHeight="56.0" prefWidth="249.0" text="TIME" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>

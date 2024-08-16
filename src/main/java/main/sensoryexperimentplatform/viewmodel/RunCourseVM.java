@@ -1,9 +1,15 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunCourseController;
 import main.sensoryexperimentplatform.models.Course;
 
-public class RunCourseVM {
+import java.io.IOException;
+
+public class RunCourseVM implements RunStages{
     private Course course;
     StringProperty title, content, button, help, end;
     IntegerProperty refill, duration, quantity;
@@ -18,6 +24,15 @@ public class RunCourseVM {
         duration = new SimpleIntegerProperty(course.getDuration());
         quantity = new SimpleIntegerProperty(course.getQuantity());
         end = new SimpleStringProperty(course.getEndStatement());
+    }
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunCourse.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunCourseController controller = loader.getController();
+        controller.setViewModel(this);
     }
     public StringProperty titleProperty() {
         return title;
@@ -46,4 +61,6 @@ public class RunCourseVM {
     public Course getCourse() {
         return course;
     }
+
+
 }
