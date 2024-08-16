@@ -1,92 +1,75 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.collections.FXCollections;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.models.Food;
+import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.viewmodel.FoodTasteVM;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class FoodAndTasteController {
-    private List <XCell> xcell;
-    private List <XCell> glmscell;
-    private List <XCell> vascell;
-    @FXML
-    private Label SoundSelectTionLabel;
+    private List<Cell> xcell;
+    private List<Cell> glmscell;
+    private List<Cell> vascell;
+
 
     @FXML
     private Button btn_play;
 
     @FXML
-    private Button btn_refresh;
+    private ListView<String> foodsList;
+    @FXML
+    private ListView<String> glmsList;
+    @FXML
+    private ListView<String> vasList;
 
-    @FXML
-    private Button btn_remove;
+    private ListProperty<String> selectedFoods = new SimpleListProperty<>();
+    private ListProperty<String> selectedGLMS = new SimpleListProperty<>();
+    private ListProperty<String>  selectedVAS = new SimpleListProperty<>();
 
-    @FXML
-    private Button btn_stop;
 
-    @FXML
-    private ListView<String> foodView;
-    @FXML
-    private ListView<String> glmsTable;
+    private int clickOnListView = 1;
 
-    @FXML
-    private ListView<String> vasTable;
-    private FoodTasteVM viewModel;
-    private ObservableList<String> foods;
-    private ObservableList<String> glms;
-    private ObservableList<String> vas;
-    private int clickOnListView =1;
-    static class XCell extends ListCell<String> {
+
+    private FoodTasteVM foodTasteVM;
+    static class Cell extends ListCell<String> {
 
         HBox hbox = new HBox();
         Label label = new Label("(empty)");
         Pane pane = new Pane();
-        CheckBox button = new CheckBox();
+        CheckBox checkbox = new CheckBox();
         String lastItem;
         private String name;
-        private Boolean isSelect;
+        private Boolean isSelected;
 
-        public String getName() {
-            return name;
-        }
+        private ObservableList<String> selectedItems;
 
-        public void setSelect(Boolean select) {
-            isSelect = select;
-            button.setSelected(select);
-        }
-
-        public Boolean getSelect() {
-            return isSelect;
-        }
-
-        public XCell(boolean boo) {
+        public Cell(ObservableList<String> selectedItems) {
             super();
-            this.isSelect = boo;
-            button.setSelected(boo);
-            hbox.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
+            this.selectedItems = selectedItems;
 
-                @Override
-                public void handle(ActionEvent event) {
-                    isSelect = button.isSelected();
+            hbox.getChildren().addAll(label, pane, checkbox);
+            HBox.setHgrow(pane, Priority.ALWAYS);
+
+            // Initialize the checkbox based on the list content
+            checkbox.setOnAction(event -> {
+                isSelected = checkbox.isSelected();
+                if (isSelected) {
+                    if (!selectedItems.contains(name)) {
+                        selectedItems.add(name);
+                    }
+                } else {
+                    selectedItems.remove(name);
                 }
             });
         }
@@ -95,84 +78,74 @@ public class FoodAndTasteController {
         protected void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
             setText(null);  // No text in label of super class
+
             if (empty) {
                 lastItem = null;
                 setGraphic(null);
             } else {
                 lastItem = item;
                 name = item;
-                label.setText(item!=null ? item : "<null>");
+                label.setText(item != null ? item : "<null>");
+
+                // Check if the item is in the selected list and update the checkbox
+                checkbox.setSelected(selectedItems.contains(name));
                 setGraphic(hbox);
             }
+        }
+
+        public void setSelect(boolean b) {
+            isSelected = b;
+        }
+
+        public boolean getSelect() {
+            return isSelected;
+        }
+
+        public String getName() {
+            return name;
         }
     }
 
 
-    public void loadItems(){
-        foods.clear();
-        vas.clear();
-        glms.clear();
-        vasTable.getItems().clear();
-        glmsTable.getItems().clear();
-        foodView.getItems().clear();
-        vas.addAll(viewModel.getListVasShow());
-        glms.addAll(viewModel.getListGLMSShow());
-        foods.addAll(viewModel.getListFoodsShow());
-        foodView.getItems().addAll(foods);
-        glmsTable.getItems().addAll(glms);
-        vasTable.getItems().addAll(vas);
-        foodView.setOnMouseClicked(event -> {
-            clickOnListView =1;
-            // Add your custom logic here
-        });
-        glmsTable.setOnMouseClicked(event -> {
-            clickOnListView =2;
-            // Add your custom logic here
-        });
-        vasTable.setOnMouseClicked(event -> {
-            clickOnListView =3;
-            // Add your custom logic here
-        });
-        foodView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
 
-                XCell xCell = new XCell(true);
-                xcell.add(xCell);
-                return xCell;
-            }
-        });
+    private void bindingAllLists(){
+        foodsList.itemsProperty().bindBidirectional(foodTasteVM.foodOptionsProperty());
+        glmsList.itemsProperty().bindBidirectional(foodTasteVM.gLMSOptionsProperty());
+        vasList.itemsProperty().bindBidirectional(foodTasteVM.vasOptionsProperty());
 
-        glmsTable.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                XCell xCell = new XCell(false);
-                glmscell.add(xCell);
-                return xCell;
-            }
-        });
-        vasTable.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                XCell xCell = new XCell(false);
-                vascell.add(xCell);
-                return xCell;
-            }
-        });
-
-
+        selectedFoods.bindBidirectional(foodTasteVM.selectedFoodsProperty());
+        selectedVAS.bindBidirectional(foodTasteVM.selectedVASProperty());
+        selectedGLMS.bindBidirectional(foodTasteVM.selectedGLMSProperty());
     }
 
-    public void setViewModel(FoodTasteVM viewModel) {
-        this.viewModel = viewModel;
+    private void initCells(){
+        foodsList.setCellFactory(listView -> new Cell(selectedFoods));
+        glmsList.setCellFactory(listView -> new Cell(selectedGLMS));
+        vasList.setCellFactory(listView -> new Cell(selectedVAS));
+    }
+
+    public void loadItems(){
+        bindingAllLists();
+
+        foodsList.setOnMouseClicked(event -> {
+            clickOnListView = 1; //CLICK ON FOODS
+        });
+        glmsList.setOnMouseClicked(event -> {
+            clickOnListView = 2; //CLICK ON VAS
+        });
+        vasList.setOnMouseClicked(event -> {
+            clickOnListView = 3; //CLICK ON GLMS
+        });
+
+        initCells();
+    }
+
+    public void setViewModel(FoodTasteVM foodTasteVM) {
+        this.foodTasteVM = foodTasteVM;
         xcell = new ArrayList<>();
         vascell = new ArrayList<>();
         glmscell = new ArrayList<>();
-        vas = FXCollections.observableArrayList();
-        glms = FXCollections.observableArrayList();
-        foods = FXCollections.observableArrayList();
         loadItems();
-        System.out.println(viewModel.getListFoods());
 
     }
 
@@ -184,7 +157,7 @@ public class FoodAndTasteController {
             Stage stage = new Stage();
             stage.setTitle("Add Food");
             addFoodController controller = fxmlLoader.getController();
-            controller.setViewModel(viewModel, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -194,9 +167,9 @@ public class FoodAndTasteController {
             FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddGLMS.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Add GLMS");
+            stage.setTitle("Add VAS");
             addGLMS controller = fxmlLoader.getController();
-            controller.setViewModel(viewModel, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -208,7 +181,7 @@ public class FoodAndTasteController {
             Stage stage = new Stage();
             stage.setTitle("Add GLMS");
             addVas controller = fxmlLoader.getController();
-            controller.setViewModel(viewModel, this);
+            controller.setViewModel(foodTasteVM);
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
@@ -218,30 +191,8 @@ public class FoodAndTasteController {
     }
 
     @FXML
-    void save(ActionEvent event) {
-        for (XCell a:xcell){
-            if (a.getSelect()){
-                System.out.println("selected food " + a.getName());
-                viewModel.addListFoods(a.getName());
-               // JOptionPane.showMessageDialog(null,a.getName());
-            }
-        }
-        for (XCell a: glmscell){
-
-            if (a.getSelect()){
-                System.out.println("selected glms " + a.getName());
-                viewModel.addGLMS(a.getName());
-            }
-        }
-        for (XCell a: vascell){
-
-            if (a.getSelect()){
-                System.out.println("select vas" + a.getName());
-                viewModel.addVas(a.getName());
-            }
-        }
-
-
+    void save(ActionEvent event) throws Exception {
+        DataAccess.updateFile();
 
         Stage currentStage = (Stage) btn_play.getScene().getWindow();
         currentStage.close();
@@ -250,20 +201,20 @@ public class FoodAndTasteController {
     @FXML
     void SelectAll(ActionEvent event) {
         if (clickOnListView ==1) {
-            for (XCell cell : xcell) {
-                cell.button.setSelected(true);
+            for (Cell cell : xcell) {
+                cell.checkbox.setSelected(true);
                 cell.setSelect(true);
             }
         }
         else if (clickOnListView ==2){
-            for (XCell cell : glmscell) {
-                cell.button.setSelected(true);
+            for (Cell cell : glmscell) {
+                cell.checkbox.setSelected(true);
                 cell.setSelect(true);
             }
         }
         else if (clickOnListView ==3){
-            for (XCell cell : vascell) {
-                cell.button.setSelected(true);
+            for (Cell cell : vascell) {
+                cell.checkbox.setSelected(true);
                 cell.setSelect(true);
             }
         }
@@ -273,20 +224,20 @@ public class FoodAndTasteController {
     @FXML
     void SelectNone(ActionEvent event) {
         if (clickOnListView ==1) {
-            for (XCell cell : xcell) {
-                cell.button.setSelected(false);
+            for (Cell cell : xcell) {
+                cell.checkbox.setSelected(false);
                 cell.setSelect(false);
             }
         }
         else if (clickOnListView ==2){
-            for (XCell cell : glmscell) {
-                cell.button.setSelected(false);
+            for (Cell cell : glmscell) {
+                cell.checkbox.setSelected(false);
                 cell.setSelect(false);
             }
         }
         else if (clickOnListView ==3){
-            for (XCell cell : vascell) {
-                cell.button.setSelected(false);
+            for (Cell cell : vascell) {
+                cell.checkbox.setSelected(false);
                 cell.setSelect(false);
             }
         }

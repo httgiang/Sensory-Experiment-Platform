@@ -158,26 +158,24 @@ public class AddCourseVM implements Stages {
     }
 
     @Override
-    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
-
-    }
-
-    @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
-            , Button btn_addInput, Button btn_noticeStage,
-                                  Button  btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddCourse.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         AddCourseController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button  btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
         btn_AddPeriodicStage.setDisable(false);
         btn_AddCourse.setDisable(true);
         btn_noticeStage.setDisable(true);
         btn_addAudibleInstruction.setDisable(true);
-        controller.setViewModel(this);
-        addCourseVMS.push(this);
     }
 
     @Override

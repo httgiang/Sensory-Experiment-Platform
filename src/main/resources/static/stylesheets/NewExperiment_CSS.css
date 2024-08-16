@@ -1,5 +1,5 @@
 
-.button:hover{
+.button:hover, #btn_cancel:hover, #btn_save:hover{
     -fx-background-color: #D5E9EA;
     -fx-text-fill: white;
 }

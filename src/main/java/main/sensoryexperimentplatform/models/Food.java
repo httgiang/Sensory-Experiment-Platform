@@ -2,13 +2,13 @@ package main.sensoryexperimentplatform.models;
 
 public class Food {
     private final String name;
-    private final int time;
     private RatingContainer vasContainer, glmsContainer;
-    public Food (String name,boolean isRandomizeVas, boolean isRandomizeGlms, int time){
+    private TasteTest tasteTest;
+
+    public Food (String name,TasteTest tasteTest){
         this.name = name;
-        this.time = time;
-        vasContainer = new RatingContainer(isRandomizeVas,time);
-        glmsContainer = new RatingContainer(isRandomizeGlms, time);
+        vasContainer = new RatingContainer(tasteTest.isRandomizedRatings,tasteTest.getTimeWait());
+        glmsContainer = new RatingContainer(tasteTest.isRandomizedRatings,tasteTest.getTimeWait());
     }
 
     public String getName() {
@@ -22,7 +22,6 @@ public class Food {
       glmsContainer.addStage(stage);
    }
     public String toString(){
-        return vasContainer.toString() +"\n"+
-                glmsContainer.toString();
+        return "food(\"" + name + "\")";
     }
 }

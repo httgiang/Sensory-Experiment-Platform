@@ -9,7 +9,6 @@ public class Experiment {
     private String creatorName, experimentName, description, note, created_date;
     public int version, number_of_results, id, elapsedTime;
     ArrayList<Object> stages;
-    List<Pair<Stage,Integer>> pairs;
     public Experiment(){
         super();
         Random random = new Random();
@@ -88,6 +87,10 @@ public class Experiment {
                 Course course = new Course((Course) o);
                 stages.add(course);
             }
+            else if(o instanceof TasteTest){
+                TasteTest tasteTest = new TasteTest((TasteTest) o);
+                stages.add(tasteTest);
+            }
         }
     }
 
@@ -153,18 +156,10 @@ public class Experiment {
     public void addRatingContainerStage(RatingContainer ratingContainer){
         stages.add(ratingContainer);
     }
-    public void addTasteTest(String noticeStageContent, String consumptionInstruction, String question,
-                             String lowAnchorText, String highAnchorText, int lowAnchorValue,
-                             int highAnchorValue, String buttonText,
-                             boolean isSwap, String helpText, String endInstruction,
-                             int timeWait, boolean randomizeFood, boolean randomizeRatings, boolean isAlert){
-        TasteTest tasteTest = new TasteTest( noticeStageContent,  consumptionInstruction,  question,
-                 lowAnchorText,  highAnchorText,  lowAnchorValue,highAnchorValue,  buttonText, isSwap,  helpText,  endInstruction,
-         timeWait,  randomizeFood,  randomizeRatings, isAlert);
-        stages.add(tasteTest);
-    }
+
     public void addNewTasteTest(TasteTest tasteTest){
         stages.add(tasteTest);
+        tasteTest.generateTasteTest();
     }
     // Audible instruction stage
     public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName) {
@@ -275,7 +270,6 @@ public class Experiment {
     public String stagesToString(){
         StringBuilder sb = new StringBuilder();
         for(Object o : stages){
-            System.out.println(o.toString());
             sb.append(o.toString()).append("\n");
         }
         return sb.toString();

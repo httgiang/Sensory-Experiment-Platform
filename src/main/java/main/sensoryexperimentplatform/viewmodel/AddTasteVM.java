@@ -18,14 +18,12 @@ public class AddTasteVM implements Stages {
     private StringProperty txt_initialNotice;
     private StringProperty txt_consumptionInst;
     private StringProperty txt_question;
-    private StringProperty txt_inital;
     private StringProperty txt_help;
     private StringProperty txt_endInstruction;
     private StringProperty txt_timetowait;
     private  BooleanProperty checkbox_randomfood;
     private  BooleanProperty checkbox_randomrate;
     private  BooleanProperty checkbox_playalert;
-    private StringProperty txt_howtaste;
 
     private StringProperty txt_lowanchortext;
     private StringProperty txt_highanchortext;
@@ -41,23 +39,19 @@ public class AddTasteVM implements Stages {
     public AddTasteVM(TasteTest model){
         this.model = model;
         initBinding(model);
-        model.generateTasteTest();
         initListener();
+//        for(Object o : model.getStages()){
+//            System.out.println("taste test con: " + o);
+//        }
     }
     public AddTasteVM(Experiment experiment){
         this.experiment = experiment;
-        model = new TasteTest("Please call the experimenter for the samples","Consumption instruction","How <taste> is <food>?",
-                "Low Anchor Text","High Anchor Text",0,100,
-                "Continue", false, "","End instruction", 1,
-                false, false, false);
+        model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
+                "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
+                0,100, false, false, false, 0, false);
         initBinding(model);
         initListener();
-
-
         experiment.addNewTasteTest(model);
-        for(Object o : experiment.getStages()){
-            System.out.println(o);
-        }
     }
 
 
@@ -187,9 +181,6 @@ public class AddTasteVM implements Stages {
         return txt_question;
     }
 
-    public String getTxt_inital() {
-        return txt_inital.get();
-    }
 
 
     public String getTxt_help() {
@@ -240,13 +231,7 @@ public class AddTasteVM implements Stages {
         return checkbox_playalert;
     }
 
-    public String getTxt_howtaste() {
-        return txt_howtaste.get();
-    }
 
-    public StringProperty txt_howtasteProperty() {
-        return txt_howtaste;
-    }
 
     public String getTxt_lowanchortext() {
         return txt_lowanchortext.get();
@@ -305,20 +290,17 @@ public class AddTasteVM implements Stages {
     }
 
     @Override
-    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
-    }
-
-    @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button button1, Button button2, Button button3, Button btn_addFoodAndTaste, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddTasteTest.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         addTasteController controller = fxmlLoader.getController();
         controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleMenuButtons(Button button1, Button button2, Button button3, Button btn_addFoodAndTaste, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
         btn_addFoodAndTaste.setDisable(false);
-
-        stack.push(this);
-
     }
 
     @Override
