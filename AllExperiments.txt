@@ -184,114 +184,12 @@ noticeStage("Rinsing","Please rinse your mouth with the water provided and then 
 noticeStage("Thank you!","That completes the first taste test: please call your researcher.","X","","true")
 endExperiment()
 
-ExperimentName: SweetLikerTest2015
-ExperimenterName: martin
-ExperimentID: 999
-Created on: null
-Version: 5
-startExperiment("Start Experiment","Sweet Liker test 2015 for UG projects","Continue")
-noticeStage("Welcome","Thanks for agreeing to take part.  To start with we need you complete some simple ratings\, and this will be followed by a taste test.","Click Mouse to start the ratings","","false")
-ratingsContainer("true","0")
-vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","false","false")
-endRatingsContainer()
-tasteTest("Please call the experimenter for the samples","How <taste> is <food>","Please take a sip of <food>\, hold it in your mouth while counting to 10\, and then spit it into the funnel.","Please rinse your mouth with the water provided","Not at all <taste>","Extremely <taste>","Rating completed","","0","100","false","true","false","0","false","{Sample 1,Sample 2,Sample 3,Sample 4}","{Pleasant,Strong,Sweet}","{}","{}")
-noticeStage("Thank you!","That completes this part: please call your experimenter.","Continue","","false")
-endExperiment()
-
-ExperimentName: Taste&Metabolism
-ExperimenterName: Vasiliki
-ExperimentID: 999
-Created on: null
-Version: 3
-startExperiment("TASTE TEST","","Click mouse to start")
-noticeStage("Welcome!","Thank you for agreeing to take part. To start with\, we need you to complete some simple ratings\, and this will be followed by a taste test.","Ready to start","","true")
-noticeStage("Liking ratings","The first type of rating you complete measures how much you like different things. We will start with some simple examples as a practice.","Continue","","false")
-ratingsContainer("true","0")
-vasStage("Think about walking in the rain. How much do you like walking in the rain?","Dislike extremely","Like extremely","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task. The bar is initially positioned at the middle which represents the neutral point (\"neither like or dislike\").","false","false")
-vasStage("Think about watching your favourite movie. How much do you like watching your favourite movie?","Dislike extremely","LIke extremely","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task. The bar is initially positioned at the middle which represents the neutral point (\"neither like or dislike\").","false","false")
-vasStage("Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?","Dislike extremely","LIke extremely","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task. The bar is initially positioned at the middle which represents the neutral point (\"neither like or dislike\").","false","false")
-vasStage("Think about the sound of a car alarm. How much do you like the sound of a car alarm?","Dislike extremely","LIke extremely","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task. The bar is initially positioned at the middle which represents the neutral point (\"neither like or dislike\").","false","false")
-endRatingsContainer()
-noticeStage("Intensity ratings","The second type of rating you complete measures how intense (strong) you find different sensations. Again we will start with some simple examples as a practice.","Continue","","false")
-glmsStage("Think of listening to a heavy metal song with headphones on maximum volume.","Continue","Session[LastGlmsStageResult]","Use the mouse to move the bar to the position that best describes how strong is the sound.","false")
-glmsStage("Think of staring directly at the sun through binoculars","Continue","Session[LastGlmsStageResult]","Use the mouse to move the bar to the position that best describes how strong is the sunlight.","false")
-noticeStage("Mood ratings","Before we go to the main taste test\, we need you to complete some simple mood ratings.____Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","Ready to start the ratings","_","false")
-ratingsContainer("true","0")
-vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
-vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-endRatingsContainer()
-noticeStage("The main taste test","For the main taste test\, samples of simple taste solutions are presented for you to evaluate. Note you will complete one set of ratings\, have a short (2 minute) pause and then complete a second set of ratings.____Remember that for liking ratings\, the centre of the scale is neutral (neither like or dislike).____When prompted by the computer please take the relevant sample.You will be asked to place all of the solution in your mouth\, swill it around while counting to 10 and then expectorate (spit) into the funnel we provide. A reminder to rinse your mouth with the water provided (maximum 1-2 sips) and then to expectorate (spit) it into the funnel\, will follow the ratings of each sample.","Ready for the taste test","","false")
-tasteTest("Please call your experimenter","How <taste> <food>?","Please empty <food> in your mouth\, swill it around while counting to 10\, and then expectorate it into the funnel.","Please rinse your mouth with the water provided and then expectorate it into the funnel.","Dislike extremely","Like extremely","Rating completed","","0","100","false","true","false","0","false","{Sample 125,Sample 265,Sample 312,Sample 418,Sample 550,Sample 667,Sample 720,Sample 801}","{much do you like}","{}","{sweet is}")
-wait("2","It is time for a short break. Please relax until further instructions displayed on screen.","true")
-noticeStage("Waiting time is over!","Please move to the second part of the Taste Test.","Continue","","true")
-tasteTest("Please call your experimenter","How <taste> <food>?","Please empty <food> in your mouth\, swill it around while counting to 10\, and then expectorate it into the funnel.","Please rinse your mouth with the water provided and then expectorate it into the funnel.","Dislike extremely","Like extremely","Rating completed","","0","100","false","true","false","0","false","{Sample 125,Sample 265,Sample 312,Sample 418,Sample 550,Sample 667,Sample 720,Sample 801}","{much do you like}","{}","{sweet is}")
-ratingsContainer("true","0")
-vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
-vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-endRatingsContainer()
-noticeStage("Thank you!","That completes the Taste Test: please call your experimenter.","X","","true")
-endExperiment()
-
-ExperimentName: Lab breakfast
-ExperimenterName: Vasiliki
-ExperimentID: 999
-Created on: null
-Version: 7
-startExperiment("LAB BREAKFAST","","Click mouse to start")
-noticeStage("Good Morning!","Today\, we are preparing the breakfast for you! Note that you will be asked to complete some simple mood and appetite ratings both before and after this lab-based meal.____Subsequent to the first set of mood and appetite ratings and before you start enjoying your breakfast in full\, you are also required to rate different gustatory aspects of the breakfast items; detailed instructions follow.","Ready to start","","false")
-noticeStage("Mood and Appetite Ratings","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","Ready to start the ratings","_","false")
-ratingsContainer("true","0")
-vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
-vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-endRatingsContainer()
-noticeStage("Porridge Tasting","Please have TWO SPOONFULS of the porridge and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
-vasStage("How much did you like the porridge?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
-glmsStage("How sweet was the porridge?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
-vasStage("How much do you desire to eat the porridge?","No desire to eat the porridge","Strong desire to eat the porridge","0","100","Continue","Session[]","","false","false")
-noticeStage("Orange Juice Tasting","Please take TWO BIG SIPS of the orange juice and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
-vasStage("How much did you like the orange juice?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
-glmsStage("How sweet was the orange juice?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
-vasStage("How much do you desire to drink the orange juice?","No desire to drink the orange juice","Strong desire to drink the orange juice","0","100","Continue","Session[]","","false","false")
-noticeStage("Cereal Bar Tasting","Please take TWO LARGE BITES of the cereal bar slices and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
-vasStage("How much did you like the cereal bar?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
-glmsStage("How sweet was the cereal bar?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
-vasStage("How much do you desire to eat the cereal bar?","No desire to eat the cereal bar","Strong desire to eat the cereal bar","0","100","Continue","Session[]","","false","false")
-noticeStage("Time for breakfast!","Now relax and enjoy the rest of the oatmeal pot\, orange juice and cereal bars!____When you finish your breakfast please press NEXT to continue______","NEXT","","false")
-noticeStage("Mood and Appetite Ratings","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","Ready to start the ratings","_","false")
-ratingsContainer("true","0")
-vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
-vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
-endRatingsContainer()
-noticeStage("Thank you!","That completes the lab-based breakfast: please call your researcher.","X","","true")
-endExperiment()
-
-ExperimentName: Test1708
+ExperimentName: null
 ExperimenterName: Giang
 ExperimentID: 0
 Created on: 17.08.2024
 Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-vasStage("User input","null","null","-10","100","null","null","null","false","false")
+tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","true","true","0","true","{Biscuits,Cake,Cereal,Cheese,Chocolate,Crisps,Ice Cream,Pasta,Porridge,Sandwiches,Soup,Tomatoes,Yoghurt,Pho,Bun bo hue}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet,Ngon,tasty}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet,Do,sweet is}","{Pho,Bun bo hue}","{Ngon,tasty}","{Do,sweet is}")
 endExperiment()
 

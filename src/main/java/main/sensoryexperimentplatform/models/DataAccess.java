@@ -479,7 +479,7 @@ public class DataAccess {
                         currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
                 } else if (line.startsWith("tasteTest")){
-                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = audiblePattern.matcher(line);
 
                     if (matcher.find()) {
@@ -499,27 +499,47 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(14)),
                                 Boolean.parseBoolean(matcher.group(15)));
 
-                        String[] foods = matcher.group(16).split(",");
-                        for (String food : foods) {
+                        String[] foodsOptions = matcher.group(16).split(",");
+                        for (String food : foodsOptions) {
+                            if (!food.isEmpty()) {
+                                tasteTest.addFoodOptions(food.trim());
+                            }
+                        }
+
+                        String[] vasOptions = matcher.group(17).split(",");
+                        for (String vasItem : vasOptions) {
+                            if (!vasItem.isEmpty()) {
+                                tasteTest.addVASOptions(vasItem.trim());
+                            }
+                        }
+
+                        String[] gLMSOptions = matcher.group(18).split(",");
+                        for (String glmsItem : gLMSOptions) {
+                            if (!glmsItem.isEmpty()) {
+                                tasteTest.addGLMSOptions(glmsItem.trim());
+                            }
+                        }
+
+                        String[] selectedFoods = matcher.group(19).split(",");
+                        for (String food : selectedFoods) {
                             if (!food.isEmpty()) {
                                 tasteTest.getSelectedFoods().add(food.trim());
                             }
                         }
 
-                        String[] vas = matcher.group(17).split(",");
-                        for (String vasItem : vas) {
+                        String[] selectedVAS = matcher.group(20).split(",");
+                        for (String vasItem : selectedVAS) {
                             if (!vasItem.isEmpty()) {
                                 tasteTest.getSelectedVAS().add(vasItem.trim());
                             }
                         }
 
-                        String[] glms = matcher.group(18).split(",");
-                        for (String glmsItem : glms) {
+                        String[] selectedGLMS = matcher.group(21).split(",");
+                        for (String glmsItem : selectedGLMS) {
                             if (!glmsItem.isEmpty()) {
                                 tasteTest.getSelectedGLMS().add(glmsItem.trim());
                             }
                         }
-
                         currentExperiment.addNewTasteTest(tasteTest);
 
 

@@ -89,7 +89,7 @@ public class EditExpController {
 
     public void initialize() {
 
-      //  initialDisablingButtons();
+        initialDisablingButtons();
 
         setUpTreeViewListener();
 

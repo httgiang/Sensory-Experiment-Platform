@@ -140,6 +140,7 @@ public class TasteTest{
         gLMSOptions.add("Sweet");
     }
 
+
     public void generateTasteTest(){
         for(String food : selectedFoods){
             String consumptionInst = convertConsumptionInstruction(food);
@@ -212,9 +213,14 @@ public class TasteTest{
                 .append(timeWait).append("\",\"")
                 .append(isAlert).append("\",\"")
 
+                .append("{").append(String.join(",", foodOptions)).append("}\",\"")
+                .append("{").append(String.join(",", vasOptions)).append("}\",\"")
+                .append("{").append(String.join(",", gLMSOptions)).append("}\",\"")
+
                 .append("{").append(String.join(",", selectedFoods)).append("}\",\"")
                 .append("{").append(String.join(",", selectedVAS)).append("}\",\"")
                 .append("{").append(String.join(",", selectedGLMS)).append("}\")");
+
 
 
         return builder.toString();
@@ -376,7 +382,23 @@ public class TasteTest{
         }
         return gLMSOptions;
     }
+    public void addFoodOptions(String food){
+        if(!getFoodOptions().contains(food)){
+            getFoodOptions().add(food);
+        }
+    }
 
+    public void addVASOptions(String vas){
+        if(!getVasOptions().contains(vas)){
+            getVasOptions().add(vas);
+        }
+    }
+
+    public void addGLMSOptions(String gLMS){
+        if(!getGLMSOptions().contains(gLMS)){
+            getGLMSOptions().add(gLMS);
+        }
+    }
     public void setGLMSOptions(ObservableList<String> gLMSOptions) {
         this.gLMSOptions = gLMSOptions;
     }

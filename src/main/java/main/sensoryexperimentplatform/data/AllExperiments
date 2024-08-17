@@ -129,7 +129,6 @@ Created on: 16.08.2024
 Version: 5
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 wait("0","Please Wait","false")
-tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","true","true","true","0","true","{Yoghurt,Tomatoes,ngon,Food}","{Sour,Spicy,Ngon}","{Do,Salty,Pleasant}")
 endExperiment()
 
 ExperimentName: E6 Preload Soup

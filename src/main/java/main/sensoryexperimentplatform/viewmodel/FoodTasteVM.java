@@ -119,11 +119,20 @@ public class FoodTasteVM {
 
 
     public void addFoodOptions(String food) {
-        foodOptions.add(food);
+        if(!foodOptions.contains(food)){
+            foodOptions.add(food);
+        }
     }
-    public void addVASOptions(String vasRatings){vasOptions.add(vasRatings);}
-    public void addGLMSOptions(String gLMSRatings)
-        {gLMSOptions.add(gLMSRatings);}
+    public void addVASOptions(String vasRatings){
+        if(!vasOptions.contains(vasRatings)){
+            vasOptions.add(vasRatings);
+        }
+    }
+    public void addGLMSOptions(String gLMSRatings) {
+        if (!gLMSOptions.contains(gLMSRatings)) {
+            gLMSOptions.add(gLMSRatings);
+        }
+    }
 
 //    public void addSelectedFoods(String food) {
 //        if(!selectedFoods.contains(food)){
