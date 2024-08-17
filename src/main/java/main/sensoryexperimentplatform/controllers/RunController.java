@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage; // Explicit import for JavaFX Stage
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
@@ -41,46 +42,7 @@ public class RunController {
         loadItems();
         startTimer();
         setListViewListener();
-    }
-
-    private void setListViewListener() throws IOException {
-        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                try {
-                    showRunningPane(newValue);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-        if (!listView.getItems().isEmpty()) {
-            listView.getSelectionModel().selectFirst();
-            showRunningPane(listView.getItems().get(0));
-        }
-    }
-
-
-    private void showRunningPane(RunStages selectedItem) throws IOException {
-        RunStages runStages = selectedItem;
-        if (runStages == null) return;
-
-        content.getChildren().clear();
-        runStages.loadInterface(content);
-        runStages.handleRunButtons(btn_next, btn_back);
-
-    }
-
-    private void handleUpdateProgress(){
-       int currIdx = listView.getSelectionModel().getSelectedIndex();
-       if(currIdx >= 0){
-           if(currIdx >= processed){
-               processed = currIdx;
-           }
-       }
-       else {
-           processed++;
-       }
-       updateProgress(processed);
+        initButtons();
     }
 
     private void loadItems() {
@@ -142,7 +104,54 @@ public class RunController {
         }
     }
 
+
+    private void showRunningPane(RunStages selectedItem) throws IOException {
+        RunStages runStages = selectedItem;
+        if (runStages == null) return;
+
+        content.getChildren().clear();
+        runStages.loadInterface(content);
+        runStages.handleRunButtons(btn_next, btn_back);
+
+    }
+    private void setListViewListener() throws IOException {
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                try {
+                    showRunningPane(newValue);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        if (!listView.getItems().isEmpty()) {
+            listView.getSelectionModel().selectFirst();
+            showRunningPane(listView.getItems().get(0));
+        }
+    }
+
+    private void initButtons(){
+        btn_next.setWrapText(true);
+        btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
+    }
+
+    private void handleUpdateProgress(){
+       int currIdx = listView.getSelectionModel().getSelectedIndex();
+       if(currIdx >= 0){
+           if(currIdx >= processed){
+               processed = currIdx;
+           }
+       }
+       else {
+           processed++;
+       }
+       updateProgress(processed);
+    }
+
+
     private void handleFinalNext() throws IOException {
+        processed = 0;
         stopTimer();
         autoClose();
     }
@@ -155,8 +164,12 @@ public class RunController {
 
 
     private void updateProgress(int processedIdx){
-        double progress = (processedIdx + 1) / (experiment.getStages().size() * 1.0);
-        progress_bar.setProgress(progress);
+        if(experiment.getStages().size() > 0){
+            double progress = (processedIdx + 1) / (experiment.getStages().size() * 1.0);
+            System.out.println("progress" + progress);
+            progress_bar.setProgress(progress);
+        }
+
     }
     //timer tracks the experiment
     private void startTimer() {

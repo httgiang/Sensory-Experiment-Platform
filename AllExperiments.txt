@@ -105,15 +105,6 @@ endRatingsContainer()
 noticeStage("Thank you","That completes this part of the study\, please call your experimenter.","End","","false")
 endExperiment()
 
-ExperimentName: Demo
-ExperimenterName: Giang
-ExperimentID: 2
-Created on: 13.08.2024
-Version: 7
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-wait("0","Please Wait","false")
-endExperiment()
-
 ExperimentName: Marie GNG - Mood Ratings
 ExperimenterName: Martin
 ExperimentID: 999
@@ -293,5 +284,14 @@ vasStage("How anxious are you right now?","Not at all anxious","Extremely anxiou
 vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
 endRatingsContainer()
 noticeStage("Thank you!","That completes the lab-based breakfast: please call your researcher.","X","","true")
+endExperiment()
+
+ExperimentName: Test1708
+ExperimenterName: Giang
+ExperimentID: 0
+Created on: 17.08.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+vasStage("User input","null","null","-10","100","null","null","null","false","false")
 endExperiment()
 

@@ -10,27 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/E6 Preload Soup.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Lab breakfast.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Lab breakfast.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/STT_1M_short.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/STT_1M_short.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/STT_1M_short/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/STT_1M_short/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunAudible_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunAudible_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunCourseVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunGLMS_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunGLMS_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunInputVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunInputVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunTimer_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunTimer_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunVas_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunVas_VM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,6 +186,7 @@
       <workItem from="1723778000281" duration="7048000" />
       <workItem from="1723824672571" duration="3370000" />
       <workItem from="1723855722887" duration="1504000" />
+      <workItem from="1723858787366" duration="2045000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
