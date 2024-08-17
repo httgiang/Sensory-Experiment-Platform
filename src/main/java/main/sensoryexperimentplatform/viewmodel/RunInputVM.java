@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunInputController;
@@ -35,6 +36,12 @@ public class RunInputVM implements RunStages{
 
         RunInputController controller = loader.getController();
         controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.getButtonText());
     }
 
     public StringProperty getQuestionText() {

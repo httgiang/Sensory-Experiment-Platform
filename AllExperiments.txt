@@ -109,8 +109,9 @@ ExperimentName: Demo
 ExperimenterName: Giang
 ExperimentID: 2
 Created on: 13.08.2024
-Version: 6
+Version: 7
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
+wait("0","Please Wait","false")
 endExperiment()
 
 ExperimentName: Marie GNG - Mood Ratings
@@ -251,5 +252,46 @@ vasStage("How anxious are you right now?","Not at all anxious","Extremely anxiou
 vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
 endRatingsContainer()
 noticeStage("Thank you!","That completes the Taste Test: please call your experimenter.","X","","true")
+endExperiment()
+
+ExperimentName: Lab breakfast
+ExperimenterName: Vasiliki
+ExperimentID: 999
+Created on: null
+Version: 7
+startExperiment("LAB BREAKFAST","","Click mouse to start")
+noticeStage("Good Morning!","Today\, we are preparing the breakfast for you! Note that you will be asked to complete some simple mood and appetite ratings both before and after this lab-based meal.____Subsequent to the first set of mood and appetite ratings and before you start enjoying your breakfast in full\, you are also required to rate different gustatory aspects of the breakfast items; detailed instructions follow.","Ready to start","","false")
+noticeStage("Mood and Appetite Ratings","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","Ready to start the ratings","_","false")
+ratingsContainer("true","0")
+vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
+vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+endRatingsContainer()
+noticeStage("Porridge Tasting","Please have TWO SPOONFULS of the porridge and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
+vasStage("How much did you like the porridge?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+glmsStage("How sweet was the porridge?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
+vasStage("How much do you desire to eat the porridge?","No desire to eat the porridge","Strong desire to eat the porridge","0","100","Continue","Session[]","","false","false")
+noticeStage("Orange Juice Tasting","Please take TWO BIG SIPS of the orange juice and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
+vasStage("How much did you like the orange juice?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+glmsStage("How sweet was the orange juice?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
+vasStage("How much do you desire to drink the orange juice?","No desire to drink the orange juice","Strong desire to drink the orange juice","0","100","Continue","Session[]","","false","false")
+noticeStage("Cereal Bar Tasting","Please take TWO LARGE BITES of the cereal bar slices and let us know what you think by completing some simple ratings.","Show me the rating scales","","false")
+vasStage("How much did you like the cereal bar?","Dislike extremely","Like extremely","0","100","Continue","Session[]","**REMINDER**____The left side of the line is for the different levels of disliking and the right side for the different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+glmsStage("How sweet was the cereal bar?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet was the porridge. ____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","false")
+vasStage("How much do you desire to eat the cereal bar?","No desire to eat the cereal bar","Strong desire to eat the cereal bar","0","100","Continue","Session[]","","false","false")
+noticeStage("Time for breakfast!","Now relax and enjoy the rest of the oatmeal pot\, orange juice and cereal bars!____When you finish your breakfast please press NEXT to continue______","NEXT","","false")
+noticeStage("Mood and Appetite Ratings","Use the mouse to move the bar to the position that best describes how you feel\, and then click the box to register your rating.","Ready to start the ratings","_","false")
+ratingsContainer("true","0")
+vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
+vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+endRatingsContainer()
+noticeStage("Thank you!","That completes the lab-based breakfast: please call your researcher.","X","","true")
 endExperiment()
 

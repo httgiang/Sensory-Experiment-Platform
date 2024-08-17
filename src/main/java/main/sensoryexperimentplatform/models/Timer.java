@@ -84,7 +84,12 @@ public class Timer extends Stage{
     }
     //setter for set time
     public void setTime(String time){
-        timeToWait = Long.parseLong(time);
+        if(time.equals("")){
+            timeToWait = 0;
+        } else {
+            timeToWait = Long.parseLong(time);
+        }
+
     }
 
     public String getFormattedElapsed() {

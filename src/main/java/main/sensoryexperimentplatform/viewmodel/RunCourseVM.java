@@ -2,6 +2,7 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunCourseController;
@@ -34,6 +35,12 @@ public class RunCourseVM implements RunStages{
         RunCourseController controller = loader.getController();
         controller.setViewModel(this);
     }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonProperty());
+    }
+
     public StringProperty titleProperty() {
         return title;
     }

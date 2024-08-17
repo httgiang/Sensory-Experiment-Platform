@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunAudibleController;
@@ -19,6 +20,7 @@ public class RunAudible_VM implements RunStages{
     private StringProperty soundName;
 
 
+
     public RunAudible_VM(AudibleInstruction audibleInstruction){
         this.audibleInstruction = audibleInstruction;
         button = new SimpleStringProperty(audibleInstruction.getButtonText());
@@ -27,6 +29,23 @@ public class RunAudible_VM implements RunStages{
         soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
 
         helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
+
+    }
+
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunAudibleController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.buttonProperty());
 
     }
     public StringProperty getTitle(){
@@ -50,13 +69,5 @@ public class RunAudible_VM implements RunStages{
     }
 
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
 
-        RunAudibleController controller = loader.getController();
-        controller.setViewModel(this);
-    }
 }

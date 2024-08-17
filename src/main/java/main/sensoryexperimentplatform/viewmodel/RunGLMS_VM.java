@@ -2,6 +2,7 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunGLMSController;
@@ -76,6 +77,22 @@ public class RunGLMS_VM implements RunStages {
         anchorPane.getChildren().addAll(newContent);
         RunGLMSController controller = loader.getController();
         controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.textProperty().bind(this.buttonProperty());
+
+        if (this.conductedTextProperty().get() == null){
+            btn_next.setDisable(true);
+        }else btn_next.setDisable(false);
+
+        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                btn_next.setDisable(false);
+            }
+        });
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunVasController;
@@ -98,5 +99,20 @@ public class RunVas_VM implements RunStages{
         anchorPane.getChildren().addAll(newContent);
         RunVasController controller = loader.getController();
         controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonProperty());
+
+        if (this.conductedTextProperty().get() == null){
+            btn_next.setDisable(true);
+        }else btn_next.setDisable(false);
+
+        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                btn_next.setDisable(false);
+            }
+        });
     }
 }

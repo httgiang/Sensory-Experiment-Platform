@@ -5,13 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -51,7 +47,7 @@ public class FillNameController {
         Parent root = loader.load();
 
         RunController controller = loader.getController(); // Get the controller from the loader
-        controller.setExperiment(experiment, uid);
+        controller.initRunExperiment(experiment, uid);
 //        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
 //        controller.setViewModel(viewModel);
 
