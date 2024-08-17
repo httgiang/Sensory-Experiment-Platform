@@ -1,10 +1,17 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunGLMSController;
 import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.gLMS;
 
-public class RunGLMS_VM {
+import java.io.IOException;
+
+public class RunGLMS_VM implements RunStages {
     private gLMS stage;
     private StringProperty question, help, conducted;
     private DoubleProperty sliderValue;
@@ -31,6 +38,7 @@ public class RunGLMS_VM {
     public void setDate(){
         stage.setConducted(DataAccess.getCurrentFormattedTime());
     }
+
     public void setResult(int result){
         stage.setResult(result);
     }
@@ -61,4 +69,30 @@ public class RunGLMS_VM {
     public void playAlertSound(){
         stage.playAlertSound();
     }
+
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().addAll(newContent);
+        RunGLMSController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.textProperty().bind(this.buttonProperty());
+
+        if (this.conductedTextProperty().get() == null){
+            btn_next.setDisable(true);
+        }else btn_next.setDisable(false);
+
+        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                btn_next.setDisable(false);
+            }
+        });
+    }
+
 }

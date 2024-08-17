@@ -55,29 +55,47 @@ public class DataAccess {
 
 
 
-    private static void initializeCaches(String experimentName, int version) throws IOException {
-        File resultsDirectory = new File("src/results");
+    private static void initializeCaches(String experimentName) throws IOException {
+        //./results
+        File resultsDirectory = new File(saveResultPath);
+
+        // Ensure the results directory exists, create it if not
         if (!resultsDirectory.exists()) {
             resultsDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
         }
-        // Create directory for the experiment if it doesn't exist
-        File experimentDirectory = new File("src/results/" + experimentName+"_"+version);
+
+        // Ensure the experiment directory exists, create it if not
+        //./results/exname_version
+        File experimentDirectory = new File(saveResultPath + "/" + experimentName);
         if (!experimentDirectory.exists()) {
             experimentDirectory.mkdirs(); // Automatically creates the directory and any necessary parent directories
-        } else {
-//            System.out.println("Experiment's result directory already exists");
+        }
+
+        // Check if the central CSV file for the experiment exists
+        String resultFilePath = saveResultPath + "/" + experimentName + ".csv";
+        File resultFile = new File(resultFilePath);
+
+        // If the CSV file doesn't exist, create it and add headers (optional)
+        if (!resultFile.exists()) {
+            resultFile.createNewFile(); // Creates the blank CSV file if it doesn't exist
+
+            try (FileWriter writer = new FileWriter(resultFile)) {
+                // Optionally write headers only for new files
+                writer.write("uid,type,time,result,question,lowAnchorText,highAnchorText,lowAnchorValue,highAnchorValue\n");
+                writer.flush();
+            }
         }
     }
+
     //Save results of conducted experiment
     public static void quickSave(Experiment experiment, String uid) throws IOException {
         // Create directory for the experiment results if it doesn't exist
         String experimentName = experiment.getExperimentName();
-        int version = experiment.getVersion();
-        initializeCaches(experimentName, version);
+        initializeCaches(experimentName);
         // Create or open the file for saving results
-        String resultFilePath = "src/results/" + experimentName + "_" + version + ".csv";
+        String resultFilePath = saveResultPath + "/" + experimentName + ".csv";
         // Create a new file for the specific UID
-        FileWriter writer2 = new FileWriter("src/results/" + experimentName + "_" + version + "/" + uid + ".csv", false);
+        FileWriter writer2 = new FileWriter(saveResultPath + "/" + experimentName + "/" + uid + ".csv", false);
         for (Object o : experiment.getStages()) {
             if (o instanceof RatingContainer) {
                 for (Object subO : ((RatingContainer) o).getContainer()) {
@@ -93,11 +111,10 @@ public class DataAccess {
         writeExistedData(writer, experiment);
         writer.flush();
         writer.close();
-
         experiment.setNumber_of_results(countingResults(experiment));
     }
     private static void writeExistedData(Writer writer, Experiment experiment) throws IOException {
-        String directoryPath = "src/results/" + experiment.getExperimentName() + "_" + experiment.getVersion();
+        String directoryPath = saveResultPath + "/" + experiment.getExperimentName();
         try (Stream<Path> paths = Files.walk(Paths.get(directoryPath))) {
             List<Path> csvFiles = paths.filter(Files::isRegularFile)
                     .filter(path -> path.toString().endsWith(".csv"))
@@ -142,20 +159,35 @@ public class DataAccess {
                     .append(((gLMS) subO).getTitle());
             writer.append("\n");
         }
+        if( subO instanceof Question){
+            writer.append(uid).append(",").append("questionStage ,")
+                    .append(((Question) subO).getResult())
+                    .append(",")
+                    .append(((Question) subO).getQuestion());
+            writer.append("\n");
+        }
+        if( subO instanceof Input){
+            writer.append(uid).append(",").append("input ,")
+                    .append(((Input) subO).getResult())
+                    .append(",")
+                    .append(((Input) subO).getQuestionText());
+            writer.append("\n");
+        }
+
     }
     public static int countingResults(Experiment experiment) throws IOException {
-        String directory = experiment.getExperimentName() + "_" + experiment.getVersion();
-        initializeCaches(experiment.getExperimentName(),experiment.getVersion());
-        int numOfResults = Objects.requireNonNull(new File("src/results/" + directory).list()).length;
+        String directory = experiment.getExperimentName();
+        initializeCaches(experiment.getExperimentName());
+        int numOfResults = Objects.requireNonNull(new File(saveResultPath + "/" + directory).list()).length;
         return numOfResults;
     }
 
     public static void importExperiment(String loadFilePath) throws Exception{
-        Experiment currentExperiment = new Experiment(null,null,null,null,1,000,null);
+        Experiment currentExperiment = createNewExperiment();
         RatingContainer rc = null;
+        TasteTest tasteTest = null;
         boolean isContainer = false;
         String line;
-
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
@@ -222,6 +254,53 @@ public class DataAccess {
                         currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
 
+                }
+                else if (line.startsWith("tasteTest")){
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
+                    Matcher matcher = audiblePattern.matcher(line);
+
+                    if (matcher.find()) {
+                        tasteTest = new TasteTest(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                Integer.parseInt(matcher.group(9)),
+                                Integer.parseInt(matcher.group(10)),
+                                Boolean.parseBoolean(matcher.group(11)),
+                                Boolean.parseBoolean(matcher.group(12)),
+                                Boolean.parseBoolean(matcher.group(13)),
+                                Integer.parseInt(matcher.group(14)),
+                                Boolean.parseBoolean(matcher.group(15)));
+
+                        String[] foods = matcher.group(16).split(",");
+                        for (String food : foods) {
+                            if (!food.isEmpty()) {
+                                tasteTest.getSelectedFoods().add(food.trim());
+                            }
+                        }
+
+                        String[] vas = matcher.group(17).split(",");
+                        for (String vasItem : vas) {
+                            if (!vasItem.isEmpty()) {
+                                tasteTest.getSelectedVAS().add(vasItem.trim());
+                            }
+                        }
+
+                        String[] glms = matcher.group(18).split(",");
+                        for (String glmsItem : glms) {
+                            if (!glmsItem.isEmpty()) {
+                                tasteTest.getSelectedGLMS().add(glmsItem.trim());
+                            }
+                        }
+
+                        currentExperiment.addNewTasteTest(tasteTest);
+
+
+                    }
                 }
 
                 else if (line.startsWith("vasStage")) {
@@ -306,20 +385,35 @@ public class DataAccess {
                 } else if (line.startsWith("endRatingsContainer")) {
                     rc = null;
                     isContainer = false;
-                } else if (line.startsWith("endExperiment()")){
+                } else if (line.startsWith("course")){
+                    Pattern pattern = Pattern.compile("course\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = pattern.matcher(line);
+
+                    if (matcher.find()) {
+                        Course temp = new Course(matcher.group(1), matcher.group(2), matcher.group(3),
+                                Integer.parseInt(matcher.group(4)) , Integer.parseInt(matcher.group(5)),
+                                Integer.parseInt(matcher.group(6)), matcher.group(7), matcher.group(8));
+                        currentExperiment.addCourse(temp);
+                    }
+                }
+                else if (line.startsWith("endExperiment()")){
                     listOfExperiment.addExperiment(currentExperiment);
-                    initializeCaches(currentExperiment.getExperimentName(),currentExperiment.getVersion());
+                    initializeCaches(currentExperiment.getExperimentName());
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    currentExperiment = new Experiment(null,null,null,null,1,000,null);
+                    currentExperiment = createNewExperiment();
                 }
             }
             updateFile();
         }
     }
+    private static Experiment createNewExperiment(){
+        return new Experiment(null,null,null,null,1,999,null);
+    }
 
     public static void loadExperiments() throws Exception{
-        Experiment currentExperiment = new Experiment(null,null,null,null,1,000,null);
+        Experiment currentExperiment = createNewExperiment();
         RatingContainer rc = null;
+        TasteTest tasteTest = null;
         boolean isContainer = false;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
@@ -384,29 +478,53 @@ public class DataAccess {
                     if (matcher.find()) {
                         currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
                     }
-
                 } else if (line.startsWith("tasteTest")){
-                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = audiblePattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addTasteTest(matcher.group(1),
+                        tasteTest = new TasteTest(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
                                 matcher.group(5),
-                                Integer.parseInt(matcher.group(6)),
-                                Integer.parseInt(matcher.group(7)),
+                                matcher.group(6),
+                                matcher.group(7),
                                 matcher.group(8),
-                                Boolean.parseBoolean(matcher.group(9)),
-                                matcher.group(10),
-                                matcher.group(11),
-                                Integer.parseInt(matcher.group(12)),
+                                Integer.parseInt(matcher.group(9)),
+                                Integer.parseInt(matcher.group(10)),
+                                Boolean.parseBoolean(matcher.group(11)),
+                                Boolean.parseBoolean(matcher.group(12)),
                                 Boolean.parseBoolean(matcher.group(13)),
-                                Boolean.parseBoolean(matcher.group(14)),
+                                Integer.parseInt(matcher.group(14)),
                                 Boolean.parseBoolean(matcher.group(15)));
+
+                        String[] foods = matcher.group(16).split(",");
+                        for (String food : foods) {
+                            if (!food.isEmpty()) {
+                                tasteTest.getSelectedFoods().add(food.trim());
+                            }
+                        }
+
+                        String[] vas = matcher.group(17).split(",");
+                        for (String vasItem : vas) {
+                            if (!vasItem.isEmpty()) {
+                                tasteTest.getSelectedVAS().add(vasItem.trim());
+                            }
+                        }
+
+                        String[] glms = matcher.group(18).split(",");
+                        for (String glmsItem : glms) {
+                            if (!glmsItem.isEmpty()) {
+                                tasteTest.getSelectedGLMS().add(glmsItem.trim());
+                            }
+                        }
+
+                        currentExperiment.addNewTasteTest(tasteTest);
+
+
                     }
-                }else if (line.startsWith("vasStage")) {
+                } else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
@@ -486,13 +604,32 @@ public class DataAccess {
                 } else if (line.startsWith("endRatingsContainer")) {
                     rc = null;
                     isContainer = false;
-                } else if (line.startsWith("endExperiment()")){
+                } else if (line.startsWith("course")){
+                    //course("Start Eating Stage", "User Input", "User Input", "0", "0", "0", "User Input", "User Input")
+                    Pattern pattern = Pattern.compile("course\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"([\\s\\S]*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = pattern.matcher(line);
+
+                    if (matcher.find()) {
+                        currentExperiment.addCourseStage(matcher.group(1), matcher.group(2), matcher.group(3),
+                               Integer.parseInt(matcher.group(4)) , Integer.parseInt(matcher.group(5)),
+                                Integer.parseInt(matcher.group(6)), matcher.group(7), matcher.group(8));
+                    }
+                }
+                else if (line.startsWith("endExperiment()")){
                     listOfExperiment.addExperiment(currentExperiment);
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    currentExperiment = new Experiment(null,null,null,null,1,999,null);
+                    currentExperiment = createNewExperiment();
 
                 }
             }
+        }
+
+        catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Error parsing number from the file: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

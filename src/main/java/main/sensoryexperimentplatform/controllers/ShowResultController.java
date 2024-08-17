@@ -1,5 +1,6 @@
 package main.sensoryexperimentplatform.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,7 +45,18 @@ public class ShowResultController {
         this.viewModel = viewModel;
         //load items to table
         if (this.viewModel != null) {
-            tableView.setItems(SurveyDataLoader.loadSurveyData(viewModel.getFilePath()));
+            try{
+                ObservableList<SurveyEntry> data = SurveyDataLoader.loadSurveyData(viewModel.getFilePath());
+                if (!(data ==null)){
+                    tableView.setItems(data);
+                }else{
+                    System.err.println("The system cannot find the file specified");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 

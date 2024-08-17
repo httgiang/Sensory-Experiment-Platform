@@ -18,5 +18,6 @@ public class RunStartController {
         titleTxt.textProperty().bind(viewModel.getTitle());
         contentTxt.textProperty().bind(viewModel.getContent());
 
+
     }
 }

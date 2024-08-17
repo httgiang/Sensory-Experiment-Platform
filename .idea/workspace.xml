@@ -10,18 +10,193 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Edit| UI - Base + Dashboard display">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/demo1408.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Sensory_Expeirment_Platform_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/demo1608.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/jar_demo1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/jar_demo2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/javafx_demo1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AllExperiments.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SoundFolder/boop-741-mhz-39314.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SoundFolder/stompwav-14753.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid14996.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/demo1608/SenseXP-1.0.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/demo1608/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/jar_demo1/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/jar_demo2/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/javafx_demo1/Sensory_Expeirment_Platform.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/1MTasteScreenerShort.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/1MTasteScreenerShort/091.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Bond Lader.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/E6 Preload Soup.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/E6 Umami Main Course.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Ella - Mood Ratings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Experiment_3/gggggg_2024.08.16.01.18.49.343.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/GNG - Mood Ratings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/GNG - Mood Ratings/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Lab breakfast.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Lab breakfast/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Porridge_taste test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Porridge_taste test_28.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/STT_1M_full.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/STT_1M_short.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/STT_1M_short/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Screener_TastePhenotypes.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Sweet Screen2018.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Sweet Screen2018/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Sweet Screen2018_short.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/SweetLikerTest2015.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Tara and Alice Ratings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Tara and Alice Ratings/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Phenotypes Screener.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/1412.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/14312.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/66.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/99.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste&amp;Metabolism.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/WesternDiet_taste test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/test 2_2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/testing.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/tui di test_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/PopUpConfirmController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/PopUpErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/PopUpSuccessController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunCourseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/utilz/PopUpType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/PopUpVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunCourseVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpConfirm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpSuccess.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunCourse.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/viewResultsbutton.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/results/Taste Screener 2019_20_1/1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/results/testing_2/ccccc.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/results/testing_2/dddddd.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Experiment_4/fff_2024.08.12.13.20.06.551.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Good morning_1/ddddd_2024.08.08.11.59.00.425.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Good morning_1/mmm_2024.08.08.11.57.31.921.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Sensory_Expeirment_Platform_jar/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FoodAndTasteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FoodAndTasteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/NotiForAddFood.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunAudibleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunAudibleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunInputController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunInputController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunNoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunNoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/ShowResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/ShowResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/VasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/VasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addFoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addFoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addGLMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addGLMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addTasteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AddTasteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addVas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/addVas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/questionStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/QuestionStageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/AudibleInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/AudibleInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/TasteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/TasteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Vas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Vas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/listOfExperiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/listOfExperiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/utilz/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/utilz/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddTasteVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddTasteVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/FoodTasteVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/FoodTasteVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/InputStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/InputStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/PeriodicVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/PeriodicVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/QuestionStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/QuestionStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RatingContainer_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RatingContainer_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunAudible_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunAudible_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunExperiment_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunGLMS_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunGLMS_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunInputVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunInputVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunTimer_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunTimer_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunVas_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunVas_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ShowResultVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ShowResultVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/Stages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/Stages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/StartVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/StartVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/TimerStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/TimerStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddFood.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddFood.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddGLMS.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddGLMS.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddTasteTest.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddTasteTest.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddVas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddVas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/FoodAndTaste.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/FoodAndTaste.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpDeleteStage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpError.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpError.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/PopUpGoobJob.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/QuestionStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/QuestionStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunAudible.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunAudible.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunGLMS.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunGLMS.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunInputStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunInputStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunRating.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunRating.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunStart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunStart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunTimer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunTimer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/deleteButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/deleteButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/editButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/editButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/resultButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/resultButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/runButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/runButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/EditExp_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/EditExp_CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/NewExperiment_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/NewExperiment_CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/PopUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/PopUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunStage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunStage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/1MTasteScreenerShort_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/1MTasteScreenerShort_7/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/1MTasteScreenerShort/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/1MTasteScreenerShort_7/11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/1MTasteScreenerShort_7/231.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Bond Lader_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Demo.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_130824_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Demo/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_130824_8/1313.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_130824_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/E6 Umami Main Course_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_130824_7/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Ella - Mood Ratings_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_6/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/GNG - Mood Ratings_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/GNG - Mood Ratings_0/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/GNG - Mood Ratings_0/444.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Lab breakfast_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_6/ssssss.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Marie GNG - Mood Ratings_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Porridge_taste test_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Porridge_taste test_27/1141.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/STT_1M_full_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Demo_7/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/STT_1M_short_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Good morning_27.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Screener_TastePhenotypes_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/results/Good morning_27/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Sweet Screen2018_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Sweet Screen2018_short_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/SweetLikerTest2015_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Tara and Alice Ratings_0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste Phenotypes Screener_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste Screener 2019_20_1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste&amp;Metabolism_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste&amp;Metabolism_3/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste&amp;Metabolism_3/11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/WesternDiet_taste test_34.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_3/1111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_3/2222.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_3/3333.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +266,7 @@
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "3007",
+    "git-widget-placeholder": "Merging RestructureRunExp",
     "go.import.settings.migrated": "true",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",

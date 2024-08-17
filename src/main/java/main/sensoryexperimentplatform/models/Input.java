@@ -9,6 +9,9 @@ public class Input extends Stage{
     private Sound sound;
     private boolean alert;
 
+
+    private String result;
+
     public Input(String title, String content) {
         super(title, content);
     }
@@ -18,6 +21,7 @@ public class Input extends Stage{
         this.helpText = helpText;
         this.questionText = questionText;
         this.alert = alert;
+        result = null;
         this.sound = new Sound();
     }
 
@@ -27,6 +31,7 @@ public class Input extends Stage{
         helpText = o.getHelpText();
         questionText = o.getQuestionText();
         alert = o.isAlert();
+        result = null;
         this.sound = new Sound();
     }
 
@@ -45,6 +50,17 @@ public class Input extends Stage{
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
     }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+
+
 
     public String getTitle() {
         return title;
@@ -76,6 +92,7 @@ public class Input extends Stage{
     public void playSound(){
         sound.playSound("boop");
     }
+
 
     @Override
     public String toString() {

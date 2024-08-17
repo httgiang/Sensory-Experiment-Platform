@@ -1,30 +1,32 @@
 package main.sensoryexperimentplatform.models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TasteTest{
     private Notice initialNotice;
     private String noticeStageContent, consumptionInstruction, question, endInstruction;
     private String lowAnchorText, highAnchorText, buttonText, helpText;
-    private int lowAnchorValue, highAnchorValue;
-    private int timeWait;
+    private int lowAnchorValue, highAnchorValue, timeWait;
     boolean isSwap, isRandomizedFood, isRandomizedRatings, isAlert;
     private Vas sampleVas; private gLMS sampleGLMS;
 
     //THREE LISTS CONTAINING DEFAULT OPTIONS TO BE CHOSEN
-    private ArrayList<String> foodOptions, vasOptions, gLMSOptions;
+    private ObservableList<String> foodOptions, vasOptions, gLMSOptions;
 
     //THREE LISTS CONTAINING THE SELECTED FOOD
-    private ArrayList<String> selectedFoods, selectedVAS, selectedGLMS;
-    private ArrayList<String> foods;
+    private ObservableList<String> selectedFoods = FXCollections.observableArrayList();
+    private ObservableList<String> selectedGLMS = FXCollections.observableArrayList();
+    private ObservableList<String> selectedVAS = FXCollections.observableArrayList();
     private ArrayList<Object> stages;
 
-    public TasteTest(String noticeStageContent, String consumptionInstruction, String question,
-                         String lowAnchorText, String highAnchorText, int lowAnchorValue,
-                         int highAnchorValue, String buttonText,
-                         boolean isSwap, String helpText, String endInstruction,
-                         int timeWait, boolean isRandomizedFood, boolean isRandomizedRatings, boolean isAlert){
+
+    public TasteTest(String noticeStageContent, String question, String consumptionInstruction, String endInstruction,
+                     String lowAnchorText, String highAnchorText, String buttonText, String helpText,
+                     int lowAnchorValue, int highAnchorValue, boolean isSwap,
+                     boolean isRandomizedFood, boolean isRandomizedRatings, int timeWait, boolean isAlert){
 
         this.noticeStageContent = noticeStageContent;
         //THE NOTICE STAGE AT THE BEGINNING OF THE TASTE TEST
@@ -49,24 +51,50 @@ public class TasteTest{
 
         //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
         this.endInstruction = endInstruction;
+        this.buttonText = buttonText;
+        this.helpText = helpText;
         this.timeWait = timeWait;
         this.isRandomizedFood = isRandomizedFood;
         this.isRandomizedRatings = isRandomizedRatings;
         this.isAlert = isAlert;
 
-        initFoodOptions();
-        initGLMSOptions();
-        initVASOptions();
+        //foods = new ArrayList<>();
+    }
+    public TasteTest(TasteTest tasteTest){
+        this.noticeStageContent = tasteTest.noticeStageContent;
+        //THE NOTICE STAGE AT THE BEGINNING OF THE TASTE TEST
+        this.initialNotice = new Notice("Taste Test", noticeStageContent, buttonText, "", false);
+        stages = new ArrayList<>();
+        stages.add(initialNotice);
 
-        foods = new ArrayList<>();
-        selectedVAS = new ArrayList<>();
-        selectedGLMS = new ArrayList<>();
+        //THE WORDING FOR PARTICIPANT TO DO WITH EACH SAMPLE
+        this.consumptionInstruction = consumptionInstruction;
 
+        //VAS AND GLMS
+        this.question = tasteTest.question;
+        this.lowAnchorText = tasteTest.lowAnchorText;
+        this.highAnchorText = tasteTest.highAnchorText;
+        this.lowAnchorValue = tasteTest.lowAnchorValue;
+        this.highAnchorValue = tasteTest.highAnchorValue;
+        this.isSwap = tasteTest.isSwap;
+
+        this.sampleVas = new Vas(question, lowAnchorText, highAnchorText, lowAnchorValue, highAnchorValue,
+                "Next", "",helpText,isSwap,isAlert);
+        this.sampleGLMS = new gLMS(question,"Next","","",isAlert);
+
+        //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
+        this.endInstruction = tasteTest.endInstruction;
+        this.timeWait = tasteTest.timeWait;
+        this.isRandomizedFood = tasteTest.isRandomizedFood;
+        this.isRandomizedRatings = tasteTest.isRandomizedRatings;
+        this.isAlert = tasteTest.isAlert;
+
+        this.stages = tasteTest.getStages();
+        generateTasteTest();
     }
 
 
     private void initFoodOptions(){
-        foodOptions = new ArrayList<>();
         foodOptions.add("Biscuits");
         foodOptions.add("Cake");
         foodOptions.add("Cereal");
@@ -83,7 +111,6 @@ public class TasteTest{
     }
 
     private void initVASOptions(){
-        vasOptions = new ArrayList<>();
         vasOptions.add("Alcoholic");
         vasOptions.add("Bitter");
         vasOptions.add("Creamy");
@@ -99,7 +126,6 @@ public class TasteTest{
     }
 
     private void initGLMSOptions(){
-        gLMSOptions = new ArrayList<>();
         gLMSOptions.add("Alcoholic");
         gLMSOptions.add("Bitter");
         gLMSOptions.add("Creamy");
@@ -115,20 +141,20 @@ public class TasteTest{
     }
 
     public void generateTasteTest(){
-        for(String food : foods){
+        for(String food : selectedFoods){
             String consumptionInst = convertConsumptionInstruction(food);
             Notice subNotice = new Notice("Taste Test",consumptionInst, initialNotice.getButtonText(), "",false);
             stages.add(subNotice);
-            Food currFood = new Food(food, isRandomizedRatings, isRandomizedRatings, timeWait);
             for(String taste : selectedVAS){
-                Vas vas = getVas(currFood.getName(), taste);
-                currFood.addVasRating(vas);
+                Vas vas = getVas(food, taste);
+                stages.add(vas);
             }
             for(String taste : selectedGLMS){
-                gLMS glms = getGLMS(currFood.getName(),taste);
-                currFood.addGlmsRating(glms);
+                gLMS glms = getGLMS(food,taste);
+               // currFood.addGlmsRating(glms);
+                stages.add(glms);
             }
-            stages.add(food);
+
             Notice endNotice = new Notice("Rinsing", endInstruction, initialNotice.getButtonText(), "", false);
             stages.add(endNotice);
         }
@@ -162,14 +188,43 @@ public class TasteTest{
                 sampleVas.getContent(),sampleVas.getHelpText(), sampleVas.getIsSwap(), sampleVas.getAlert());
     }
 
+    public String serializeTasteTest(StringBuilder builder) {
+
+        // Serialize the basic information of the TasteTest
+        builder.append("tasteTest(\"")
+                .append(noticeStageContent).append("\",\"")
+                .append(question).append("\",\"")
+                .append(consumptionInstruction).append("\",\"")
+                .append(endInstruction).append("\",\"")
+
+                .append(lowAnchorText).append("\",\"")
+                .append(highAnchorText).append("\",\"")
+                .append(buttonText).append("\",\"")
+
+                .append(helpText).append("\",\"")
+                .append(lowAnchorValue).append("\",\"")
+                .append(highAnchorValue).append("\",\"")
+
+                .append(isSwap).append("\",\"")
+
+                .append(isRandomizedFood).append("\",\"")
+                .append(isRandomizedRatings).append("\",\"")
+                .append(timeWait).append("\",\"")
+                .append(isAlert).append("\",\"")
+
+                .append("{").append(String.join(",", selectedFoods)).append("}\",\"")
+                .append("{").append(String.join(",", selectedVAS)).append("}\",\"")
+                .append("{").append(String.join(",", selectedGLMS)).append("}\")");
+
+
+        return builder.toString();
+    }
     @Override
     public String toString(){
-        return "tasteTest(\"" + noticeStageContent + "\",\"" + consumptionInstruction + "\",\"" +
-                question + "\",\"" + lowAnchorText + "\",\"" + highAnchorText + "\",\"" + lowAnchorValue + "\",\""
-                + highAnchorValue + "\",\"" + buttonText + "\",\"" + isSwap + "\",\"" + helpText + "\",\"" +
-                endInstruction + "\",\"" + timeWait + "\",\"" + isRandomizedFood + "\",\"" + isRandomizedRatings + "\",\"" + isAlert + "\")";
-    }
 
+        StringBuilder builder = new StringBuilder();
+        return serializeTasteTest(builder);
+    }
     public ArrayList<Object> getStages() {
         return stages;
     }
@@ -282,29 +337,73 @@ public class TasteTest{
         this.endInstruction = endInstruction;
     }
 
-    public ArrayList<String> getFoods() {
-        return foods;
-    }
     public int getTimeWait() {
         return timeWait;
     }
     public void setTime(int time){
         this.timeWait = time;
     }
-    public ArrayList<String> getVasOptions() {
+
+    public ObservableList<String> getFoodOptions() {
+        if (foodOptions == null) {
+            foodOptions = FXCollections.observableArrayList();
+            initFoodOptions();
+        }
+        return foodOptions;
+    }
+
+
+    public void setFoodOptions(ObservableList<String> foodOptions) {
+        this.foodOptions = foodOptions;
+    }
+
+    public ObservableList<String> getVasOptions() {
+        if (vasOptions == null) {
+            vasOptions = FXCollections.observableArrayList();
+            initVASOptions();
+        }
         return vasOptions;
     }
 
-    public ArrayList<String> getGLMSOptions() {
+    public void setVasOptions(ObservableList<String> vasOptions) {
+        this.vasOptions = vasOptions;
+    }
+
+    public ObservableList<String> getGLMSOptions() {
+        if (gLMSOptions == null) {
+            gLMSOptions = FXCollections.observableArrayList();
+            initGLMSOptions();
+        }
         return gLMSOptions;
     }
 
-    public ArrayList<String> getVasList() {
+    public void setGLMSOptions(ObservableList<String> gLMSOptions) {
+        this.gLMSOptions = gLMSOptions;
+    }
+
+    public ObservableList<String> getSelectedVAS() {
         return selectedVAS;
     }
 
-    public ArrayList<String> getGlmsList() {
+
+    public ObservableList<String> getSelectedGLMS() {
         return selectedGLMS;
+    }
+
+    public ObservableList<String> getSelectedFoods() {
+        return selectedFoods;
+    }
+
+    public void setSelectedFoods(ObservableList<String> selectedFoods) {
+        this.selectedFoods = selectedFoods;
+    }
+
+    public void setSelectedGLMS(ObservableList<String> selectedGLMS) {
+        this.selectedGLMS = selectedGLMS;
+    }
+
+    public void setSelectedVAS(ObservableList<String> selectedVAS) {
+        this.selectedVAS = selectedVAS;
     }
 
     public Vas getSampleVas(){
@@ -323,9 +422,7 @@ public class TasteTest{
     public void setRandomizedFood(boolean randomizedFood) {
         this.isRandomizedFood = randomizedFood;
     }
-    public ArrayList<String> getFoodOptions() {
-        return foodOptions;
-    }
+
 
     public void setConsumptionInstruction(String consumptionInstruction) {
         this.consumptionInstruction = consumptionInstruction;
@@ -342,4 +439,5 @@ public class TasteTest{
     public void setAlert(Boolean newValue) {
         this.isAlert = newValue;
     }
+
 }

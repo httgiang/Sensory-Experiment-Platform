@@ -1,29 +1,21 @@
 package main.sensoryexperimentplatform.controllers;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.collections.*;
+import javafx.event.*;
+import javafx.fxml.*;
+import javafx.geometry.*;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.viewmodel.FillName_VM;
-import main.sensoryexperimentplatform.viewmodel.DashBoard_VM;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.listOfExperiment;
-import main.sensoryexperimentplatform.viewmodel.ShowResultVM;
+import main.sensoryexperimentplatform.viewmodel.*;
+import main.sensoryexperimentplatform.models.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -31,6 +23,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Stack;
 import java.util.concurrent.ScheduledExecutorService;
+
+import static main.sensoryexperimentplatform.utilz.PopUpType.CONFIRM;
 
 public class DashBoardController {
 
@@ -55,7 +49,7 @@ public class DashBoardController {
     private TableColumn<Experiment, String> lbl_iD;
 
     @FXML
-    private TableColumn<Experiment, String> lbl_result;
+    private TableColumn<Experiment, Integer> lbl_result;
     @FXML
     private TableColumn<Experiment, String> lbl_createDate;
 
@@ -72,7 +66,6 @@ public class DashBoardController {
     private Experiment selectedExperiment;
 
     public void initialize() {
-        //this.base = base;
        dashBoard_vm = new DashBoard_VM();
        bindViewModel();
        bindColumnWidths();
@@ -85,8 +78,8 @@ public class DashBoardController {
         lbl_experimentName.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.25)); // 20% of table width
         lbl_currentVersion.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 12.5% of table width
         lbl_result.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 10% of table width
-        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 20% of table width
-        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.20)); // 25% of table width
+        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.12)); // 20% of table width
+        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.18)); // 25% of table width
     }
 
 
@@ -107,10 +100,16 @@ public class DashBoardController {
         contentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, selectedExperiment) -> {
             this.selectedExperiment = selectedExperiment;
         });
+
+        initButtonsInTable();
+
+
+    }
+    private void initButtonsInTable(){
         Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>> cellFactory = new Callback<TableColumn<Experiment, String>, TableCell<Experiment, String>>() {
             @Override
             public TableCell<Experiment, String> call(final TableColumn<Experiment, String> param) {
-                 TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
+                TableCell<Experiment, String> cell = new TableCell<Experiment, String>() {
                     @Override
                     public void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
@@ -135,26 +134,6 @@ public class DashBoardController {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                            run.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            +"-fx-background-color: transparent"
-                            );
-                            edit.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            + "-fx-background-color: transparent"
-                            );
-                            delete.setStyle(
-                                    " -fx-cursor: hand ;"
-                                            + "-glyph-size:28px;"
-                                            + "-fx-background-color: transparent"
-                            );
-                            result.setStyle(
-                                    " -fx-cursor: hand ;"
-                                    + "-glyph-size:28px;"
-                                    + "-fx-background-color: transparent"
-                            );
                             result.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try{
@@ -167,8 +146,9 @@ public class DashBoardController {
                             delete.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try {
-                                    deleteEx(selectedExperiment);
-                                } catch (Exception e) {
+                                    PopUpVM popUpConfirm = new PopUpVM(CONFIRM,
+                                            "Are you sure you want to delete this experiment?", selectedExperiment);
+                                } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
                             });
@@ -185,7 +165,7 @@ public class DashBoardController {
                                 }
                             });
                             run.setOnAction((ActionEvent) ->{
-                                Experiment selectedExperiment = getTableView().getItems().get(getIndex());
+                                selectedExperiment = getTableView().getItems().get(getIndex());
                                 try {
                                     FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/fill_name.fxml"));
                                     Parent root = fillNameLoader.load();
@@ -222,13 +202,6 @@ public class DashBoardController {
             }
         };
         lbl_Option.setCellFactory(cellFactory);
-
-
-        // Bind the TableView items to the ViewModel items
-       // System.out.println(dashBoard_vm.getExperiments().size());
-      //contentTable.setItems(dashBoard_vm.getExperiments());
-     //   setupPagination();
-
     }
     private void setupPaginationListener() {
         dashBoard_vm.experimentsProperty().addListener((ListChangeListener<Experiment>) change -> {
@@ -239,6 +212,9 @@ public class DashBoardController {
     private void setupPagination() {
         int totalPages = (int) Math.ceil((double) dashBoard_vm.getExperiments().size() / ITEMS_PER_PAGE);
 
+        if(totalPages == 0){
+            totalPages = 1;
+        }
         pagination.setPageCount(totalPages);
         pagination.setLayoutX(dashBoardPane.getWidth() / 2.0 - pagination.getWidth() / 2.0);
 
@@ -257,6 +233,7 @@ public class DashBoardController {
             );
             contentTable.setItems(itemsForPage);
         }
+        initButtonsInTable();
 
         return contentTable;
     }

@@ -1,7 +1,5 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
-
 public class Question extends Stage {
     private String question;
     private String leftButtonText;
@@ -11,6 +9,7 @@ public class Question extends Stage {
     private String rightButtonValue;
     private boolean alert;
     private Sound sound;
+    private String result;
 
     public Question(String title, String content) {
         super(title, content);
@@ -26,6 +25,7 @@ public class Question extends Stage {
         this.rightButtonValue = rightButtonValue;
         this.helpText = helpText;
         this.alert = alert;
+        result = null;
         sound = new Sound();
     }
 
@@ -38,6 +38,7 @@ public class Question extends Stage {
         rightButtonValue = o.getRightButtonValue();
         helpText = o.getHelpText();
         alert = o.isAlert();
+        result = null;
         sound = new Sound();
     }
 
@@ -66,21 +67,9 @@ public class Question extends Stage {
         this.alert = alert;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public String getContent() {
-        return content;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public String getType() {
         return "Question";
@@ -115,6 +104,14 @@ public class Question extends Stage {
 
     public void setRightButtonValue(String rightButtonValue) {
         this.rightButtonValue = rightButtonValue;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public void playSound(){

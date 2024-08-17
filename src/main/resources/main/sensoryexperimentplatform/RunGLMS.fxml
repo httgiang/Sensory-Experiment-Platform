@@ -6,7 +6,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550" prefWidth="1100.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunGLMSController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550" prefWidth="1100.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            fx:controller="main.sensoryexperimentplatform.controllers.RunGLMSController">
    <children>
       <Label layoutX="342.0" layoutY="511.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="No sentation-" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="641.0" />
       <Label layoutX="472.0" layoutY="499.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Barely detectable" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="473.0" />

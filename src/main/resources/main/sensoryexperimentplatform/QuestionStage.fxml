@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="598.0" maxWidth="867.0" minWidth="540.0" prefHeight="248.0" prefWidth="551.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.questionStageController">
+<AnchorPane maxHeight="598.0" maxWidth="867.0" minWidth="540.0" prefHeight="248.0" prefWidth="551.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.QuestionStageController">
 
     <children>
         <ScrollPane fitToWidth="true" layoutY="12.0" prefHeight="224.0" prefWidth="540.0" style="-fx-border-color: transparent;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">

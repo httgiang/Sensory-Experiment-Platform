@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -31,11 +30,9 @@ public class addVas {
     @FXML
     private TextField txt_file;
     private FoodTasteVM viewModel;
-    private NotiForAddFood notiForAddFood;
     @FXML
     private void btn_save(ActionEvent event) {
-        viewModel.addVasShow(txt_file.getText());
-        notiForAddFood.notifyObject();
+        viewModel.addVASOptions(txt_file.getText());
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();
     }
@@ -45,8 +42,7 @@ public class addVas {
         currentStage.close();
     }
 
-    public void setViewModel(FoodTasteVM viewModel, FoodAndTasteController foodAndTasteController) {
+    public void setViewModel(FoodTasteVM viewModel) {
         this.viewModel = viewModel;
-        notiForAddFood = new NotiForAddFood(foodAndTasteController);
     }
 }

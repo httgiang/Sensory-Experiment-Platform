@@ -36,7 +36,7 @@ public class Vas extends Stage implements containerObject{
         this.isSwap = v.getIsSwap();
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
-        sound = new Sound();
+       // sound = new Sound();
         setDefaultResult();
     }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css"
+            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunCourseController">
+   <children>
+      <Label fx:id="titleTxt" layoutX="62.0" layoutY="20.0" minHeight="65.0" minWidth="1156.0" prefHeight="118.0" prefWidth="1156.0" text="title" wrapText="true" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="20.0" />
+      <Label fx:id="contentTxt" layoutX="51.0" layoutY="153.0" prefHeight="273.0" prefWidth="1156.0" text="content" wrapText="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="153.0" />
+      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1153.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="56.0">
+         <image>
+            <Image url="@../../static/images/Help_outline.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

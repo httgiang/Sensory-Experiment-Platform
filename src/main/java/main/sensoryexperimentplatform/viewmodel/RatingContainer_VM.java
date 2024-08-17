@@ -80,24 +80,24 @@ public class RatingContainer_VM implements Stages {
 
 
     @Override
-    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
-
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        addRatingContainerController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
     }
     @Override
-    public void handleMenuButtons(AnchorPane propertiesPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> rating) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        propertiesPane.getChildren().setAll(newContent);
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {;
         btn_AddPeriodicStage.setDisable(true);
         btn_AddCourse.setDisable(true);
         btn_assignSound.setDisable(true);
         btn_addFoodAndTaste.setDisable(true);
         btn_addAudibleInstruction.setDisable(true);
-        btn_addInput.setDisable(true);
         btn_addInput.setDisable(true);
         btn_noticeStage.setDisable(true);
         btn_addTimer.setDisable(true);
@@ -105,11 +105,7 @@ public class RatingContainer_VM implements Stages {
         btn_addRatingContainer.setDisable(true);
         btn_addTasteTest.setDisable(true);
         btn_AddConditionalStatement.setDisable(true);
-        rating.push(this);
-        addRatingContainerController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
 
-//               AddNoticeStage controller = fxmlLoader.getController();
     }
 
 

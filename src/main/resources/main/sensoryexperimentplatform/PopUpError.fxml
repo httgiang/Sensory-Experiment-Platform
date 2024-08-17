@@ -5,15 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="298.0" maxWidth="560.0" prefHeight="298.0" prefWidth="560.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="300.0" maxWidth="560.0" prefHeight="300.0" prefWidth="474.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.PopUpErrorController">
     <children>
-        <Label id="instructionText" layoutX="59.0" layoutY="219.0" text="Sorry, something were wrong, we cannot complete " />
-        <ImageView fitHeight="104.0" fitWidth="218.0" layoutX="180.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="104.0" fitWidth="218.0" layoutX="136.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../static/images/ErrorMessage.png" />
             </image>
         </ImageView>
-        <Label id="labelError" layoutX="132.0" layoutY="149.0" maxHeight="70.0" prefHeight="70.0" prefWidth="307.0" text="Error Message" />
-        <Label id="instructionText" layoutX="185.0" layoutY="249.0" text="your action. Try again !" />
+        <Label id="labelError" layoutX="83.0" layoutY="150.0" maxHeight="70.0" prefHeight="70.0" prefWidth="307.0" text="Error Message" />
+      <Label fx:id="errorMsg" layoutX="15.0" layoutY="209.0" prefHeight="70.0" prefWidth="443.0" text="Sorry, something were wrong, we cannot complete your action. Try again! " wrapText="true" />
     </children>
 </AnchorPane>

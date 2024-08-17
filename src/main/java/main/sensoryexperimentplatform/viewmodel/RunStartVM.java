@@ -2,10 +2,17 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunStartController;
 import main.sensoryexperimentplatform.models.Notice;
 import main.sensoryexperimentplatform.models.Start;
 
-public class RunStartVM {
+import java.io.IOException;
+
+public class RunStartVM implements RunStages {
     private Start start;
     private StringProperty title, content, button;
 
@@ -23,5 +30,20 @@ public class RunStartVM {
     }
     public StringProperty buttonProperty() {
         return button;
+    }
+
+    @Override
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+        RunStartController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonProperty());
+        btn_back.setDisable(true);
     }
 }

@@ -4,7 +4,9 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="550.0" prefWidth="970.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunTimerController">
+<AnchorPane prefHeight="550.0" prefWidth="970.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/21"
+            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunTimerController">
    <children>
       <ProgressBar fx:id="myProgress" layoutX="96.0" layoutY="215.0" prefHeight="18.0" prefWidth="779.0" progress="0.0" stylesheets="@../../static/stylesheets/RunStage.css" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="96.0" />
       <Label fx:id="title_lbl" layoutX="380.0" layoutY="68.0" prefHeight="68.0" prefWidth="213.0" stylesheets="@../../static/stylesheets/RunStage.css" text="Timer" wrapText="true" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="377.0" AnchorPane.topAnchor="68.0" />

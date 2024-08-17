@@ -5,13 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -51,14 +47,15 @@ public class FillNameController {
         Parent root = loader.load();
 
         RunController controller = loader.getController(); // Get the controller from the loader
-        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
-        controller.setViewModel(viewModel);
+        controller.initRunExperiment(experiment, uid);
+//        RunExperiment_VM viewModel = new RunExperiment_VM(experiment, uid);
+//        controller.setViewModel(viewModel);
+
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setOnCloseRequest((WindowEvent event) -> {
             // Perform any necessary cleanup here
-            System.out.println("Experiment is closing");
             stage.close();
             controller.stopTimer();
 //            scene.getWindow().hide();

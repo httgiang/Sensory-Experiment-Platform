@@ -1,16 +1,5 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
-
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class AudibleInstruction extends Stage {
@@ -31,7 +20,8 @@ public class AudibleInstruction extends Stage {
         this.buttonText= buttonText;
         this.helpText = helpText;
         this.soundName= soundName;
-        this.SoundManager = SoundSingleton.getInstance();
+        this.SoundManager = new Sound();
+
 
 
     }
@@ -43,7 +33,7 @@ public class AudibleInstruction extends Stage {
         this.buttonText= o.getButtonText();
         this.helpText = o.getHelpText();
         this.soundName= o.getSoundName();
-        this.SoundManager = SoundSingleton.getInstance();
+        this.SoundManager = o.getSound();
     }
 
     public String getTitle() {
@@ -77,6 +67,10 @@ public class AudibleInstruction extends Stage {
         this.helpText = helpText;
     }
 
+    public Sound getSound() {
+        return SoundManager;
+    }
+
     public String getSoundName(){
         return soundName;
     }
@@ -88,6 +82,7 @@ public class AudibleInstruction extends Stage {
     public void playSound(String name) {
        SoundManager.playSound(name);
     }
+
 
     @Override
     public String toString() {

@@ -28,11 +28,9 @@ public class addGLMS {
     @FXML
     private TextField txt_file;
     private FoodTasteVM viewModel;
-    private NotiForAddFood notiForAddFood;
     @FXML
     private void btn_save(ActionEvent event) {
-        viewModel.addGLMSShow(txt_file.getText());
-        notiForAddFood.notifyObject();
+        viewModel.addGLMSOptions(txt_file.getText());
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();
     }
@@ -42,8 +40,7 @@ public class addGLMS {
         currentStage.close();
     }
 
-    public void setViewModel(FoodTasteVM viewModel, FoodAndTasteController foodAndTasteController) {
+    public void setViewModel(FoodTasteVM viewModel) {
         this.viewModel = viewModel;
-        notiForAddFood = new NotiForAddFood(foodAndTasteController);
     }
 }

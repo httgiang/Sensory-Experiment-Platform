@@ -13,30 +13,40 @@ import main.sensoryexperimentplatform.models.Experiment;
 import java.io.IOException;
 import java.util.Stack;
 
-public class AddCourseVM implements Stages {
+public class AddCourseVM implements Stages{
     private StringProperty txt_button;
     private StringProperty txt_content;
     private StringProperty  txt_help;
     private StringProperty txt_quantity;
     private StringProperty  txt_refill;
-
+    private StringProperty txt_duration;
+    private StringProperty txt_endStatement;
     private StringProperty txt_title;
     private Experiment experiment;
     private Course course;
 
-    public AddCourseVM( Experiment experiment){
+    public AddCourseVM(Experiment experiment){
         this.experiment = experiment;
-        this.course = new Course("Start Eating Stage","User Input","User Input",0,0,0, "User Input", "User Input" );
-        txt_button = new SimpleStringProperty(course.getButtonText());
-        txt_help = new SimpleStringProperty(course.getHelpText());
-        txt_quantity = new SimpleStringProperty(String.valueOf(course.getQuantity()));
-        txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
+        this.course = new Course("Start eating stage","Please contact experimenter","Finished",0,0,0,
+                "Please remember while eating:\\" +
+                        "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
+                        "\\Please also do not lean on the placemat.\\" +
+                        "Click on Meal Finished ONLY when you are sure you have had enough food.",
+                "Stop eating stage" );
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
+        txt_button = new SimpleStringProperty(course.getButtonText());
+        txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
+        txt_quantity = new SimpleStringProperty(String.valueOf(course.getQuantity()));
+        txt_duration = new SimpleStringProperty(String.valueOf(course.getDuration()));
+        txt_help = new SimpleStringProperty(course.getHelpText());
+        txt_endStatement = new SimpleStringProperty(course.getEndStatement());
+
+
         txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelpTextChange(newValue));
-        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(newValue));
-        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(newValue));
+        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(Integer.parseInt(newValue)));
+        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
         //txt_help = new SimpleStringProperty(model.getHelp)
@@ -51,13 +61,15 @@ public class AddCourseVM implements Stages {
         txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
+
         txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelpTextChange(newValue));
-        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(newValue));
-        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(newValue));
+        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(Integer.parseInt(newValue)));
+        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
         //txt_help = new SimpleStringProperty(model.getHelp)
+
         if(experiment != null){
             experiment.addCourse(course);
         }
@@ -129,12 +141,12 @@ public class AddCourseVM implements Stages {
         course.setTitle(newValue);
     }
 
-    private void onRefillTextChange(String newValue) {
-        course.setRefillWeight(Integer.parseInt(newValue));
+    private void onRefillTextChange(int newValue) {
+        course.setRefillWeight(newValue);
     }
 
-    private void onQuantityChange(String newValue) {
-        course.setQuantity(Integer.parseInt(newValue));
+    private void onQuantityChange(int newValue) {
+        course.setQuantity(newValue);
     }
 
     private void onHelpTextChange(String newValue) {
@@ -146,26 +158,24 @@ public class AddCourseVM implements Stages {
     }
 
     @Override
-    public void loadInterface(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS) throws IOException {
-
-    }
-
-    @Override
-    public void handleMenuButtons(AnchorPane anchorPane, Stack<AddTasteVM> stack, Stack<AddCourseVM> addCourseVMS, Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
-            , Button btn_addInput, Button btn_noticeStage,
-                                  Button  btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement, Stack<RatingContainer_VM> ratingContainerVm) throws IOException {
+    public void loadInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddCourse.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         AddCourseController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button  btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
         btn_AddPeriodicStage.setDisable(false);
         btn_AddCourse.setDisable(true);
         btn_noticeStage.setDisable(true);
         btn_addAudibleInstruction.setDisable(true);
-        controller.setViewModel(this);
-        addCourseVMS.push(this);
     }
 
     @Override

@@ -2,11 +2,15 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.utilz.Observable;
 import main.sensoryexperimentplatform.utilz.Observer;
+import main.sensoryexperimentplatform.utilz.PopUpType;
+import main.sensoryexperimentplatform.viewmodel.PopUpVM;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+
+import static main.sensoryexperimentplatform.utilz.PopUpType.ERROR;
 
 public class listOfExperiment extends Observable {
     private static HashSet<String> experimentsName;
@@ -24,6 +28,8 @@ public class listOfExperiment extends Observable {
     public static void addExperiment(Experiment experiment) throws Exception {
         if(experimentsName.add(experiment.getExperimentName())){
             getInstance().add(experiment);
+        } else {
+            PopUpVM popUpError = new PopUpVM(ERROR, "You already imported this experiment!", experiment);
         }
         //DataAccess.saveNewExperiment(experiment);
         notifyAllObservers();
