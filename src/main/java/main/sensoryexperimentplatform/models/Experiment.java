@@ -169,9 +169,9 @@ public class Experiment {
     public void addCourse (Course course){
         stages.add(course);
     }
-    public void addCourseStage(String title, String content,String buttonText, int refillWeight,
-                               int duration, int quantity, String helpText,String endStatement){
-        Course temp = new Course(title,content,buttonText,refillWeight,duration,quantity,helpText,endStatement);
+    public void addCourseStage(String title, String content, String buttonText, String endStatement,
+                               int refillWeight, int duration, int quantity, String helpText, boolean alert){
+        Course temp = new Course(title,content,buttonText,endStatement,refillWeight,duration,quantity,helpText,alert);
         stages.add(temp);
     }
     public void addQuestion (Question question){
@@ -314,5 +314,9 @@ public class Experiment {
 
     public void addStart(Start start) {
         stages.add(start);
+    }
+
+    public void addStage(Object stage) {
+        stages.add(stage);
     }
 }

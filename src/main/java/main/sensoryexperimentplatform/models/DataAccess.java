@@ -13,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static main.sensoryexperimentplatform.utilz.Constants.*;
+import static main.sensoryexperimentplatform.utilz.Constants.loadFilePath;
 
 public class DataAccess {
     public static String getCurrentFormattedTime() {
@@ -178,245 +179,18 @@ public class DataAccess {
     public static int countingResults(Experiment experiment) throws IOException {
         String directory = experiment.getExperimentName();
         initializeCaches(experiment.getExperimentName());
-        int numOfResults = Objects.requireNonNull(new File(saveResultPath + "/" + directory).list()).length;
-        return numOfResults;
+
+        return Objects.requireNonNull(new File(saveResultPath + "/" + directory).list()).length;
     }
 
     public static void importExperiment(String loadFilePath) throws Exception{
         Experiment currentExperiment = createNewExperiment();
         RatingContainer rc = null;
         TasteTest tasteTest = null;
-        boolean isContainer = false;
+        Course course = null;
+        boolean isContainer = false, isCourse = false;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
-
-        try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
-            while ((line = reader.readLine()) != null ){
-                if (line.startsWith("ExperimentName")) {
-                    currentExperiment.setExperimentName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimenterName")) {
-                    currentExperiment.setCreatorName(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("ExperimentID:")) {
-                    currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
-
-                } else if (line.startsWith("Created on")) {
-                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
-
-                } else if (line.startsWith("Version")) {
-                    int version = Integer.parseInt(line.split(": ")[1].trim());
-                    currentExperiment.version = version;
-
-                } else if (line.startsWith("startExperiment")) {
-                    Pattern patternExperiment = Pattern.compile("startExperiment\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = patternExperiment.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addStartStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3));
-                    }
-                } else if (line.startsWith("noticeStage")) {
-                    Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
-                    Matcher matcher = noticePattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addNoticeStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5))
-                        );
-                    }
-                } else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = inputPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
-                    }
-                } else if (line.startsWith("wait")) {
-                    Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = timerPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addTimerStage(matcher.group(1),
-                                matcher.group(2),
-                                Boolean.parseBoolean(matcher.group(3))
-                        );
-                    }
-                }
-                else if(line.startsWith("audio")){
-                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = audioPattern.matcher(line);
-                    if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
-                    }
-
-                }
-                else if (line.startsWith("tasteTest")){
-                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
-                    Matcher matcher = audiblePattern.matcher(line);
-
-                    if (matcher.find()) {
-                        tasteTest = new TasteTest(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                matcher.group(4),
-                                matcher.group(5),
-                                matcher.group(6),
-                                matcher.group(7),
-                                matcher.group(8),
-                                Integer.parseInt(matcher.group(9)),
-                                Integer.parseInt(matcher.group(10)),
-                                Boolean.parseBoolean(matcher.group(11)),
-                                Boolean.parseBoolean(matcher.group(12)),
-                                Boolean.parseBoolean(matcher.group(13)),
-                                Integer.parseInt(matcher.group(14)),
-                                Boolean.parseBoolean(matcher.group(15)));
-
-                        String[] foods = matcher.group(16).split(",");
-                        for (String food : foods) {
-                            if (!food.isEmpty()) {
-                                tasteTest.getSelectedFoods().add(food.trim());
-                            }
-                        }
-
-                        String[] vas = matcher.group(17).split(",");
-                        for (String vasItem : vas) {
-                            if (!vasItem.isEmpty()) {
-                                tasteTest.getSelectedVAS().add(vasItem.trim());
-                            }
-                        }
-
-                        String[] glms = matcher.group(18).split(",");
-                        for (String glmsItem : glms) {
-                            if (!glmsItem.isEmpty()) {
-                                tasteTest.getSelectedGLMS().add(glmsItem.trim());
-                            }
-                        }
-
-                        currentExperiment.addNewTasteTest(tasteTest);
-
-
-                    }
-                }
-
-                else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = vasPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addVasStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        } else {
-                            currentExperiment.addVasStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
-                        }
-                    }
-                } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = glmsPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        if (isContainer && rc != null) {
-                            rc.addGlmsStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        } else {
-                            currentExperiment.addGlmsStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
-                        }
-                    }
-                    //String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-                    //                                 String helpText, boolean alert
-                } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = questionPattern.matcher(line);
-
-                    if (matcher.find()) {
-                        currentExperiment.addQuestionStage(matcher.group(1),
-                                matcher.group(2),
-                                matcher.group(3),
-                                matcher.group(4),
-                                matcher.group(5),
-                                matcher.group(6),
-                                Boolean.parseBoolean(matcher.group(7))
-                        );
-                    }
-                } else if (line.startsWith("ratingsContainer")) {
-                    Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = ratingsContainerPattern.matcher(line);
-
-                    isContainer = true;
-                    if (matcher.find()) {
-                        currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
-                                Integer.parseInt(matcher.group(2))
-                        );
-                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
-                    }
-                } else if (line.startsWith("endRatingsContainer")) {
-                    rc = null;
-                    isContainer = false;
-                } else if (line.startsWith("course")){
-                    Pattern pattern = Pattern.compile("course\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = pattern.matcher(line);
-
-                    if (matcher.find()) {
-                        Course temp = new Course(matcher.group(1), matcher.group(2), matcher.group(3),
-                                Integer.parseInt(matcher.group(4)) , Integer.parseInt(matcher.group(5)),
-                                Integer.parseInt(matcher.group(6)), matcher.group(7), matcher.group(8));
-                        currentExperiment.addCourse(temp);
-                    }
-                }
-                else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
-                    initializeCaches(currentExperiment.getExperimentName());
-                    currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
-                    currentExperiment = createNewExperiment();
-                }
-            }
-            updateFile();
-        }
-    }
-    private static Experiment createNewExperiment(){
-        return new Experiment(null,null,null,null,1,999,null);
-    }
-
-    public static void loadExperiments() throws Exception{
-        Experiment currentExperiment = createNewExperiment();
-        RatingContainer rc = null;
-        TasteTest tasteTest = null;
-        boolean isContainer = false;
-        String line;
-        //notice, input, timer, vas, glms, question, rating container, course
 
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
             while ((line = reader.readLine()) != null ){
@@ -524,35 +298,41 @@ public class DataAccess {
 
 
                     }
+                } else if(line.startsWith("startEating")){
+                    Pattern coursePattern = Pattern.compile("startEating\\(\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\"\\)");
+                    Matcher matcher = coursePattern.matcher(line);
+                    isCourse = true;
+                    if (matcher.find()) {
+                        currentExperiment.addCourseStage(matcher.group(1), matcher.group(2),matcher.group(3),
+                                matcher.group(4),Integer.parseInt(matcher.group(5)),
+                                Integer.parseInt(matcher.group(6)),Integer.parseInt(matcher.group(7)),
+                                matcher.group(8),Boolean.parseBoolean(matcher.group(9)));
+                        course = (Course) currentExperiment.getStages().get(createNewExperiment().getStages().size()-1);
+                    }
+                } else if (line.startsWith("endEating")){
+                    course = null;
+                    isCourse = false;
                 } else if (line.startsWith("vasStage")) {
                     Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
                     if (matcher.find()) {
+                        Vas stage = new Vas(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                Integer.parseInt(matcher.group(4)),
+                                Integer.parseInt(matcher.group(5)),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                Boolean.parseBoolean(matcher.group(9)),
+                                Boolean.parseBoolean(matcher.group(10)));
                         if (isContainer && rc != null) {
-                            rc.addVasStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
+                            rc.addStage(stage);
+                        } else if(isCourse && course != null){
+                            course.addStage(stage);
                         } else {
-                            currentExperiment.addVasStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    Integer.parseInt(matcher.group(4)),
-                                    Integer.parseInt(matcher.group(5)),
-                                    matcher.group(6),
-                                    matcher.group(7),
-                                    matcher.group(8),
-                                    Boolean.parseBoolean(matcher.group(9)),
-                                    Boolean.parseBoolean(matcher.group(10))
-                            );
+                            currentExperiment.addStage(stage);
                         }
                     }
                 } else if (line.startsWith("glmsStage")) {
@@ -560,20 +340,17 @@ public class DataAccess {
                     Matcher matcher = glmsPattern.matcher(line);
 
                     if (matcher.find()) {
+                        gLMS stage = new gLMS(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                Boolean.parseBoolean(matcher.group(5)));
                         if (isContainer && rc != null) {
-                            rc.addGlmsStageContainer(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
+                            rc.addStage(stage);
+                        } else if(isCourse && course != null){
+                            course.addStage(stage);
                         } else {
-                            currentExperiment.addGlmsStage(matcher.group(1),
-                                    matcher.group(2),
-                                    matcher.group(3),
-                                    matcher.group(4),
-                                    Boolean.parseBoolean(matcher.group(5))
-                            );
+                            currentExperiment.addStage(stage);
                         }
                     }
                 } else if (line.startsWith("questionStage")) {
@@ -600,20 +377,237 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(2))
                         );
                         rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
+                        if(isCourse && course != null){
+                            course.addStage(rc);
+                        }
                     }
                 } else if (line.startsWith("endRatingsContainer")) {
                     rc = null;
                     isContainer = false;
-                } else if (line.startsWith("course")){
-                    //course("Start Eating Stage", "User Input", "User Input", "0", "0", "0", "User Input", "User Input")
-                    Pattern pattern = Pattern.compile("course\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"([\\s\\S]*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = pattern.matcher(line);
+                }
+                else if (line.startsWith("endExperiment()")){
+                    listOfExperiment.addExperiment(currentExperiment);
+                    currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
+                    currentExperiment = createNewExperiment();
+
+                }
+            }
+            updateFile();
+        }
+    }
+    private static Experiment createNewExperiment(){
+        return new Experiment(null,null,null,null,1,999,null);
+    }
+
+    public static void loadExperiments() throws Exception{
+        Experiment currentExperiment = createNewExperiment();
+        RatingContainer rc = null;
+        Course course = null;
+        TasteTest tasteTest = null;
+        boolean isContainer = false, isCourse = false;
+        String line;
+        //notice, input, timer, vas, glms, question, rating container, course
+
+        try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
+            while ((line = reader.readLine()) != null ){
+                if (line.startsWith("ExperimentName:")) {
+                    currentExperiment.setExperimentName(line.split(": ")[1].trim());
+
+                } else if (line.startsWith("ExperimenterName:")) {
+                    currentExperiment.setCreatorName(line.split(": ")[1].trim());
+
+                } else if (line.startsWith("ExperimentID:")) {
+                    currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
+
+                } else if (line.startsWith("Created on")) {
+                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
+
+                } else if (line.startsWith("Version")) {
+                    int version = Integer.parseInt(line.split(": ")[1].trim());
+                    currentExperiment.version = version;
+
+                } else if (line.startsWith("startExperiment")) {
+                    Pattern patternExperiment = Pattern.compile("startExperiment\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = patternExperiment.matcher(line);
+                    if (matcher.find()) {
+                        currentExperiment.addStartStage(matcher.group(1), matcher.group(2), matcher.group(3));
+                    }
+                } else if (line.startsWith("noticeStage")) {
+                    Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
+                    Matcher matcher = noticePattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addCourseStage(matcher.group(1), matcher.group(2), matcher.group(3),
-                               Integer.parseInt(matcher.group(4)) , Integer.parseInt(matcher.group(5)),
-                                Integer.parseInt(matcher.group(6)), matcher.group(7), matcher.group(8));
+                        Notice stage = new Notice(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                Boolean.parseBoolean(matcher.group(5)));
+                        if (isCourse && course != null){
+                            course.addStage(stage);
+                        }else {
+                            currentExperiment.addStage(stage);
+                        }
                     }
+                } else if (line.startsWith("inputStage")) {
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = inputPattern.matcher(line);
+
+                    if (matcher.find()) {
+                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
+                    }
+                } else if (line.startsWith("wait")) {
+                    Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = timerPattern.matcher(line);
+
+                    if (matcher.find()) {
+                        currentExperiment.addTimerStage(matcher.group(1),
+                                matcher.group(2),
+                                Boolean.parseBoolean(matcher.group(3))
+                        );
+                    }
+
+                } else if(line.startsWith("audio")){
+                    Pattern audiblePattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = audiblePattern.matcher(line);
+                    if (matcher.find()) {
+                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
+                    }
+                } else if (line.startsWith("tasteTest")){
+                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
+                    Matcher matcher = audiblePattern.matcher(line);
+
+                    if (matcher.find()) {
+                        tasteTest = new TasteTest(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                Integer.parseInt(matcher.group(9)),
+                                Integer.parseInt(matcher.group(10)),
+                                Boolean.parseBoolean(matcher.group(11)),
+                                Boolean.parseBoolean(matcher.group(12)),
+                                Boolean.parseBoolean(matcher.group(13)),
+                                Integer.parseInt(matcher.group(14)),
+                                Boolean.parseBoolean(matcher.group(15)));
+
+                        String[] foods = matcher.group(16).split(",");
+                        for (String food : foods) {
+                            if (!food.isEmpty()) {
+                                tasteTest.getSelectedFoods().add(food.trim());
+                            }
+                        }
+
+                        String[] vas = matcher.group(17).split(",");
+                        for (String vasItem : vas) {
+                            if (!vasItem.isEmpty()) {
+                                tasteTest.getSelectedVAS().add(vasItem.trim());
+                            }
+                        }
+
+                        String[] glms = matcher.group(18).split(",");
+                        for (String glmsItem : glms) {
+                            if (!glmsItem.isEmpty()) {
+                                tasteTest.getSelectedGLMS().add(glmsItem.trim());
+                            }
+                        }
+
+                        currentExperiment.addNewTasteTest(tasteTest);
+
+
+                    }
+                } else if(line.startsWith("startEating")){
+                    //startEating("title","content","button","end","-1","-1","-1","help","alert")
+                    Pattern coursePattern = Pattern.compile(
+                            "startEating\\(\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"\\)"
+                    );
+                    Matcher matcher = coursePattern.matcher(line);
+                    isCourse = true;
+                    if (matcher.find()) {
+                        course = new Course(matcher.group(1), matcher.group(2),matcher.group(3),
+                                matcher.group(4),Integer.parseInt(matcher.group(5)),
+                                Integer.parseInt(matcher.group(6)),Integer.parseInt(matcher.group(7)),
+                                matcher.group(8),Boolean.parseBoolean(matcher.group(9)));
+                        currentExperiment.addStage(course);
+                        course = (Course) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
+                    }
+                } else if (line.startsWith("endEating")){
+                    course = null;
+                    isCourse = false;
+                } else if (line.startsWith("vasStage")) {
+                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = vasPattern.matcher(line);
+
+                    if (matcher.find()) {
+                        Vas stage = new Vas(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                Integer.parseInt(matcher.group(4)),
+                                Integer.parseInt(matcher.group(5)),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                Boolean.parseBoolean(matcher.group(9)),
+                                Boolean.parseBoolean(matcher.group(10)));
+                        if (isContainer && rc != null) {
+                            rc.addStage(stage);
+                        } else if(isCourse && course != null){
+                            course.addStage(stage);
+                        } else {
+                            currentExperiment.addStage(stage);
+                        }
+                    }
+                } else if (line.startsWith("glmsStage")) {
+                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = glmsPattern.matcher(line);
+
+                    if (matcher.find()) {
+                        gLMS stage = new gLMS(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                Boolean.parseBoolean(matcher.group(5)));
+                        if (isContainer && rc != null) {
+                            rc.addStage(stage);
+                        } else if(isCourse && course != null){
+                            course.addStage(stage);
+                        } else {
+                            currentExperiment.addStage(stage);
+                        }
+                    }
+                } else if (line.startsWith("questionStage")) {
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = questionPattern.matcher(line);
+
+                    if (matcher.find()) {
+                        currentExperiment.addQuestionStage(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6),
+                                Boolean.parseBoolean(matcher.group(7))
+                        );
+                    }
+                } else if (line.startsWith("ratingsContainer")) {
+                    Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = ratingsContainerPattern.matcher(line);
+
+                    isContainer = true;
+                    if (matcher.find()) {
+                        currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
+                                Integer.parseInt(matcher.group(2))
+                        );
+                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
+                        if(isCourse && course != null){
+                            course.addStage(rc);
+                        }
+                    }
+                } else if (line.startsWith("endRatingsContainer")) {
+                    rc = null;
+                    isContainer = false;
                 }
                 else if (line.startsWith("endExperiment()")){
                     listOfExperiment.addExperiment(currentExperiment);

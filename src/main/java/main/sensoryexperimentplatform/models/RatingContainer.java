@@ -33,6 +33,7 @@ public class RatingContainer {
         }
 
     }
+
     public void addStage(containerObject s){
         container.add(s);
     }

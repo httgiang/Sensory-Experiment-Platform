@@ -11,6 +11,7 @@ import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Experiment;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class AddCourseVM implements Stages{
@@ -24,15 +25,16 @@ public class AddCourseVM implements Stages{
     private StringProperty txt_title;
     private Experiment experiment;
     private Course course;
-
+    private ArrayList<Object> stages;
     public AddCourseVM(Experiment experiment){
         this.experiment = experiment;
-        this.course = new Course("Start eating stage","Please contact experimenter","Finished",0,0,0,
+        this.course = new Course("Start eating stage","Please contact experimenter",
+                "Finished","Stop eating stage"
+                , 0,0,0,
                 "Please remember while eating:\\" +
-                        "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
-                        "\\Please also do not lean on the placemat.\\" +
-                        "Click on Meal Finished ONLY when you are sure you have had enough food.",
-                "Stop eating stage" );
+                "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
+                "\\Please also do not lean on the placemat.\\" +
+                "Click on Meal Finished ONLY when you are sure you have had enough food.", false);
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
         txt_button = new SimpleStringProperty(course.getButtonText());

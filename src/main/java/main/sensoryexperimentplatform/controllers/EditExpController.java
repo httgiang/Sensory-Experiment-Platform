@@ -184,6 +184,7 @@ public class EditExpController {
             treeView.setRoot(startStage);
 
             for (Object o : stages) {
+                System.out.println(o);
                 if (o instanceof Vas) {
                     VasStage_VM vasStageVm = new VasStage_VM((Vas) o);
                     startStage.getChildren().add(new TreeItem<>(vasStageVm));
@@ -216,7 +217,15 @@ public class EditExpController {
                     startStage.getChildren().add(new TreeItem<>(inputStage_vm));
                 } else if (o instanceof Course) {
                     AddCourseVM addCourseVM = new AddCourseVM((Course) o);
-                    startStage.getChildren().add(new TreeItem<>(addCourseVM));
+//                    startStage.getChildren().add(new TreeItem<>(addCourseVM));
+                    TreeItem<Stages> itemCourse = new TreeItem<>(addCourseVM);
+                    startStage.getChildren().add(itemCourse);
+                    for (Object subO : ((Course) o).getStages()) {
+                        if (subO instanceof Notice){
+                            NoticeStage_VM vm = new NoticeStage_VM((Notice) subO);
+                            itemCourse.getChildren().add(new TreeItem<>(vm));
+                        }
+                    }
                 } else if (o instanceof AudibleInstruction) {
                     AudibleSound_VM audibleSound_vm = new AudibleSound_VM((AudibleInstruction) o);
                     startStage.getChildren().add(new TreeItem<>(audibleSound_vm));
