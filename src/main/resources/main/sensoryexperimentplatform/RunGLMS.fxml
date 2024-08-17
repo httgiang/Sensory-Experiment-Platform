@@ -8,15 +8,15 @@
 
 <AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550" prefWidth="1100.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunGLMSController">
    <children>
-      <Label layoutX="439.0" layoutY="522.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="No sentation-" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="744.0" />
-      <Label layoutX="569.0" layoutY="510.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Barely detectable" AnchorPane.bottomAnchor="13.0" AnchorPane.rightAnchor="576.0" />
-      <Label layoutX="501.0" layoutY="482.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Weak-" AnchorPane.bottomAnchor="41.0" AnchorPane.rightAnchor="744.0" />
-      <Label layoutX="569.0" layoutY="434.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Moderate" AnchorPane.bottomAnchor="89.0" AnchorPane.rightAnchor="641.0" />
-      <Label layoutX="491.0" layoutY="351.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Strong-" AnchorPane.bottomAnchor="172.0" AnchorPane.rightAnchor="744.0" />
-      <Label layoutX="569.0" layoutY="254.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Very Strong" AnchorPane.bottomAnchor="269.0" AnchorPane.rightAnchor="622.0" />
-      <Label layoutX="569.0" layoutY="23.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Strongest Imaginable" AnchorPane.bottomAnchor="500.0" AnchorPane.rightAnchor="542.0" />
-      <Slider fx:id="mySlider" blockIncrement="0.0" layoutX="556.0" layoutY="25.0" majorTickUnit="1380.0" minorTickCount="1" orientation="VERTICAL" prefHeight="517.0" prefWidth="14.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="730.0" />
-      <Label fx:id="questionlbl" layoutX="55.0" layoutY="20.0" prefHeight="273.0" prefWidth="328.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Question" wrapText="true" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="20.0" />
+      <Label layoutX="342.0" layoutY="511.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="No sentation-" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="641.0" />
+      <Label layoutX="472.0" layoutY="499.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Barely detectable" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="473.0" />
+      <Label layoutX="404.0" layoutY="471.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Weak-" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="641.0" />
+      <Label layoutX="472.0" layoutY="423.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Moderate" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="538.0" />
+      <Label layoutX="394.0" layoutY="340.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Strong-" AnchorPane.bottomAnchor="183.0" AnchorPane.rightAnchor="641.0" />
+      <Label layoutX="472.0" layoutY="243.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Very Strong" AnchorPane.bottomAnchor="280.0" AnchorPane.rightAnchor="519.0" />
+      <Label layoutX="472.0" layoutY="12.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="-Strongest Imaginable" AnchorPane.bottomAnchor="511.0" AnchorPane.rightAnchor="439.0" />
+      <Slider fx:id="mySlider" blockIncrement="0.0" layoutX="459.0" layoutY="14.0" majorTickUnit="1380.0" minorTickCount="1" orientation="VERTICAL" prefHeight="517.0" prefWidth="14.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="627.0" />
+      <Label fx:id="questionlbl" layoutX="14.0" layoutY="25.0" prefHeight="273.0" prefWidth="328.0" stylesheets="@../../static/stylesheets/RunGLMS_CSS.css" text="Question" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
       <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="994.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="66.0" AnchorPane.rightAnchor="81.0">
          <image>
             <Image url="@../../static/images/Help_outline.png" />
