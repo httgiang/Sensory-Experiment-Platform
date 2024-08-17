@@ -883,3 +883,12 @@ endRatingsContainer()
 noticeStage("Thank you!","That completes the food taste test: please call your researcher.","Continue","","false")
 endExperiment()
 
+ExperimentName: Quynh Anh test
+ExperimenterName: Quynh Anh
+ExperimentID: 0
+Created on: 17.08.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+audio("Default Notice Stage","null","null","null","ddddd")
+endExperiment()
+
