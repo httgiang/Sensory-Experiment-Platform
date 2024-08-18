@@ -22,7 +22,7 @@ public class Input extends Stage{
         this.questionText = questionText;
         this.alert = alert;
         result = null;
-        this.sound = new Sound();
+        this.sound = SoundSingleton.getInstance();
     }
 
     public Input(Input o) {
@@ -32,7 +32,7 @@ public class Input extends Stage{
         questionText = o.getQuestionText();
         alert = o.isAlert();
         result = null;
-        this.sound = new Sound();
+        this.sound = SoundSingleton.getInstance();
     }
 
     public boolean isAlert() {

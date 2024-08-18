@@ -16,7 +16,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Stack;
 
 public class AudibleSound_VM implements Stages {
     private StringProperty title;
@@ -24,6 +23,7 @@ public class AudibleSound_VM implements Stages {
     private StringProperty helpText;
     private StringProperty buttonText;
     private StringProperty soundName;
+    private StringProperty filePath;
     private AudibleInstruction audibleInstruction;
     private Sound sound;
     private AssignSoundVM assignSoundVM;
@@ -31,7 +31,7 @@ public class AudibleSound_VM implements Stages {
 
     public AudibleSound_VM(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.experiment = experiment;
-        this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null);
+        this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null, null);
         // if there exits any bug this maybe a problem
         this.sound = SoundSingleton.getInstance();
         this.title = new SimpleStringProperty(audibleInstruction.getTitle());
@@ -39,6 +39,7 @@ public class AudibleSound_VM implements Stages {
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
         this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
         this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
+        this.filePath = new SimpleStringProperty(audibleInstruction.getFilePath());
         this.sound = SoundSingleton.getInstance();
         experiment.addAudibleInstruction(audibleInstruction);
 
@@ -50,6 +51,7 @@ public class AudibleSound_VM implements Stages {
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
         this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
         this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
+        this.filePath = new SimpleStringProperty(audibleInstruction.getFilePath());
         this.sound = SoundSingleton.getInstance();
 
     }
@@ -69,6 +71,9 @@ public class AudibleSound_VM implements Stages {
     public StringProperty helpTextProperty() {
         return helpText;
     }
+    public StringProperty filePathProperty() {
+        return filePath;
+    }
 
     public String getContent(){
         return content.get();
@@ -79,8 +84,14 @@ public class AudibleSound_VM implements Stages {
     public String getHelpText(){
         return helpText.get();
     }
+    public String getFilePath(){
+        return filePath.get();
+    }
     public void setHelpText(String newValue) {audibleInstruction.setHelpText(newValue);
 
+    }
+    public void setFilePath(String filePath) {
+        audibleInstruction.setFilePath(filePath);
     }
 
 
@@ -119,8 +130,20 @@ public class AudibleSound_VM implements Stages {
 
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button btn_assignSound, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
-        btn_assignSound.setDisable(false);
+    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(false);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+
     }
     @Override
     public String toString() {

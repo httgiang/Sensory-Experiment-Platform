@@ -1,6 +1,8 @@
 package main.sensoryexperimentplatform.models;
 
 
+import javafx.collections.ObservableList;
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
 public class AudibleInstruction extends Stage {
     private String title;
@@ -9,18 +11,22 @@ public class AudibleInstruction extends Stage {
     private String buttonText;
     private String helpText;
     private String soundName;
-    private Sound SoundManager;
+
+
+    private String filePath;
+    private Sound soundManager;
 
 
 
-    public AudibleInstruction(String title, String content, String buttonText,String helpText,String soundName){
+    public AudibleInstruction(String title, String content, String buttonText,String helpText,String soundName, String FilePath){
       super(title, content);
       this.content=content;
       this.title= title;
-        this.buttonText= buttonText;
-        this.helpText = helpText;
-        this.soundName= soundName;
-        this.SoundManager = new Sound();
+      this.buttonText= buttonText;
+      this.helpText = helpText;
+      this.soundName= soundName;
+      this.filePath = FilePath;
+      this.soundManager = SoundSingleton.getInstance();
 
 
 
@@ -32,8 +38,10 @@ public class AudibleInstruction extends Stage {
         this.content= o.getContent();
         this.buttonText= o.getButtonText();
         this.helpText = o.getHelpText();
+        this.filePath = o.getFilePath();
         this.soundName= o.getSoundName();
-        this.SoundManager = o.getSound();
+
+        this.soundManager = SoundSingleton.getInstance();
     }
 
     public String getTitle() {
@@ -68,7 +76,7 @@ public class AudibleInstruction extends Stage {
     }
 
     public Sound getSound() {
-        return SoundManager;
+        return soundManager;
     }
 
     public String getSoundName(){
@@ -79,16 +87,37 @@ public class AudibleInstruction extends Stage {
     }
 
 
-    public void playSound(String name) {
-       SoundManager.playSound(name);
+
+    public String getFilePath(){
+        return filePath;
     }
+
+
+    public void setFilePath(String filePath) {
+     this.filePath = filePath;
+    }
+
+
+    public void playSound(String name) {
+       soundManager.playSound(name);
+    }
+
+    public void addSoundList(String name){
+        soundManager.addNewSound(name);
+    }
+
+    public void loadSound(String name,String filePath){
+        soundManager.loadSound(name,filePath);
+    }
+
+
 
 
     @Override
     public String toString() {
 
             return "audio(\"" + title + "\",\"" + content +
-                    "\",\"" + buttonText + "\",\"" + helpText + "\",\""+ soundName + "\")";
+                    "\",\"" + buttonText + "\",\"" + helpText + "\",\""  + soundName + "\",\"" + filePath + "\")";
         }
     }
 

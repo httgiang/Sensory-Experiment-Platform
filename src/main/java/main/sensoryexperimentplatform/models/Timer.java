@@ -14,7 +14,7 @@ public class Timer extends Stage{
         this.instruction = instruction;
         timeToWait = Long.parseLong(time);
         this.alert = alert;
-        this.sound = new Sound();
+        this.sound = SoundSingleton.getInstance();
     }
 
     public Timer(String time, String instruction) {
@@ -27,7 +27,7 @@ public class Timer extends Stage{
         timeToWait = o.getTimeToWait();
         alert = o.isAlert();
         instruction = o.getInstruction();
-        this.sound = new Sound();
+        this.sound = SoundSingleton.getInstance();
     }
 
 

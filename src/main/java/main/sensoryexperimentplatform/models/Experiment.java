@@ -1,7 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
 import javafx.scene.paint.Color;
-import org.controlsfx.control.Rating;
 
 import java.util.*;
 
@@ -162,8 +161,8 @@ public class Experiment {
         tasteTest.generateTasteTest();
     }
     // Audible instruction stage
-    public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName) {
-        AudibleInstruction temp = new AudibleInstruction(title, content, buttonText, helpText,soundName);
+    public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName,String filePath) {
+        AudibleInstruction temp = new AudibleInstruction(title, content, buttonText, helpText,soundName,filePath);
         stages.add(temp);
     }
     public void addCourse (Course course){

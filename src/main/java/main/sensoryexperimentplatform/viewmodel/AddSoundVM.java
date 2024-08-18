@@ -16,6 +16,7 @@ public class AddSoundVM {
     public void loadSound(String name, String filePath) {
         sound.loadSound(name, filePath);
     }
+
     public Sound getSound(){
         return sound;
     }
@@ -23,8 +24,8 @@ public class AddSoundVM {
 
         sound.getSoundNameshow().add(name);
     }
-    public void exportSound(String name, String filePath){
-        sound.exportSoundToFolder(name,filePath,"SoundFolder");
+    public void exportSound( String filePath){
+        sound.exportSoundToFolder(filePath,"SoundFolder");
     }
 
 }

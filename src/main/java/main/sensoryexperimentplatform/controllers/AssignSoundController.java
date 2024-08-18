@@ -23,30 +23,11 @@ import main.sensoryexperimentplatform.viewmodel.RunAudible_VM;
 import java.io.IOException;
 
 public class AssignSoundController {
-    @FXML
-    private VBox ShowSound;
-
-
-    @FXML
-    private Label SoundSelectTionLabel;
-
-    @FXML
-    private Button btn_add;
-
-    @FXML
-    private Button btn_play;
-
-    @FXML
-    private Button btn_refresh;
-
-    @FXML
-    private Button btn_remove;
 
     @FXML
     private Button btn_save2;
 
-    @FXML
-    private Button btn_stop;
+
 
 
 
@@ -58,12 +39,13 @@ public class AssignSoundController {
     private ListView<String> SoundList;
     private RadioButton selectedRadioButton;
     private AudibleSound_VM audibleSoundVM;
+    private String filePath;
 
 
     public void setViewModel(AssignSoundVM viewModel, AudibleSound_VM audibleSoundVM){
         this.viewModel = viewModel;
         this.audibleSoundVM = audibleSoundVM;
-        SoundName = FXCollections.observableArrayList(viewModel.getListNameshow());
+        SoundName = FXCollections.observableArrayList(viewModel.listSoundNameProperty());
         loadSoundRadioButtons();
     }
 
@@ -78,34 +60,17 @@ public class AssignSoundController {
         AddSoundVM addSoundVM = new AddSoundVM();
         stage.setScene(scene);
         AddSoundController addSoundController = fxmlLoader.getController();
-        addSoundController.setViewModel(addSoundVM,this);
+        addSoundController.setViewModel(addSoundVM,this,viewModel);
         stage.show();
     }
 
-    //set the last choosen
-//    private void selectSavedSound() {
-//        String savedSoundName = audibleSoundVM.getSoundName();
-//        if (savedSoundName == null) {
-//            return; // No sound to select
-//        }
-//
-//        for (String item : SoundList.getItems()) {
-//            if (item.equals(savedSoundName)) {
-//                // Directly select the item in ListView
-//                SoundList.getSelectionModel().select(item);
-//                selectedRadioButton = (RadioButton) SoundList.lookup(".radio-button:selected");
-//                break;
-//            }
-//        }
-//    }
-//
 
 
     public void loadSoundRadioButtons() {
         SoundList.setCellFactory(param -> new RadioListCell());
         SoundName.clear();
         SoundList.getItems().clear();
-        SoundName.addAll(viewModel.getListNameshow());
+        SoundName.addAll(viewModel.listSoundNameProperty());
         SoundList.getItems().addAll(SoundName);
 
     }
@@ -133,8 +98,8 @@ public class AssignSoundController {
             }
         }
 
-        public RadioButton getRadioButton() {
-            return radioButton;
+        public String getFilePath() {
+            return filePath;
         }
     }
 
@@ -172,6 +137,7 @@ public class AssignSoundController {
         if (selectedRadioButton != null) {
             String soundName = selectedRadioButton.getText();
             audibleSoundVM.setSoundName(soundName);
+            audibleSoundVM.setFilePath(viewModel.getSoundPath());
             Stage currentStage = (Stage) btn_save2.getScene().getWindow();
             currentStage.close();
         }
