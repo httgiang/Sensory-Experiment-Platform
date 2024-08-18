@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 import javafx.scene.paint.Color;
-public class Start extends Stage{
+public class Start extends Stage implements Model{
     private String buttonText;
     private Boolean requireBalance;
     private Color backGroundColor;

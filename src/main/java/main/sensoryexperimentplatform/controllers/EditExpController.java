@@ -168,76 +168,43 @@ public class EditExpController {
 
     }
 
+
     private void loadItems() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
-        ArrayList<Object> stages = experiment.getStages();
+        ArrayList<Model> stages = experiment.getStages();
         System.out.println(stages);
+
 
         if (experiment.getStages().isEmpty()) {
             Stages startVM = new StartVM(experiment);
             startStage = new TreeItem<>(startVM);
             treeView.setRoot(startStage);
-         
+
         } else {
             Start newStart = experiment.getStart();
             StartVM startVM = new StartVM(newStart);
             startStage = new TreeItem<>(startVM);
             treeView.setRoot(startStage);
 
-            for (Object o : stages) {
-                if (o instanceof Vas) {
-                    VasStage_VM vasStageVm = new VasStage_VM((Vas) o);
-                    startStage.getChildren().add(new TreeItem<>(vasStageVm));
+            ModelVMRegistry registry = ModelVMRegistry.getInstance();
+            for (Model o : stages) {
+                buildTree(startStage, o, registry);
+            }
+            startStage.setExpanded(true);
+        }
+    }
 
-                } else if (o instanceof Notice) {
-                    NoticeStage_VM noticeStage_vm = new NoticeStage_VM((Notice) o);
-                    startStage.getChildren().add(new TreeItem<>(noticeStage_vm));
-
-                } else if (o instanceof gLMS) {
-                    GLMSStage_VM glmsStageVm = new GLMSStage_VM((gLMS) o);
-                    startStage.getChildren().add(new TreeItem<>(glmsStageVm));
-
-                } else if (o instanceof RatingContainer) {
-                    RatingContainer_VM ratingContainerVm = new RatingContainer_VM((RatingContainer) o);
-                    TreeItem<Stages> itemRating = new TreeItem<>(ratingContainerVm);
-                    startStage.getChildren().add(itemRating);
-
-                    for (Object subO : ((RatingContainer) o).container) {
-                        if (subO instanceof Vas) {
-                            VasStage_VM vasStageVm = new VasStage_VM((Vas) subO);
-                            itemRating.getChildren().add(new TreeItem<>(vasStageVm));
-
-                        } else if (subO instanceof gLMS) {
-                            GLMSStage_VM glmsStageVm = new GLMSStage_VM((gLMS) subO);
-                            itemRating.getChildren().add(new TreeItem<>(glmsStageVm));
-                        }
-                    }
-                } else if (o instanceof Input) {
-                    InputStage_VM inputStage_vm = new InputStage_VM(experiment,(Input) o);
-                    startStage.getChildren().add(new TreeItem<>(inputStage_vm));
-                } else if (o instanceof Course) {
-                    AddCourseVM addCourseVM = new AddCourseVM((Course) o);
-                    startStage.getChildren().add(new TreeItem<>(addCourseVM));
-                } else if (o instanceof AudibleInstruction) {
-                    AudibleSound_VM audibleSound_vm = new AudibleSound_VM((AudibleInstruction) o);
-                    startStage.getChildren().add(new TreeItem<>(audibleSound_vm));
-                }
-                else if (o instanceof Timer) {
-                    TimerStage_VM timerStageVm = new TimerStage_VM((Timer) o);
-                    startStage.getChildren().add(new TreeItem<>(timerStageVm));
-                } else if( o instanceof TasteTest){
-                    AddTasteVM addTasteVM = new AddTasteVM((TasteTest) o);
-                    startStage.getChildren().add(new TreeItem<>(addTasteVM));
-                }
-                else if (o instanceof Question) {
-                    QuestionStage_VM questionStage_vm = new QuestionStage_VM((Question) o);
-                    startStage.getChildren().add(new TreeItem<>(questionStage_vm));
+    private void buildTree(TreeItem<Stages> parent, Model model, ModelVMRegistry registry) {
+        Stages stage = registry.getViewModel(model);
+        if(stage != null){
+            TreeItem<Stages> item = new TreeItem<>(stage);
+            parent.getChildren().add(item);
+            if(model instanceof ModelContainer) {
+                for(Model child : ((ModelContainer) model).getChildren()) {
+                    buildTree(item, child, registry);
                 }
             }
         }
-        startStage.setExpanded(true);
     }
-
-
 
     void addNewTreeItem(Stages stages){
         TreeItem<Stages> parent = treeView.getSelectionModel().getSelectedItem();
@@ -444,7 +411,7 @@ public class EditExpController {
                     parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, nextItem);
 
-                    Object next = experiment.getStages().get(currentIndex + 1);
+                    Model next = experiment.getStages().get(currentIndex + 1);
                     experiment.getStages().set(currentIndex + 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, next);
                 }
@@ -464,7 +431,7 @@ public class EditExpController {
                     TreeItem<Stages> lastItem = parent.getChildren().get(currentIndex - 1);
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, lastItem);
-                    Object last = experiment.getStages().get(currentIndex - 1);
+                    Model last = experiment.getStages().get(currentIndex - 1);
                     experiment.getStages().set(currentIndex - 1, experiment.getStages().get(currentIndex));
                     experiment.getStages().set(currentIndex, last);
                 }

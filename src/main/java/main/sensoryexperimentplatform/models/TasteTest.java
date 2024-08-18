@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class TasteTest{
+public class TasteTest implements Model{
     private Notice initialNotice;
     private String noticeStageContent, consumptionInstruction, question, endInstruction;
     private String lowAnchorText, highAnchorText, buttonText, helpText;

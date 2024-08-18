@@ -98,7 +98,7 @@ public class DataAccess {
         FileWriter writer2 = new FileWriter(saveResultPath + "/" + experimentName + "/" + uid + ".csv", false);
         for (Object o : experiment.getStages()) {
             if (o instanceof RatingContainer) {
-                for (Object subO : ((RatingContainer) o).getContainer()) {
+                for (Object subO : ((RatingContainer) o).getChildren()) {
                     saveResult(writer2, subO, uid);
                 }
             }

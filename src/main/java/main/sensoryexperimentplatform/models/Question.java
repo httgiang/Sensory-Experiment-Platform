@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
-public class Question extends Stage {
+public class Question extends Stage implements Model {
     private String question;
     private String leftButtonText;
     private String helpText;

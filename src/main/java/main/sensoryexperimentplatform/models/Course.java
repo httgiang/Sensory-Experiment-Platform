@@ -10,7 +10,7 @@ import main.sensoryexperimentplatform.controllers.AddCourseController;
 import java.io.IOException;
 import java.time.Duration;
 
-public class Course extends Stage {
+public class Course extends Stage implements Model{
     private String buttonText, helpText, title, content;
     private String endStatement;
     private int refillWeight;

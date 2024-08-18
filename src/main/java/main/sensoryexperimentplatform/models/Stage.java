@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
-public abstract class Stage {
+public abstract class Stage implements Model {
 
     public String title, content;
     public Stage(String title, String content) {

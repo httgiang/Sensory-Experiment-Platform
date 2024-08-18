@@ -31,9 +31,8 @@ public class InputStage_VM implements Stages {
         experiment.addInput(input);
 
     }
-    public InputStage_VM(Experiment experiment, Input input){
+    public InputStage_VM( Input input){
         this.input = input;
-        this.experiment = experiment;
         questionText = new SimpleStringProperty(input.getQuestionText());
         helpText = new SimpleStringProperty(input.getHelpText());
         button = new SimpleStringProperty(input.getButtonText());
@@ -41,6 +40,7 @@ public class InputStage_VM implements Stages {
 
 
     }
+
     //questionText
     public StringProperty questionProperty() {
         return questionText;
