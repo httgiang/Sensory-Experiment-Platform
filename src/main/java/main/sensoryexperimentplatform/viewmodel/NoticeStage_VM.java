@@ -51,6 +51,60 @@ public class NoticeStage_VM implements ViewModel{
     }
 
 
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunNoticeController controller = fxmlLoader.getController();
+
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddNoticeStage.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        NoticeStageController controller = fxmlLoader.getController();
+        controller.setNoticeStage_vm(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button button3,
+                                  Button button4, Button button5, Button button6,
+                                  Button button7, Button button8, Button button9,
+                                  Button button10, Button button11, Button button12)
+            throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+
+
+    }
+
+
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
+    }
+
+    @Override
+    public String toString() {
+        return "[Instruction] "+ titleText.get();
+    }
 
 
     public void setNotice(Notice notice) {
@@ -113,58 +167,4 @@ public class NoticeStage_VM implements ViewModel{
     }
 
 
-    @Override
-    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-        RunNoticeController controller = fxmlLoader.getController();
-
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddNoticeStage.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-        NoticeStageController controller = fxmlLoader.getController();
-        controller.setNoticeStage_vm(this);
-    }
-
-    @Override
-    public void handleEditButtons(Button button1, Button button2, Button button3,
-                                  Button button4, Button button5, Button button6,
-                                  Button button7, Button button8, Button button9,
-                                  Button button10, Button button11, Button button12)
-            throws IOException {
-        button1.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
-
-
-    }
-
-
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.setDisable(false);
-        btn_next.textProperty().bind(this.buttonTextProperty());
-    }
-
-    @Override
-    public String toString() {
-        return "[Instruction] "+ titleText.get();
-    }
 }

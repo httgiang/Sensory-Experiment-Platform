@@ -28,18 +28,11 @@ public class TimerStage_VM implements ViewModel{
         timer = new Timer("0", "Please Wait",false);
         initBinding(timer);
 
-//        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
-//        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
-//        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
         experiment.addTimerStage(timer);
     }
     public TimerStage_VM(Timer timer){
         this.timer = timer;
         initBinding(timer);
-
-//        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
-//        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
-//        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
     }
 
     private void initBinding(Timer timer){
@@ -48,6 +41,10 @@ public class TimerStage_VM implements ViewModel{
         cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
         this.progress = new SimpleDoubleProperty(0.0);
         timerComplete = new SimpleBooleanProperty(false); // Timer starts as incomplete
+
+        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
+        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
+        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
     }
     public RunTimerController getRunController() {
         return runController;
