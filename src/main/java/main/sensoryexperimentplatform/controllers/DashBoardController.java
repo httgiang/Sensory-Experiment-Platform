@@ -182,7 +182,7 @@ public class DashBoardController {
                                     dialogScene.setFill(Color.TRANSPARENT);
                                     dialog.setScene(dialogScene);
 
-                                   // dialog.showAndWait();
+                                    dialog.showAndWait();
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }

@@ -14,7 +14,7 @@ public class ModelVMRegistry {
     private static ModelVMRegistry instance;
     private static Map<Class<? extends Model>, Function<Model, ViewModel>> registry = new HashMap<>();
     private ModelVMRegistry(){
-
+        registry.put(Start.class, model -> new StartVM((Start) model));
         registry.put(Vas.class, model -> new VasStage_VM((Vas) model));
         registry.put(Notice.class, model -> new NoticeStage_VM((Notice) model));
         registry.put(gLMS.class, model -> new GLMSStage_VM((gLMS) model));

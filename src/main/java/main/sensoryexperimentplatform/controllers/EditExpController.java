@@ -160,11 +160,16 @@ public class EditExpController {
     }
 
     private void buildTree(TreeItem<ViewModel> parent, Model model, ModelVMRegistry registry) {
+        if(model instanceof Start){
+            return;
+        }
         ViewModel stage = registry.getViewModel(model);
         if(stage != null){
             TreeItem<ViewModel> item = new TreeItem<>(stage);
             parent.getChildren().add(item);
-            if(model instanceof ModelContainer) {
+
+            //NEU LA CONDITIONAL STATEMENT, COURSE, RATING CONTAINER -> ADD TREE CON
+            if(model instanceof ModelContainer && (!(model instanceof TasteTest))) {
                 for(Model child : ((ModelContainer) model).getChildren()) {
                     buildTree(item, child, registry);
                 }

@@ -10,31 +10,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.RunTimer_VM;
+import main.sensoryexperimentplatform.viewmodel.TimerStage_VM;
 
 public class RunTimerController {
     public Label title_lbl;
     public ProgressBar myProgress;
     public BooleanProperty isTimeLineFull;
-    RunTimer_VM viewModel;
+    TimerStage_VM viewModel;
     @FXML
     Label instruction_lbl;
 
     private Timeline timeline;
     private int totalTimeInSeconds;
-    public void setViewModel(RunTimer_VM viewModel){
+    public void setViewModel(TimerStage_VM viewModel){
         this.viewModel = viewModel;
         totalTimeInSeconds = viewModel.getDuration() * 60;
         isTimeLineFull = new SimpleBooleanProperty(false);
         bindViewModel();
         startTimer();
-        if(viewModel.isAlert().get()){
+        if(viewModel.isCb_alertSound()){
             viewModel.playAlertSound();
         }
     }
 
     private void bindViewModel(){
 
-        instruction_lbl.textProperty().bind(viewModel.getInstruction());
+        instruction_lbl.textProperty().bind(viewModel.txt_instructionProperty());
         myProgress.progressProperty().bind(viewModel.getProgress());
     }
 

@@ -49,23 +49,28 @@ public class RunController {
 
     private void buildList(ListView<ViewModel> listView, Model model, ModelVMRegistry registry){
         ViewModel stages = registry.getViewModel(model);
-        if(stages != null){
-            System.out.println(model);
-            listView.getItems().add(stages);
-        }
 
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
         if(model instanceof ModelContainer){
             for(Model children : ((ModelContainer) model).getChildren()){
                 buildList(listView, children, registry);
+            }
+        } else {
+            if(stages != null){
+                if(model instanceof TimerStage_VM){
+                    setupTimerListener(((TimerStage_VM) model).getRunController());
+                }
+                listView.getItems().add(stages);
             }
 
         }
     }
     private void loadItems() {
-        for(Model selectedObject : experiment.getStages()){
-
+        for(Model selectedObject : experiment.getStages()) {
             registry = ModelVMRegistry.getInstance();
             buildList(listView, selectedObject, registry);
+
+
 //            if (selectedObject instanceof Start){
 //                RunStartVM vm = new RunStartVM((Start) selectedObject);
 //                listView.getItems().add(vm);;
@@ -130,9 +135,8 @@ public class RunController {
                 }
             }
         });
-        if (!listView.getItems().isEmpty()) {
-            listView.getSelectionModel().selectFirst();
-            showRunningPane(listView.getItems().get(0));
+        if (!listView.getItems().isEmpty()) {;
+            showRunningPane(listView.getItems().getFirst());
         }
     }
 
@@ -155,6 +159,13 @@ public class RunController {
         stage.close();
     }
 
+    private void setupTimerListener(RunTimerController runTimerController) {
+        runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
+            }
+        });
+    }
 
     //timer tracks the experiment
     private void startTimer() {

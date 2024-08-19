@@ -18,7 +18,5 @@ public class RunStartController {
     private void bindViewModel(){
         titleTxt.textProperty().bind(viewModel.titleProperty());
         contentTxt.textProperty().bind(viewModel.contentProperty());
-
-
     }
 }

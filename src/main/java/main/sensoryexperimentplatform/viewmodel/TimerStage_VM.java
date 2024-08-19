@@ -1,9 +1,6 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -12,7 +9,6 @@ import main.sensoryexperimentplatform.controllers.RunTimerController;
 import main.sensoryexperimentplatform.controllers.TimerController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Timer;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
 
@@ -21,13 +17,17 @@ public class TimerStage_VM implements ViewModel{
     private StringProperty txt_instruction;
     private StringProperty txt_timewait;
     private BooleanProperty cb_alertSound;
+    private DoubleProperty progress;
+    private BooleanProperty timerComplete;
     private Experiment experiment;
+
+    private RunTimerController runController;
+
     public TimerStage_VM(Experiment experiment){
         this.experiment = experiment;
         timer = new Timer("0", "Please Wait",false);
-        txt_instruction = new SimpleStringProperty(timer.getInstruction());
-        txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
-        cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
+        initBinding(timer);
+
 //        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
 //        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
 //        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
@@ -35,13 +35,22 @@ public class TimerStage_VM implements ViewModel{
     }
     public TimerStage_VM(Timer timer){
         this.timer = timer;
-        txt_instruction = new SimpleStringProperty(timer.getInstruction());
-        txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
-        cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
+        initBinding(timer);
 
 //        cb_alertSound.addListener((observableValue, oldValue, newValue) -> onAlert(newValue));
 //        txt_timewait.addListener((observableValue, oldValue, newValue) -> onTimeWait(newValue));
 //        txt_instruction.addListener((observableValue, oldValue, newValue) -> onInstruction(newValue));
+    }
+
+    private void initBinding(Timer timer){
+        txt_instruction = new SimpleStringProperty(timer.getInstruction());
+        txt_timewait = new SimpleStringProperty(timer.getFormattedElapsed());
+        cb_alertSound = new SimpleBooleanProperty(timer.isAlert());
+        this.progress = new SimpleDoubleProperty(0.0);
+        timerComplete = new SimpleBooleanProperty(false); // Timer starts as incomplete
+    }
+    public RunTimerController getRunController() {
+        return runController;
     }
 
     public void onAlert(Boolean newValue) {
@@ -79,22 +88,30 @@ public class TimerStage_VM implements ViewModel{
     public StringProperty txt_timewaitProperty() {
         return txt_timewait;
     }
+    public DoubleProperty getProgress() {
+        return progress;
+    }
+    public int getDuration(){
+        return Integer.parseInt(timer.getTitle());
+    }
 
     public Timer getTimer() {
         return timer;
     }
-
+    public void playAlertSound(){
+        timer.playAlertSound();
+    }
+    public void updateProgress(double progressValue) {
+        progress.set(progressValue);
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {
-         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
         AnchorPane newContent = loader.load();
         anchorPane.getChildren().setAll(newContent);
-
-
-        RunTimerController controller = loader.getController();
-
-     //   controller.setViewModel(this);
+        runController = loader.getController();
+        runController.setViewModel(this);
     }
 
     @Override
@@ -103,7 +120,7 @@ public class TimerStage_VM implements ViewModel{
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         TimerController controller = fxmlLoader.getController();
-        controller.setViewModel (this);
+        controller.setViewModel(this);
     }
 
     @Override
@@ -129,21 +146,17 @@ public class TimerStage_VM implements ViewModel{
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setVisible(runController.getTimeLineCheck());
+        btn_next.setVisible(runController.getTimeLineCheck());
+        btn_next.setDisable(false);
 
+        this.runController.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
+            btn_back.setVisible(newValue);
+            btn_next.setVisible(newValue);
+        } ));
     }
 
-//    @Override
-//    public void handleRunButtons(Button btn_next, Button btn_back) {
-//                btn_back.setVisible(controller.getTimeLineCheck());
-//        btn_next.setVisible(controller.getTimeLineCheck());
-//        btn_next.setDisable(false);
-//
-//        controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
-//            btn_back.setVisible(newValue);
-//            btn_next.setVisible(newValue);
-//            listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
-//        } ));
-   // }
+
 
     @Override
     public String toString() {
