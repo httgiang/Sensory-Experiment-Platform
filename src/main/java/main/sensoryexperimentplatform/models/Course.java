@@ -112,6 +112,13 @@ public class Course extends ModelContainer implements Model{
     public Periodic getPeriodic() {
         return periodic;
     }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
     public String toString(){
         return "course(\"" + getTitle() + "\",\"" + getContent() + "\",\""
                 + getButtonText() + "\",\"" + getRefillWeight() + "\",\""

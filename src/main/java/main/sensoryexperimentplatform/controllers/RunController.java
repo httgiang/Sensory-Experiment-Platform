@@ -69,49 +69,6 @@ public class RunController {
         for(Model selectedObject : experiment.getStages()) {
             registry = ModelVMRegistry.getInstance();
             buildList(listView, selectedObject, registry);
-
-
-//            if (selectedObject instanceof Start){
-//                RunStartVM vm = new RunStartVM((Start) selectedObject);
-//                listView.getItems().add(vm);;
-//            }
-//            else if (selectedObject instanceof Vas) {
-//                RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            // glms view display
-//            else if (selectedObject instanceof gLMS) {
-//                RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof Notice) {
-//                registry = ModelVMRegistry.getInstance();
-//                ViewModel stages = registry.getViewModel(selectedObject);
-//                listView.getItems().add(stages);
-//              //  RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
-//              //  listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof Input) {
-//                RunInputVM vm = new RunInputVM((Input) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof Question) {
-//                RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof Timer) {
-//                RunTimer_VM vm = new RunTimer_VM((Timer) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof AudibleInstruction) {
-//                RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
-//                listView.getItems().add(vm);
-//            }
-//            else if (selectedObject instanceof Course) {
-//                RunCourseVM vm = new RunCourseVM((Course) selectedObject);
-//                listView.getItems().add(vm);
-//
-//            }
         }
     }
 
