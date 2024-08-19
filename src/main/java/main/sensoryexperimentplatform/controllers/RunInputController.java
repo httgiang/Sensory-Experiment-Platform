@@ -56,13 +56,6 @@ public class RunInputController {
         tooltip.setWrapText(true);
         tooltip.setMaxWidth(250);
 
-        txt_input.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.ENTER) {
-                // Save result when Enter is pressed
-                setResult(txt_input.getText());
-                event.consume(); // Consume the event to prevent further processing
-            }
-        });
 
 
         // Set listeners to show and hide tooltip on mouse enter and exit
@@ -95,6 +88,7 @@ public class RunInputController {
 
     private void bindViewModel() {
         txt_question.textProperty().bindBidirectional(viewModel.getQuestionText());
+        txt_input.textProperty().bindBidirectional(viewModel.getResult());
 
     }
 }

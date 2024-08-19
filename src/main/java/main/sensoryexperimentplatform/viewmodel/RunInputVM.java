@@ -19,7 +19,10 @@ public class RunInputVM {
         playAlert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
 
+        result.addListener((observableValue, oldValue, newValue)->setResult(newValue));
+
     }
+
 
     public StringProperty getQuestionText() {
         return questionText;

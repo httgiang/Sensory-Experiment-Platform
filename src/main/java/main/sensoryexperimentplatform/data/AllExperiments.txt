@@ -887,11 +887,11 @@ ExperimentName: Quynh Anh test
 ExperimenterName: Quynh Anh
 ExperimentID: 0
 Created on: 17.08.2024
-Version: 4
-noticeStage("User input","null","null","null","false")
+Version: 7
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-questionStage("oooooo","null","null","null","null","null","false")
-audio("Default Notice Stage","null","null","null","rrrr","D:\Project\Sensory\Sensory-Experiment-Platform\src\main\java\main\sensoryexperimentplatform\sound\g2-89126.wav")
 noticeStage("User input","null","null","null","false")
+questionStage("oooooo","null","null","null","null","null","false")
+noticeStage("User input","null","null","null","false")
+inputStage("hellooo","null","null","false")
 endExperiment()
 
