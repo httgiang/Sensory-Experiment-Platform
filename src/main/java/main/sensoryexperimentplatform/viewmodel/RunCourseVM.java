@@ -10,7 +10,7 @@ import main.sensoryexperimentplatform.models.Course;
 
 import java.io.IOException;
 
-public class RunCourseVM implements RunStages{
+public class RunCourseVM {
     private Course course;
     StringProperty title, content, button, help, end;
     IntegerProperty refill, duration, quantity;
@@ -26,20 +26,20 @@ public class RunCourseVM implements RunStages{
         quantity = new SimpleIntegerProperty(course.getQuantity());
         end = new SimpleStringProperty(course.getEndStatement());
     }
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunCourse.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-        RunCourseController controller = loader.getController();
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.textProperty().bind(this.buttonProperty());
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunCourse.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().setAll(newContent);
+//
+//        RunCourseController controller = loader.getController();
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_next.textProperty().bind(this.buttonProperty());
+//    }
 
     public StringProperty titleProperty() {
         return title;

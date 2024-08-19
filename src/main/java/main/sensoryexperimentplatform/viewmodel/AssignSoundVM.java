@@ -16,6 +16,7 @@ public class AssignSoundVM {
     private String selectedSoundName;
     private AudibleSound_VM audibleSound_vm;
 
+    private AudibleInstruction audibleInstruction;
 
 
 
@@ -23,6 +24,9 @@ public class AssignSoundVM {
         this.sound = SoundSingleton.getInstance();
 
 
+    }
+    public String getSoundName(){
+        return audibleInstruction.getSoundName();
     }
 
 

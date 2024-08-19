@@ -12,16 +12,12 @@ public class FoodTasteVM {
 
 
     //THE LISTS OF DISPLAYED OPTIONS FOR FOOD AND TASTE
-    private ListProperty<String> foodOptions;
-    private ListProperty<String> gLMSOptions;
-    private ListProperty<String> vasOptions;
+    private ListProperty<String> foodOptions, gLMSOptions, vasOptions;
 
 
 
     //THE LIST OF SELECTIONS OF USER
-    private ListProperty<String> selectedFoods;
-    private ListProperty<String>  selectedVAS;
-    private ListProperty<String> selectedGLMS;
+    private ListProperty<String> selectedFoods, selectedVAS, selectedGLMS;
 
 
     public FoodTasteVM(TasteTest tasteTest){

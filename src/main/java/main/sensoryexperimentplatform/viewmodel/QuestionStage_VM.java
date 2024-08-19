@@ -8,14 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.QuestionStageController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Question;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class QuestionStage_VM implements Stages {
+public class QuestionStage_VM implements ViewModel {
     //Notice can chinh lai
     private StringProperty question ;
     private StringProperty leftText ;
@@ -31,17 +29,15 @@ public class QuestionStage_VM implements Stages {
     public QuestionStage_VM(Experiment experiment){
         this.experiment = experiment;
         this.questionStage = new Question("Question ",null,null,null,null,null,false);
-        this.question = new SimpleStringProperty(questionStage.getQuestion());
-        this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
-        this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
-        this.leftValue = new SimpleStringProperty(questionStage.getLeftButtonValue());
-        this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
-        this.helpText = new SimpleStringProperty(questionStage.getHelpText());
-        this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+        initListener();
         experiment.addQuestion(questionStage);
     }
     public  QuestionStage_VM(Question questionStage){
         this.questionStage = questionStage;
+        initListener();
+    }
+
+    private void initListener(){
         this.question = new SimpleStringProperty(questionStage.getQuestion());
         this.leftText = new SimpleStringProperty(questionStage.getLeftButtonText());
         this.rightText = new SimpleStringProperty(questionStage.getRightButtonText());
@@ -49,7 +45,55 @@ public class QuestionStage_VM implements Stages {
         this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+    }
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+        RunQuestionController controller = loader.getController();
+        controller.setViewModel(this);
+    }
 
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("QuestionStage.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        QuestionStageController controller = fxmlLoader.getController();
+        controller.setQuestionStage_vm(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
+
+        btn_AddPeriodicStage.setDisable(true);
+        btn_AddCourse.setDisable(false);
+        btn_assignSound.setDisable(true);
+        btn_addFoodAndTaste.setDisable(true);
+        btn_addAudibleInstruction.setDisable(false);
+        btn_addInput.setDisable(false);
+        btn_noticeStage.setDisable(false);
+        btn_addTimer.setDisable(false);
+        btn_AddQuestionStage.setDisable(false);
+        btn_addRatingContainer.setDisable(false);
+        btn_addTasteTest.setDisable(false);
+        btn_AddConditionalStatement.setDisable(false);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.setDisable(false);
+    }
+
+    @Override
+    public String toString() {
+        return "[Question] "+ question.get();
     }
 
 
@@ -120,42 +164,12 @@ public class QuestionStage_VM implements Stages {
         return questionStage;
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("QuestionStage.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-//               Question question = new Question("NULL","NULL","NULL",false);
-        QuestionStageController controller = fxmlLoader.getController();
-        controller.setQuestionStage_vm(this);
+    public void playAlert(){
+        questionStage.playSound();
     }
-
-    @Override
-    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
-            , Button btn_addInput, Button btn_noticeStage,
-                                  Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
-
-        btn_AddPeriodicStage.setDisable(true);
-        btn_AddCourse.setDisable(false);
-        btn_assignSound.setDisable(true);
-        btn_addFoodAndTaste.setDisable(true);
-        btn_addAudibleInstruction.setDisable(false);
-        btn_addInput.setDisable(false);
-        btn_noticeStage.setDisable(false);
-        btn_addTimer.setDisable(false);
-        btn_AddQuestionStage.setDisable(false);
-        btn_addRatingContainer.setDisable(false);
-        btn_addTasteTest.setDisable(false);
-        btn_AddConditionalStatement.setDisable(false);
+    public void setResult(String result) {
+        questionStage.setResult(result);
     }
-
-    @Override
-    public String toString() {
-        return "[Question] "+ question.get();
-    }
-
 }
 
 

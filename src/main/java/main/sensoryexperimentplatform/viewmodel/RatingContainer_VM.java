@@ -14,11 +14,11 @@ import main.sensoryexperimentplatform.models.RatingContainer;
 import main.sensoryexperimentplatform.models.Vas;
 import main.sensoryexperimentplatform.models.gLMS;
 import main.sensoryexperimentplatform.models.containerObject;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class RatingContainer_VM implements Stages {
+public class RatingContainer_VM implements ViewModel {
     private RatingContainer ratingContainer;
     private IntegerProperty minTime;
     private BooleanProperty isRandomize;
@@ -80,15 +80,21 @@ public class RatingContainer_VM implements Stages {
 
 
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         addRatingContainerController controller = fxmlLoader.getController();
         controller.setViewModel(this);
     }
+
     @Override
-    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+    public void handleEditButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button btn_addTimer, Button btn_AddQuestionStage,
@@ -105,6 +111,11 @@ public class RatingContainer_VM implements Stages {
         btn_addRatingContainer.setDisable(true);
         btn_addTasteTest.setDisable(true);
         btn_AddConditionalStatement.setDisable(true);
+
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
 
     }
 

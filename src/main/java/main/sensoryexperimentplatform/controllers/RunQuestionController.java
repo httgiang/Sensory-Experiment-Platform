@@ -9,6 +9,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.sensoryexperimentplatform.viewmodel.QuestionStage_VM;
 import main.sensoryexperimentplatform.viewmodel.RunQuestion_VM;
 
 
@@ -25,12 +26,12 @@ public class RunQuestionController {
     @FXML
     private Label txt_question;
 
-    private RunQuestion_VM viewModel;
+    private QuestionStage_VM viewModel;
 
-    public void setViewModel(RunQuestion_VM viewModel){
+    public void setViewModel(QuestionStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
-        if(viewModel.playAlertProperty().get()){
+        if(viewModel.alertProperty().get()){
             viewModel.playAlert();
         }
         Tooltip tooltip = new Tooltip("Help text here!");
@@ -67,8 +68,8 @@ public class RunQuestionController {
         });
 
         // Attach event handlers to buttons
-        btn_left.setOnMouseClicked(event -> handleButtonClick(viewModel.leftButtonValueProperty().get()));
-        btn_right.setOnMouseClicked(event -> handleButtonClick(viewModel.rightButtonValueProperty().get()));
+        btn_left.setOnMouseClicked(event -> handleButtonClick(viewModel.getLeftText()));
+        btn_right.setOnMouseClicked(event -> handleButtonClick(viewModel.getRightText()));
 
     }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
@@ -79,9 +80,9 @@ public class RunQuestionController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
     private void bindViewModel(){
-        txt_question.textProperty().bindBidirectional(viewModel.questionTextProperty());
-        btn_left.textProperty().bindBidirectional(viewModel.leftButtonTextProperty());
-        btn_right.textProperty().bindBidirectional(viewModel.rightButtonTextProperty());
+        txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
+        btn_left.textProperty().bindBidirectional(viewModel.leftTextProperty());
+        btn_right.textProperty().bindBidirectional(viewModel.rightTextProperty());
     }
 
     private void handleButtonClick(String buttonIdentifier) {

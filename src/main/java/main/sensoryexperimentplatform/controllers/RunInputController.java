@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.util.Duration;
+import main.sensoryexperimentplatform.viewmodel.InputStage_VM;
 import main.sensoryexperimentplatform.viewmodel.RunInputVM;
 
 import javafx.scene.input.KeyCode;
@@ -28,9 +29,9 @@ public class RunInputController {
     @FXML
     private Label txt_question;
 
-    private RunInputVM viewModel;
+    private InputStage_VM viewModel;
 
-    public void setViewModel(RunInputVM viewModel){
+    public void setViewModel(InputStage_VM viewModel){
         this.viewModel = viewModel;
         txt_input.setAlignment(Pos.CENTER);
         bindViewModel();
@@ -38,8 +39,8 @@ public class RunInputController {
             viewModel.playAlert();
         }
         Tooltip tooltip = new Tooltip("Help text here!");
-        if (viewModel.getHelpText().get() != null) {
-            tooltip.setText(viewModel.getHelpText().get());
+        if (viewModel.getHelpText() != null) {
+            tooltip.setText(viewModel.getHelpText());
         }
 
         tooltip.setStyle(
@@ -94,7 +95,7 @@ public class RunInputController {
     }
 
     private void bindViewModel() {
-        txt_question.textProperty().bindBidirectional(viewModel.getQuestionText());
+        txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
 
     }
 }

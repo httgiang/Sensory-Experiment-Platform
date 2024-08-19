@@ -9,14 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.StartStageController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Start;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class StartVM implements Stages {
+public class StartVM implements ViewModel{
     private Experiment experiment;
     private Start start;
     private SimpleStringProperty title;
@@ -182,8 +180,18 @@ public class StartVM implements Stages {
         return balance;
     }
 
+
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+        RunStartController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("StartStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -192,7 +200,7 @@ public class StartVM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+    public void handleEditButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
         button1.setDisable(true);
         button3.setDisable(true);
         button4.setDisable(true);
@@ -205,6 +213,12 @@ public class StartVM implements Stages {
         button12.setDisable(false);
         button10.setDisable(false);
         button9.setDisable(false);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonTextProperty());
+        btn_back.setDisable(true);
     }
 
     @Override

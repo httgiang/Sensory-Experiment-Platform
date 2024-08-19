@@ -10,80 +10,46 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.models.Timer;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.utilz.PopUpType.*;
-import main.sensoryexperimentplatform.viewmodel.NoticeStage_VM;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
 
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
+import static main.sensoryexperimentplatform.utilz.FeatureType.*;
 import static main.sensoryexperimentplatform.utilz.PopUpType.*;
 
 public class EditExpController {
-    @FXML
-    private Button btn_AddConditionalStatement;
 
-    @FXML
-    private Button btn_AddCourse;
+    //THE CURRENT EXPERIMENT LOADED
+    private Experiment experiment;
 
-    @FXML
-    private Button btnCancel;
 
-    @FXML
-    private Button btn_AddPeriodicStage;
-
-    @FXML
-    private Button btn_AddQuestionStage;
-    @FXML
-    private Button btn_addAudibleInstruction;
-
-    @FXML
-    private Button btn_addFoodAndTaste;
-
-    @FXML
-    private Button btn_addInput;
-
-    @FXML
-    private Button btn_addRatingContainer;
-
-    @FXML
-    private Button btn_addTasteTest;
-
-    @FXML
-    private Button btn_addTimer;
-
-    @FXML
-    private Button btn_addVasStage;
-
-    @FXML
-    private Button btn_assignSound;
-
+    //PROPERTY PANE TO LOAD PROPERTIES OF EACH STAGE
     @FXML
     private AnchorPane propertiesPane;
+
+    //MENU BUTTONS ON THE LEFT SIDE
     @FXML
-    private TreeView<Stages> treeView;
+    private Button btn_AddConditionalStatement, btn_AddCourse, btn_AddPeriodicStage,
+            btn_AddQuestionStage, btn_addAudibleInstruction, btn_addFoodAndTaste,
+            btn_addInput, btn_addRatingContainer, btn_addTasteTest, btn_addTimer,
+            btn_assignSound, btn_noticeStage ;
 
-
+    //TREE VIEW TO DISPLAY THE ViewModel OF THE EXP
     @FXML
-    private Button btn_noticeStage;
+    private TreeView<ViewModel> treeView;
 
-    private TreeItem<Stages> startStage;
+    //TREE ITEM THAT HAS CHILDREN
+    private TreeItem<ViewModel> startStage, ratingContainerItems, ifConditional, elseConditional;
 
-    private TreeItem<Stages> ratingContainerItems;
-    private TreeItem<Stages> ifConditional;
-    private TreeItem<Stages> elseConditional;
-
-    private AudibleSound_VM selectAudibleSound_vm;
-    private Experiment originalExperiment;
-    private Experiment experiment;
+    //CANCEL BUTTON
+    @FXML
+    private Button btnCancel;
 
 
 
@@ -119,13 +85,13 @@ public class EditExpController {
 
     private void styleTreeView(){
         //THIS CODE IS TO MAKE THE TREE ITEM WHICH APPEAR DIFFER IN COLORS (ODD VS EVEN)
-        treeView.setCellFactory(new Callback<TreeView<Stages>, TreeCell<Stages>>() {
+        treeView.setCellFactory(new Callback<TreeView<ViewModel>, TreeCell<ViewModel>>() {
 
             @Override
-            public TreeCell<Stages> call(TreeView<Stages> param) {
-                return new TreeCell<Stages>() {
+            public TreeCell<ViewModel> call(TreeView<ViewModel> param) {
+                return new TreeCell<ViewModel>() {
                     @Override
-                    protected void updateItem(Stages item, boolean empty) {
+                    protected void updateItem(ViewModel item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty || item == null) {
                             setText(null);
@@ -147,18 +113,18 @@ public class EditExpController {
 
 
 
-    private void showPropertiesPane(TreeItem<Stages> selectedItem) throws IOException
+    private void showPropertiesPane(TreeItem<ViewModel> selectedItem) throws IOException
     {//USED TO LOAD THE PROPERTIES PANE CORRESPONDING TO THE SELECTED ITEM
 
-        Stages stages = selectedItem.getValue();
-        if (stages == null) return;
+        ViewModel ViewModel = selectedItem.getValue();
+        if (ViewModel == null) return;
 
         propertiesPane.getChildren().clear();
         propertiesPane.setVisible(true);
         treeView.setMaxHeight(311);
 
-        stages.loadInterface(propertiesPane);
-        stages.handleMenuButtons(btn_AddPeriodicStage, btn_AddCourse, btn_assignSound,
+        ViewModel.loadEditInterface(propertiesPane);
+        ViewModel.handleEditButtons(btn_AddPeriodicStage, btn_AddCourse, btn_assignSound,
                 btn_addFoodAndTaste, btn_addAudibleInstruction
                 , btn_addInput, btn_noticeStage,
                 btn_addTimer, btn_AddQuestionStage,
@@ -171,11 +137,9 @@ public class EditExpController {
 
     private void loadItems() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         ArrayList<Model> stages = experiment.getStages();
-        System.out.println(stages);
-
 
         if (experiment.getStages().isEmpty()) {
-            Stages startVM = new StartVM(experiment);
+            ViewModel startVM = new StartVM(experiment);
             startStage = new TreeItem<>(startVM);
             treeView.setRoot(startStage);
 
@@ -186,17 +150,19 @@ public class EditExpController {
             treeView.setRoot(startStage);
 
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
-            for (Model o : stages) {
-                buildTree(startStage, o, registry);
+
+            for (Model model : stages) {
+                buildTree(startStage, model, registry);
             }
+
             startStage.setExpanded(true);
         }
     }
 
-    private void buildTree(TreeItem<Stages> parent, Model model, ModelVMRegistry registry) {
-        Stages stage = registry.getViewModel(model);
+    private void buildTree(TreeItem<ViewModel> parent, Model model, ModelVMRegistry registry) {
+        ViewModel stage = registry.getViewModel(model);
         if(stage != null){
-            TreeItem<Stages> item = new TreeItem<>(stage);
+            TreeItem<ViewModel> item = new TreeItem<>(stage);
             parent.getChildren().add(item);
             if(model instanceof ModelContainer) {
                 for(Model child : ((ModelContainer) model).getChildren()) {
@@ -206,16 +172,16 @@ public class EditExpController {
         }
     }
 
-    void addNewTreeItem(Stages stages){
-        TreeItem<Stages> parent = treeView.getSelectionModel().getSelectedItem();
+    void addNewTreeItem(ViewModel vm){
+        TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
         if(ifConditional != null && parent == ifConditional){
-            ifConditional.getChildren().add(new TreeItem<>(stages));
+            ifConditional.getChildren().add(new TreeItem<>(vm));
         } else if(elseConditional != null && parent == elseConditional){
-            elseConditional.getChildren().add(new TreeItem<>(stages));
+            elseConditional.getChildren().add(new TreeItem<>(vm));
         } else if (ratingContainerItems!= null && parent == ratingContainerItems){
-            ratingContainerItems.getChildren().add(new TreeItem<>(stages));
+            ratingContainerItems.getChildren().add(new TreeItem<>(vm));
         } else {
-            startStage.getChildren().add(new TreeItem<>(stages));
+            startStage.getChildren().add(new TreeItem<>(vm));
         }
         if(parent != null){
             parent.setExpanded(true);
@@ -226,7 +192,6 @@ public class EditExpController {
     void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 
         AudibleSound_VM audibleSound_vm = new AudibleSound_VM(experiment);
-        selectAudibleSound_vm = audibleSound_vm;
 
         addNewTreeItem(audibleSound_vm);
     }
@@ -256,7 +221,7 @@ public class EditExpController {
         Stage stage = new Stage();
         stage.setTitle("Add Food and Taste");
 
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
 
         AddTasteVM tasteTestVM = (AddTasteVM) selectedItem.getValue();
         TasteTest taste = tasteTestVM.getModel();
@@ -272,9 +237,9 @@ public class EditExpController {
     @FXML
     void addGLMSStage(ActionEvent event) {
         GLMSStage_VM glmsStage_VM;
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if(selectedItem == ratingContainerItems){
-            glmsStage_VM = new GLMSStage_VM((RatingContainer_VM) ratingContainerItems.getValue());
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof RatingContainer_VM){
+            glmsStage_VM = new GLMSStage_VM((RatingContainer_VM) selectedItem.getValue());
         } else {
             glmsStage_VM = new GLMSStage_VM(experiment);
         }
@@ -333,9 +298,9 @@ public class EditExpController {
    @FXML
    void addVasStage(ActionEvent event) {
         VasStage_VM vasStageVm;
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if(selectedItem == ratingContainerItems){
-            vasStageVm = new VasStage_VM((RatingContainer_VM) ratingContainerItems.getValue());
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof RatingContainer_VM){
+            vasStageVm = new VasStage_VM((RatingContainer_VM) selectedItem.getValue());
         } else {
             vasStageVm = new VasStage_VM(experiment);
         }
@@ -346,7 +311,7 @@ public class EditExpController {
     @FXML
     void assignSound(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         AudibleSound_VM audible = null;
         if (selectedItem != null) {
             audible = (AudibleSound_VM) selectedItem.getValue();
@@ -369,7 +334,7 @@ public class EditExpController {
 
     public void setExperiment(Experiment c) throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
         this.experiment = c;
-        this.originalExperiment = experiment;
+        //this.originalExperiment = experiment;
         loadItems();
     }
 
@@ -379,9 +344,9 @@ public class EditExpController {
     //THREE RIGHT-SIDE BUTTONS
     @FXML
     void delete(ActionEvent event) throws Exception {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null && selectedItem != startStage) {
-            TreeItem<Stages> parent = selectedItem.getParent();
+            TreeItem<ViewModel> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
                 if (currentIndex == 0) {
@@ -397,9 +362,9 @@ public class EditExpController {
     }
     @FXML
     void down(ActionEvent event) throws IOException {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            TreeItem<Stages> parent = selectedItem.getParent();
+            TreeItem<ViewModel> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
                 if(currentIndex == parent.getChildren().size() - 1){
@@ -407,7 +372,7 @@ public class EditExpController {
                     return;
                 }
                 if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
-                    TreeItem<Stages> nextItem = parent.getChildren().get(currentIndex + 1);
+                    TreeItem<ViewModel> nextItem = parent.getChildren().get(currentIndex + 1);
                     parent.getChildren().set(currentIndex + 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, nextItem);
 
@@ -422,13 +387,13 @@ public class EditExpController {
 
     @FXML
     void up(ActionEvent event) throws IOException {
-        TreeItem<Stages> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            TreeItem<Stages> parent = selectedItem.getParent();
+            TreeItem<ViewModel> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
                 if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
-                    TreeItem<Stages> lastItem = parent.getChildren().get(currentIndex - 1);
+                    TreeItem<ViewModel> lastItem = parent.getChildren().get(currentIndex - 1);
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
                     parent.getChildren().set(currentIndex, lastItem);
                     Model last = experiment.getStages().get(currentIndex - 1);
@@ -455,7 +420,7 @@ public class EditExpController {
     void cancel(){
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
-        this.experiment = originalExperiment;
+        //this.experiment = originalExperiment;
     }
 
     @FXML

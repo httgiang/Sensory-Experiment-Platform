@@ -1,8 +1,6 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,7 @@ import main.sensoryexperimentplatform.controllers.RunVasController;
 import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Vas;
 
-public class RunVas_VM implements RunStages{
+public class RunVas_VM {
     private Vas vas;
     private IntegerProperty sliderValue;
     private final StringProperty questionText;
@@ -92,27 +90,27 @@ public class RunVas_VM implements RunStages{
         return vas.getResult();
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().addAll(newContent);
-        RunVasController controller = loader.getController();
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.textProperty().bind(this.buttonProperty());
-
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-        }else btn_next.setDisable(false);
-
-        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                btn_next.setDisable(false);
-            }
-        });
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().addAll(newContent);
+//        RunVasController controller = loader.getController();
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_next.textProperty().bind(this.buttonProperty());
+//
+//        if (this.conductedTextProperty().get() == null){
+//            btn_next.setDisable(true);
+//        }else btn_next.setDisable(false);
+//
+//        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                btn_next.setDisable(false);
+//            }
+//        });
+//    }
 }

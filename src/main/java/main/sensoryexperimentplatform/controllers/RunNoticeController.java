@@ -8,27 +8,28 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.sensoryexperimentplatform.viewmodel.NoticeStage_VM;
 import main.sensoryexperimentplatform.viewmodel.RunNotice_VM;
 
 
 public class RunNoticeController {
     @FXML
     private Label titleTxt, contentTxt;
-    private RunNotice_VM viewModel;
+    private NoticeStage_VM viewModel;
     @FXML
     private ImageView help_image;
 
 
-    public void setViewModel(RunNotice_VM viewModel){
+    public void setViewModel(NoticeStage_VM viewModel){
         this.viewModel = viewModel;
 
         bindViewModel();
-        if (viewModel.getAlert().get()) {
+        if (viewModel.alertProperty().get()) {
            viewModel.playSound();
         }
         Tooltip tooltip = new Tooltip("Help text here!");
-        if (viewModel.getHelpText().get() != null) {
-            tooltip.setText(viewModel.getHelpText().get());
+        if (viewModel.helpTextProperty().get() != null) {
+            tooltip.setText(viewModel.getHelpText());
         }
 
         tooltip.setStyle(
@@ -68,8 +69,8 @@ public class RunNoticeController {
 
 
     private void bindViewModel(){
-        titleTxt.textProperty().bind(viewModel.getTitle());
-        contentTxt.textProperty().bind(viewModel.getContent());
+        titleTxt.textProperty().bindBidirectional(viewModel.titleProperty());
+        contentTxt.textProperty().bindBidirectional(viewModel.contentProperty());
 
     }
 }

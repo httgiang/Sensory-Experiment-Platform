@@ -5,14 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.VasController;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Vas;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class VasStage_VM implements Stages {
+public class VasStage_VM implements ViewModel {
     private Experiment experiment;
     private StringProperty questionText;
     private StringProperty lowAnchorText;
@@ -26,58 +27,19 @@ public class VasStage_VM implements Stages {
     private BooleanProperty checkB_sound;
     private BooleanProperty checkB_swap;
     private final BooleanProperty alert = new SimpleBooleanProperty(true);
+    private IntegerProperty sliderValue;
+    private StringProperty conducted;
     private Vas vas;
     public VasStage_VM(Vas vas){
         this.vas= vas;
-        lowAnchorText = new SimpleStringProperty(vas.getLowAnchorText());
-        highAnchorText = new SimpleStringProperty(vas.getHighAnchorText());
-        buttonText = new SimpleStringProperty(vas.getButtonText());
-        helpText = new SimpleStringProperty(vas.getHelpText());
-        lowAnchorValue = new SimpleStringProperty(String.valueOf(vas.getLowAnchorValue()));
-        highAnchorValue = new SimpleStringProperty(String.valueOf(vas.getHighAnchorValue()));
-        questionText = new SimpleStringProperty(vas.getTitle());
-        checkB_sound = new SimpleBooleanProperty(vas.getAlert());
-        checkB_swap = new SimpleBooleanProperty(vas.getIsSwap());
-        checkB_swap.addListener((observableValue, oldValue, newValue) -> onCheckSwap(newValue));
-        checkB_sound.addListener((observableValue, oldValue, newValue) -> onCheckSound(newValue));
-        highAnchorValue.addListener((observableValue, oldValue, newValue) -> onhighAnchorValue(newValue));
-        lowAnchorValue.addListener((observableValue, oldValue, newValue) -> onlowAnchorValue(newValue));
-        helpText.addListener((observableValue, oldValue, newValue) -> onHelpText(newValue));
-        buttonText.addListener((observableValue, oldValue, newValue) -> {
-            onButtonText(newValue);
-//            System.out.println(vas);
-        });
-
-        highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));
-        lowAnchorText.addListener((observableValue, oldValue, newValue) -> onlowAnchorText(newValue));
-        questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
+        initListener();
     }
 
     public VasStage_VM(Experiment experiment) {
         this.experiment = experiment;
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
-        lowAnchorText = new SimpleStringProperty(vas.getLowAnchorText());
-        highAnchorText = new SimpleStringProperty(vas.getHighAnchorText());
-        buttonText = new SimpleStringProperty(vas.getButtonText());
-        helpText = new SimpleStringProperty(vas.getHelpText());
-        lowAnchorValue = new SimpleStringProperty(String.valueOf(vas.getLowAnchorValue()));
-        highAnchorValue = new SimpleStringProperty(String.valueOf(vas.getHighAnchorValue()));
-        questionText = new SimpleStringProperty(vas.getTitle());
-        checkB_sound = new SimpleBooleanProperty(vas.getAlert());
-        checkB_swap = new SimpleBooleanProperty(vas.getIsSwap());
-        checkB_swap.addListener((observableValue, oldValue, newValue) -> onCheckSwap(newValue));
-        checkB_sound.addListener((observableValue, oldValue, newValue) -> onCheckSound(newValue));
-        highAnchorValue.addListener((observableValue, oldValue, newValue) -> onhighAnchorValue(newValue));
-        lowAnchorValue.addListener((observableValue, oldValue, newValue) -> onlowAnchorValue(newValue));
-        helpText.addListener((observableValue, oldValue, newValue) -> onHelpText(newValue));
-        buttonText.addListener((observableValue, oldValue, newValue) -> {
-            onButtonText(newValue);
-        });
-
-        highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));
-        lowAnchorText.addListener((observableValue, oldValue, newValue) -> onlowAnchorText(newValue));
-        questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
+        initListener();
         experiment.addVasStage(vas);
     }
 
@@ -85,6 +47,10 @@ public class VasStage_VM implements Stages {
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
         rating.addContainerStage(vas);
+        initListener();
+    }
+
+    private void initListener(){
         lowAnchorText = new SimpleStringProperty(vas.getLowAnchorText());
         highAnchorText = new SimpleStringProperty(vas.getHighAnchorText());
         buttonText = new SimpleStringProperty(vas.getButtonText());
@@ -106,8 +72,96 @@ public class VasStage_VM implements Stages {
         highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));
         lowAnchorText.addListener((observableValue, oldValue, newValue) -> onlowAnchorText(newValue));
         questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
+
+        sliderValue = new SimpleIntegerProperty(vas.getResult());
+        conducted = new SimpleStringProperty(vas.getConducted());
+
+        sliderValue.addListener((observable, oldValue, newValue) -> {
+            setResult(newValue.intValue());
+            conducted.set(DataAccess.getCurrentFormattedTime());
+            setDate();
+
+        });
     }
 
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("VasStage.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        VasController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunVas.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().addAll(newContent);
+        RunVasController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button button3,
+                                  Button button4, Button button5, Button button6,
+                                  Button button7, Button button8, Button button9,
+                                  Button button10, Button button11, Button button12)
+            throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonTextProperty());
+
+        if (this.conductedTextProperty().get() == null){
+            btn_next.setDisable(true);
+        }else btn_next.setDisable(false);
+
+        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                btn_next.setDisable(false);
+            }
+        });
+    }
+    public void playAlertSound(){
+        vas.playAlertSound();
+    }
+
+    @Override
+    public String toString(){
+        return "[VAS] " + getQuestionText();
+    }
+
+    public StringProperty conductedTextProperty() {
+        return conducted;
+    }
+
+    public IntegerProperty sliderValueProperty() {
+        return sliderValue;
+    }
+    public void setResult(int result) {
+        vas.setResult(result);
+    }
+    public double getResult() {
+        return vas.getResult();
+    }
+    public void setDate(){
+        vas.setConducted(DataAccess.getCurrentFormattedTime());
+    }
     private void onCheckSwap(Boolean newValue) {
         vas.setSwap(newValue);
     }
@@ -270,40 +324,4 @@ public class VasStage_VM implements Stages {
         return vas;
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("VasStage.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-        VasController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
-    }
-
-
-    @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3,
-                                  Button button4, Button button5, Button button6,
-                                  Button button7, Button button8, Button button9,
-                                  Button button10, Button button11, Button button12)
-            throws IOException {
-        button1.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
-
-
-    }
-
-    @Override
-    public String toString(){
-        return "[VAS] " + getQuestionText();
-    }
 }

@@ -8,14 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.controllers.RunTimerController;
 import main.sensoryexperimentplatform.controllers.TimerController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Timer;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class TimerStage_VM implements Stages {
+public class TimerStage_VM implements ViewModel{
     private Timer timer;
     private StringProperty txt_instruction;
     private StringProperty txt_timewait;
@@ -83,8 +84,21 @@ public class TimerStage_VM implements Stages {
         return timer;
     }
 
+
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+
+        RunTimerController controller = loader.getController();
+
+     //   controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("TimerStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -93,7 +107,7 @@ public class TimerStage_VM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3,
+    public void handleEditButtons(Button button1, Button button2, Button button3,
                                   Button button4, Button button5, Button button6,
                                   Button button7, Button button8, Button button9,
                                   Button button10, Button button11, Button button12)
@@ -112,6 +126,24 @@ public class TimerStage_VM implements Stages {
         button9.setDisable(false);
 
     }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+
+    }
+
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//                btn_back.setVisible(controller.getTimeLineCheck());
+//        btn_next.setVisible(controller.getTimeLineCheck());
+//        btn_next.setDisable(false);
+//
+//        controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
+//            btn_back.setVisible(newValue);
+//            btn_next.setVisible(newValue);
+//            listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
+//        } ));
+   // }
 
     @Override
     public String toString() {

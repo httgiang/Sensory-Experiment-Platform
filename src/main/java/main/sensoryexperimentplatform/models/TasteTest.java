@@ -20,7 +20,7 @@ public class TasteTest implements Model{
     private ObservableList<String> selectedFoods = FXCollections.observableArrayList();
     private ObservableList<String> selectedGLMS = FXCollections.observableArrayList();
     private ObservableList<String> selectedVAS = FXCollections.observableArrayList();
-    private ArrayList<Object> stages;
+    private ArrayList<Model> stages;
 
 
     public TasteTest(String noticeStageContent, String question, String consumptionInstruction, String endInstruction,
@@ -231,7 +231,7 @@ public class TasteTest implements Model{
         StringBuilder builder = new StringBuilder();
         return serializeTasteTest(builder);
     }
-    public ArrayList<Object> getStages() {
+    public ArrayList<Model> getStages() {
         return stages;
     }
 

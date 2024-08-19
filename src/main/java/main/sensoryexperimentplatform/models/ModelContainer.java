@@ -4,7 +4,7 @@ import org.controlsfx.control.PropertySheet;
 
 import java.util.*;
 
-public abstract class ModelContainer implements Model{
+public abstract class ModelContainer implements Model{ //TasteTest, Conditional Statement, Course, Rating Container
     protected List<Model> children;
 
     public void addChildren(Model model) {

@@ -12,8 +12,9 @@ import java.util.Map;
 import java.util.function.Function;
 public class ModelVMRegistry {
     private static ModelVMRegistry instance;
-    private static Map<Class<? extends Model>, Function<Model, Stages>> registry = new HashMap<>();
+    private static Map<Class<? extends Model>, Function<Model, ViewModel>> registry = new HashMap<>();
     private ModelVMRegistry(){
+
         registry.put(Vas.class, model -> new VasStage_VM((Vas) model));
         registry.put(Notice.class, model -> new NoticeStage_VM((Notice) model));
         registry.put(gLMS.class, model -> new GLMSStage_VM((gLMS) model));
@@ -22,7 +23,6 @@ public class ModelVMRegistry {
         registry.put(Timer.class, model -> new TimerStage_VM((Timer) model));
         registry.put(RatingContainer.class, model -> new RatingContainer_VM((RatingContainer) model));
         registry.put(TasteTest.class, model -> new AddTasteVM((TasteTest) model));
-
         registry.put(AudibleInstruction.class, model -> {
             try {
                 return new AudibleSound_VM((AudibleInstruction) model);
@@ -44,8 +44,8 @@ public class ModelVMRegistry {
         }
         return instance;
     }
-    public Stages getViewModel(Model model){
-        Function<Model, Stages> viewModel = registry.get(model.getClass());
+    public ViewModel getViewModel(Model model){
+        Function<Model, ViewModel> viewModel = registry.get(model.getClass());
         if(viewModel != null){
             return viewModel.apply(model);
         }

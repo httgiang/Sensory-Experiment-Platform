@@ -8,11 +8,11 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddPeriodic;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Periodic;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class PeriodicVM implements Stages {
+public class PeriodicVM implements ViewModel {
     private Course course;
     private SimpleStringProperty amoutEveryAfter;
     private SimpleStringProperty daiLuongAmount;
@@ -97,8 +97,14 @@ public class PeriodicVM implements Stages {
         return forAmount;
     }
 
+
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddPeriodicStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -107,7 +113,12 @@ public class PeriodicVM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+    public void handleEditButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
 
     }
 

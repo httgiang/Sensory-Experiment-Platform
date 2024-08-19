@@ -14,11 +14,12 @@ import main.sensoryexperimentplatform.models.*;
 import java.io.IOException;
 import java.util.concurrent.*;
 
+import static main.sensoryexperimentplatform.utilz.FeatureType.RUN;
 
 
 public class RunController {
     @FXML
-    private ListView<RunStages> listView;
+    private ListView<ViewModel> listView;
     private Experiment experiment; private String uid;
     int processed = 0; //index to keep track of how many stages are processed
 
@@ -33,8 +34,8 @@ public class RunController {
     @FXML
     private Label elapsedTime_label;
 
-    @FXML
-    private ProgressBar progress_bar;
+    ModelVMRegistry registry;
+
 
     public void initRunExperiment(Experiment experiment, String uId) throws IOException {
         this.experiment = experiment;
@@ -45,72 +46,77 @@ public class RunController {
         initButtons();
     }
 
+
+    private void buildList(ListView<ViewModel> listView, Model model, ModelVMRegistry registry){
+        ViewModel stages = registry.getViewModel(model);
+        if(stages != null){
+            System.out.println(model);
+            listView.getItems().add(stages);
+        }
+
+        if(model instanceof ModelContainer){
+            for(Model children : ((ModelContainer) model).getChildren()){
+                buildList(listView, children, registry);
+            }
+
+        }
+    }
     private void loadItems() {
-        for(Object selectedObject : experiment.getStages()){
-            updateProgress(listView.getSelectionModel().getSelectedIndex());
-//            updateProgress(listView.getSelectionModel().getSelectedIndex());
-//            if (selectedObject != null) {
-//                int currentIndex = viewModel.getIndexOfObject(selectedObject);
-//                if (currentIndex >= 0) {
-//                    if (currentIndex > processed) {
-//                        processed = currentIndex;
-//                        updateProgress(currentIndex);
-//                    }
-//                } else {
-//                    processed++;
-//                    updateProgress(processed);
-//                }
+        for(Model selectedObject : experiment.getStages()){
+
+            registry = ModelVMRegistry.getInstance();
+            buildList(listView, selectedObject, registry);
+//            if (selectedObject instanceof Start){
+//                RunStartVM vm = new RunStartVM((Start) selectedObject);
+//                listView.getItems().add(vm);;
 //            }
-            handleUpdateProgress();
-
-            if (selectedObject instanceof Start){
-                RunStartVM vm = new RunStartVM((Start) selectedObject);
-                listView.getItems().add(vm);;
-            }
-            else if (selectedObject instanceof Vas) {
-                RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
-                listView.getItems().add(vm);
-            }
-            // glms view display
-            else if (selectedObject instanceof gLMS) {
-                RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Notice) {
-                RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Input) {
-                RunInputVM vm = new RunInputVM((Input) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Question) {
-                RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Timer) {
-                RunTimer_VM vm = new RunTimer_VM((Timer) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof AudibleInstruction) {
-                RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Course) {
-                RunCourseVM vm = new RunCourseVM((Course) selectedObject);
-                listView.getItems().add(vm);
-
-            }
+//            else if (selectedObject instanceof Vas) {
+//                RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            // glms view display
+//            else if (selectedObject instanceof gLMS) {
+//                RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof Notice) {
+//                registry = ModelVMRegistry.getInstance();
+//                ViewModel stages = registry.getViewModel(selectedObject);
+//                listView.getItems().add(stages);
+//              //  RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
+//              //  listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof Input) {
+//                RunInputVM vm = new RunInputVM((Input) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof Question) {
+//                RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof Timer) {
+//                RunTimer_VM vm = new RunTimer_VM((Timer) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof AudibleInstruction) {
+//                RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
+//                listView.getItems().add(vm);
+//            }
+//            else if (selectedObject instanceof Course) {
+//                RunCourseVM vm = new RunCourseVM((Course) selectedObject);
+//                listView.getItems().add(vm);
+//
+//            }
         }
     }
 
 
-    private void showRunningPane(RunStages selectedItem) throws IOException {
-        RunStages runStages = selectedItem;
+    private void showRunningPane(ViewModel selectedItem) throws IOException {
+        ViewModel runStages = selectedItem;
         if (runStages == null) return;
 
         content.getChildren().clear();
-        runStages.loadInterface(content);
+        runStages.loadRunInterface(content);
         runStages.handleRunButtons(btn_next, btn_back);
 
     }
@@ -136,19 +142,6 @@ public class RunController {
         btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
-    private void handleUpdateProgress(){
-       int currIdx = listView.getSelectionModel().getSelectedIndex();
-       if(currIdx >= 0){
-           if(currIdx >= processed){
-               processed = currIdx;
-           }
-       }
-       else {
-           processed++;
-       }
-       updateProgress(processed);
-    }
-
 
     private void handleFinalNext() throws IOException {
         processed = 0;
@@ -163,14 +156,6 @@ public class RunController {
     }
 
 
-    private void updateProgress(int processedIdx){
-        if(experiment.getStages().size() > 0){
-            double progress = (processedIdx + 1) / (experiment.getStages().size() * 1.0);
-            System.out.println("progress" + progress);
-            progress_bar.setProgress(progress);
-        }
-
-    }
     //timer tracks the experiment
     private void startTimer() {
         executorService = Executors.newSingleThreadScheduledExecutor();
@@ -206,13 +191,11 @@ public class RunController {
             handleFinalNext();
         }
         DataAccess.quickSave(experiment, uid);
-        updateProgress(listView.getSelectionModel().getSelectedIndex());
     }
     @FXML
     void handleBtnBack(MouseEvent event) {
         int selectedIndex = listView.getSelectionModel().getSelectedIndex();
         listView.getSelectionModel().select(selectedIndex - 1);
-        updateProgress(listView.getSelectionModel().getSelectedIndex());
     }
 
 }
