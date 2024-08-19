@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
-public class conditionalStatement implements Model{
+public class conditionalStatement extends ModelContainer{
     private boolean value1;
     private boolean value2;
     private boolean variable1;

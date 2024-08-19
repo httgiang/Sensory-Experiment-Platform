@@ -10,7 +10,7 @@ import main.sensoryexperimentplatform.controllers.AddCourseController;
 import java.io.IOException;
 import java.time.Duration;
 
-public class Course extends Stage implements Model{
+public class Course extends ModelContainer implements Model{
     private String buttonText, helpText, title, content;
     private String endStatement;
     private int refillWeight;
@@ -19,7 +19,6 @@ public class Course extends Stage implements Model{
     private Periodic periodic;
     public Course(String title, String content,String buttonText, int refillWeight,
                   int duration, int quantity, String helpText,String endStatement){
-        super(title, content);
         this.title = title;
         this.content = content;
         this.buttonText = buttonText;
@@ -30,7 +29,6 @@ public class Course extends Stage implements Model{
         this.endStatement = endStatement;
     }
     public Course(Course course){
-        super(course.getTitle(), course.getContent());
         this.title = course.getTitle();
         this.content = course.getContent();
         this.buttonText = course.getButtonText();
@@ -42,7 +40,6 @@ public class Course extends Stage implements Model{
     }
     //Default
     public Course(String title, String content){
-        super(title, content);
         refillWeight = -1;
         duration = -1;
         quantity = -1; //grams
@@ -98,12 +95,12 @@ public class Course extends Stage implements Model{
         return duration;
     }
 
-    @Override
+
     public String getContent() {
         return content;
     }
 
-    @Override
+
     public String getTitle() {
         return title;
     }

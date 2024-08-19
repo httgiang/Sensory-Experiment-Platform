@@ -11,20 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunTimerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunTimerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ModelContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ModelContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/TasteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/TasteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ModelVMRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ModelVMRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/TimerStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/TimerStage_VM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +203,7 @@
       <workItem from="1723855722887" duration="1504000" />
       <workItem from="1723858787366" duration="13602000" />
       <workItem from="1724046016078" duration="5129000" />
-      <workItem from="1724083507453" duration="5426000" />
+      <workItem from="1724083507453" duration="6391000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
@@ -280,15 +266,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/StartVM.java</url>
-          <line>184</line>
-          <properties class="main.sensoryexperimentplatform.viewmodel.StartVM" method="loadRunInterface">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
