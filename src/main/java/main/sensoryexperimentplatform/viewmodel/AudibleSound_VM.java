@@ -90,9 +90,7 @@ public class AudibleSound_VM implements Stages {
     public void setHelpText(String newValue) {audibleInstruction.setHelpText(newValue);
 
     }
-    public void setFilePath(String filePath) {
-        audibleInstruction.setFilePath(filePath);
-    }
+
 
 
     public void setButtonText(String newValue) {;
@@ -114,8 +112,8 @@ public class AudibleSound_VM implements Stages {
         return soundName;
     }
 
-    public void setAssignSoundVM(AssignSoundVM assignSoundVM) {
-        this.assignSoundVM = assignSoundVM;
+    public AudibleInstruction getAudibleIntruction(){
+        return audibleInstruction;
     }
 
 

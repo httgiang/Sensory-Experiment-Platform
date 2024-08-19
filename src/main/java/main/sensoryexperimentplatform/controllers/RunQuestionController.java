@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.RunQuestion_VM;
 
@@ -27,7 +28,12 @@ public class RunQuestionController {
 
     private RunQuestion_VM viewModel;
 
+    @FXML
+    private AnchorPane anchorPane;
+
+
     public void setViewModel(RunQuestion_VM viewModel){
+        initialize();
         this.viewModel = viewModel;
         bindViewModel();
         if(viewModel.playAlertProperty().get()){
@@ -82,6 +88,18 @@ public class RunQuestionController {
         txt_question.textProperty().bindBidirectional(viewModel.questionTextProperty());
         btn_left.textProperty().bindBidirectional(viewModel.leftButtonTextProperty());
         btn_right.textProperty().bindBidirectional(viewModel.rightButtonTextProperty());
+    }
+
+
+    @FXML
+    private void initialize() {
+        anchorPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double paneWidth = (Double) newVal;
+            double buttonWidth = btn_right.getWidth();
+            double centerX = (paneWidth - buttonWidth) / 2;
+            btn_right.setLayoutX(centerX + buttonWidth);
+            btn_left.setLayoutX(centerX);
+        });
     }
 
     private void handleButtonClick(String buttonIdentifier) {

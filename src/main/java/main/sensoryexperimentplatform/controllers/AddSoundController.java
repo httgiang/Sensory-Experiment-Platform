@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.sensoryexperimentplatform.viewmodel.AddSoundVM;
 import main.sensoryexperimentplatform.viewmodel.AssignSoundVM;
 import java.io.File;
 
@@ -13,8 +12,6 @@ public class AddSoundController {
 
 
     private NotiAddSound NotiAddSound;
-    private AssignSoundController AssignSoundController;
-    private AddSoundVM viewModel;
     private AssignSoundVM assignSoundVM;
 
 
@@ -32,20 +29,12 @@ public class AddSoundController {
 
 
 
-    public void setViewModel(AddSoundVM viewModel, AssignSoundController assignSoundController,AssignSoundVM assignSoundVM) {
-       this.viewModel = viewModel;
+    public void setViewModel(AssignSoundController assignSoundController,AssignSoundVM assignSoundVM) {
        this.assignSoundVM = assignSoundVM;
-       this.AssignSoundController = assignSoundController;
        NotiAddSound = new NotiAddSound(assignSoundController);
 
     }
 
-//    private void bindViewModel() {
-//        txt_file.textProperty().bindBidirectional(viewModel.fileProperty());
-//        txt_name.textProperty().bindBidirectional(viewModel.nameProperty());
-//
-//
-//    }
 
     @FXML
     void btn_browse(ActionEvent event) {
@@ -70,11 +59,11 @@ public class AddSoundController {
     @FXML
     void btn_save(ActionEvent event) {
         if(!txt_file.getText().isEmpty() || !txt_name.getText().isEmpty()) {
-        viewModel.addListSoundshow(txt_name.getText());
+        assignSoundVM.addListSoundshow(txt_name.getText());
+        assignSoundVM.loadSound(txt_name.getText(), txt_file.getText());
         assignSoundVM.setSoundPath(txt_file.getText());
-        viewModel.loadSound(txt_name.getText(), txt_file.getText());
         NotiAddSound.notifyObject();
-        viewModel.exportSound(txt_file.getText());
+        assignSoundVM.exportSound(txt_file.getText());
         Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
         currentStage.close();}
     }
