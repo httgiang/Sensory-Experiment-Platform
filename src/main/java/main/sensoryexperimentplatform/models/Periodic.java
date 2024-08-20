@@ -7,7 +7,7 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 
 import java.io.IOException;
 
-public class Periodic{
+public class Periodic implements Model{
     private long amount;
     private long forAmount;
     private String daiLuong;

@@ -1,4 +1,4 @@
 package main.sensoryexperimentplatform.models;
 
-public interface containerObject {
+public interface containerObject extends Model{
 }

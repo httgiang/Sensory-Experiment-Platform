@@ -3,45 +3,37 @@ package main.sensoryexperimentplatform.models;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RatingContainer {
+public class RatingContainer extends ModelContainer{
     private boolean isRandomize;
     private int minTime;
-    public ArrayList<containerObject> container;
     public RatingContainer(boolean isRandomize,int minTime){
         this.minTime = minTime;
         this.isRandomize = isRandomize;
-        container = new ArrayList<>();
+        children = new ArrayList<>();
     }
     public RatingContainer(RatingContainer other){
         this.isRandomize = other.isRandomize;
         this.minTime = other.minTime;
-        container = new ArrayList<>();
-        for (Object subO : other.container) {
+        children = new ArrayList<>();
+        for (Model subO : other.children) {
             if (subO instanceof Vas) {
                 Vas temp = new Vas((Vas) subO);
-                addStage(temp);
+                addChildren(temp);
             }
             if (subO instanceof gLMS) {
                 gLMS temp = new gLMS((gLMS) subO);
-                addStage(temp);
+                addChildren(temp);
             }
         }
     }
     public void randomizeContainer(){
         if(isRandomize){
-            Collections.shuffle(container);
+            Collections.shuffle(children);
         }
 
     }
-
-    public void addStage(containerObject s){
-        container.add(s);
-    }
-    public void addVasStageTest_newExperiment(Vas stage){
-        container.add(stage);
-    }
-    public void addGlms_newExperiment(gLMS glms){
-        container.add(glms);
+    public void addStage(Model s){
+        children.add(s);
     }
     public void addVasStageContainer(String title, String lowAnchorText, String highAnchorText,
                                      int lowAnchorValue, int highAnchorValue, String buttonText,
@@ -51,7 +43,7 @@ public class RatingContainer {
                 lowAnchorValue, highAnchorValue, buttonText, content,
                 helpText, isSwap, alert);
 
-        container.add(stage);
+        children.add(stage);
     }
 
     public void addGlmsStageContainer(String question, String buttonText, String content,
@@ -59,7 +51,7 @@ public class RatingContainer {
 
         gLMS stage = new gLMS(question, buttonText, content, helpText, alert);
 
-        container.add(stage);
+        children.add(stage);
     }
 
     public void countMinTime(){
@@ -67,7 +59,7 @@ public class RatingContainer {
         timer.start();
     }
     public void showContainer(){
-        ArrayList<Object> show = new ArrayList<>(container);
+        ArrayList<Object> show = new ArrayList<>(children);
         if (isRandomize){
             Collections.shuffle(show);
             StringBuilder sb = new StringBuilder();
@@ -94,16 +86,10 @@ public class RatingContainer {
         return minTime;
     }
 
-    public void setContainer(ArrayList<containerObject> container) {
-        this.container = container;
-    }
 
-    public ArrayList<containerObject> getContainer() {
-        return container;
-    }
     public String stageToString(){
         StringBuilder sb = new StringBuilder();
-        for(Object s : container){
+        for(Object s : children){
             sb.append(s.toString()).append("\n");
         }
         return sb.toString();

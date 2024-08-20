@@ -1,77 +1,137 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.GLMSController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.gLMS;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class GLMSStage_VM implements Stages {
-    private StringProperty txt_question;
-    private StringProperty txt_LowAncTxt;
-    private StringProperty txt_yes;
+public class GLMSStage_VM implements ViewModel{
+    private StringProperty txt_question, txt_LowAncTxt, txt_yes, txt_help;
+    private StringProperty buttonText;
     private BooleanProperty checkB_swap;
-    private StringProperty txt_help;
     private BooleanProperty checkB_sound;
+    private DoubleProperty sliderValue;
+    private StringProperty conducted;
     private Experiment experiment;
     private gLMS glms;
     public GLMSStage_VM(Experiment experiment){
         this.experiment = experiment;
         this.glms = new gLMS("User Input",null,null,null, false);;
-        txt_help = new SimpleStringProperty(glms.getHelpText());
-        txt_LowAncTxt = new SimpleStringProperty(glms.getButtonText());
-        txt_question = new SimpleStringProperty(glms.getTitle());
-        checkB_sound = new SimpleBooleanProperty(glms.getAlert());
-        checkB_swap  = new SimpleBooleanProperty(glms.isResponse());
-        txt_yes= new SimpleStringProperty();
-        txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
-        txt_LowAncTxt.addListener((observableValue, oldValue, newValue) -> onLowAnc(newValue));
-        checkB_swap.addListener((observableValue, oldValue, newValue) -> onSwapChange(newValue));
-        txt_question.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
-        checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
+        initListener();
         experiment.addGlmsStage(glms);
     }
     public GLMSStage_VM(gLMS glms){
         this.glms = glms;
-        txt_help = new SimpleStringProperty(glms.getHelpText());
-        txt_LowAncTxt = new SimpleStringProperty(glms.getButtonText());
-        txt_question = new SimpleStringProperty(glms.getTitle());
-        checkB_sound = new SimpleBooleanProperty(glms.getAlert());
-        checkB_swap  = new SimpleBooleanProperty(glms.isResponse());
-        txt_yes= new SimpleStringProperty();
-        txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
-        txt_LowAncTxt.addListener((observableValue, oldValue, newValue) -> onLowAnc(newValue));
-        checkB_swap.addListener((observableValue, oldValue, newValue) -> onSwapChange(newValue));
-        txt_question.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
-        checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
+        initListener();
     }
 
     public GLMSStage_VM(RatingContainer_VM rating) {
         this.glms = new gLMS("User Input",null,null,null, false);;
+        initListener();
+        rating.addContainerStage(glms);
+    }
+
+    private void initListener(){
         txt_help = new SimpleStringProperty(glms.getHelpText());
         txt_LowAncTxt = new SimpleStringProperty(glms.getButtonText());
         txt_question = new SimpleStringProperty(glms.getTitle());
         checkB_sound = new SimpleBooleanProperty(glms.getAlert());
         checkB_swap  = new SimpleBooleanProperty(glms.isResponse());
-        txt_yes= new SimpleStringProperty();
+        buttonText = new SimpleStringProperty(glms.getButtonText());
+
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
         txt_LowAncTxt.addListener((observableValue, oldValue, newValue) -> onLowAnc(newValue));
         checkB_swap.addListener((observableValue, oldValue, newValue) -> onSwapChange(newValue));
         txt_question.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
-        rating.addContainerStage(glms);
+        buttonText.addListener((observableValue, oldValue, newValue) -> onButtonChange(newValue));
+
+        sliderValue = new SimpleDoubleProperty(glms.getResult());
+        conducted = new SimpleStringProperty(glms.getConducted());
+        sliderValue.addListener(((observableValue, oldValue, newValue) ->{
+            setResult(newValue.intValue());
+            conducted.set(DataAccess.getCurrentFormattedTime());
+            setDate();
+        } ));
+    }
+
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().addAll(newContent);
+        RunGLMSController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("GLMS.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        GLMSController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button button3,
+                                  Button button4, Button button5, Button button6,
+                                  Button button7, Button button8, Button button9,
+                                  Button button10, Button button11, Button button12)
+            throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+
     }
 
 
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
+
+        if (this.conductedTextProperty().get() == null){
+            btn_next.setDisable(true);
+        }else btn_next.setDisable(false);
+
+        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                btn_next.setDisable(false);
+            }
+        });
+    }
+
+    @Override
+    public String toString(){
+        return "[GLMS] "+ txt_question.get();
+    }
+
+    public void onButtonChange(String newValue){
+        glms.setButtonText(newValue);
+    }
+
+    public void setDate(){
+        glms.setConducted(DataAccess.getCurrentFormattedTime());
+    }
+
+    public void setResult(int result){
+        glms.setResult(result);
+    }
     private void onHelp(String newValue) {
         glms.setHelpText(newValue);
     }
@@ -132,7 +192,9 @@ public class GLMSStage_VM implements Stages {
     public StringProperty txt_helpProperty() {
         return txt_help;
     }
-
+    public BooleanProperty alertProperty() {
+        return checkB_sound;
+    }
     public boolean isCheckB_sound() {
         return checkB_sound.get();
     }
@@ -145,38 +207,27 @@ public class GLMSStage_VM implements Stages {
         return glms;
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorpane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("GLMS.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorpane.getChildren().setAll(newContent);
-        GLMSController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
+    public String getButtonText() {
+        return buttonText.get();
     }
 
-    @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3,
-                                  Button button4, Button button5, Button button6,
-                                  Button button7, Button button8, Button button9,
-                                  Button button10, Button button11, Button button12)
-            throws IOException {
-        button1.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
-
+    public StringProperty buttonTextProperty() {
+        return buttonText;
     }
 
-    @Override
-    public String toString(){
-            return "[GLMS] "+ txt_question.get();
+    public void setButtonText(String buttonText) {
+        this.buttonText.set(buttonText);
     }
+
+    public void playAlertSound(){
+        glms.playAlertSound();
+    }
+    public DoubleProperty sliderValueProperty() {
+        return sliderValue;
+    }
+    public StringProperty conductedTextProperty() {
+        return conducted;
+    }
+
+
 }

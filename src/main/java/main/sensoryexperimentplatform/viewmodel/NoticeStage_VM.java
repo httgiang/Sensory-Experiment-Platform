@@ -9,13 +9,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.NoticeStageController;
+import main.sensoryexperimentplatform.controllers.RunNoticeController;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Notice;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class NoticeStage_VM implements Stages {
+import static main.sensoryexperimentplatform.utilz.FeatureType.*;
+
+public class NoticeStage_VM implements ViewModel{
     private StringProperty buttonText ;
 
     private StringProperty helpText ;
@@ -23,8 +26,6 @@ public class NoticeStage_VM implements Stages {
     private StringProperty contentText;
 
     private BooleanProperty alert;
-
-
 
 
     private Notice notice;
@@ -50,6 +51,60 @@ public class NoticeStage_VM implements Stages {
     }
 
 
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunNoticeController controller = fxmlLoader.getController();
+
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddNoticeStage.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        NoticeStageController controller = fxmlLoader.getController();
+        controller.setNoticeStage_vm(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button button3,
+                                  Button button4, Button button5, Button button6,
+                                  Button button7, Button button8, Button button9,
+                                  Button button10, Button button11, Button button12)
+            throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+
+
+    }
+
+
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
+    }
+
+    @Override
+    public String toString() {
+        return "[Instruction] "+ titleText.get();
+    }
 
 
     public void setNotice(Notice notice) {
@@ -97,7 +152,9 @@ public class NoticeStage_VM implements Stages {
     public void setContent(String newValue) {
         notice.setContent(newValue);
     }
-
+    public void playSound(){
+        notice.playSound();
+    }
 
     public void setButtonText(String newValue) {
         notice.setButtonText(newValue);
@@ -110,44 +167,4 @@ public class NoticeStage_VM implements Stages {
     }
 
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddNoticeStage.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-
-      //  System.out.println("Children in anchorPane after setting new content: " + anchorPane.getChildren().getFirst().getAccessibleRole());
-        NoticeStageController controller = fxmlLoader.getController();
-        controller.setNoticeStage_vm(this);
-
-
-    }
-
-    @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3,
-                                  Button button4, Button button5, Button button6,
-                                  Button button7, Button button8, Button button9,
-                                  Button button10, Button button11, Button button12)
-            throws IOException {
-        button1.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
-
-
-    }
-
-    @Override
-    public String toString() {
-       return "[Instruction] "+ titleText.get();
-    }
 }

@@ -1,0 +1,50 @@
+#labelPort{
+    -fx-margin: 0 auto;
+    -fx-pref-width: 162px;
+    -fx-pref-height: 29px;
+
+    -fx-font-family: 'Montserrat';
+    -fx-font-style: normal;
+    -fx-font-weight: 600;
+    -fx-font-size: 24px;
+    -fx-line-height: 29px;
+
+    -fx-text-fill: #000000;
+}
+
+.button{
+    -fx-align-items: center;
+    -fx-pref-width: 132px;
+    -fx-pref-height: 57px;
+
+    -fx-background-color: #F1F6FB;
+    -fx-box-shadow: inset 0px 5px 5px rgba(85, 91, 110, 0.15);
+    -fx-border-radius: 15px;
+
+
+    -fx-font-family: 'Montserrat';
+    -fx-font-style: normal;
+    -fx-font-weight: 600;
+    -fx-font-size: 22px;
+    -fx-line-height: 27px;
+
+    -fx-text-fill: #0E0E0E;
+
+}
+
+.list-view{
+    /* Frame 1171276326 */
+
+    -fx-box-sizing: border-box;
+
+    -fx-align-items: center;
+    -fx-gap: 10px;
+
+    /*-fx-pref-width: 668px;*/
+    /*-fx-pref-height: 391px;*/
+
+    -fx-background-color: #F3F3F3;
+    -fx-border-color: #000000;
+    -fx-border-radius: 18px;
+
+}

@@ -5,42 +5,37 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.InputStageController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Input;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class InputStage_VM implements Stages {
+public class InputStage_VM implements ViewModel{
     private Input input;
     private Experiment experiment;
     //    private final ListProperty<Object> stages = new SimpleListProperty<>(FXCollections.observableArrayList());
-    private StringProperty questionText;
-    private StringProperty helpText;
-    private StringProperty button;
+    private StringProperty questionText, result, helpText, button;
     private BooleanProperty alert;
 
     public InputStage_VM(Experiment experiment){
         this.experiment = experiment;
         this.input = new Input("User input", null,null, false);
-        questionText = new SimpleStringProperty(input.getQuestionText());
-        helpText = new SimpleStringProperty(input.getHelpText());
-        button = new SimpleStringProperty(input.getButtonText());
-        alert = new SimpleBooleanProperty(input.isAlert());
+        initListener();
         experiment.addInput(input);
 
     }
-    public InputStage_VM(Experiment experiment, Input input){
+    public InputStage_VM( Input input){
         this.input = input;
-        this.experiment = experiment;
+        initListener();
+    }
+    private void initListener(){
         questionText = new SimpleStringProperty(input.getQuestionText());
         helpText = new SimpleStringProperty(input.getHelpText());
         button = new SimpleStringProperty(input.getButtonText());
         alert = new SimpleBooleanProperty(input.isAlert());
-
-
+        result = new SimpleStringProperty(input.getResult());
     }
+
     //questionText
     public StringProperty questionProperty() {
         return questionText;
@@ -95,19 +90,29 @@ public class InputStage_VM implements Stages {
         return input;
     }
 
+
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunInputStage.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunInputController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("InputStage.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
 
         InputStageController controller =fxmlLoader.getController();
         controller.setViewModel(this);
-
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3,
+    public void handleEditButtons(Button button1, Button button2, Button button3,
                                   Button button4, Button button5, Button button6,
                                   Button button7, Button button8, Button button9,
                                   Button button10, Button button11, Button button12)
@@ -127,9 +132,30 @@ public class InputStage_VM implements Stages {
 
 
     }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
+    }
+
     @Override
     public String toString(){
         return "[User Input] "+ questionText.get();
     }
+    public BooleanProperty getPlayAlert() {
+        return alert;
+    }
+    public void playAlert(){
+        input.playSound();
+    }
+    public StringProperty getResult() {
+        return result;
+    }
+    public void setResult(String result) {
+        input.setResult(result);
+    }
+
 
 }

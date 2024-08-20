@@ -10,11 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class AddTasteVM implements Stages {
+public class AddTasteVM implements ViewModel {
     private StringProperty txt_initialNotice;
     private StringProperty txt_consumptionInst;
     private StringProperty txt_question;
@@ -289,8 +289,14 @@ public class AddTasteVM implements Stages {
         return experiment;
     }
 
+
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) {
+
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddTasteTest.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -299,7 +305,7 @@ public class AddTasteVM implements Stages {
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2,
+    public void handleEditButtons(Button button1, Button button2,
                                   Button btn_assignSound,
                                   Button btn_addFoodAndTaste,
                                   Button button5, Button button6,
@@ -309,6 +315,15 @@ public class AddTasteVM implements Stages {
             throws IOException {
         btn_addFoodAndTaste.setDisable(false);
         btn_assignSound.setDisable(true);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.setDisable(false);
+
+        btn_next.textProperty().bind(this.txt_buttontextProperty());
+
     }
 
     @Override

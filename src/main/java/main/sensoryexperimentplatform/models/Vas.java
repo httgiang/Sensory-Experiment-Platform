@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class Vas extends Stage implements containerObject{
+public class Vas extends Stage implements containerObject, Model{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;
     private int result;
@@ -148,7 +148,7 @@ public class Vas extends Stage implements containerObject{
     }
 
     public void playAlertSound(){
-        sound.playSound("boop");
+       // sound.playSound("boop");
     }
     @Override
     public String toString() {
@@ -157,21 +157,6 @@ public class Vas extends Stage implements containerObject{
                 highAnchorValue + "\",\"" + buttonText + "\",\"" +
                 content + "\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
                 alert +"\")";
-    }
-    public void setValue(String title, String lowAnchorText, String highAnchorText,
-               int lowAnchorValue, int highAnchorValue, String buttonText,
-               String content, String helpText, boolean isSwap, boolean alert) {
-
-        this.title = title;
-        this.content = content;
-        this.lowAnchorValue = lowAnchorValue;
-        this.highAnchorValue = highAnchorValue;
-        this.lowAnchorText = lowAnchorText;
-        this.highAnchorText = highAnchorText;
-        this.buttonText = buttonText;
-        this.helpText = helpText;
-        this.isSwap = isSwap;
-        this.alert = alert;
     }
 
 

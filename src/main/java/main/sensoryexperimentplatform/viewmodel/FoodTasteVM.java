@@ -12,16 +12,12 @@ public class FoodTasteVM {
 
 
     //THE LISTS OF DISPLAYED OPTIONS FOR FOOD AND TASTE
-    private ListProperty<String> foodOptions;
-    private ListProperty<String> gLMSOptions;
-    private ListProperty<String> vasOptions;
+    private ListProperty<String> foodOptions, gLMSOptions, vasOptions;
 
 
 
     //THE LIST OF SELECTIONS OF USER
-    private ListProperty<String> selectedFoods;
-    private ListProperty<String>  selectedVAS;
-    private ListProperty<String> selectedGLMS;
+    private ListProperty<String> selectedFoods, selectedVAS, selectedGLMS;
 
 
     public FoodTasteVM(TasteTest tasteTest){
@@ -119,11 +115,20 @@ public class FoodTasteVM {
 
 
     public void addFoodOptions(String food) {
-        foodOptions.add(food);
+        if(!foodOptions.contains(food)){
+            foodOptions.add(food);
+        }
     }
-    public void addVASOptions(String vasRatings){vasOptions.add(vasRatings);}
-    public void addGLMSOptions(String gLMSRatings)
-        {gLMSOptions.add(gLMSRatings);}
+    public void addVASOptions(String vasRatings){
+        if(!vasOptions.contains(vasRatings)){
+            vasOptions.add(vasRatings);
+        }
+    }
+    public void addGLMSOptions(String gLMSRatings) {
+        if (!gLMSOptions.contains(gLMSRatings)) {
+            gLMSOptions.add(gLMSRatings);
+        }
+    }
 
 //    public void addSelectedFoods(String food) {
 //        if(!selectedFoods.contains(food)){

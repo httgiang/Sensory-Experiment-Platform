@@ -9,12 +9,12 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
-public class AddCourseVM implements Stages{
+public class AddCourseVM implements ViewModel{
     private StringProperty txt_button;
     private StringProperty txt_content;
     private StringProperty  txt_help;
@@ -25,7 +25,6 @@ public class AddCourseVM implements Stages{
     private StringProperty txt_title;
     private Experiment experiment;
     private Course course;
-    private ArrayList<Object> stages;
     public AddCourseVM(Experiment experiment){
         this.experiment = experiment;
         this.course = new Course("Start eating stage","Please contact experimenter",
@@ -160,7 +159,13 @@ public class AddCourseVM implements Stages{
     }
 
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) {
+
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddCourse.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
@@ -169,7 +174,12 @@ public class AddCourseVM implements Stages{
     }
 
     @Override
-    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+
+    }
+
+    @Override
+    public void handleEditButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
                                   Button  btn_addTimer, Button btn_AddQuestionStage,

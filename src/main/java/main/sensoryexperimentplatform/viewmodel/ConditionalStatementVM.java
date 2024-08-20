@@ -7,11 +7,11 @@ import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class ConditionalStatementVM implements Stages {
+public class ConditionalStatementVM implements ViewModel {
     private  conditionalStatement ConditionalStatement;
 
     private SimpleStringProperty value1Text;
@@ -98,17 +98,21 @@ public class ConditionalStatementVM implements Stages {
 
 
     @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
+    public void loadRunInterface(AnchorPane anchorPane) {
+
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddConditionalStatement.fxml"));
         AnchorPane newContent = fxmlLoader.load();
         anchorPane.getChildren().setAll(newContent);
         conditionalStatementController controller  = fxmlLoader.getController();
         controller.setViewModel(this);
-
     }
 
     @Override
-    public void handleMenuButtons(Button button1, Button button2,
+    public void handleEditButtons(Button button1, Button button2,
                                   Button button3, Button button4, Button button5,
                                   Button button6, Button button7, Button button8,
                                   Button button9, Button button10, Button button11, Button button12)
@@ -125,6 +129,11 @@ public class ConditionalStatementVM implements Stages {
         button12.setDisable(false);
         button10.setDisable(false);
         button9.setDisable(false);
+
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
 
     }
 

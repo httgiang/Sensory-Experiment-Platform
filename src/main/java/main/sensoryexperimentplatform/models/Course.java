@@ -9,21 +9,17 @@ import main.sensoryexperimentplatform.controllers.AddCourseController;
 
 import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Objects;
 
-public class Course extends Stage {
-    private ArrayList<Object> stages;
+public class Course extends ModelContainer implements Model{
+    private boolean alert;
     private String buttonText, helpText, title, content;
     private String endStatement;
     private int refillWeight;
     private int duration;
     private int quantity;
     private Periodic periodic;
-    private boolean alert;
     public Course(String title, String content, String buttonText, String endStatement,
                   int refillWeight, int duration, int quantity, String helpText, boolean alert){
-        super(title, content);
         this.title = title;
         this.content = content;
         this.buttonText = buttonText;
@@ -33,10 +29,8 @@ public class Course extends Stage {
         this.helpText = helpText;
         this.endStatement = endStatement;
         this.alert = alert;
-        this.stages = new ArrayList<>();
     }
     public Course(Course course){
-        super(course.getTitle(), course.getContent());
         this.title = course.getTitle();
         this.content = course.getContent();
         this.buttonText = course.getButtonText();
@@ -45,17 +39,10 @@ public class Course extends Stage {
         this.quantity = course.getQuantity();
         this.helpText = course.getHelpText();
         this.endStatement = course.getEndStatement();
-        this.alert = course.isAlert();
-        this.stages = course.getStages();
+        this.alert = course.isAlert();;
     }
-
-    public void addStage (Object stage){
-        stages.add(stage);
-    }
-
     //Default
     public Course(String title, String content){
-        super(title, content);
         refillWeight = -1;
         duration = -1;
         quantity = -1; //grams
@@ -83,11 +70,7 @@ public class Course extends Stage {
     public boolean isAlert() {
         return alert;
     }
-
-    public ArrayList<Object> getStages() {
-        return stages;
-    }
-
+    
     public String getButtonText() {
         return buttonText;
     }
@@ -120,12 +103,12 @@ public class Course extends Stage {
         return duration;
     }
 
-    @Override
+
     public String getContent() {
         return content;
     }
 
-    @Override
+
     public String getTitle() {
         return title;
     }
@@ -137,14 +120,14 @@ public class Course extends Stage {
     public Periodic getPeriodic() {
         return periodic;
     }
-    private String componentToString(){
-        StringBuilder sb = new StringBuilder();
-        for(Object stage : stages){
-            sb.append(stage.toString());
-            sb.append("\n");
-        }
-        return sb.toString();
+    public void setTitle(String title) {
+        this.title = title;
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String toString(){
         return "startEating(\"" + getTitle() + "\",\"" + getContent() + "\",\""
                 + getButtonText() + "\",\"" + getEndStatement() + "\",\""

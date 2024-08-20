@@ -11,7 +11,7 @@ import main.sensoryexperimentplatform.models.gLMS;
 
 import java.io.IOException;
 
-public class RunGLMS_VM implements RunStages {
+public class RunGLMS_VM {
     private gLMS stage;
     private StringProperty question, help, conducted;
     private DoubleProperty sliderValue;
@@ -23,15 +23,8 @@ public class RunGLMS_VM implements RunStages {
         help = new SimpleStringProperty(stage.getHelpText());
         question = new SimpleStringProperty(stage.getQuestionText());
         button = new SimpleStringProperty(stage.getButtonText());
-        sliderValue = new SimpleDoubleProperty(stage.getResult());
-        conducted = new SimpleStringProperty(stage.getConducted());
-        alert = new SimpleBooleanProperty(stage.getAlert());
 
-        sliderValue.addListener(((observableValue, oldValue, newValue) ->{
-            setResult(newValue.intValue());
-            conducted.set(DataAccess.getCurrentFormattedTime());
-            setDate();
-        } ));
+        alert = new SimpleBooleanProperty(stage.getAlert());
 
     }
 
@@ -70,29 +63,29 @@ public class RunGLMS_VM implements RunStages {
         stage.playAlertSound();
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().addAll(newContent);
-        RunGLMSController controller = loader.getController();
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_back.setDisable(false);
-        btn_next.textProperty().bind(this.buttonProperty());
-
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-        }else btn_next.setDisable(false);
-
-        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                btn_next.setDisable(false);
-            }
-        });
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunGLMS.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().addAll(newContent);
+//        RunGLMSController controller = loader.getController();
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_back.setDisable(false);
+//        btn_next.textProperty().bind(this.buttonProperty());
+//
+//        if (this.conductedTextProperty().get() == null){
+//            btn_next.setDisable(true);
+//        }else btn_next.setDisable(false);
+//
+//        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                btn_next.setDisable(false);
+//            }
+//        });
+//    }
 
 }

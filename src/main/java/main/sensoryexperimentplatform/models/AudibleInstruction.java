@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 
 
-public class AudibleInstruction extends Stage {
+public class AudibleInstruction extends Stage implements Model{
     private String title;
     private String content;
 

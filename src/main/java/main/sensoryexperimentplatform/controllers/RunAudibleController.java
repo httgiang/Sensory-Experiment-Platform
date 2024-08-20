@@ -8,6 +8,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.sensoryexperimentplatform.viewmodel.AudibleSound_VM;
 import main.sensoryexperimentplatform.viewmodel.RunAudible_VM;
 
 
@@ -21,14 +22,14 @@ public class RunAudibleController {
 
     @FXML
     private Label titleTxt;
-    private RunAudible_VM viewModel;
+    private AudibleSound_VM viewModel;
 
-    public void setViewModel(RunAudible_VM viewModel){
+    public void setViewModel(AudibleSound_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
         Tooltip tooltip = new Tooltip("Help text here!");
-        if (viewModel.getHelpText().get() != null) {
-            tooltip.setText(viewModel.getHelpText().get());
+        if (viewModel.getHelpText() != null) {
+            tooltip.setText(viewModel.getHelpText());
         }
 
         tooltip.setStyle(
@@ -67,8 +68,8 @@ public class RunAudibleController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
     private void bindViewModel(){
-        titleTxt.textProperty().bind(viewModel.getTitle());
-        contentTxt.textProperty().bind(viewModel.getContent());
+        titleTxt.textProperty().bind(viewModel.titleProperty());
+        contentTxt.textProperty().bind(viewModel.contentProperty());
         viewModel.playSound();
 
     }

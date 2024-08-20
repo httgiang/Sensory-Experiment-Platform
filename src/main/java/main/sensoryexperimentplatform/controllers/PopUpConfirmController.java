@@ -24,7 +24,7 @@ public class PopUpConfirmController {
         deleteMsg.setText(msg);
     }
     @FXML
-    void cancel(ActionEvent event) {
+    void cancel() {
         Stage stage = (Stage) btn_cancel.getScene().getWindow();
         stage.close();
     }
@@ -36,6 +36,7 @@ public class PopUpConfirmController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        cancel();
     }
 
 }

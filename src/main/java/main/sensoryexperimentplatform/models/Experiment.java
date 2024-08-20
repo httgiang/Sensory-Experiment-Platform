@@ -8,7 +8,7 @@ import java.util.*;
 public class Experiment {
     private String creatorName, experimentName, description, note, created_date;
     public int version, number_of_results, id, elapsedTime;
-    ArrayList<Object> stages;
+    ArrayList<Model> stages;
     public Experiment(){
         super();
         Random random = new Random();
@@ -188,11 +188,11 @@ public class Experiment {
     }
 
 
-    public ArrayList<Object> getStages() {
+    public ArrayList<Model> getStages() {
         return stages;
     }
 
-    public void setStages(ArrayList<Object> stages) {
+    public void setStages(ArrayList<Model> stages) {
         this.stages = stages;
     }
 
@@ -316,7 +316,7 @@ public class Experiment {
         stages.add(start);
     }
 
-    public void addStage(Object stage) {
+    public void addStage(Model stage) {
         stages.add(stage);
     }
 }

@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.models.Course;
+import main.sensoryexperimentplatform.viewmodel.AddCourseVM;
 import main.sensoryexperimentplatform.viewmodel.RunCourseVM;
 
 public class RunCourseController {
@@ -23,14 +24,14 @@ public class RunCourseController {
     private Label titleTxt;
 
     private Course course;
-    private RunCourseVM viewModel;
-    public void setViewModel(RunCourseVM viewModel){
+    private AddCourseVM viewModel;
+    public void setViewModel(AddCourseVM viewModel){
         this.course = viewModel.getCourse();
         this.viewModel = viewModel;
         bindViewModel();
         Tooltip tooltip = new Tooltip("Help text here!");
-        if (viewModel.helpProperty() != null) {
-            tooltip.setText(viewModel.helpProperty().get());
+        if (viewModel.txt_helpProperty() != null) {
+            tooltip.setText(viewModel.txt_helpProperty().get());
         }
 
         tooltip.setStyle(
@@ -69,7 +70,7 @@ public class RunCourseController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
     private void bindViewModel() {
-        titleTxt.textProperty().bind(viewModel.titleProperty());
-        contentTxt.textProperty().bind(viewModel.contentProperty());
+        titleTxt.textProperty().bind(viewModel.txt_titleProperty());
+        contentTxt.textProperty().bind(viewModel.txt_contentProperty());
     }
 }

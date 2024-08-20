@@ -13,7 +13,7 @@ import main.sensoryexperimentplatform.models.Question;
 
 import java.io.IOException;
 
-public class RunQuestion_VM implements RunStages {
+public class RunQuestion_VM {
     private Question question;
     private StringProperty questionText,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText;
     private BooleanProperty playAlert;
@@ -33,20 +33,20 @@ public class RunQuestion_VM implements RunStages {
         result = new SimpleStringProperty(question.getResult());
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-        RunQuestionController controller = loader.getController();
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.setDisable(false);
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().setAll(newContent);
+//
+//        RunQuestionController controller = loader.getController();
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_next.setDisable(false);
+//    }
 
     public StringProperty questionTextProperty() {
         return questionText;

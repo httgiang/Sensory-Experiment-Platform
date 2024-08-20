@@ -11,6 +11,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import main.sensoryexperimentplatform.viewmodel.GLMSStage_VM;
 import main.sensoryexperimentplatform.viewmodel.RunGLMS_VM;
 
 public class RunGLMSController {
@@ -22,23 +23,23 @@ public class RunGLMSController {
     @FXML
     private ImageView help_image;
 
-    private RunGLMS_VM viewModel;
+    private GLMSStage_VM viewModel;
 
 
 
-    public void setViewModel(RunGLMS_VM viewModel) {
+    public void setViewModel(GLMSStage_VM viewModel) {
         this.viewModel = viewModel;
 
-        Tooltip helpTooltip = new Tooltip(viewModel.helpProperty().get());
+        Tooltip helpTooltip = new Tooltip(viewModel.txt_helpProperty().get());
 
         bindViewModel();
 
         Tooltip tooltip = new Tooltip("Help text here!");
-        if(viewModel.alertProperty().get()){
+        if(viewModel.isCheckB_sound()){
             viewModel.playAlertSound();
         }
-        if (viewModel.helpProperty().get() != null) {
-            tooltip.setText(viewModel.helpProperty().get());
+        if (viewModel.txt_helpProperty().get() != null) {
+            tooltip.setText(viewModel.txt_helpProperty().get());
         }
 
         tooltip.setStyle(
@@ -83,7 +84,7 @@ public class RunGLMSController {
 
     private void bindViewModel() {
         // Bind viewModel properties to the labels
-        questionlbl.textProperty().bind(viewModel.questionProperty());
+        questionlbl.textProperty().bind(viewModel.txt_questionProperty());
 
         // Two-way binding between slider value and viewModel.sliderValueProperty()
         Bindings.bindBidirectional(mySlider.valueProperty(), viewModel.sliderValueProperty());

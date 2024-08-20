@@ -9,14 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.StartStageController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Start;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class StartVM implements Stages {
+public class StartVM implements ViewModel{
     private Experiment experiment;
     private Start start;
     private SimpleStringProperty title;
@@ -31,6 +29,17 @@ public class StartVM implements Stages {
     public StartVM(Experiment experiment){
         this.experiment = experiment;
         this.start = new Start("Start Experiment","This is the first stage of the experiment" , null, false, null, null, 0,100, null);
+        initBinding(start);
+
+        experiment.addStart(start);
+    }
+
+
+    public StartVM(Start start){
+        this.start = start;
+        initBinding(start);
+    }
+    private void initBinding(Start start){
         title = new SimpleStringProperty(start.getTitle());
         buttonText =  new SimpleStringProperty(start.getButtonText());
         balance = new SimpleBooleanProperty(start.getRequireBalance());
@@ -40,10 +49,6 @@ public class StartVM implements Stages {
         TextColor= new SimpleObjectProperty<>(start.getTextColor());
         StartOfStageDelay = new SimpleStringProperty(String.valueOf(start.getStartOfStageDelay()));
         EndOfStageDelay = new SimpleStringProperty(String.valueOf(start.getEndOfStageDelay()));
-
-
-        experiment.addStart(start);
-
         buttonText.addListener((observableValue, oldValue, newValue) -> onButtonChange(newValue));
         balance.addListener((observableValue, oldValue, newValue) -> onBalanceChange(newValue));
         title.addListener((observableValue, oldValue, newValue) -> onTitleChange(newValue));
@@ -54,28 +59,54 @@ public class StartVM implements Stages {
         EndOfStageDelay.addListener((observableValue, oldValue, newValue) -> onEnd(newValue));
         colorDisable.addListener((observableValue, oldValue, newValue) -> onColorDisable(newValue));
     }
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+        RunStartController controller = loader.getController();
+        controller.setViewModel(this);
+    }
 
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("StartStage.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        StartStageController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
 
-    public StartVM(Start start){
-        this.start = start;
-        title = new SimpleStringProperty(start.getTitle());
-        buttonText =  new SimpleStringProperty(start.getButtonText());
-        balance = new SimpleBooleanProperty(start.getRequireBalance());
-        content = new SimpleStringProperty(start.getContent());
-        colorBackGround = new SimpleObjectProperty<>(start.getBackGroundColor());
-        colorDisable = new SimpleObjectProperty<>(start.getDisableButtonColor());
-        TextColor= new SimpleObjectProperty<>(start.getTextColor());
-        StartOfStageDelay = new SimpleStringProperty(String.valueOf(start.getStartOfStageDelay()));
-        EndOfStageDelay = new SimpleStringProperty(String.valueOf(start.getEndOfStageDelay()));
-        buttonText.addListener((observableValue, oldValue, newValue) -> onButtonChange(newValue));
-        balance.addListener((observableValue, oldValue, newValue) -> onBalanceChange(newValue));
-        title.addListener((observableValue, oldValue, newValue) -> onTitleChange(newValue));
-        content.addListener((observableValue, oldValue, newValue) -> onContentChange(newValue));
-        colorBackGround.addListener((observableValue, oldValue, newValue) -> onColorBackground(newValue));
-        TextColor.addListener((observableValue, oldValue, newValue) -> onColorText(newValue));
-        StartOfStageDelay.addListener((observableValue, oldValue, newValue) -> onStart(newValue));
-        EndOfStageDelay.addListener((observableValue, oldValue, newValue) -> onEnd(newValue));
-        colorDisable.addListener((observableValue, oldValue, newValue) -> onColorDisable(newValue));
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+        button1.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+        button7.setDisable(false);
+        button5.setDisable(false);
+        button2.setDisable(false);
+        button11.setDisable(false);
+        button6.setDisable(false);
+        button8.setDisable(false);
+        button12.setDisable(false);
+        button10.setDisable(false);
+        button9.setDisable(false);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.textProperty().bind(this.buttonTextProperty());
+        btn_back.setDisable(true);
+    }
+
+    @Override
+    public String toString(){
+        if (start == null){
+            return "Start experiment";
+        }
+        else {
+            return start.getTitle();
+        }
     }
 
     private void onButtonChange(String newValue) {
@@ -182,39 +213,7 @@ public class StartVM implements Stages {
         return balance;
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("StartStage.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-        StartStageController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
-    }
 
-    @Override
-    public void handleMenuButtons(Button button1, Button button2, Button button3, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
-        button1.setDisable(true);
-        button3.setDisable(true);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
-    }
 
-    @Override
-    public String toString(){
-        if (start == null){
-            return "Start experiment";
-        }
-        else {
-            return start.getTitle();
-        }
-    }
 
 }

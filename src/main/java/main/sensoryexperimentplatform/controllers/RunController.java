@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage; // Explicit import for JavaFX Stage
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
@@ -13,12 +14,14 @@ import main.sensoryexperimentplatform.models.*;
 import java.io.IOException;
 import java.util.concurrent.*;
 
+import static main.sensoryexperimentplatform.utilz.FeatureType.RUN;
 
 
 public class RunController {
     @FXML
-    private ListView<RunStages> listView;
+    private ListView<ViewModel> listView;
     private Experiment experiment; private String uid;
+    int processed = 0; //index to keep track of how many stages are processed
 
     private ScheduledExecutorService executorService;
     private long startTime, elapsedTime;
@@ -31,14 +34,54 @@ public class RunController {
     @FXML
     private Label elapsedTime_label;
 
+    ModelVMRegistry registry;
+
+
     public void initRunExperiment(Experiment experiment, String uId) throws IOException {
         this.experiment = experiment;
         this.uid = uId;
         loadItems();
         startTimer();
         setListViewListener();
+        initButtons();
     }
 
+
+    private void buildList(ListView<ViewModel> listView, Model model, ModelVMRegistry registry){
+        ViewModel stages = registry.getViewModel(model);
+
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+        if(model instanceof ModelContainer){
+            for(Model children : ((ModelContainer) model).getChildren()){
+                buildList(listView, children, registry);
+            }
+        } else {
+            if(stages != null){
+                if(model instanceof TimerStage_VM){
+                    setupTimerListener(((TimerStage_VM) model).getRunController());
+                }
+                listView.getItems().add(stages);
+            }
+
+        }
+    }
+    private void loadItems() {
+        for(Model selectedObject : experiment.getStages()) {
+            registry = ModelVMRegistry.getInstance();
+            buildList(listView, selectedObject, registry);
+        }
+    }
+
+
+    private void showRunningPane(ViewModel selectedItem) throws IOException {
+        ViewModel runStages = selectedItem;
+        if (runStages == null) return;
+
+        content.getChildren().clear();
+        runStages.loadRunInterface(content);
+        runStages.handleRunButtons(btn_next, btn_back);
+
+    }
     private void setListViewListener() throws IOException {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -49,68 +92,20 @@ public class RunController {
                 }
             }
         });
-        if (!listView.getItems().isEmpty()) {
-            listView.getSelectionModel().selectFirst();
-            showRunningPane(listView.getItems().get(0));
+        if (!listView.getItems().isEmpty()) {;
+            showRunningPane(listView.getItems().getFirst());
         }
     }
 
-
-    private void showRunningPane(RunStages selectedItem) throws IOException {
-        RunStages runStages = selectedItem;
-        if (runStages == null) return;
-
-        content.getChildren().clear();
-        runStages.loadInterface(content);
-        runStages.handleRunButtons(btn_next, btn_back);
-
+    private void initButtons(){
+        btn_next.setWrapText(true);
+        btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
-    private void loadItems() {
-        for(Object selectedObject : experiment.getStages()){
-
-            if (selectedObject instanceof Start){
-                RunStartVM vm = new RunStartVM((Start) selectedObject);
-                listView.getItems().add(vm);;
-            }
-            else if (selectedObject instanceof Vas) {
-                RunVas_VM vm = new RunVas_VM((Vas) selectedObject);
-                listView.getItems().add(vm);
-            }
-            // glms view display
-            else if (selectedObject instanceof gLMS) {
-                RunGLMS_VM vm = new RunGLMS_VM((gLMS) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Notice) {
-                RunNotice_VM vm = new RunNotice_VM((Notice) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Input) {
-                RunInputVM vm = new RunInputVM((Input) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Question) {
-                RunQuestion_VM vm = new RunQuestion_VM((Question) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Timer) {
-                RunTimer_VM vm = new RunTimer_VM((Timer) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof AudibleInstruction) {
-                RunAudible_VM vm = new RunAudible_VM((AudibleInstruction) selectedObject);
-                listView.getItems().add(vm);
-            }
-            else if (selectedObject instanceof Course) {
-                RunCourseVM vm = new RunCourseVM((Course) selectedObject);
-                listView.getItems().add(vm);
-
-            }
-        }
-    }
 
     private void handleFinalNext() throws IOException {
+        processed = 0;
         stopTimer();
         autoClose();
     }
@@ -119,6 +114,14 @@ public class RunController {
         Stage stage = (Stage) content.getScene().getWindow();
         stopTimer();
         stage.close();
+    }
+
+    private void setupTimerListener(RunTimerController runTimerController) {
+        runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
+            }
+        });
     }
 
     //timer tracks the experiment

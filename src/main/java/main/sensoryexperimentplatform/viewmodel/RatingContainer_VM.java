@@ -14,11 +14,11 @@ import main.sensoryexperimentplatform.models.RatingContainer;
 import main.sensoryexperimentplatform.models.Vas;
 import main.sensoryexperimentplatform.models.gLMS;
 import main.sensoryexperimentplatform.models.containerObject;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.Stack;
 
-public class RatingContainer_VM implements Stages {
+public class RatingContainer_VM implements ViewModel {
     private RatingContainer ratingContainer;
     private IntegerProperty minTime;
     private BooleanProperty isRandomize;
@@ -42,7 +42,54 @@ public class RatingContainer_VM implements Stages {
         isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
     }
 
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        //KO CO, VI RATING KH LOAD LEN MAN HINH RUN RIENG
+    }
 
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        addRatingContainerController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button btn_addTimer, Button btn_AddQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {;
+        btn_AddPeriodicStage.setDisable(true);
+        btn_AddCourse.setDisable(true);
+        btn_assignSound.setDisable(true);
+        btn_addFoodAndTaste.setDisable(true);
+        btn_addAudibleInstruction.setDisable(true);
+        btn_addInput.setDisable(true);
+        btn_noticeStage.setDisable(true);
+        btn_addTimer.setDisable(true);
+        btn_AddQuestionStage.setDisable(true);
+        btn_addRatingContainer.setDisable(true);
+        btn_addTasteTest.setDisable(true);
+        btn_AddConditionalStatement.setDisable(true);
+
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        //KO CO
+    }
+
+
+    @Override
+    public String toString() {
+        if (isRandomize.get()) {
+            return "Ratings container - Randomised";
+        }
+        return "Ratings container";
+    }
 
     private void onRandom(Boolean newValue) {
         ratingContainer.setRandomize(newValue);
@@ -79,42 +126,6 @@ public class RatingContainer_VM implements Stages {
     }
 
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddRatingsContainer.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-        addRatingContainerController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
-    }
-    @Override
-    public void handleMenuButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
-                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
-            , Button btn_addInput, Button btn_noticeStage,
-                                  Button btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {;
-        btn_AddPeriodicStage.setDisable(true);
-        btn_AddCourse.setDisable(true);
-        btn_assignSound.setDisable(true);
-        btn_addFoodAndTaste.setDisable(true);
-        btn_addAudibleInstruction.setDisable(true);
-        btn_addInput.setDisable(true);
-        btn_noticeStage.setDisable(true);
-        btn_addTimer.setDisable(true);
-        btn_AddQuestionStage.setDisable(true);
-        btn_addRatingContainer.setDisable(true);
-        btn_addTasteTest.setDisable(true);
-        btn_AddConditionalStatement.setDisable(true);
 
-    }
-
-
-    @Override
-    public String toString() {
-        if (isRandomize.get()) {
-            return "Ratings container - Randomised";
-        }
-        return "Ratings container";
-    }
 
 }

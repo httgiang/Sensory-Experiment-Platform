@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class TasteTest{
+public class TasteTest extends ModelContainer{
     private Notice initialNotice;
     private String noticeStageContent, consumptionInstruction, question, endInstruction;
     private String lowAnchorText, highAnchorText, buttonText, helpText;
@@ -20,7 +20,7 @@ public class TasteTest{
     private ObservableList<String> selectedFoods = FXCollections.observableArrayList();
     private ObservableList<String> selectedGLMS = FXCollections.observableArrayList();
     private ObservableList<String> selectedVAS = FXCollections.observableArrayList();
-    private ArrayList<Object> stages;
+  
 
 
     public TasteTest(String noticeStageContent, String question, String consumptionInstruction, String endInstruction,
@@ -31,8 +31,8 @@ public class TasteTest{
         this.noticeStageContent = noticeStageContent;
         //THE NOTICE STAGE AT THE BEGINNING OF THE TASTE TEST
         this.initialNotice = new Notice("Taste Test", noticeStageContent, buttonText, "", false);
-        stages = new ArrayList<>();
-        stages.add(initialNotice);
+        children = new ArrayList<>();
+        children.add(initialNotice);
 
         //THE WORDING FOR PARTICIPANT TO DO WITH EACH SAMPLE
         this.consumptionInstruction = consumptionInstruction;
@@ -64,8 +64,8 @@ public class TasteTest{
         this.noticeStageContent = tasteTest.noticeStageContent;
         //THE NOTICE STAGE AT THE BEGINNING OF THE TASTE TEST
         this.initialNotice = new Notice("Taste Test", noticeStageContent, buttonText, "", false);
-        stages = new ArrayList<>();
-        stages.add(initialNotice);
+        children = new ArrayList<>();
+        children.add(initialNotice);
 
         //THE WORDING FOR PARTICIPANT TO DO WITH EACH SAMPLE
         this.consumptionInstruction = consumptionInstruction;
@@ -89,7 +89,7 @@ public class TasteTest{
         this.isRandomizedRatings = tasteTest.isRandomizedRatings;
         this.isAlert = tasteTest.isAlert;
 
-        this.stages = tasteTest.getStages();
+        this.children = tasteTest.getChildren();
         generateTasteTest();
     }
 
@@ -140,23 +140,24 @@ public class TasteTest{
         gLMSOptions.add("Sweet");
     }
 
+
     public void generateTasteTest(){
         for(String food : selectedFoods){
             String consumptionInst = convertConsumptionInstruction(food);
             Notice subNotice = new Notice("Taste Test",consumptionInst, initialNotice.getButtonText(), "",false);
-            stages.add(subNotice);
+            children.add(subNotice);
             for(String taste : selectedVAS){
                 Vas vas = getVas(food, taste);
-                stages.add(vas);
+                children.add(vas);
             }
             for(String taste : selectedGLMS){
                 gLMS glms = getGLMS(food,taste);
                // currFood.addGlmsRating(glms);
-                stages.add(glms);
+                children.add(glms);
             }
 
             Notice endNotice = new Notice("Rinsing", endInstruction, initialNotice.getButtonText(), "", false);
-            stages.add(endNotice);
+            children.add(endNotice);
         }
     }
     private String convertConsumptionInstruction(String foodName){
@@ -188,7 +189,14 @@ public class TasteTest{
                 sampleVas.getContent(),sampleVas.getHelpText(), sampleVas.getIsSwap(), sampleVas.getAlert());
     }
 
+
     public String serializeTasteTest(StringBuilder builder) {
+        String foodOptionsString = (foodOptions != null) ? String.join(",", foodOptions) : "";
+        String vasOptionsString = (vasOptions != null) ? String.join(",", vasOptions) : "";
+        String gLMSOptionsString = (gLMSOptions != null) ? String.join(",", gLMSOptions) : "";
+        String selectedFoodsString = (selectedFoods != null) ? String.join(",", selectedFoods) : "";
+        String selectedVASString = (selectedVAS != null) ? String.join(",", selectedVAS) : "";
+        String selectedGLMSString = (selectedGLMS != null) ? String.join(",", selectedGLMS) : "";
 
         // Serialize the basic information of the TasteTest
         builder.append("tasteTest(\"")
@@ -212,9 +220,21 @@ public class TasteTest{
                 .append(timeWait).append("\",\"")
                 .append(isAlert).append("\",\"")
 
-                .append("{").append(String.join(",", selectedFoods)).append("}\",\"")
-                .append("{").append(String.join(",", selectedVAS)).append("}\",\"")
-                .append("{").append(String.join(",", selectedGLMS)).append("}\")");
+                .append("{").append(foodOptionsString).append("}\",\"")
+                .append("{").append(vasOptionsString).append("}\",\"")
+                .append("{").append(gLMSOptionsString).append("}\",\"")
+
+                .append("{").append(selectedFoodsString).append("}\",\"")
+                .append("{").append(selectedVASString).append("}\",\"")
+                .append("{").append(selectedGLMSString).append("}\")");
+//                .append("{").append(String.join(",", foodOptions)).append("}\",\"")
+//                .append("{").append(String.join(",", vasOptions)).append("}\",\"")
+//                .append("{").append(String.join(",", gLMSOptions)).append("}\",\"")
+//
+//                .append("{").append(String.join(",", selectedFoods)).append("}\",\"")
+//                .append("{").append(String.join(",", selectedVAS)).append("}\",\"")
+//                .append("{").append(String.join(",", selectedGLMS)).append("}\")");
+
 
 
         return builder.toString();
@@ -225,8 +245,8 @@ public class TasteTest{
         StringBuilder builder = new StringBuilder();
         return serializeTasteTest(builder);
     }
-    public ArrayList<Object> getStages() {
-        return stages;
+    public ArrayList<Model> getChildren() {
+        return children;
     }
 
     public String getNoticeStageContent() {
@@ -376,7 +396,23 @@ public class TasteTest{
         }
         return gLMSOptions;
     }
+    public void addFoodOptions(String food){
+        if(!getFoodOptions().contains(food)){
+            getFoodOptions().add(food);
+        }
+    }
 
+    public void addVASOptions(String vas){
+        if(!getVasOptions().contains(vas)){
+            getVasOptions().add(vas);
+        }
+    }
+
+    public void addGLMSOptions(String gLMS){
+        if(!getGLMSOptions().contains(gLMS)){
+            getGLMSOptions().add(gLMS);
+        }
+    }
     public void setGLMSOptions(ObservableList<String> gLMSOptions) {
         this.gLMSOptions = gLMSOptions;
     }

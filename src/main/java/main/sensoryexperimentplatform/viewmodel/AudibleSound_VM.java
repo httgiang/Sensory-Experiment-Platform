@@ -7,18 +7,19 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddAudibleSoundController;
+import main.sensoryexperimentplatform.controllers.RunAudibleController;
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 import main.sensoryexperimentplatform.models.AudibleInstruction;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Sound;
+import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Stack;
 
-public class AudibleSound_VM implements Stages {
+public class AudibleSound_VM implements ViewModel{
     private StringProperty title;
     private StringProperty content;
     private StringProperty helpText;
@@ -33,25 +34,53 @@ public class AudibleSound_VM implements Stages {
         this.experiment = experiment;
         this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null);
         // if there exits any bug this maybe a problem
-        this.sound = SoundSingleton.getInstance();
-        this.title = new SimpleStringProperty(audibleInstruction.getTitle());
-        this.content = new SimpleStringProperty(audibleInstruction.getContent());
-        this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
-        this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
-        this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
-        this.sound = SoundSingleton.getInstance();
+        initListener();
         experiment.addAudibleInstruction(audibleInstruction);
 
     }
     public AudibleSound_VM(AudibleInstruction audibleInstruction) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.audibleInstruction = audibleInstruction;
+        initListener();
+
+    }
+    private void initListener(){
         this.title = new SimpleStringProperty(audibleInstruction.getTitle());
         this.content = new SimpleStringProperty(audibleInstruction.getContent());
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
         this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
         this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
         this.sound = SoundSingleton.getInstance();
+    }
 
+
+    @Override
+    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunAudible.fxml"));
+        AnchorPane newContent = loader.load();
+        anchorPane.getChildren().setAll(newContent);
+
+        RunAudibleController controller = loader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void loadEditInterface(AnchorPane anchorPane) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddAudibleSound.fxml"));
+        AnchorPane newContent = fxmlLoader.load();
+        anchorPane.getChildren().setAll(newContent);
+        AddAudibleSoundController controller = fxmlLoader.getController();
+        controller.setViewModel(this);
+    }
+
+    @Override
+    public void handleEditButtons(Button button1, Button button2, Button btn_assignSound, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
+        btn_assignSound.setDisable(false);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
     }
 
 
@@ -108,23 +137,11 @@ public class AudibleSound_VM implements Stages {
     }
 
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AddAudibleSound.fxml"));
-        AnchorPane newContent = fxmlLoader.load();
-        anchorPane.getChildren().setAll(newContent);
-        AddAudibleSoundController controller = fxmlLoader.getController();
-        controller.setViewModel(this);
-    }
-
-
-    @Override
-    public void handleMenuButtons(Button button1, Button button2, Button btn_assignSound, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
-        btn_assignSound.setDisable(false);
-    }
-    @Override
     public String toString() {
         return "[Audio] " + audibleInstruction.getTitle();
     }
 
+    public  void playSound(){
+        audibleInstruction.playSound(audibleInstruction.getSoundName());
+    }
 }

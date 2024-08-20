@@ -7,12 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunStartController;
-import main.sensoryexperimentplatform.models.Notice;
 import main.sensoryexperimentplatform.models.Start;
 
 import java.io.IOException;
 
-public class RunStartVM implements RunStages {
+public class RunStartVM {
     private Start start;
     private StringProperty title, content, button;
 
@@ -32,18 +31,18 @@ public class RunStartVM implements RunStages {
         return button;
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
-        RunStartController controller = loader.getController();
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.textProperty().bind(this.buttonProperty());
-        btn_back.setDisable(true);
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().setAll(newContent);
+//        RunStartController controller = loader.getController();
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+        //        btn_next.textProperty().bind(this.buttonProperty());
+        //        btn_back.setDisable(true);
+//    }
 }

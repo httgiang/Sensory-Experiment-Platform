@@ -10,7 +10,7 @@ import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
 
-public class RunTimer_VM implements RunStages{
+public class RunTimer_VM {
     private Timer timer;
     private StringProperty instruction;
     private StringProperty time;
@@ -53,29 +53,29 @@ public class RunTimer_VM implements RunStages{
         progress.set(progressValue);
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-
-        this.controller = loader.getController();
-
-        this.controller.setViewModel(this);
-
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_back.setVisible(controller.getTimeLineCheck());
-        btn_next.setVisible(controller.getTimeLineCheck());
-        btn_next.setDisable(false);
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunTimer.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().setAll(newContent);
 //
-//        this.controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
-//            btn_back.setVisible(newValue);
-//            btn_next.setVisible(newValue);
-//            listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
-//        } ));
-    }
+//
+//        this.controller = loader.getController();
+//
+//        this.controller.setViewModel(this);
+//
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_back.setVisible(controller.getTimeLineCheck());
+//        btn_next.setVisible(controller.getTimeLineCheck());
+//        btn_next.setDisable(false);
+////
+////        this.controller.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
+////            btn_back.setVisible(newValue);
+////            btn_next.setVisible(newValue);
+////            listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
+////        } ));
+//    }
 }

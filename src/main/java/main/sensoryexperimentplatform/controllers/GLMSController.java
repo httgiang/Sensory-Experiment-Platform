@@ -60,7 +60,7 @@ public class GLMSController {
         txt_LowAncTxt.textProperty().bindBidirectional(glmsStageVm.txt_LowAncTxtProperty());
         txt_help.textProperty().bindBidirectional(glmsStageVm.txt_helpProperty());
         txt_question.textProperty().bindBidirectional(glmsStageVm.txt_questionProperty());
-        txt_yes.textProperty().bindBidirectional(glmsStageVm.txt_yesProperty());
+      //  txt_yes.textProperty().bindBidirectional(glmsStageVm.txt_yesProperty());
         checkB_sound.selectedProperty().bindBidirectional(glmsStageVm.checkB_soundProperty());
         checkB_swap.selectedProperty().bindBidirectional(glmsStageVm.checkB_swapProperty());
     }

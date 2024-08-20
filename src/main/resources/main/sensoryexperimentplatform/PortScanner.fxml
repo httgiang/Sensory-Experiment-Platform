@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../static/stylesheets/PortScanner.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="labelPort" layoutX="219.0" layoutY="48.0" text="Port Scanner" />
+      <Label layoutX="55.0" layoutY="92.0" text="List port:" />
+      <ListView layoutX="120.0" layoutY="110.0" prefHeight="211.0" prefWidth="344.0" />
+      <Button layoutX="116.0" layoutY="340.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="344.0" layoutY="340.0" mnemonicParsing="false" text="Connect" />
+   </children>
+</AnchorPane>

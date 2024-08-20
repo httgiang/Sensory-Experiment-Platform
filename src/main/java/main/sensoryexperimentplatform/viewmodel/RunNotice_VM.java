@@ -13,7 +13,7 @@ import main.sensoryexperimentplatform.models.Notice;
 
 import java.io.IOException;
 
-public class RunNotice_VM implements RunStages{
+public class RunNotice_VM {
     private Notice notice;
     private StringProperty title, content, button;
     private StringProperty helpText;
@@ -46,20 +46,20 @@ public class RunNotice_VM implements RunStages{
         notice.playSound();
     }
 
-    @Override
-    public void loadInterface(AnchorPane anchorPane) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
-        AnchorPane newContent = loader.load();
-        anchorPane.getChildren().setAll(newContent);
-
-        RunNoticeController controller = loader.getController();
-
-        controller.setViewModel(this);
-    }
-
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_next.setDisable(false);
-        btn_next.textProperty().bind(this.buttonProperty());
-    }
+//    @Override
+//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
+//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunNotice.fxml"));
+//        AnchorPane newContent = loader.load();
+//        anchorPane.getChildren().setAll(newContent);
+//
+//        RunNoticeController controller = loader.getController();
+//
+//        controller.setViewModel(this);
+//    }
+//
+//    @Override
+//    public void handleRunButtons(Button btn_next, Button btn_back) {
+//        btn_next.setDisable(false);
+//        btn_next.textProperty().bind(this.buttonProperty());
+//    }
 }

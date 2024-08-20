@@ -10,6 +10,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.RunVas_VM;
+import main.sensoryexperimentplatform.viewmodel.VasStage_VM;
 
 public class RunVasController {
     @FXML
@@ -23,15 +24,15 @@ public class RunVasController {
     @FXML
     private ImageView help_image;
 
-    private RunVas_VM viewModel;
+    private VasStage_VM viewModel;
 
-    public void setViewModel(RunVas_VM viewModel) {
+    public void setViewModel(VasStage_VM viewModel) {
         this.viewModel = viewModel;
         bindViewModel();
-        if(viewModel.alertProperty().get()) {
-            viewModel.playAlertSound();
-
-        }
+//        if(viewModel.alertProperty().get()) {
+//            viewModel.playAlertSound();
+//
+//        }
 
         Tooltip tooltip = new Tooltip("Help text here!");
         if (viewModel.helpTextProperty().get() != null) {
@@ -79,10 +80,11 @@ public class RunVasController {
         highAnchor_label.textProperty().bind(viewModel.highAnchorTextProperty());
         lowAnchor_label.textProperty().bind(viewModel.lowAnchorTextProperty());
         questionlbl.textProperty().bind(viewModel.questionTextProperty());
-        mySlider.setMax(viewModel.getHighAnchorValue());
-        mySlider.setMin(viewModel.getLowAnchorValue());
+        mySlider.setMax(Integer.parseInt(viewModel.getHighAnchorValue()));
+        mySlider.setMin(Integer.parseInt(viewModel.getLowAnchorValue()));
 
         // Binding hai chiều giữa mySlider.valueProperty() và viewModel.sliderValueProperty()
         Bindings.bindBidirectional(mySlider.valueProperty(), viewModel.sliderValueProperty());
     }
+
 }
