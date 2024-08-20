@@ -3,7 +3,7 @@ package main.sensoryexperimentplatform.models;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class RatingContainer extends ModelContainer{
+public class RatingContainer extends ModelContainer implements Model{
     private boolean isRandomize;
     private int minTime;
     public RatingContainer(boolean isRandomize,int minTime){

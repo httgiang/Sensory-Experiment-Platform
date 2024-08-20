@@ -52,8 +52,10 @@ public class RunController {
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
         if(model instanceof ModelContainer){
-            for(Model children : ((ModelContainer) model).getChildren()){
-                buildList(listView, children, registry);
+            if(((ModelContainer) model).getChildren() != null){
+                for(Model children : ((ModelContainer) model).getChildren()){
+                    buildList(listView, children, registry);
+                }
             }
         } else {
             if(stages != null){

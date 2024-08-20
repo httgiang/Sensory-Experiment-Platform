@@ -552,7 +552,7 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(6)),Integer.parseInt(matcher.group(7)),
                                 matcher.group(8),Boolean.parseBoolean(matcher.group(9)));
                         currentExperiment.addStage(course);
-                        course = (Course) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
+                        course = (Course) currentExperiment.getStages().getLast();
                     }
                 } else if (line.startsWith("endEating")){
                     course = null;

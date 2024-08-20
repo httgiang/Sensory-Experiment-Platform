@@ -184,13 +184,3 @@ noticeStage("Rinsing","Please rinse your mouth with the water provided and then 
 noticeStage("Thank you!","That completes the first taste test: please call your researcher.","X","","true")
 endExperiment()
 
-ExperimentName: CourseTest
-ExperimenterName: ThangDy
-ExperimentID: 0
-Created on: 20.08.2024
-Version: 1
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-ratingsContainer("false","0")
-endRatingsContainer()
-endExperiment()
-
