@@ -28,7 +28,7 @@ public class gLMS extends Stage implements containerObject, Model{
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
-        this.sound = new Sound();
+        this.sound = SoundSingleton.getInstance();
         result=0;
 
     }
@@ -40,7 +40,7 @@ public class gLMS extends Stage implements containerObject, Model{
         this.buttonText = stage.getButtonText();
         this.helpText = stage.getHelpText();
         this.alert = stage.getAlert();
-        this.sound=new Sound();
+        this.sound= SoundSingleton.getInstance();
         result=0;
     }
 

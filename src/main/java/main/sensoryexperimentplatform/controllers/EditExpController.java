@@ -318,16 +318,14 @@ public class EditExpController {
 
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         AudibleSound_VM audible = null;
-        if (selectedItem != null) {
-            audible = (AudibleSound_VM) selectedItem.getValue();
-        }
-
+        audible = (AudibleSound_VM) selectedItem.getValue();
+        AudibleInstruction audibleInstruction = audible.getAudibleIntruction();
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("AssignSound.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         AssignSoundController controller = fxmlLoader.getController();
-        AssignSoundVM viewModel = new AssignSoundVM();
-        controller.setViewModel(viewModel, audible);
+        AssignSoundVM viewModel = new AssignSoundVM(audibleInstruction);
+        controller.setViewModel(viewModel);
         stage.setTitle("Add Sound");
 
         Scene scene = new Scene(root);

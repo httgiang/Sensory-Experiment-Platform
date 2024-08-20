@@ -2,13 +2,10 @@ package main.sensoryexperimentplatform.models;
 
 import java.io.*;
 import java.nio.file.*;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -187,6 +184,7 @@ public class DataAccess {
         RatingContainer rc = null;
         TasteTest tasteTest = null;
         boolean isContainer = false;
+        AudibleInstruction audibleInstruction = null;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
@@ -248,10 +246,26 @@ public class DataAccess {
                     }
                 }
                 else if(line.startsWith("audio")){
-                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = audioPattern.matcher(line);
                     if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
+                        audibleInstruction = new AudibleInstruction(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6));
+
+                        String soundName = Arrays.toString(matcher.group(5).split(","));
+                        String formattedSoundName = soundName.substring(1, soundName.length() - 1);
+                        String soundPath  = Arrays.toString(matcher.group(6).split(","));
+                        String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
+
+                        audibleInstruction.addSoundList(formattedSoundName);
+                        System.out.println(formattedSoundName);
+                        audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
+
+                      currentExperiment.addAudibleInstruction(audibleInstruction);
                     }
 
                 }
@@ -415,6 +429,7 @@ public class DataAccess {
         RatingContainer rc = null;
         TasteTest tasteTest = null;
         boolean isContainer = false;
+        AudibleInstruction audibleInstruction = null;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
 
@@ -473,12 +488,27 @@ public class DataAccess {
                     }
 
                 } else if(line.startsWith("audio")){
-                    Pattern audiblePattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = audiblePattern.matcher(line);
+                    Pattern audioPattern = Pattern.compile("audio\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = audioPattern.matcher(line);
                     if (matcher.find()) {
-                        currentExperiment.addAudibleInstruction(matcher.group(1),matcher.group(2),matcher.group(3),matcher.group(4),matcher.group(5));
+                        audibleInstruction = new AudibleInstruction(matcher.group(1),
+                                matcher.group(2),
+                                matcher.group(3),
+                                matcher.group(4),
+                                matcher.group(5),
+                                matcher.group(6));
 
+
+                        String soundName = Arrays.toString(matcher.group(5).split(","));
+                        String formattedSoundName = soundName.substring(1, soundName.length() - 1);
+                        String soundPath  = Arrays.toString(matcher.group(6).split(","));
+                        String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
+                        audibleInstruction.addSoundList(formattedSoundName);
+                        audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
+
+                        currentExperiment.addAudibleInstruction(audibleInstruction);
                     }
+
                 } else if (line.startsWith("tasteTest")){
                     Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = audiblePattern.matcher(line);
@@ -500,47 +530,27 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(14)),
                                 Boolean.parseBoolean(matcher.group(15)));
 
-                        String[] foodsOptions = matcher.group(16).split(",");
-                        for (String food : foodsOptions) {
-                            if (!food.isEmpty()) {
-                                tasteTest.addFoodOptions(food.trim());
-                            }
-                        }
-
-                        String[] vasOptions = matcher.group(17).split(",");
-                        for (String vasItem : vasOptions) {
-                            if (!vasItem.isEmpty()) {
-                                tasteTest.addVASOptions(vasItem.trim());
-                            }
-                        }
-
-                        String[] gLMSOptions = matcher.group(18).split(",");
-                        for (String glmsItem : gLMSOptions) {
-                            if (!glmsItem.isEmpty()) {
-                                tasteTest.addGLMSOptions(glmsItem.trim());
-                            }
-                        }
-
-                        String[] selectedFoods = matcher.group(19).split(",");
-                        for (String food : selectedFoods) {
+                        String[] foods = matcher.group(16).split(",");
+                        for (String food : foods) {
                             if (!food.isEmpty()) {
                                 tasteTest.getSelectedFoods().add(food.trim());
                             }
                         }
 
-                        String[] selectedVAS = matcher.group(20).split(",");
-                        for (String vasItem : selectedVAS) {
+                        String[] vas = matcher.group(17).split(",");
+                        for (String vasItem : vas) {
                             if (!vasItem.isEmpty()) {
                                 tasteTest.getSelectedVAS().add(vasItem.trim());
                             }
                         }
 
-                        String[] selectedGLMS = matcher.group(21).split(",");
-                        for (String glmsItem : selectedGLMS) {
+                        String[] glms = matcher.group(18).split(",");
+                        for (String glmsItem : glms) {
                             if (!glmsItem.isEmpty()) {
                                 tasteTest.getSelectedGLMS().add(glmsItem.trim());
                             }
                         }
+
                         currentExperiment.addNewTasteTest(tasteTest);
 
 

@@ -12,7 +12,6 @@ import main.sensoryexperimentplatform.controllers.SoundSingleton;
 import main.sensoryexperimentplatform.models.AudibleInstruction;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Sound;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -25,6 +24,7 @@ public class AudibleSound_VM implements ViewModel{
     private StringProperty helpText;
     private StringProperty buttonText;
     private StringProperty soundName;
+    private StringProperty filePath;
     private AudibleInstruction audibleInstruction;
     private Sound sound;
     private AssignSoundVM assignSoundVM;
@@ -32,7 +32,7 @@ public class AudibleSound_VM implements ViewModel{
 
     public AudibleSound_VM(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.experiment = experiment;
-        this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null);
+        this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null, null);
         // if there exits any bug this maybe a problem
         initListener();
         experiment.addAudibleInstruction(audibleInstruction);
@@ -49,7 +49,69 @@ public class AudibleSound_VM implements ViewModel{
         this.buttonText = new SimpleStringProperty(audibleInstruction.getButtonText());
         this.helpText = new SimpleStringProperty(audibleInstruction.getHelpText());
         this.soundName = new SimpleStringProperty(audibleInstruction.getSoundName());
+        this.filePath = new SimpleStringProperty(audibleInstruction.getFilePath());
         this.sound = SoundSingleton.getInstance();
+
+    }
+
+
+    public StringProperty titleProperty() {
+        return title;
+    }
+
+    public StringProperty contentProperty() {
+        return content;
+    }
+
+    public StringProperty buttonTextProperty() {
+        return buttonText;
+    }
+    public StringProperty helpTextProperty() {
+        return helpText;
+    }
+    public StringProperty filePathProperty() {
+        return filePath;
+    }
+
+    public String getContent(){
+        return content.get();
+    }
+    public String getButton(){
+        return buttonText.get();
+    }
+    public String getHelpText(){
+        return helpText.get();
+    }
+    public String getFilePath(){
+        return filePath.get();
+    }
+    public void setHelpText(String newValue) {audibleInstruction.setHelpText(newValue);
+
+    }
+
+
+
+    public void setButtonText(String newValue) {;
+        audibleInstruction.setButtonText(newValue);
+    }
+    public void setTitle(String newValue) {
+        audibleInstruction.setTitle(newValue);
+    }
+    public void setContent(String newValue) {
+        audibleInstruction.setContent(newValue);
+    }
+    public void setSoundName(String name) {
+        audibleInstruction.setSoundName(name);
+    }
+    public String getSoundName(){
+        return audibleInstruction.getSoundName();
+    }
+    public StringProperty soundNameProperty() {
+        return soundName;
+    }
+
+    public AudibleInstruction getAudibleIntruction(){
+        return audibleInstruction;
     }
 
 
@@ -84,59 +146,7 @@ public class AudibleSound_VM implements ViewModel{
     }
 
 
-    public StringProperty titleProperty() {
-        return title;
-    }
-
-    public StringProperty contentProperty() {
-        return content;
-    }
-
-    public StringProperty buttonTextProperty() {
-        return buttonText;
-    }
-    public StringProperty helpTextProperty() {
-        return helpText;
-    }
-
-    public String getContent(){
-        return content.get();
-    }
-    public String getButton(){
-        return buttonText.get();
-    }
-    public String getHelpText(){
-        return helpText.get();
-    }
-    public void setHelpText(String newValue) {audibleInstruction.setHelpText(newValue);
-
-    }
-
-
-    public void setButtonText(String newValue) {;
-        audibleInstruction.setButtonText(newValue);
-    }
-    public void setTitle(String newValue) {
-        audibleInstruction.setTitle(newValue);
-    }
-    public void setContent(String newValue) {
-        audibleInstruction.setContent(newValue);
-    }
-    public void setSoundName(String name) {
-        audibleInstruction.setSoundName(name);
-    }
-    public String getSoundName(){
-        return audibleInstruction.getSoundName();
-    }
-    public StringProperty soundNameProperty() {
-        return soundName;
-    }
-
-    public void setAssignSoundVM(AssignSoundVM assignSoundVM) {
-        this.assignSoundVM = assignSoundVM;
-    }
-
-
+    @Override
     public String toString() {
         return "[Audio] " + audibleInstruction.getTitle();
     }

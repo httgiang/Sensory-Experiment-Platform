@@ -1,4 +1,5 @@
 package main.sensoryexperimentplatform.models;
+import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
 public class Question extends Stage implements Model {
     private String question;
@@ -26,7 +27,7 @@ public class Question extends Stage implements Model {
         this.helpText = helpText;
         this.alert = alert;
         result = null;
-        sound = new Sound();
+        sound = SoundSingleton.getInstance();
     }
 
     public Question(Question o) {
@@ -39,7 +40,7 @@ public class Question extends Stage implements Model {
         helpText = o.getHelpText();
         alert = o.isAlert();
         result = null;
-        sound = new Sound();
+        sound = SoundSingleton.getInstance();
     }
 
     public String getQuestion() {

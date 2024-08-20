@@ -193,3 +193,15 @@ startExperiment("Start Experiment","This is the first stage of the experiment","
 wait("1","Please Wait","false")
 endExperiment()
 
+ExperimentName: Quynh Anh test
+ExperimenterName: Quynh Anh
+ExperimentID: 0
+Created on: 17.08.2024
+Version: 7
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+noticeStage("User input","null","null","null","false")
+questionStage("oooooo","null","null","null","null","null","false")
+noticeStage("User input","null","null","null","false")
+inputStage("hellooo","null","null","false")
+endExperiment()
+
