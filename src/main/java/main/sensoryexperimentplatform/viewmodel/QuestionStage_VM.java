@@ -36,6 +36,12 @@ public class QuestionStage_VM implements ViewModel {
         this.questionStage = questionStage;
         initListener();
     }
+    public  QuestionStage_VM(ConditionalStatementVM conditionalStatementVM){
+        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        initListener();
+        conditionalStatementVM.addChildren(questionStage);
+
+    }
 
     private void initListener(){
         this.question = new SimpleStringProperty(questionStage.getQuestion());
@@ -46,6 +52,7 @@ public class QuestionStage_VM implements ViewModel {
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
     }
+
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));

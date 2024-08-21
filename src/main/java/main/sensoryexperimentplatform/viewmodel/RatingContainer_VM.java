@@ -25,6 +25,7 @@ public class RatingContainer_VM implements ViewModel {
     private Vas vas;
     private gLMS glms;
     private Experiment experiment;
+
     public RatingContainer_VM(Experiment experiment){
         this.experiment = experiment;
         this.ratingContainer = new RatingContainer(false,0);
@@ -118,6 +119,7 @@ public class RatingContainer_VM implements ViewModel {
     public void setIsRandomize(boolean newValue){
         ratingContainer.setRandomize(newValue);
     }
+
     public void addContainerStage(containerObject object){
         ratingContainer.addStage(object);
     }

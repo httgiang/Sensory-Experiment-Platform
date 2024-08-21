@@ -35,6 +35,12 @@ public class GLMSStage_VM implements ViewModel{
         initListener();
         rating.addContainerStage(glms);
     }
+    public GLMSStage_VM (ConditionalStatementVM conditionalStatementvm){
+        this.glms = new gLMS("User Input",null,null,null, false);
+        initListener();
+        conditionalStatementvm.addChildren(glms);
+
+    }
 
     private void initListener(){
         txt_help = new SimpleStringProperty(glms.getHelpText());

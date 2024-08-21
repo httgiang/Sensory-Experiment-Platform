@@ -209,6 +209,7 @@ public class EditExpController {
 
         ifConditional = new TreeItem<>(conditionalStatementVM);
         elseConditional = new TreeItem<>(conditionalStatementVM);
+
         startStage.getChildren().add(ifConditional);
         startStage.getChildren().add(elseConditional);
 
@@ -247,7 +248,10 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if(selectedItem.getValue() instanceof RatingContainer_VM){
             glmsStage_VM = new GLMSStage_VM((RatingContainer_VM) selectedItem.getValue());
-        } else {
+        } else if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            glmsStage_VM = new GLMSStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else {
             glmsStage_VM = new GLMSStage_VM(experiment);
         }
         addNewTreeItem(glmsStage_VM);
@@ -255,14 +259,28 @@ public class EditExpController {
 
     @FXML
     void addInput(ActionEvent event) {
+        InputStage_VM inputStage_vm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
 
-        InputStage_VM inputStage_vm = new InputStage_VM(experiment);
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            inputStage_vm = new InputStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else{
+            inputStage_vm = new InputStage_VM(experiment);
+        }
         addNewTreeItem(inputStage_vm);
     }
 
     @FXML
     void addNoticeStage(ActionEvent event) {
-        NoticeStage_VM noticeStage_vm = new NoticeStage_VM(experiment);
+        NoticeStage_VM noticeStage_vm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            noticeStage_vm = new NoticeStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else{
+            noticeStage_vm = new NoticeStage_VM(experiment);
+        }
         addNewTreeItem(noticeStage_vm);
     }
 
@@ -278,7 +296,15 @@ public class EditExpController {
 
     @FXML
     void addQuestionStage(ActionEvent event) {
-        QuestionStage_VM questionStage_vm = new QuestionStage_VM(experiment);
+        QuestionStage_VM questionStage_vm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            questionStage_vm = new QuestionStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else{
+            questionStage_vm = new QuestionStage_VM(experiment);
+
+        }
         addNewTreeItem(questionStage_vm);
    }
 
@@ -297,7 +323,15 @@ public class EditExpController {
 
    @FXML
    void addTimer(ActionEvent event) {
-        TimerStage_VM timerStageVm = new TimerStage_VM(experiment);
+        TimerStage_VM timerStageVm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            timerStageVm = new TimerStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else{
+            timerStageVm = new TimerStage_VM(experiment);
+        }
+
         addNewTreeItem(timerStageVm);
 
    }
@@ -308,7 +342,11 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if(selectedItem.getValue() instanceof RatingContainer_VM){
             vasStageVm = new VasStage_VM((RatingContainer_VM) selectedItem.getValue());
-        } else {
+        }
+        else if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            vasStageVm = new VasStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else {
             vasStageVm = new VasStage_VM(experiment);
         }
         addNewTreeItem(vasStageVm);
@@ -417,6 +455,9 @@ public class EditExpController {
     void save(ActionEvent event) throws Exception {
         DataAccess.updateFile();
         this.experiment.version++;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+ConditionalStatementVM conditionalStatement = (ConditionalStatementVM) selectedItem.getValue();
+        System.out.println("conditional stage" + conditionalStatement.getChildren());
 
         PopUpVM popUpSuccess = new PopUpVM(SUCCESS, "You successfully saved the experiment!", experiment);
     }

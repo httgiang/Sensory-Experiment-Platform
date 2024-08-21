@@ -9,7 +9,6 @@ import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Vas;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
 
@@ -47,6 +46,12 @@ public class VasStage_VM implements ViewModel {
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
         rating.addContainerStage(vas);
+        initListener();
+    }
+    public VasStage_VM(ConditionalStatementVM conditionalStatementVM) {
+        this.vas = new Vas("User input", null, null,
+                0, 100, null, null, null, false, false);
+       conditionalStatementVM.addChildren(vas);
         initListener();
     }
 

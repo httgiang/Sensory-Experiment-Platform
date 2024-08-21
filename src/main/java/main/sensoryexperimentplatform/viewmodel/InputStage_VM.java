@@ -28,6 +28,13 @@ public class InputStage_VM implements ViewModel{
         this.input = input;
         initListener();
     }
+    public InputStage_VM(ConditionalStatementVM conditionalStatementVM){
+        this.input = new Input("User input", null,null, false);
+        initListener();
+        conditionalStatementVM.addChildren(input);
+
+
+    }
     private void initListener(){
         questionText = new SimpleStringProperty(input.getQuestionText());
         helpText = new SimpleStringProperty(input.getHelpText());
