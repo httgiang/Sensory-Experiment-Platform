@@ -441,7 +441,7 @@ public class DataAccess {
         RatingContainer rc = null;
         Course course = null;
         TasteTest tasteTest = null;
-        boolean isContainer = false;
+        boolean isContainer = false; boolean isCourse = false;
         AudibleInstruction audibleInstruction = null;
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
@@ -526,8 +526,8 @@ public class DataAccess {
                         currentExperiment.addAudibleInstruction(audibleInstruction);
                     }
                 } else if (line.startsWith("tasteTest")){
-                    Pattern audiblePattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
-                    Matcher matcher = audiblePattern.matcher(line);
+                    Pattern tasteTestPattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
+                    Matcher matcher = tasteTestPattern.matcher(line);
 
                     if (matcher.find()) {
                         tasteTest = new TasteTest(matcher.group(1),

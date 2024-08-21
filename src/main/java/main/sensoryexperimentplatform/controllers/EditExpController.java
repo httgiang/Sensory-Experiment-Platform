@@ -19,8 +19,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
-
-import static main.sensoryexperimentplatform.utilz.FeatureType.*;
 import static main.sensoryexperimentplatform.utilz.PopUpType.*;
 
 public class EditExpController {
