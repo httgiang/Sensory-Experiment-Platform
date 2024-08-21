@@ -155,13 +155,10 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.compare = compare;
     }
 
-    public String stageToString(){
-        StringBuilder sb = new StringBuilder();
-        for(Object s : children){
-            sb.append(s.toString()).append("\n");
-        }
-        return sb.toString();
+    public String toString(){
+        return "conditionalStatement";
     }
+
 
 
 

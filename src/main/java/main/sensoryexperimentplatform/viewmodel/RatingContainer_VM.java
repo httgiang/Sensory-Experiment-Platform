@@ -42,6 +42,14 @@ public class RatingContainer_VM implements ViewModel {
         isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
         isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
     }
+    public RatingContainer_VM(ConditionalStatementVM conditionalStatementVM){
+        this.ratingContainer = new RatingContainer(false,0);
+        minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
+        minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
+        isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
+        isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
+        conditionalStatementVM.addChildren(ratingContainer);
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {

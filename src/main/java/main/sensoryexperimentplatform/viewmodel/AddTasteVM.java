@@ -54,6 +54,15 @@ public class AddTasteVM implements ViewModel {
         experiment.addNewTasteTest(model);
     }
 
+    public AddTasteVM(ConditionalStatementVM conditionalStatementVM){
+        model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
+                "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
+                0,100, false, false, false, 0, false);
+        initBinding(model);
+        initListener();
+        conditionalStatementVM.addChildren(model);
+    }
+
 
     private void initBinding(TasteTest model){
         txt_initialNotice = new SimpleStringProperty(model.getNoticeStageContent());

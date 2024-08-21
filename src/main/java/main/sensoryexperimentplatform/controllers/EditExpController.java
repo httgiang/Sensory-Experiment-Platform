@@ -197,7 +197,14 @@ public class EditExpController {
     }
     @FXML
     void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
-        AudibleSound_VM audibleSound_vm = new AudibleSound_VM(experiment);
+        AudibleSound_VM audibleSound_vm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof AudibleSound_VM){
+            audibleSound_vm = (AudibleSound_VM) selectedItem.getValue();
+        }
+        else{
+            audibleSound_vm = new AudibleSound_VM(experiment);
+        }
 
         addNewTreeItem(audibleSound_vm);
     }
@@ -310,14 +317,33 @@ public class EditExpController {
 
     @FXML
     void addRatingContainer(ActionEvent event) throws IOException {
-        RatingContainer_VM ratingContainer_vm = new RatingContainer_VM(experiment);
-        ratingContainerItems = new TreeItem<>(ratingContainer_vm);
-        startStage.getChildren().add(ratingContainerItems);
+        RatingContainer_VM ratingContainer_vm;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            ratingContainer_vm = new RatingContainer_VM((ConditionalStatementVM) selectedItem.getValue());
+            ratingContainerItems = new TreeItem<>(ratingContainer_vm);
+            ifConditional.getChildren().add(ratingContainerItems);
+        }
+        else {
+            ratingContainer_vm = new RatingContainer_VM(experiment);
+            ratingContainerItems = new TreeItem<>(ratingContainer_vm);
+            startStage.getChildren().add(ratingContainerItems);
+        }
+
+
+
     }
 
     @FXML
     void addTasteTest(ActionEvent event) {
-        AddTasteVM addTasteVM = new AddTasteVM(experiment);
+        AddTasteVM addTasteVM;
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+        if(selectedItem.getValue() instanceof ConditionalStatementVM){
+            addTasteVM = new AddTasteVM((ConditionalStatementVM) selectedItem.getValue());
+        }
+        else{
+            addTasteVM = new AddTasteVM(experiment);
+        }
         addNewTreeItem(addTasteVM);
     }
 
