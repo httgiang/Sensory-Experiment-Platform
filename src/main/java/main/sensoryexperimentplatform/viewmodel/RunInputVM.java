@@ -26,23 +26,10 @@ public class RunInputVM {
         playAlert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
 
+        result.addListener((observableValue, oldValue, newValue)->setResult(newValue));
+
     }
 
-//    @Override
-//    public void loadRunInterface(AnchorPane anchorPane) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunInputStage.fxml"));
-//        AnchorPane newContent = loader.load();
-//        anchorPane.getChildren().setAll(newContent);
-//
-//        RunInputController controller = loader.getController();
-//        controller.setViewModel(this);
-//    }
-//
-//    @Override
-//    public void handleRunButtons(Button btn_next, Button btn_back) {
-//        btn_next.setDisable(false);
-//        btn_next.textProperty().bind(this.getButtonText());
-//    }
 
     public StringProperty getQuestionText() {
         return questionText;
@@ -65,6 +52,4 @@ public class RunInputVM {
     public void playAlert(){
         input.playSound();
     }
-
-
 }

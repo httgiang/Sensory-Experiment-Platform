@@ -88,6 +88,17 @@
     -fx-text-fill: #F0F0F0;
     -fx-effect: dropshadow(three-pass-box, rgba(85, 91, 110, 0.15), 5, 0, 0, 5);
 }
+.flex-box {
+    -fx-padding: 18;
+    -fx-spacing: 28;
+    -fx-alignment: center;
+    -fx-pref-width: 132px;
+    -fx-pref-height: 57px;
+}
+.flex-box > .button {
+    -fx-min-width: 132px;
+    -fx-min-height: 57px;
+}
 
 #labelView{
     -fx-font-family: 'Baloo 2';

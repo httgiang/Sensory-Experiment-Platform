@@ -184,3 +184,24 @@ noticeStage("Rinsing","Please rinse your mouth with the water provided and then 
 noticeStage("Thank you!","That completes the first taste test: please call your researcher.","X","","true")
 endExperiment()
 
+ExperimentName: null
+ExperimenterName: g
+ExperimentID: 0
+Created on: 19.08.2024
+Version: 4
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+wait("1","Please Wait","false")
+endExperiment()
+
+ExperimentName: Quynh Anh test
+ExperimenterName: Quynh Anh
+ExperimentID: 0
+Created on: 17.08.2024
+Version: 7
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+noticeStage("User input","null","null","null","false")
+questionStage("oooooo","null","null","null","null","null","false")
+noticeStage("User input","null","null","null","false")
+inputStage("hellooo","null","null","false")
+endExperiment()
+

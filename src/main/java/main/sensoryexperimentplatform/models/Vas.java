@@ -23,7 +23,7 @@ public class Vas extends Stage implements containerObject, Model{
         this.helpText = helpText;
         this.isSwap = isSwap;
         this.alert = alert;
-        sound = new Sound();
+        sound = SoundSingleton.getInstance();
         setDefaultResult();
     }
     public Vas(Vas v){
@@ -36,7 +36,7 @@ public class Vas extends Stage implements containerObject, Model{
         this.isSwap = v.getIsSwap();
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
-       // sound = new Sound();
+        sound = SoundSingleton.getInstance();
         setDefaultResult();
     }
 
@@ -148,7 +148,7 @@ public class Vas extends Stage implements containerObject, Model{
     }
 
     public void playAlertSound(){
-       // sound.playSound("boop");
+       sound.playSound("boop");
     }
     @Override
     public String toString() {

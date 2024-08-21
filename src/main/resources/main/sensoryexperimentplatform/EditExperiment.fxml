@@ -5,14 +5,14 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="673.0" maxWidth="1019.0" minHeight="673.0" minWidth="910.0" prefHeight="673.0" prefWidth="976.0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.EditExpController">
+<AnchorPane maxHeight="673.0" maxWidth="1019.0" minHeight="673.0" minWidth="910.0" prefHeight="673.0" prefWidth="976.0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.EditExpController">
     <children>
         <Button id="btn_bind" fx:id="btnSave" layoutX="488.0" layoutY="612.0" mnemonicParsing="false" onAction="#save" text="Save" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="384.8" />
         <Button id="btn_bind" fx:id="btnSaveAll" layoutX="614.0" layoutY="612.0" mnemonicParsing="false" onAction="#saveAs" text="Save as" AnchorPane.bottomAnchor="24.799999999999955" AnchorPane.rightAnchor="258.79999999999995" />
         <Button id="btn_bind" fx:id="btnCancel" layoutX="742.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" AnchorPane.bottomAnchor="24.799999999999955" AnchorPane.rightAnchor="130.79999999999995" />
         <AnchorPane prefHeight="598.0" prefWidth="304.0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.20000000000004547">
             <children>
-                <Button fx:id="btn_noticeStage" layoutX="25.0" layoutY="22.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#addNoticeStage" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Add Notice Stage" AnchorPane.bottomAnchor="546.2" AnchorPane.rightAnchor="28.600000000000023" />
+                <Button fx:id="btn_noticeStage" layoutX="25.0" layoutY="22.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#addNoticeStage" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" stylesheets="@../../static/stylesheets/EditExp_CSS.css" text="Add Notice Stage" />
                 <Button fx:id="btn_addAudibleInstruction" layoutX="25.0" layoutY="64.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#addAudibleInstruction" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" text="Add Audible Instruction" />
                 <Button fx:id="btn_assignSound" layoutX="25.0" layoutY="106.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#assignSound" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" text="Assign Sound" />
                 <Button fx:id="btn_addInput" layoutX="25.0" layoutY="148.0" maxHeight="30.0" maxWidth="250.0" minHeight="30.0" minWidth="250.0" mnemonicParsing="false" onAction="#addInput" prefHeight="30.0" prefWidth="250.0" styleClass="menuButton" text="Add Input Stage" />

@@ -118,8 +118,8 @@ public class DashBoardController {
                             setText(null);
                         } else {
                             FXMLLoader runloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/runButton.fxml"));
-                            FXMLLoader editloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/editButton.fxml"));
-                            FXMLLoader deleteloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/deleteButton.fxml"));
+                            FXMLLoader editloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/EditButton.fxml"));
+                            FXMLLoader deleteloader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/DeleteButton.fxml"));
                             FXMLLoader resultLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/resultButton.fxml"));
                             final Button delete;
                             final Button edit;
@@ -167,7 +167,7 @@ public class DashBoardController {
                             run.setOnAction((ActionEvent) ->{
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try {
-                                    FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/fill_name.fxml"));
+                                    FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/Fill_name.fxml"));
                                     Parent root = fillNameLoader.load();
 
                                     FillNameController controller = fillNameLoader.getController();
