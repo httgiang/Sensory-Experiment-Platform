@@ -1,16 +1,14 @@
 .label{
     -fx-font-family: Baloo2;
-    -fx-font-size: 20px;
+    -fx-font-size: 30px;
     -fx-text-fill: #397E82;
+    -fx-tile-alignment: center;
     -fx-alignment: CENTER;
 }
 #titleTxt,#title_lbl,#txt_question {
-    -fx-font-size: 36px;
+    -fx-font-size: 40px;
 }
-.progress-bar{
-    -fx-accent: #397E82;
-    -fx-pref-height: 28px;
-}
+
 #rating {
     -fx-font-size: 36px;
 }
@@ -18,7 +16,6 @@
     -fx-border-color: #696969;
     -fx-border-radius: 5px 5px 5px 5px;
     -fx-box-sizing: border-box;
-    -fx-alignment: CENTER;
 }
 .tooltip {
     -fx-background-color: #e3e2e2;
