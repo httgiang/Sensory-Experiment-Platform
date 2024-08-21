@@ -5,7 +5,7 @@ import org.controlsfx.control.PropertySheet;
 import java.util.*;
 //TasteTest, Conditional Statement, Course, Rating Container
 public abstract class ModelContainer {
-    protected ArrayList<Model> children;
+    protected ArrayList<Model> children = new ArrayList<>();
 
     public void addChildren(Model model) {
         children.add(model);

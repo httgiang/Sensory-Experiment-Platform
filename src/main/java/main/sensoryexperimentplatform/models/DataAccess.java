@@ -320,6 +320,7 @@ public class DataAccess {
 
                     }
                 } else if(line.startsWith("startEating")){
+                    //startEating("aaaa","rrrr","aaaa","qqqq","1111","000","00","bbbbb","xxx")
                     Pattern coursePattern = Pattern.compile("startEating\\(\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\"\\)");
                     Matcher matcher = coursePattern.matcher(line);
                     isCourse = true;
@@ -541,9 +542,8 @@ public class DataAccess {
                     }
                 } else if(line.startsWith("startEating")){
                     //startEating("title","content","button","end","-1","-1","-1","help","alert")
-                    Pattern coursePattern = Pattern.compile(
-                            "startEating\\(\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"\\)"
-                    );
+                    Pattern coursePattern = Pattern.compile("startEating\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+
                     Matcher matcher = coursePattern.matcher(line);
                     isCourse = true;
                     if (matcher.find()) {
@@ -621,8 +621,8 @@ public class DataAccess {
                         currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
                                 Integer.parseInt(matcher.group(2))
                         );
-                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
-                        if(isCourse && course != null){
+                        rc = (RatingContainer) currentExperiment.getStages().getLast();
+                        if(isCourse && course != null && rc != null){
                             course.addChildren(rc);
                         }
                     }
