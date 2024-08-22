@@ -136,7 +136,6 @@ public class EditExpController {
 
     private void loadItems(){
         ArrayList<Model> stages = experiment.getStages();
-
         if (experiment.getStages().isEmpty()) {
             ViewModel startVM = new StartVM(experiment);
             startStage = new TreeItem<>(startVM);
@@ -151,6 +150,7 @@ public class EditExpController {
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
             for (Model model : stages) {
+                System.out.println(model);
                 buildTree(startStage, model, registry);
             }
 
