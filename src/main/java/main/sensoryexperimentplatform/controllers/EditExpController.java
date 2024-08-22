@@ -151,7 +151,6 @@ public class EditExpController {
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
             for (Model model : stages) {
-
                 buildTree(startStage, model, registry);
             }
 
@@ -171,10 +170,8 @@ public class EditExpController {
 
             //NEU LA CONDITIONAL STATEMENT, COURSE, RATING CONTAINER -> ADD TREE CON
             if(model instanceof ModelContainer && (!(model instanceof TasteTest))) {
-                if(((ModelContainer) model).getChildren() != null){
-                    System.out.println(model);
+                if((!((ModelContainer) model).getChildren().isEmpty())){
                     for(Model child : ((ModelContainer) model).getChildren()) {
-                        System.out.println(child);
                         buildTree(item, child, registry);
                     }
                 }
@@ -184,7 +181,6 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
-        System.out.println("parent " + parent);
         if(parent != null && parent.getValue().getModel() instanceof ModelContainer){
             Model selected = parent.getValue().getModel();
 
@@ -192,13 +188,11 @@ public class EditExpController {
                 parent.getChildren().add(new TreeItem<>(vm));
                 ((ModelContainer) selected).addChildren(vm.getModel());
                 parent.setExpanded(true);
-                System.out.println("debug");
             }
 
         } else {
-            startStage.getChildren().add(new TreeItem<>(vm));
             experiment.addStage(vm.getModel());
-            startStage.setExpanded(true);
+            startStage.getChildren().add(new TreeItem<>(vm));
         }
 
 
