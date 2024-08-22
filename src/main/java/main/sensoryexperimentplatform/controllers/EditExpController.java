@@ -211,11 +211,15 @@ public class EditExpController {
 
     @FXML
     void addConditionalStatement(ActionEvent event) {
-
         ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
+        ConditionalStatement conditionalStatement = conditionalStatementVM.getModel();
 
-        ifConditional = new TreeItem<>(conditionalStatementVM);
-        elseConditional = new TreeItem<>(conditionalStatementVM);
+
+     IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
+     ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);
+
+        ifConditional = new TreeItem<>(ifConditionalStatement);
+        elseConditional = new TreeItem<>(elseConditionalStatement);
 
         startStage.getChildren().add(ifConditional);
         startStage.getChildren().add(elseConditional);
@@ -282,8 +286,11 @@ public class EditExpController {
     void addNoticeStage(ActionEvent event) {
         NoticeStage_VM noticeStage_vm;
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if(selectedItem.getValue() instanceof ConditionalStatementVM){
-            noticeStage_vm = new NoticeStage_VM((ConditionalStatementVM) selectedItem.getValue());
+        if(selectedItem.getValue() instanceof IfConditionalStatementVM){
+            noticeStage_vm = new NoticeStage_VM((IfConditionalStatementVM) selectedItem.getValue());
+        }
+        else if(selectedItem.getValue() instanceof ElseConditionalStatementVM){
+            noticeStage_vm = new NoticeStage_VM((ElseConditionalStatementVM) selectedItem.getValue());
         }
         else{
             noticeStage_vm = new NoticeStage_VM(experiment);
@@ -482,7 +489,7 @@ public class EditExpController {
         DataAccess.updateFile();
         this.experiment.version++;
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-ConditionalStatementVM conditionalStatement = (ConditionalStatementVM) selectedItem.getValue();
+        ConditionalStatementVM conditionalStatement = (ConditionalStatementVM) selectedItem.getValue();
         System.out.println("conditional stage" + conditionalStatement.getChildren());
 
         PopUpVM popUpSuccess = new PopUpVM(SUCCESS, "You successfully saved the experiment!", experiment);

@@ -198,8 +198,7 @@ ExperimentName: Quynh Anh test
 ExperimenterName: Quynh Anh
 ExperimentID: 0
 Created on: 17.08.2024
-Version: 8
+Version: 9
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-conditionalStatement
 endExperiment()
 

@@ -156,7 +156,7 @@ public class ConditionalStatement extends ModelContainer implements Model{
     }
 
     public String toString(){
-        return "conditionalStatement";
+        return "conditionalStatement" + getChildren();
     }
 
 
