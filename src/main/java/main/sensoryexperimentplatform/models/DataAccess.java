@@ -423,7 +423,7 @@ public class DataAccess {
                     isContainer = false;
                 }
                 else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
+                    ExperimentList.addExperiment(currentExperiment);
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
                     currentExperiment = createNewExperiment();
 
@@ -683,7 +683,7 @@ public class DataAccess {
                     isContainer = false;
                 }
                 else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
+                    ExperimentList.addExperiment(currentExperiment);
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
                     currentExperiment = createNewExperiment();
 
@@ -702,7 +702,7 @@ public class DataAccess {
     }
 
     public static void updateFile() throws Exception {
-        ArrayList<Experiment> experiments = listOfExperiment.getInstance();
+        ArrayList<Experiment> experiments = ExperimentList.getInstance();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(saveFilePath))) {
             for (Experiment experiment : experiments) {
                 writer.write(experiment.toString());

@@ -8,6 +8,7 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunTimerController;
 import main.sensoryexperimentplatform.controllers.TimerController;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Timer;
 
 import java.io.IOException;
@@ -23,12 +24,11 @@ public class TimerStage_VM implements ViewModel{
 
     private RunTimerController runController;
 
-    public TimerStage_VM(Experiment experiment){
-        this.experiment = experiment;
+    public TimerStage_VM(){
         timer = new Timer("0", "Please Wait",false);
         initBinding(timer);
 
-        experiment.addTimerStage(timer);
+      //  experiment.addTimerStage(timer);
     }
     public TimerStage_VM(Timer timer){
         this.timer = timer;
@@ -100,6 +100,11 @@ public class TimerStage_VM implements ViewModel{
     }
     public void updateProgress(double progressValue) {
         progress.set(progressValue);
+    }
+
+    @Override
+    public Model getModel() {
+        return timer;
     }
 
     @Override

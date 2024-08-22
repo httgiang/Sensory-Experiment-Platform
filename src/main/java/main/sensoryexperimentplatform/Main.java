@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.models.DataAccess;
-import main.sensoryexperimentplatform.models.listOfExperiment;
 
 public class Main extends Application {
 

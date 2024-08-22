@@ -26,11 +26,10 @@ public class QuestionStage_VM implements ViewModel {
     private Experiment experiment;
 
 
-    public QuestionStage_VM(Experiment experiment){
-        this.experiment = experiment;
+    public QuestionStage_VM(){
         this.questionStage = new Question("Question ",null,null,null,null,null,false);
         initListener();
-        experiment.addQuestion(questionStage);
+      //  experiment.addQuestion(questionStage);
     }
     public  QuestionStage_VM(Question questionStage){
         this.questionStage = questionStage;
@@ -46,6 +45,12 @@ public class QuestionStage_VM implements ViewModel {
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
     }
+
+    @Override
+    public Model getModel() {
+        return questionStage;
+    }
+
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunQuestionStage.fxml"));

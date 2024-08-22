@@ -5,7 +5,7 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.listOfExperiment;
+import main.sensoryexperimentplatform.models.ExperimentList;
 
 public class PopUpConfirmController {
 
@@ -32,7 +32,7 @@ public class PopUpConfirmController {
     @FXML
     void proceed(ActionEvent event) {
         try {
-            listOfExperiment.deleteExperiment(experiment);;
+            ExperimentList.deleteExperiment(experiment);;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

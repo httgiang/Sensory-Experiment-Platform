@@ -9,6 +9,7 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
@@ -25,8 +26,7 @@ public class AddCourseVM implements ViewModel{
     private StringProperty txt_title;
     private Experiment experiment;
     private Course course;
-    public AddCourseVM(Experiment experiment){
-        this.experiment = experiment;
+    public AddCourseVM(){
         this.course = new Course("Start eating stage","Please contact experimenter",
                 "Finished","Stop eating stage"
                 , 0,0,0,
@@ -34,6 +34,15 @@ public class AddCourseVM implements ViewModel{
                 "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
                 "\\Please also do not lean on the placemat.\\" +
                 "Click on Meal Finished ONLY when you are sure you have had enough food.", false);
+        initListener();
+
+    }
+    public AddCourseVM(Course course){
+        this.course = course;
+        initListener();
+
+    }
+    public void initListener(){
         txt_title = new SimpleStringProperty(course.getTitle());
         txt_content = new SimpleStringProperty(course.getContent());
         txt_button = new SimpleStringProperty(course.getButtonText());
@@ -50,32 +59,6 @@ public class AddCourseVM implements ViewModel{
         txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
-        //txt_help = new SimpleStringProperty(model.getHelp)
-        experiment.addCourse(course);
-
-    }
-    public AddCourseVM(Course course){
-        this.course = course;
-        txt_button = new SimpleStringProperty(course.getButtonText());
-        txt_help = new SimpleStringProperty(course.getHelpText());
-        txt_quantity = new SimpleStringProperty(String.valueOf(course.getQuantity()));
-        txt_refill = new SimpleStringProperty(String.valueOf(course.getRefillWeight()));
-        txt_title = new SimpleStringProperty(course.getTitle());
-        txt_content = new SimpleStringProperty(course.getContent());
-
-        txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
-        txt_help.addListener((observableValue, oldValue, newValue) -> onHelpTextChange(newValue));
-        txt_quantity.addListener((observableValue, oldValue, newValue) -> onQuantityChange(Integer.parseInt(newValue)));
-        txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
-        txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
-        txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
-        //txt_help = new SimpleStringProperty(model.getHelp)
-
-        if(experiment != null){
-            experiment.addCourse(course);
-        }
-
-
     }
 
     private void onContentTextChange(String newValue) {
@@ -156,6 +139,11 @@ public class AddCourseVM implements ViewModel{
 
     private void onButtonTextChange(String newValue) {
         course.setButtonText(newValue);
+    }
+
+    @Override
+    public Model getModel() {
+        return course;
     }
 
     @Override

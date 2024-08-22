@@ -9,11 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.addRatingContainerController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.RatingContainer;
-import main.sensoryexperimentplatform.models.Vas;
-import main.sensoryexperimentplatform.models.gLMS;
-import main.sensoryexperimentplatform.models.containerObject;
+import main.sensoryexperimentplatform.models.*;
 import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
@@ -25,21 +21,24 @@ public class RatingContainer_VM implements ViewModel {
     private Vas vas;
     private gLMS glms;
     private Experiment experiment;
-    public RatingContainer_VM(Experiment experiment){
-        this.experiment = experiment;
+    public RatingContainer_VM(){
         this.ratingContainer = new RatingContainer(false,0);
-        minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
-        minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
-        isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
-        isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
-        experiment.addRatingContainerStage(ratingContainer);
+        initListener();
+      //  experiment.addRatingContainerStage(ratingContainer);
     }
     public RatingContainer_VM(RatingContainer rc){
         this.ratingContainer = rc;
+        initListener();
+    }
+    private void initListener(){
         minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
         minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
         isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
         isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
+    }
+    @Override
+    public Model getModel() {
+        return ratingContainer;
     }
 
     @Override

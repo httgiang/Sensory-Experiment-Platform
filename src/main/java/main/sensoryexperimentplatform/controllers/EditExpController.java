@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.models.Timer;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
 
@@ -133,7 +134,7 @@ public class EditExpController {
     }
 
 
-    private void loadItems() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
+    private void loadItems(){
         ArrayList<Model> stages = experiment.getStages();
 
         if (experiment.getStages().isEmpty()) {
@@ -150,6 +151,7 @@ public class EditExpController {
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
             for (Model model : stages) {
+
                 buildTree(startStage, model, registry);
             }
 
@@ -163,13 +165,16 @@ public class EditExpController {
         }
         ViewModel stage = registry.getViewModel(model);
         if(stage != null){
+
             TreeItem<ViewModel> item = new TreeItem<>(stage);
             parent.getChildren().add(item);
 
             //NEU LA CONDITIONAL STATEMENT, COURSE, RATING CONTAINER -> ADD TREE CON
             if(model instanceof ModelContainer && (!(model instanceof TasteTest))) {
                 if(((ModelContainer) model).getChildren() != null){
+                    System.out.println(model);
                     for(Model child : ((ModelContainer) model).getChildren()) {
+                        System.out.println(child);
                         buildTree(item, child, registry);
                     }
                 }
@@ -179,33 +184,54 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
-        if(ifConditional != null && parent == ifConditional){
-            ifConditional.getChildren().add(new TreeItem<>(vm));
-        } else if(elseConditional != null && parent == elseConditional){
-            elseConditional.getChildren().add(new TreeItem<>(vm));
-        } else if (ratingContainerItems!= null && parent == ratingContainerItems) {
-            ratingContainerItems.getChildren().add(new TreeItem<>(vm));
-        } else if (courseItem != null && parent == courseItem){
-            courseItem.getChildren().add(new TreeItem<>(vm));
+        System.out.println("parent " + parent);
+        if(parent != null && parent.getValue().getModel() instanceof ModelContainer){
+            Model selected = parent.getValue().getModel();
+
+            if(!(selected instanceof TasteTest)){
+                parent.getChildren().add(new TreeItem<>(vm));
+                ((ModelContainer) selected).addChildren(vm.getModel());
+                parent.setExpanded(true);
+                System.out.println("debug");
+            }
+
         } else {
             startStage.getChildren().add(new TreeItem<>(vm));
+            experiment.addStage(vm.getModel());
+            startStage.setExpanded(true);
         }
-        if(parent != null){
-            parent.setExpanded(true);
-        }
+
 
     }
+
+//    void addNewTreeItem(ViewModel vm){
+//        TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
+//        if(ifConditional != null && parent == ifConditional){
+//            ifConditional.getChildren().add(new TreeItem<>(vm));
+//        } else if(elseConditional != null && parent == elseConditional){
+//            elseConditional.getChildren().add(new TreeItem<>(vm));
+//        } else if (ratingContainerItems!= null && parent == ratingContainerItems) {
+//            ratingContainerItems.getChildren().add(new TreeItem<>(vm));
+//        } else if (courseItem != null && parent == courseItem){
+//            courseItem.getChildren().add(new TreeItem<>(vm));
+//        } else {
+//            startStage.getChildren().add(new TreeItem<>(vm));
+//        }
+//        if(parent != null){
+//            parent.setExpanded(true);
+//        }
+//
+//    }
     @FXML
     void addAudibleInstruction(ActionEvent event) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
-        AudibleSound_VM audibleSound_vm = new AudibleSound_VM(experiment);
-
+        AudibleSound_VM audibleSound_vm = new AudibleSound_VM();
         addNewTreeItem(audibleSound_vm);
     }
 
     @FXML
     void addConditionalStatement(ActionEvent event) {
 
-        ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
+        ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM();
 
         ifConditional = new TreeItem<>(conditionalStatementVM);
         elseConditional = new TreeItem<>(conditionalStatementVM);
@@ -216,9 +242,8 @@ public class EditExpController {
 
    @FXML
     void addCourse(ActionEvent event) {
-        AddCourseVM addCourseVM = new AddCourseVM(experiment);
-        courseItem = new TreeItem<>(addCourseVM);
-        startStage.getChildren().add(courseItem);
+        AddCourseVM addCourseVM = new AddCourseVM();
+        addNewTreeItem(addCourseVM);
      }
 
     @FXML
@@ -243,26 +268,20 @@ public class EditExpController {
 
     @FXML
     void addGLMSStage(ActionEvent event) {
-        GLMSStage_VM glmsStage_VM;
-        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if(selectedItem.getValue() instanceof RatingContainer_VM){
-            glmsStage_VM = new GLMSStage_VM((RatingContainer_VM) selectedItem.getValue());
-        } else {
-            glmsStage_VM = new GLMSStage_VM(experiment);
-        }
+        GLMSStage_VM glmsStage_VM = new GLMSStage_VM();
         addNewTreeItem(glmsStage_VM);
     }
 
     @FXML
     void addInput(ActionEvent event) {
 
-        InputStage_VM inputStage_vm = new InputStage_VM(experiment);
+        InputStage_VM inputStage_vm = new InputStage_VM();
         addNewTreeItem(inputStage_vm);
     }
 
     @FXML
     void addNoticeStage(ActionEvent event) {
-        NoticeStage_VM noticeStage_vm = new NoticeStage_VM(experiment);
+        NoticeStage_VM noticeStage_vm = new NoticeStage_VM();
         addNewTreeItem(noticeStage_vm);
     }
 
@@ -278,39 +297,40 @@ public class EditExpController {
 
     @FXML
     void addQuestionStage(ActionEvent event) {
-        QuestionStage_VM questionStage_vm = new QuestionStage_VM(experiment);
+        QuestionStage_VM questionStage_vm = new QuestionStage_VM();
         addNewTreeItem(questionStage_vm);
    }
 
     @FXML
     void addRatingContainer(ActionEvent event) throws IOException {
-        RatingContainer_VM ratingContainer_vm = new RatingContainer_VM(experiment);
-        ratingContainerItems = new TreeItem<>(ratingContainer_vm);
-        startStage.getChildren().add(ratingContainerItems);
+        RatingContainer_VM ratingContainer_vm = new RatingContainer_VM();
+        addNewTreeItem(ratingContainer_vm);
+//        ratingContainerItems = new TreeItem<>(ratingContainer_vm);
+//        startStage.getChildren().add(ratingContainerItems);
     }
 
     @FXML
     void addTasteTest(ActionEvent event) {
-        AddTasteVM addTasteVM = new AddTasteVM(experiment);
+        AddTasteVM addTasteVM = new AddTasteVM();
         addNewTreeItem(addTasteVM);
     }
 
    @FXML
    void addTimer(ActionEvent event) {
-        TimerStage_VM timerStageVm = new TimerStage_VM(experiment);
+       TimerStage_VM timerStageVm = new TimerStage_VM();
         addNewTreeItem(timerStageVm);
 
    }
 
    @FXML
    void addVasStage(ActionEvent event) {
-        VasStage_VM vasStageVm;
-        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if(selectedItem.getValue() instanceof RatingContainer_VM){
-            vasStageVm = new VasStage_VM((RatingContainer_VM) selectedItem.getValue());
-        } else {
-            vasStageVm = new VasStage_VM(experiment);
-        }
+        VasStage_VM vasStageVm = new VasStage_VM();
+//        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+//        if(selectedItem.getValue() instanceof RatingContainer_VM){
+//            vasStageVm = new VasStage_VM((RatingContainer_VM) selectedItem.getValue());
+//        } else {
+//            vasStageVm = new VasStage_VM(experiment);
+//        }
         addNewTreeItem(vasStageVm);
 
     }

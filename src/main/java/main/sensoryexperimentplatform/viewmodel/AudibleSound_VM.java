@@ -11,6 +11,7 @@ import main.sensoryexperimentplatform.controllers.RunAudibleController;
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 import main.sensoryexperimentplatform.models.AudibleInstruction;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Sound;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -30,12 +31,11 @@ public class AudibleSound_VM implements ViewModel{
     private AssignSoundVM assignSoundVM;
     private Experiment experiment;
 
-    public AudibleSound_VM(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
+    public AudibleSound_VM() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.experiment = experiment;
         this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null, null);
         // if there exits any bug this maybe a problem
         initListener();
-        experiment.addAudibleInstruction(audibleInstruction);
 
     }
     public AudibleSound_VM(AudibleInstruction audibleInstruction) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
@@ -114,6 +114,11 @@ public class AudibleSound_VM implements ViewModel{
         return audibleInstruction;
     }
 
+
+    @Override
+    public Model getModel() {
+        return audibleInstruction;
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {

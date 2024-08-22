@@ -66,45 +66,6 @@ noticeStage("Rinsing","Please rinse your mouth with the water provided and then 
 noticeStage("Thank you!","That completes the taste test: please call your researcher.","X","","true")
 endExperiment()
 
-ExperimentName: E6 Preload Soup
-ExperimenterName: Una
-ExperimentID: 6
-Created on: null
-Version: 8
-startExperiment("Welcome","This study is looking at the effects of food on cognitive ability. ____You will complete some mood ratings and will be served a carrot and spice soup DURING WHICH you will fill in some ratings about the soup. Please ensure that you eat all of the soup provided.____PLEASE ENSURE THAT YOU ANSWER THE QUESTIONS THAT FLASH UP ON SCREEN AS SOON AS THEY APPEAR____If you have any questions\, please call the experimenter now\, otherwise click 'Start' to continue.","Start")
-ratingsContainer("true","0")
-vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How nauseous do you feel right now?","Not at all nauseous","As nauseous as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How clear-headed do you feel right now?","Not at all clear-headed","As clear-headed as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How energetic do you feel right now?","Not at all energetic","As energetic as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-endRatingsContainer()
-ratingsContainer("false","0")
-vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
-endRatingsContainer()
-ratingsContainer("true","0")
-vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How pleasant is the soup right now?","Not at all pleasant","As pleasant as I have ever experienced","0","100","Rating Complete","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-endRatingsContainer()
-ratingsContainer("true","0")
-vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How nauseous do you feel right now?","Not at all nauseous","As nauseous as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How clear-headed do you feel right now?","Not at all clear-headed","As clear-headed as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How energetic do you feel right now?","Not at all energetic","As energetic as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
-endRatingsContainer()
-noticeStage("Thank you","That completes this part of the study\, please call your experimenter.","End","","false")
-endExperiment()
-
 ExperimentName: Marie GNG - Mood Ratings
 ExperimenterName: Martin
 ExperimentID: 999
@@ -185,24 +146,54 @@ noticeStage("Thank you!","That completes the first taste test: please call your 
 endExperiment()
 
 ExperimentName: null
-ExperimenterName: g
+ExperimenterName: null
 ExperimentID: 0
-Created on: 19.08.2024
-Version: 4
+Created on: 22.08.2024
+Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-wait("1","Please Wait","false")
-tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{Biscuits,Cake,Cereal,Cheese,Chocolate,Crisps,Ice Cream,Pasta,Porridge,Sandwiches,Soup,Tomatoes,Yoghurt}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet}","{Yoghurt}","{Strong}","{Spicy}")
+startEating("Start eating stage","Please contact experimenter","Finished","Stop eating stage","0","0","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","false")
+vasStage("User input","null","null","0","100","null","null","null","false","false")
+ratingsContainer("false","0")
+endRatingsContainer()
+endEating()
 endExperiment()
 
-ExperimentName: Quynh Anh test
-ExperimenterName: Quynh Anh
-ExperimentID: 0
-Created on: 17.08.2024
-Version: 7
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-noticeStage("User input","null","null","null","false")
-questionStage("oooooo","null","null","null","null","null","false")
-noticeStage("User input","null","null","null","false")
-inputStage("hellooo","null","null","false")
+ExperimentName: E6 Preload Soup
+ExperimenterName: Una
+ExperimentID: 999
+Created on: null
+Version: 8
+startExperiment("Welcome","This study is looking at the effects of food on cognitive ability. ____You will complete some mood ratings and will be served a carrot and spice soup DURING WHICH you will fill in some ratings about the soup. Please ensure that you eat all of the soup provided.____PLEASE ENSURE THAT YOU ANSWER THE QUESTIONS THAT FLASH UP ON SCREEN AS SOON AS THEY APPEAR____If you have any questions\, please call the experimenter now\, otherwise click 'Start' to continue.","Start")
+ratingsContainer("true","0")
+vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How nauseous do you feel right now?","Not at all nauseous","As nauseous as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How clear-headed do you feel right now?","Not at all clear-headed","As clear-headed as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How energetic do you feel right now?","Not at all energetic","As energetic as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+endRatingsContainer()
+ratingsContainer("false","0")
+vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.__","false","false")
+endRatingsContainer()
+ratingsContainer("true","0")
+vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How pleasant is the soup right now?","Not at all pleasant","As pleasant as I have ever experienced","0","100","Rating Complete","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+endRatingsContainer()
+ratingsContainer("true","0")
+vasStage("How hungry do you feel right now?","Not at all hungry","As hungry as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How full do you feel right now?","Not at all full","As full as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How thirsty do you feel right now?","Not at all thirsty","As thirsty as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How nauseous do you feel right now?","Not at all nauseous","As nauseous as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How clear-headed do you feel right now?","Not at all clear-headed","As clear-headed as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How energetic do you feel right now?","Not at all energetic","As energetic as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+vasStage("How alert do you feel right now?","Not at all alert","As alert as I have ever felt","0","100","Rating Completed","Session[]","Please use the mouse to move the rating bar to the point on the scale which best represents how you currently feel. ____Click on the 'Rating Completed' button once you have moved the bar to where you want on the scale.","false","false")
+endRatingsContainer()
+noticeStage("Thank you","That completes this part of the study\, please call your experimenter.","End","","false")
 endExperiment()
 

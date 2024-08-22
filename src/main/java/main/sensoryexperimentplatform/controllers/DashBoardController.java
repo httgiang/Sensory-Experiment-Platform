@@ -240,12 +240,12 @@ public class DashBoardController {
 
     private void deleteEx(Experiment e) throws Exception {
         deletedExp.push(e);
-        listOfExperiment.deleteExperiment(e);
+        ExperimentList.deleteExperiment(e);
     }
 
     public void redo() throws Exception {
         if(!deletedExp.isEmpty()){
-            listOfExperiment.addExperiment(deletedExp.pop());
+            ExperimentList.addExperiment(deletedExp.pop());
         }
     }
 

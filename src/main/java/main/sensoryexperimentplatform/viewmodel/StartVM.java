@@ -59,6 +59,12 @@ public class StartVM implements ViewModel{
         EndOfStageDelay.addListener((observableValue, oldValue, newValue) -> onEnd(newValue));
         colorDisable.addListener((observableValue, oldValue, newValue) -> onColorDisable(newValue));
     }
+
+    @Override
+    public Model getModel() {
+        return start;
+    }
+
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {
         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunStart.fxml"));

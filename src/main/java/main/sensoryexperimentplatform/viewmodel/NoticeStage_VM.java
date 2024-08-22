@@ -11,6 +11,7 @@ import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.NoticeStageController;
 import main.sensoryexperimentplatform.controllers.RunNoticeController;
 import main.sensoryexperimentplatform.models.Experiment;
+import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Notice;
 import main.sensoryexperimentplatform.utilz.FeatureType;
 
@@ -32,24 +33,28 @@ public class NoticeStage_VM implements ViewModel{
     private Experiment experiment;
     public NoticeStage_VM(Notice noticeStage) {
         this.notice = noticeStage;
-        this.titleText = new SimpleStringProperty(noticeStage.getTitle());
-        this.contentText = new SimpleStringProperty(noticeStage.getContent());
-        this.buttonText = new SimpleStringProperty(noticeStage.getButtonText());
-        this.helpText = new SimpleStringProperty(noticeStage.getHelpText());
-        this.alert = new SimpleBooleanProperty(noticeStage.isAlert());
+        initListener();
     }
-    public NoticeStage_VM(Experiment experiment) {
-        this.experiment = experiment;
+    public NoticeStage_VM() {
         this.notice = new Notice("User input", null,null, null,false);
+        initListener();
+     //   experiment.addNoticeStage(notice);
+
+    }
+
+    public void initListener(){
+        this.titleText = new SimpleStringProperty(notice.getTitle());
+        this.contentText = new SimpleStringProperty(notice.getContent());
         this.buttonText = new SimpleStringProperty(notice.getButtonText());
         this.helpText = new SimpleStringProperty(notice.getHelpText());
         this.alert = new SimpleBooleanProperty(notice.isAlert());
-        this.titleText = new SimpleStringProperty(notice.getTitle());
-        this.contentText = new SimpleStringProperty(notice.getContent());
-        experiment.addNoticeStage(notice);
-
     }
 
+
+    @Override
+    public Model getModel() {
+        return notice;
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {

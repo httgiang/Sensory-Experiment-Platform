@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import main.sensoryexperimentplatform.utilz.Observer;
 import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.listOfExperiment;
+import main.sensoryexperimentplatform.models.ExperimentList;
 
 import static java.util.Arrays.setAll;
 
@@ -19,7 +19,7 @@ public class NewEx_VM implements Observer {
     private StringProperty description;
     private Experiment experiment;
 
-    private  listOfExperiment ListOfExperiment;
+    private ExperimentList ExperimentList;
     private final ListProperty<Experiment> items = new SimpleListProperty<>(FXCollections.observableArrayList());
     
     public NewEx_VM() {
@@ -93,7 +93,7 @@ public class NewEx_VM implements Observer {
         return items;
     }
     public void saveItems() throws Exception {
-        listOfExperiment.addExperiment(experiment);
+        ExperimentList.addExperiment(experiment);
         DataAccess.saveNewExperiment(experiment);
         //Notification.notify(experiment);
 
@@ -102,6 +102,6 @@ public class NewEx_VM implements Observer {
 
     @Override
     public void update() {
-        items.setAll(listOfExperiment.getInstance());
+        items.setAll(ExperimentList.getInstance());
     }
 }
