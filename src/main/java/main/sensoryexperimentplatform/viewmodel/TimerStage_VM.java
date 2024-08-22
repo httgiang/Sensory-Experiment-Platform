@@ -34,10 +34,15 @@ public class TimerStage_VM implements ViewModel{
         this.timer = timer;
         initBinding(timer);
     }
-    public TimerStage_VM(ConditionalStatementVM conditionalStatementVM){
+    public TimerStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
         timer = new Timer("0", "Please Wait",false);
         initBinding(timer);
-        conditionalStatementVM.addChildren(timer);
+       ifConditionalStatementVM.addIf(timer);
+    }
+    public TimerStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
+        timer = new Timer("0", "Please Wait",false);
+        initBinding(timer);
+        elseConditionalStatementVM.addElse(timer);
     }
 
     private void initBinding(Timer timer){

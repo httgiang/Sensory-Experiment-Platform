@@ -36,10 +36,17 @@ public class QuestionStage_VM implements ViewModel {
         this.questionStage = questionStage;
         initListener();
     }
-    public  QuestionStage_VM(ConditionalStatementVM conditionalStatementVM){
+
+    public  QuestionStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
         this.questionStage = new Question("Question ",null,null,null,null,null,false);
         initListener();
-        conditionalStatementVM.addChildren(questionStage);
+        ifConditionalStatementVM.addIf(questionStage);
+
+    }
+    public  QuestionStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
+        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        initListener();
+       elseConditionalStatementVM.addElse(questionStage);
 
     }
 

@@ -48,12 +48,20 @@ public class VasStage_VM implements ViewModel {
         rating.addContainerStage(vas);
         initListener();
     }
-    public VasStage_VM(ConditionalStatementVM conditionalStatementVM) {
+    public VasStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
         this.vas = new Vas("User input", null, null,
                 0, 100, null, null, null, false, false);
-       conditionalStatementVM.addChildren(vas);
+     ifConditionalStatementVM.addIf(vas);
         initListener();
     }
+    public VasStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
+        this.vas = new Vas("User input", null, null,
+                0, 100, null, null, null, false, false);
+        elseConditionalStatementVM.addElse(vas);
+        initListener();
+    }
+
+
 
     private void initListener(){
         lowAnchorText = new SimpleStringProperty(vas.getLowAnchorText());

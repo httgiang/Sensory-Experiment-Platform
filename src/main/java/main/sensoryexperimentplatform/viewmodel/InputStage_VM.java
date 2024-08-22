@@ -28,10 +28,17 @@ public class InputStage_VM implements ViewModel{
         this.input = input;
         initListener();
     }
-    public InputStage_VM(ConditionalStatementVM conditionalStatementVM){
+    public InputStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
         this.input = new Input("User input", null,null, false);
         initListener();
-        conditionalStatementVM.addChildren(input);
+        ifConditionalStatementVM.addIf(input);
+
+
+    }
+    public InputStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
+        this.input = new Input("User input", null,null, false);
+        initListener();
+       elseConditionalStatementVM.addElse(input);
 
 
     }

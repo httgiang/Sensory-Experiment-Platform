@@ -50,6 +50,8 @@ public class ConditionalStatementVM implements ViewModel {
 
     }
 
+
+
     public void setValue1Choice(String newValue){
      conditionalStatement.setValue1Choice(newValue);
     }
@@ -103,6 +105,12 @@ public class ConditionalStatementVM implements ViewModel {
     // for debugging
     public List<Model> getChildren(){
         return conditionalStatement.getChildren();
+    }
+    public void addIf(Model object){
+        conditionalStatement.addIf(object);
+    }
+    public void addElse(Model object){
+        conditionalStatement.addElse(object);
     }
     public ConditionalStatement getModel(){
         return conditionalStatement;

@@ -13,6 +13,8 @@ public class ConditionalStatement extends ModelContainer implements Model{
     private String variable1Choice;
     private String variable2Choice;
     private String compare;
+    private ArrayList<Model> IfConditional;
+    private ArrayList<Model> ElseConditional;
 
 
     public ConditionalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
@@ -27,12 +29,28 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.variable2Choice = variable2Choice;
         this.compare = compare;
         children = new ArrayList<>();
+        IfConditional = new ArrayList<>();
+        ElseConditional = new ArrayList<>();
 
     }
 
     public void addChildren(Model s){
         children.add(s);
     }
+    public void addIf(Model m){
+        IfConditional.add(m);
+    }
+    public void addElse(Model m){
+        ElseConditional.add(m);
+    }
+
+    public ArrayList<Model> getElseIfConditional() {
+        return ElseConditional;
+    }
+    public ArrayList<Model> getIfConditional() {
+        return IfConditional;
+    }
+
     public List<Model> getChildren(){
         return children;
     }
@@ -155,9 +173,10 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.compare = compare;
     }
 
-    public String toString(){
-        return "conditionalStatement" + getChildren();
+    public String toString() {
+        return "if" + getIfConditional() + "else" + getElseIfConditional();
     }
+
 
 
 

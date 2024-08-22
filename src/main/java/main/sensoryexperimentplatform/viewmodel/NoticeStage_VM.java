@@ -46,17 +46,24 @@ public class NoticeStage_VM implements ViewModel{
         experiment.addNoticeStage(notice);
     }
 
-    public NoticeStage_VM (ConditionalStatementVM conditionalStatementVM) {
+    public NoticeStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
         this.notice = new Notice("User input", null,null, null,false);
         this.buttonText = new SimpleStringProperty(notice.getButtonText());
         this.helpText = new SimpleStringProperty(notice.getHelpText());
         this.alert = new SimpleBooleanProperty(notice.isAlert());
         this.titleText = new SimpleStringProperty(notice.getTitle());
         this.contentText = new SimpleStringProperty(notice.getContent());
-        conditionalStatementVM.addChildren(notice);
-
+        ifConditionalStatementVM.addIf(notice);
     }
-
+    public NoticeStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
+        this.notice = new Notice("User input", null,null, null,false);
+        this.buttonText = new SimpleStringProperty(notice.getButtonText());
+        this.helpText = new SimpleStringProperty(notice.getHelpText());
+        this.alert = new SimpleBooleanProperty(notice.isAlert());
+        this.titleText = new SimpleStringProperty(notice.getTitle());
+        this.contentText = new SimpleStringProperty(notice.getContent());
+        elseConditionalStatementVM.addElse(notice);
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {
