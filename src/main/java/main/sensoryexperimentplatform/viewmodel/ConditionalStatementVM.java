@@ -36,7 +36,7 @@ public class ConditionalStatementVM implements ViewModel {
     public ConditionalStatementVM(Experiment experiment){
         this.experiment = experiment;
         this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
-        experiment.addConditionalStatement(conditionalStatement);
+
         value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(conditionalStatement.getValue2Text());
         variable1Choice = new SimpleStringProperty(conditionalStatement.getVariable1Choice());
@@ -47,6 +47,7 @@ public class ConditionalStatementVM implements ViewModel {
         variable1Choice.addListener((observableValue, oldValue, newValue)->setVariable1Choice(newValue));
         variable2Choice.addListener((observableValue, oldValue, newValue)->setVariable2Choice(newValue));
         compare.addListener((observableValue, oldValue, newValue)->setCompare(newValue));
+        experiment.addConditionalStatement(conditionalStatement);
 
     }
 
@@ -154,6 +155,10 @@ public class ConditionalStatementVM implements ViewModel {
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back) {
+
+    }
+    public String toString(){
+        return "If "+ getVariable1Choice() + " " + getCompare() + " Then " + getVariable2Choice() ;
 
     }
 

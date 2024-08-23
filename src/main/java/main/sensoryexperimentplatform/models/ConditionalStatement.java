@@ -64,38 +64,22 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.variable1Choice = other.variable1Choice;
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
-        children = new ArrayList<>();
-//        for(Model m : other.children){
-//            if(m instanceof ConditionalStatement){
-//                Vas temp = new Vas((Vas) m);
-//                addChildren(temp);
-//            }
-//            if (m instanceof gLMS) {
-//                gLMS temp = new gLMS((gLMS) m);
-//                addChildren(temp);
-//            }
-//            if(m instanceof Notice){
-//                Notice temp = new Notice((Notice) m);
-//                addChildren(temp);
-//            }
-//            if(m instanceof Input){
-//                Input temp = new Input((Input) m);
-//                addChildren(temp);
-//            }
-//            if(m instanceof Question){
-//                Question temp = new Question((Question) m);
-//                addChildren(temp);
-//            }
-//            if(m instanceof AudibleInstruction){
-//                AudibleInstruction temp = new AudibleInstruction((AudibleInstruction) m);
-//                addChildren(temp);
-//            }
-//            if(m instanceof Timer){
-//                Timer temp = new Timer((Timer) m);
-//                addChildren(temp);
-//            }
-//
-//        }
+
+      IfConditional = new ArrayList<>();
+      ElseConditional = new ArrayList<>();
+        for (Model subO : other.IfConditional) {
+            if (subO instanceof Notice) {
+                Notice temp = new Notice((Notice) subO);
+                addIf(temp);
+            }
+
+        }
+        for (Model subO : other.ElseConditional) {
+            if (subO instanceof Notice) {
+                Notice temp = new Notice((Notice) subO);
+                addElse(temp);
+            }
+        }
 
     }
     // Add vas for rating container
@@ -173,8 +157,24 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.compare = compare;
     }
 
+    @Override
     public String toString() {
-        return "if" + getIfConditional() + "else" + getElseIfConditional();
+        StringBuilder ifBuilder = new StringBuilder();
+        for (Model model : IfConditional) {
+            ifBuilder.append(model.toString()).append("\n");
+        }
+
+        StringBuilder elseBuilder = new StringBuilder();
+        for (Model model : ElseConditional) {
+            elseBuilder.append(model.toString()).append("\n");
+        }
+        if (ifBuilder.length() > 0) ifBuilder.setLength(ifBuilder.length() - 1);
+        if (elseBuilder.length() > 0) elseBuilder.setLength(elseBuilder.length() - 1);
+
+        return "conditionalStatement(\""  + value1 + "\",\""+ value2 + "\",\"" + variable1 + "\",\"" + variable2 +
+                "\",\""+ value1Text + "\",\"" + value2Text + "\",\"" + variable1Choice + "\",\"" +
+                variable2Choice + "\",\"" + compare +  "\")" +"\n" +String.format("If() \n%s\nElse() \n%s",
+                ifBuilder.toString(), elseBuilder.toString()) + "\nEndConditionalStatement()";
     }
 
 

@@ -182,9 +182,12 @@ public class DataAccess {
         RatingContainer rc = null;
         TasteTest tasteTest = null;
         Course course = null;
+        ConditionalStatement conditionalStatement = null;
         boolean isContainer = false, isCourse = false;
         AudibleInstruction audibleInstruction = null;
         String line;
+        boolean isIf = false, isElse = false;
+        boolean isConditionalStatement = false;
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
@@ -214,19 +217,32 @@ public class DataAccess {
                                 matcher.group(2),
                                 matcher.group(3));
                     }
-                } else if (line.startsWith("noticeStage")) {
+                }
+                else if (line.startsWith("noticeStage")) {
                     Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
                     Matcher matcher = noticePattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addNoticeStage(matcher.group(1),
+                        Notice stage = new Notice(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5))
-                        );
+                                Boolean.parseBoolean(matcher.group(5)));
+                        if (isCourse && course != null){
+                            course.addChildren(stage);
+                        }
+                        else if (isElse  && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && isConditionalStatement) {
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
+                            currentExperiment.addStage(stage);
+                        }
                     }
-                } else if (line.startsWith("inputStage")) {
+                }
+                else if (line.startsWith("inputStage")) {
                     Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
@@ -261,7 +277,6 @@ public class DataAccess {
                         String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
 
                         audibleInstruction.addSoundList(formattedSoundName);
-                        System.out.println(formattedSoundName);
                         audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
 
                       currentExperiment.addAudibleInstruction(audibleInstruction);
@@ -367,7 +382,10 @@ public class DataAccess {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
                             course.addChildren(stage);
-                        } else {
+                        } else if (isIf && conditionalStatement != null){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -385,7 +403,8 @@ public class DataAccess {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
                             course.addChildren(stage);
-                        } else {
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -404,7 +423,38 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(7))
                         );
                     }
-                } else if (line.startsWith("ratingsContainer")) {
+                }
+                else if(line.startsWith("conditionalStatement")){
+
+                    Pattern conditionalStatementPattern = Pattern.compile("conditionalStatement\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = conditionalStatementPattern.matcher(line);
+                    if (matcher.find()) {
+                        isConditionalStatement = true;
+                       conditionalStatement = new ConditionalStatement(Boolean.parseBoolean(matcher.group(1)),
+                                Boolean.parseBoolean(matcher.group(2)),
+                                Boolean.parseBoolean(matcher.group(3)),
+                                Boolean.parseBoolean(matcher.group(4)),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                matcher.group(9));
+                        currentExperiment.addConditionalStatement(conditionalStatement);
+                    }
+                }
+                else if(line.startsWith("If")){
+                    isIf = true;
+                }
+                else if(line.startsWith("Else")){
+                    isElse = true;
+                }
+                else if(line.startsWith("EndConditionalStatement")){
+                    conditionalStatement = null;
+                    isElse = false;
+                    isIf = false;
+                }
+
+                else if (line.startsWith("ratingsContainer")) {
                     Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = ratingsContainerPattern.matcher(line);
 
@@ -441,8 +491,14 @@ public class DataAccess {
         RatingContainer rc = null;
         Course course = null;
         TasteTest tasteTest = null;
-        boolean isContainer = false; boolean isCourse = false;
+        boolean isConditionalStatement = false;
+        boolean isContainer = false;
+        boolean isCourse = false;
         AudibleInstruction audibleInstruction = null;
+        boolean isIf = false;
+        boolean isElse = false;
+        ConditionalStatement conditionalStatement = null;
+
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
 
@@ -482,7 +538,14 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(5)));
                         if (isCourse && course != null){
                             course.addChildren(stage);
-                        }else {
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -664,7 +727,40 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(7))
                         );
                     }
-                } else if (line.startsWith("ratingsContainer")) {
+                }
+                else if(line.startsWith("conditionalStatement")){
+
+                    Pattern conditionalStatementPattern = Pattern.compile("conditionalStatement\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = conditionalStatementPattern.matcher(line);
+                    if (matcher.find()) {
+                        isConditionalStatement = true;
+                        conditionalStatement = new ConditionalStatement(Boolean.parseBoolean(matcher.group(1)),
+                                Boolean.parseBoolean(matcher.group(2)),
+                                Boolean.parseBoolean(matcher.group(3)),
+                                Boolean.parseBoolean(matcher.group(4)),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                matcher.group(9));
+                        currentExperiment.addConditionalStatement(conditionalStatement);
+                    }
+                }
+                else if(line.startsWith("If")){
+                    isIf = true;
+                }
+                else if(line.startsWith("Else")){
+                    isElse = true;
+
+
+                }
+                else if(line.startsWith("EndConditionalStatement")){
+                    isConditionalStatement = false;
+                    isElse = false;
+                    isIf = false;
+                }
+
+                else if (line.startsWith("ratingsContainer")) {
                     Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = ratingsContainerPattern.matcher(line);
 

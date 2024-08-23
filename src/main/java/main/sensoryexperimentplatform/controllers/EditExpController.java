@@ -135,6 +135,7 @@ public class EditExpController {
 
     private void loadItems() throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         ArrayList<Model> stages = experiment.getStages();
+        System.out.println(experiment.getStages());
 
         if (experiment.getStages().isEmpty()) {
             ViewModel startVM = new StartVM(experiment);
