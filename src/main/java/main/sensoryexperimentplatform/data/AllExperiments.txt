@@ -200,12 +200,23 @@ ExperimentID: 0
 Created on: 17.08.2024
 Version: 10
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-conditionalStatement("true","false","true","false","null","null","Bout Number","Bout Number","equals (=)")
+conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
 If() 
-noticeStage("User input","null","null","null","false")
-noticeStage("User input","null","null","null","false")
+noticeStage("User input","null","null","null","false") 
+EndIf() 
 Else() 
-
+noticeStage("User input","null","null","null","false") 
+EndElse()
+EndConditionalStatement()
+conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
+If() 
+inputStage("User input","null","null","false")
+noticeStage("User input","null","null","null","false")
+vasStage("User input","null","null","0","100","null","null","null","false","false") 
+EndIf() 
+Else() 
+ 
+EndElse()
 EndConditionalStatement()
 endExperiment()
 

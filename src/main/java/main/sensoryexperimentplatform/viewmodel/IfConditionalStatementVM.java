@@ -4,7 +4,7 @@ import main.sensoryexperimentplatform.models.ConditionalStatement;
 import main.sensoryexperimentplatform.models.Model;
 
 
-public class IfConditionalStatementVM extends ConditionalStatementVM{
+public class IfConditionalStatementVM extends ConditionalStatementVM implements ViewModel {
     ConditionalStatementVM conditionalStatement;
 
 
@@ -12,10 +12,7 @@ public class IfConditionalStatementVM extends ConditionalStatementVM{
     public IfConditionalStatementVM(ConditionalStatement ConditionalStatement) {
         super(ConditionalStatement);
     }
-    @Override
-    public void addIf(Model object){
-        super.addIf(object);
-    }
+
 
     public String toString(){
         return "If "+ getVariable1Choice() + " " + getCompare() + " Then " + getVariable2Choice() ;

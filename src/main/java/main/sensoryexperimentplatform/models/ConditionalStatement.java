@@ -13,8 +13,8 @@ public class ConditionalStatement extends ModelContainer implements Model{
     private String variable1Choice;
     private String variable2Choice;
     private String compare;
-    private ArrayList<Model> IfConditional;
-    private ArrayList<Model> ElseConditional;
+    public List<Model> IfConditional;
+    public List<Model> ElseConditional;
 
 
     public ConditionalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
@@ -34,22 +34,7 @@ public class ConditionalStatement extends ModelContainer implements Model{
 
     }
 
-    public void addChildren(Model s){
-        children.add(s);
-    }
-    public void addIf(Model m){
-        IfConditional.add(m);
-    }
-    public void addElse(Model m){
-        ElseConditional.add(m);
-    }
 
-    public ArrayList<Model> getElseIfConditional() {
-        return ElseConditional;
-    }
-    public ArrayList<Model> getIfConditional() {
-        return IfConditional;
-    }
 
     public List<Model> getChildren(){
         return children;
@@ -65,21 +50,9 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
 
-      IfConditional = new ArrayList<>();
-      ElseConditional = new ArrayList<>();
-        for (Model subO : other.IfConditional) {
-            if (subO instanceof Notice) {
-                Notice temp = new Notice((Notice) subO);
-                addIf(temp);
-            }
+      IfConditional = other.getIfConditional();
+      ElseConditional = other.getElseConditional();
 
-        }
-        for (Model subO : other.ElseConditional) {
-            if (subO instanceof Notice) {
-                Notice temp = new Notice((Notice) subO);
-                addElse(temp);
-            }
-        }
 
     }
     // Add vas for rating container
@@ -156,6 +129,22 @@ public class ConditionalStatement extends ModelContainer implements Model{
     public void setCompare(String compare) {
         this.compare = compare;
     }
+    public void addChildren(Model s){
+        children.add(s);
+    }
+    public void addIf(Model m){
+        IfConditional.add(m);
+    }
+    public void addElse(Model m){
+        ElseConditional.add(m);
+    }
+
+    public List<Model> getElseConditional() {
+        return ElseConditional;
+    }
+    public List<Model> getIfConditional() {
+        return IfConditional;
+    }
 
     @Override
     public String toString() {
@@ -173,7 +162,7 @@ public class ConditionalStatement extends ModelContainer implements Model{
 
         return "conditionalStatement(\""  + value1 + "\",\""+ value2 + "\",\"" + variable1 + "\",\"" + variable2 +
                 "\",\""+ value1Text + "\",\"" + value2Text + "\",\"" + variable1Choice + "\",\"" +
-                variable2Choice + "\",\"" + compare +  "\")" +"\n" +String.format("If() \n%s\nElse() \n%s",
+                variable2Choice + "\",\"" + compare +  "\")" +"\n" +String.format("If() \n%s \nEndIf() \nElse() \n%s \nEndElse()",
                 ifBuilder.toString(), elseBuilder.toString()) + "\nEndConditionalStatement()";
     }
 

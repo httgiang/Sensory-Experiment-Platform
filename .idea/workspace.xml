@@ -10,14 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ElseConditionalStatement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/IfConditionalStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ElseConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ElseConditionalStatementVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/IfConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/IfConditionalStatementVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ModelVMRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ModelVMRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/addSound.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/addSound.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +223,9 @@
       <workItem from="1724298914081" duration="18667000" />
       <workItem from="1724334376376" duration="7709000" />
       <workItem from="1724378052939" duration="679000" />
-      <workItem from="1724396648031" duration="2857000" />
+      <workItem from="1724396648031" duration="4458000" />
+      <workItem from="1724417575501" duration="4209000" />
+      <workItem from="1724428547152" duration="5781000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />

@@ -167,12 +167,23 @@ public class EditExpController {
             TreeItem<ViewModel> item = new TreeItem<>(stage);
             parent.getChildren().add(item);
 
-            //NEU LA CONDITIONAL STATEMENT, COURSE, RATING CONTAINER -> ADD TREE CON
-            if(model instanceof ModelContainer && (!(model instanceof TasteTest))) {
+            //NEU LA  COURSE, RATING CONTAINER -> ADD TREE CON
+            if(model instanceof ModelContainer && (!(model instanceof TasteTest)) && (!(model instanceof ConditionalStatement))) {
                 if(((ModelContainer) model).getChildren() != null){
                     for(Model child : ((ModelContainer) model).getChildren()) {
                         buildTree(item, child, registry);
                     }
+                }
+            }
+            //ADD TREE CON CHO CONDITIONAL STATEMENT
+            if(model instanceof ConditionalStatement){
+                if(((ConditionalStatement) model).getIfConditional()!= null){
+                    for(Model child : ((ConditionalStatement) model).getIfConditional()){
+                        buildTree(item, child, registry);
+                    }
+//                    for(Model child : ((ConditionalStatement) model).getElseConditional()){
+//                        buildTree(item, child, registry);
+//                    }
                 }
             }
         }
@@ -216,12 +227,11 @@ public class EditExpController {
     void addConditionalStatement(ActionEvent event) {
         ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
         ConditionalStatement conditionalStatement = conditionalStatementVM.getModel();
-     IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
-     ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);
 
+        IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
+     ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);
         ifConditional = new TreeItem<>(ifConditionalStatement);
         elseConditional = new TreeItem<>(elseConditionalStatement);
-
         startStage.getChildren().add(ifConditional);
         startStage.getChildren().add(elseConditional);
 
