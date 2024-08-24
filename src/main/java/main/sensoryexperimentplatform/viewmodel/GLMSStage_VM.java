@@ -29,11 +29,6 @@ public class GLMSStage_VM implements ViewModel{
         initListener();
     }
 
-    public GLMSStage_VM(RatingContainer_VM rating) {
-        this.glms = new gLMS("User Input",null,null,null, false);;
-        initListener();
-        rating.addContainerStage(glms);
-    }
 
     private void initListener(){
         txt_help = new SimpleStringProperty(glms.getHelpText());

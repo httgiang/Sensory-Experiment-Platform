@@ -150,7 +150,14 @@ public class EditExpController {
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
             for (Model model : stages) {
-                System.out.println(model);
+                System.out.println("model " + model.getClass());
+                if(model instanceof ModelContainer) {
+                    if ((!((ModelContainer) model).getChildren().isEmpty())) {
+                        for (Model child : ((ModelContainer) model).getChildren()) {
+                            System.out.println("child " + child.getClass());
+                        }
+                    }
+                }
                 buildTree(startStage, model, registry);
             }
 
@@ -172,6 +179,7 @@ public class EditExpController {
             if(model instanceof ModelContainer && (!(model instanceof TasteTest))) {
                 if((!((ModelContainer) model).getChildren().isEmpty())){
                     for(Model child : ((ModelContainer) model).getChildren()) {
+
                         buildTree(item, child, registry);
                     }
                 }

@@ -117,9 +117,6 @@ public class RatingContainer_VM implements ViewModel {
     public void setIsRandomize(boolean newValue){
         ratingContainer.setRandomize(newValue);
     }
-    public void addContainerStage(containerObject object){
-        ratingContainer.addStage(object);
-    }
     public RatingContainer getRatingContainer(){
         return ratingContainer;
     }

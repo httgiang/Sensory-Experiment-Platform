@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class Vas extends Stage implements containerObject, Model{
+public class Vas extends Stage implements Model{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;
     private int result;
