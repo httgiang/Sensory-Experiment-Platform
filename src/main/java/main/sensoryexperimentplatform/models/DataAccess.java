@@ -182,9 +182,12 @@ public class DataAccess {
         RatingContainer rc = null;
         TasteTest tasteTest = null;
         Course course = null;
+        ConditionalStatement conditionalStatement = null;
         boolean isContainer = false, isCourse = false;
         AudibleInstruction audibleInstruction = null;
         String line;
+        boolean isIf = false, isElse = false;
+        boolean isConditionalStatement = false;
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
@@ -214,34 +217,47 @@ public class DataAccess {
                                 matcher.group(2),
                                 matcher.group(3));
                     }
-                } else if (line.startsWith("noticeStage")) {
+                }
+                else if (line.startsWith("noticeStage")) {
                     Pattern noticePattern = Pattern.compile("noticeStage\\(\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\",\"([^\"]*?)\"\\)");
                     Matcher matcher = noticePattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addNoticeStage(matcher.group(1),
+                        Notice stage = new Notice(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5))
-                        );
+                                Boolean.parseBoolean(matcher.group(5)));
+                        if (isCourse && course != null){
+                            course.addChildren(stage);
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
+                            currentExperiment.addStage(stage);
+                        }
                     }
-                } else if (line.startsWith("inputStage")) {
+                }
+                else if (line.startsWith("inputStage")) {
                     Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
-                    }
-                } else if (line.startsWith("wait")) {
-                    Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                    Matcher matcher = timerPattern.matcher(line);
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
 
-                    if (matcher.find()) {
-                        currentExperiment.addTimerStage(matcher.group(1),
-                                matcher.group(2),
-                                Boolean.parseBoolean(matcher.group(3))
-                        );
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
+                            currentExperiment.addStage(stage);
+                        }
                     }
                 }
                 else if(line.startsWith("audio")){
@@ -261,10 +277,18 @@ public class DataAccess {
                         String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
 
                         audibleInstruction.addSoundList(formattedSoundName);
-                        System.out.println(formattedSoundName);
                         audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
 
-                      currentExperiment.addAudibleInstruction(audibleInstruction);
+
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(audibleInstruction);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(audibleInstruction);
+                        }
+                        else {
+                            currentExperiment.addStage(audibleInstruction);
+                        }
                     }
 
                 } else if (line.startsWith("tasteTest")){
@@ -330,7 +354,15 @@ public class DataAccess {
                             }
                         }
 
-                        currentExperiment.addNewTasteTest(tasteTest);
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(tasteTest);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(tasteTest);
+                        }
+                        else {
+                            currentExperiment.addStage(tasteTest);
+                        }
 
 
                     }
@@ -366,9 +398,13 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(10)));
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
-                        } else if(isCourse && course != null){
-                            course.addChildren(stage);
-                        } else {
+                        } else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -386,7 +422,14 @@ public class DataAccess {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
                             course.addChildren(stage);
-                        } else {
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -396,7 +439,7 @@ public class DataAccess {
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addQuestionStage(matcher.group(1),
+                        Question question = new Question(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
@@ -404,8 +447,56 @@ public class DataAccess {
                                 matcher.group(6),
                                 Boolean.parseBoolean(matcher.group(7))
                         );
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(question);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(question);
+                        }
+                        else {
+                            currentExperiment.addStage(question);
+                        }
                     }
-                } else if (line.startsWith("ratingsContainer")) {
+                }
+                else if(line.startsWith("conditionalStatement")){
+
+                    Pattern conditionalStatementPattern = Pattern.compile("conditionalStatement\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = conditionalStatementPattern.matcher(line);
+                    isConditionalStatement = true;
+                    if (matcher.find()) {
+                       conditionalStatement = new ConditionalStatement(Boolean.parseBoolean(matcher.group(1)),
+                                Boolean.parseBoolean(matcher.group(2)),
+                                Boolean.parseBoolean(matcher.group(3)),
+                                Boolean.parseBoolean(matcher.group(4)),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                matcher.group(9));
+                        currentExperiment.addConditionalStatement(conditionalStatement);
+                    }
+                }
+                else if(line.startsWith("If()")){
+                    isIf = true;
+                }
+                else if (line.startsWith("EndIf() ")){
+                    isIf = false;
+                }
+
+                else if(line.startsWith("Else()")){
+                    isElse = true;
+                }
+                else if(line.startsWith("EndElse()")){
+                    isElse = false;
+                }
+                else if(line.startsWith("EndConditionalStatement()")){
+                    conditionalStatement = null;
+                    isConditionalStatement = false;
+                    isElse = false;
+                    isIf = false;
+                }
+
+                else if (line.startsWith("ratingsContainer")) {
                     Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = ratingsContainerPattern.matcher(line);
 
@@ -417,6 +508,12 @@ public class DataAccess {
                         rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
                         if(isCourse && course != null){
                             course.addChildren(rc);
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(rc);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(rc);
                         }
                     }
                 } else if (line.startsWith("endRatingsContainer")) {
@@ -442,8 +539,14 @@ public class DataAccess {
         RatingContainer rc = null;
         Course course = null;
         TasteTest tasteTest = null;
-        boolean isContainer = false; boolean isCourse = false;
+        boolean isConditionalStatement = false;
+        boolean isContainer = false;
+        boolean isCourse = false;
         AudibleInstruction audibleInstruction = null;
+        boolean isIf = false;
+        boolean isElse = false;
+        ConditionalStatement conditionalStatement = null;
+
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
 
@@ -483,7 +586,14 @@ public class DataAccess {
                                 Boolean.parseBoolean(matcher.group(5)));
                         if (isCourse && course != null){
                             course.addChildren(stage);
-                        }else {
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -492,7 +602,17 @@ public class DataAccess {
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addInputStage(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
+
+                         if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                         else {
+                             currentExperiment.addStage(stage);
+                         }
                     }
                 } else if (line.startsWith("wait")) {
                     Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
@@ -516,15 +636,24 @@ public class DataAccess {
                                 matcher.group(5),
                                 matcher.group(6));
 
-
                         String soundName = Arrays.toString(matcher.group(5).split(","));
                         String formattedSoundName = soundName.substring(1, soundName.length() - 1);
                         String soundPath  = Arrays.toString(matcher.group(6).split(","));
                         String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
+
                         audibleInstruction.addSoundList(formattedSoundName);
                         audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
 
-                        currentExperiment.addAudibleInstruction(audibleInstruction);
+
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(audibleInstruction);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(audibleInstruction);
+                        }
+                        else {
+                            currentExperiment.addStage(audibleInstruction);
+                        }
                     }
                 } else if (line.startsWith("tasteTest")){
                     Pattern tasteTestPattern = Pattern.compile("tasteTest\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\",\"\\{(.*?)\\}\"\\)");
@@ -588,7 +717,15 @@ public class DataAccess {
                                 tasteTest.getSelectedGLMS().add(glmsItem.trim());
                             }
                         }
-                        currentExperiment.addNewTasteTest(tasteTest);
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(tasteTest);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(tasteTest);
+                        }
+                        else {
+                            currentExperiment.addStage(tasteTest);
+                        }
 
 
                     }
@@ -628,7 +765,14 @@ public class DataAccess {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
                             course.addChildren(stage);
-                        } else {
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -646,7 +790,14 @@ public class DataAccess {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
                             course.addChildren(stage);
-                        } else {
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(stage);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(stage);
+                        }
+                        else {
                             currentExperiment.addStage(stage);
                         }
                     }
@@ -655,7 +806,7 @@ public class DataAccess {
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
-                        currentExperiment.addQuestionStage(matcher.group(1),
+                        Question question = new Question(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
@@ -663,8 +814,56 @@ public class DataAccess {
                                 matcher.group(6),
                                 Boolean.parseBoolean(matcher.group(7))
                         );
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(question);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(question);
+                        }
+                        else {
+                            currentExperiment.addStage(question);
+                        }
                     }
-                } else if (line.startsWith("ratingsContainer")) {
+                }
+                else if(line.startsWith("conditionalStatement")){
+
+                    Pattern conditionalStatementPattern = Pattern.compile("conditionalStatement\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Matcher matcher = conditionalStatementPattern.matcher(line);
+                    isConditionalStatement = true;
+                    if (matcher.find()) {
+                        conditionalStatement = new ConditionalStatement(Boolean.parseBoolean(matcher.group(1)),
+                                Boolean.parseBoolean(matcher.group(2)),
+                                Boolean.parseBoolean(matcher.group(3)),
+                                Boolean.parseBoolean(matcher.group(4)),
+                                matcher.group(5),
+                                matcher.group(6),
+                                matcher.group(7),
+                                matcher.group(8),
+                                matcher.group(9));
+                        currentExperiment.addConditionalStatement(conditionalStatement);
+                    }
+                }
+                else if(line.startsWith("If()")){
+                    isIf = true;
+                }
+                else if (line.startsWith("EndIf() ")){
+                    isIf = false;
+                }
+
+                else if(line.startsWith("Else()")){
+                    isElse = true;
+                }
+                else if(line.startsWith("EndElse()")){
+                    isElse = false;
+                }
+                else if(line.startsWith("EndConditionalStatement()")){
+                    conditionalStatement = null;
+                    isConditionalStatement = false;
+                    isElse = false;
+                    isIf = false;
+                }
+
+                else if (line.startsWith("ratingsContainer")) {
                     Pattern ratingsContainerPattern = Pattern.compile("ratingsContainer\\(\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = ratingsContainerPattern.matcher(line);
 
@@ -676,6 +875,12 @@ public class DataAccess {
                         rc = (RatingContainer) currentExperiment.getStages().getLast();
                         if(isCourse && course != null && rc != null){
                             course.addChildren(rc);
+                        }
+                        else if (isIf && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addIf(rc);
+                        }
+                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                            conditionalStatement.addElse(rc);
                         }
                     }
                 } else if (line.startsWith("endRatingsContainer")) {

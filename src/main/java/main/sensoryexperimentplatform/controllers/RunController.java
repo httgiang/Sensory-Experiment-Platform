@@ -57,6 +57,19 @@ public class RunController {
                     buildList(listView, children, registry);
                 }
             }
+            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
+            else if(((ConditionalStatement) model).getIfConditional() != null){
+                for(Model children : ((ConditionalStatement) model).getIfConditional()){
+                    buildList(listView, children, registry);
+                }
+
+            }
+            else if(((ConditionalStatement) model).getElseConditional() != null){
+                for(Model children : ((ConditionalStatement) model).getElseConditional()){
+                    buildList(listView, children, registry);
+                }
+            }
+
         } else {
             if(stages != null){
                 if(model instanceof TimerStage_VM){

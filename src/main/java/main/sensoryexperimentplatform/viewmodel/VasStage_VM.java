@@ -6,11 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
-import main.sensoryexperimentplatform.models.DataAccess;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Model;
-import main.sensoryexperimentplatform.models.Vas;
-import main.sensoryexperimentplatform.utilz.FeatureType;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
 
@@ -42,6 +38,20 @@ public class VasStage_VM implements ViewModel {
                 0, 100, null, null, null, false, false);
         initListener();
     }
+    public VasStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
+        this.vas = new Vas("User input", null, null,
+                0, 100, null, null, null, false, false);
+     ifConditionalStatementVM.addIf(vas);
+        initListener();
+    }
+    public VasStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
+        this.vas = new Vas("User input", null, null,
+                0, 100, null, null, null, false, false);
+        elseConditionalStatementVM.addElse(vas);
+        initListener();
+    }
+
+
 
 
     private void initListener(){

@@ -11,16 +11,16 @@ import main.sensoryexperimentplatform.models.*;
 import java.io.IOException;
 
 public class ConditionalStatementVM implements ViewModel {
-    private  conditionalStatement conditionalStatement;
+    private ConditionalStatement conditionalStatement;
 
     private SimpleStringProperty value1Text;
     private SimpleStringProperty value2Text;
     private SimpleStringProperty variable2Choice;
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
-    private Experiment experiment;
+
     public ConditionalStatementVM(conditionalStatement ConditionalStatement){
-        this.conditionalStatement = new conditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
+        this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
         value1Text = new SimpleStringProperty(ConditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(ConditionalStatement.getValue2Text());
         variable1Choice = new SimpleStringProperty(ConditionalStatement.getVariable1Choice());
@@ -33,7 +33,7 @@ public class ConditionalStatementVM implements ViewModel {
         compare.addListener((observableValue, oldValue, newValue)->setCompare(newValue));
     }
     public ConditionalStatementVM(){
-        this.conditionalStatement = new conditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
+        this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
 
         value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(conditionalStatement.getValue2Text());
@@ -141,16 +141,14 @@ public class ConditionalStatementVM implements ViewModel {
     }
 
     public conditionalStatement getConditionalStatement() {
-        return conditionalStatement;
+        return ConditionalStatement;
     }
 
 
 
     @Override
     public String toString() {
-
-        return "If "+ conditionalStatement.getVariable1Choice() + " " + conditionalStatement.getCompare() + " Then " + conditionalStatement.getVariable2Choice();
-
+        return "If "+ ConditionalStatement.getVariable1Choice() + " " + ConditionalStatement.getCompare() + " Then " + ConditionalStatement.getVariable2Choice() ;
     }
 
 
