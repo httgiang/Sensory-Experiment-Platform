@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -272,7 +273,7 @@ public class DashBoardController {
 
     }
 
-    private void editExperiment(Experiment c) throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
+    private void editExperiment(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 //        c.updateVersion();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/EditExperiment.fxml"));
@@ -281,13 +282,15 @@ public class DashBoardController {
             EditExpController controller = new EditExpController();
             root = loader.load();
             controller = loader.getController();
-            controller.setExperiment(c);
+            controller.setExperiment(experiment);
         }
         catch (IOException e){
             e.printStackTrace();
         }
 
         Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+
         stage.setTitle("Edit experiment");
 
         Scene scene = new Scene(root);

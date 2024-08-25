@@ -638,17 +638,17 @@ public class DataAccess {
 
                         String soundName = Arrays.toString(matcher.group(5).split(","));
                         String formattedSoundName = soundName.substring(1, soundName.length() - 1);
-                        String soundPath  = Arrays.toString(matcher.group(6).split(","));
+                        String soundPath = Arrays.toString(matcher.group(6).split(","));
                         String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
 
                         audibleInstruction.addSoundList(formattedSoundName);
                         audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
 
 
-                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                        if (isIf && conditionalStatement != null && isConditionalStatement){
                             conditionalStatement.addIf(audibleInstruction);
                         }
-                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                        else if (isElse && conditionalStatement != null && isConditionalStatement){
                             conditionalStatement.addElse(audibleInstruction);
                         }
                         else {

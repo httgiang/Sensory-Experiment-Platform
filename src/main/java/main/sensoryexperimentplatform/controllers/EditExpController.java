@@ -260,8 +260,8 @@ public class EditExpController {
     @FXML
     void addConditionalStatement(ActionEvent event) {
 
-       // ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM(experiment);
-        ConditionalStatement conditionalStatement = conditionalStatementVM.getModel();
+       ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM();
+        ConditionalStatement conditionalStatement = conditionalStatementVM.getConditionalStatement();
 
         IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
         ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);

@@ -33,7 +33,7 @@ public class GLMSStage_VM implements ViewModel{
     public GLMSStage_VM (IfConditionalStatementVM ifConditionalStatementVM){
         this.glms = new gLMS("User Input",null,null,null, false);
         initListener();
-      ifConditionalStatementVM.addIf(glms);
+       ifConditionalStatementVM.addIf(glms);
     }
 
     public GLMSStage_VM (ElseConditionalStatementVM elseConditionalStatementVM){

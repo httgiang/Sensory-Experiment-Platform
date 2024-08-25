@@ -3,7 +3,7 @@ package main.sensoryexperimentplatform.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConditionalStatement extends ModelContainer implements Model{
+public class ConditionalStatement implements Model{
     private boolean value1;
     private boolean value2;
     private boolean variable1;
@@ -28,17 +28,13 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.variable1Choice = variable1Choice;
         this.variable2Choice = variable2Choice;
         this.compare = compare;
-        children = new ArrayList<>();
+
         IfConditional = new ArrayList<>();
         ElseConditional = new ArrayList<>();
 
     }
 
 
-
-    public List<Model> getChildren(){
-        return children;
-    }
     public ConditionalStatement(ConditionalStatement other){
         this.value1 = other.value1;
         this.value2 = other.value2;
@@ -50,9 +46,8 @@ public class ConditionalStatement extends ModelContainer implements Model{
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
 
-      IfConditional = other.getIfConditional();
-      ElseConditional = other.getElseConditional();
-
+       IfConditional = other.getIfConditional();
+       ElseConditional = other.getElseConditional();
 
     }
     // Add vas for rating container
@@ -129,9 +124,7 @@ public class ConditionalStatement extends ModelContainer implements Model{
     public void setCompare(String compare) {
         this.compare = compare;
     }
-    public void addChildren(Model s){
-        children.add(s);
-    }
+
     public void addIf(Model m){
         IfConditional.add(m);
     }
@@ -157,8 +150,8 @@ public class ConditionalStatement extends ModelContainer implements Model{
         for (Model model : ElseConditional) {
             elseBuilder.append(model.toString()).append("\n");
         }
-        if (ifBuilder.length() > 0) ifBuilder.setLength(ifBuilder.length() - 1);
-        if (elseBuilder.length() > 0) elseBuilder.setLength(elseBuilder.length() - 1);
+        if (!ifBuilder.isEmpty()) ifBuilder.setLength(ifBuilder.length() - 1);
+        if (!elseBuilder.isEmpty()) elseBuilder.setLength(elseBuilder.length() - 1);
 
         return "conditionalStatement(\""  + value1 + "\",\""+ value2 + "\",\"" + variable1 + "\",\"" + variable2 +
                 "\",\""+ value1Text + "\",\"" + value2Text + "\",\"" + variable1Choice + "\",\"" +

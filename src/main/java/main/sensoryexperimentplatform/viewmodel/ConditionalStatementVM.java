@@ -19,13 +19,13 @@ public class ConditionalStatementVM implements ViewModel {
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
 
-    public ConditionalStatementVM(conditionalStatement ConditionalStatement){
+    public ConditionalStatementVM(ConditionalStatement conditionalStatement){
         this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
-        value1Text = new SimpleStringProperty(ConditionalStatement.getValue1Text());
-        value2Text = new SimpleStringProperty(ConditionalStatement.getValue2Text());
-        variable1Choice = new SimpleStringProperty(ConditionalStatement.getVariable1Choice());
-        variable2Choice = new SimpleStringProperty(ConditionalStatement.getVariable2Choice());
-        compare = new SimpleStringProperty(ConditionalStatement.getCompare());
+        value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
+        value2Text = new SimpleStringProperty(conditionalStatement.getValue2Text());
+        variable1Choice = new SimpleStringProperty(conditionalStatement.getVariable1Choice());
+        variable2Choice = new SimpleStringProperty(conditionalStatement.getVariable2Choice());
+        compare = new SimpleStringProperty(conditionalStatement.getCompare());
         value1Text.addListener((observableValue, oldValue, newValue)->setValue1Choice(newValue));
         value2Text.addListener((observableValue, oldValue, newValue)->setValue2Choice(newValue));
         variable1Choice.addListener((observableValue, oldValue, newValue)->setVariable1Choice(newValue));
@@ -140,18 +140,24 @@ public class ConditionalStatementVM implements ViewModel {
 
     }
 
-    public conditionalStatement getConditionalStatement() {
-        return ConditionalStatement;
+    public ConditionalStatement getConditionalStatement() {
+        return conditionalStatement;
     }
 
 
 
     @Override
     public String toString() {
-        return "If "+ ConditionalStatement.getVariable1Choice() + " " + ConditionalStatement.getCompare() + " Then " + ConditionalStatement.getVariable2Choice() ;
+        return "If "+ conditionalStatement.getVariable1Choice() + " " + conditionalStatement.getCompare() + " Then " + conditionalStatement.getVariable2Choice() ;
     }
 
 
+    public void addIf(Model object){
+        conditionalStatement.addIf(object);
+    }
+    public void addElse(Model object){
+        conditionalStatement.addElse(object);
+    }
 
 
     public String getTitle2(){

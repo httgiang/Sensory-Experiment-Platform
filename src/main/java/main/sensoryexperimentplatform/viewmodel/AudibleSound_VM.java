@@ -47,12 +47,12 @@ public class AudibleSound_VM implements ViewModel{
     public AudibleSound_VM(IfConditionalStatementVM ifConditionalStatementVM) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null, null);
         initListener();
-        ifConditionalStatementVM.addChildren(audibleInstruction);
+        ifConditionalStatementVM.addIf(audibleInstruction);
     }
     public AudibleSound_VM(ElseConditionalStatementVM elseConditionalStatementVM) throws UnsupportedAudioFileException, LineUnavailableException, IOException, URISyntaxException {
         this.audibleInstruction = new AudibleInstruction("Default Notice Stage", null, null,null,null, null);
         initListener();
-        elseConditionalStatementVM.addChildren(audibleInstruction);
+        elseConditionalStatementVM.addElse(audibleInstruction);
     }
 
 
