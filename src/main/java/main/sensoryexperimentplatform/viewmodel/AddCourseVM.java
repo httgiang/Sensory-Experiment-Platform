@@ -1,5 +1,7 @@
 package main.sensoryexperimentplatform.viewmodel;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,7 @@ public class AddCourseVM implements ViewModel{
     private StringProperty txt_duration;
     private StringProperty txt_endStatement;
     private StringProperty txt_title;
+    private BooleanProperty checkbox_alert;
     private Experiment experiment;
     private Course course;
     public AddCourseVM(){
@@ -51,6 +54,7 @@ public class AddCourseVM implements ViewModel{
         txt_duration = new SimpleStringProperty(String.valueOf(course.getDuration()));
         txt_help = new SimpleStringProperty(course.getHelpText());
         txt_endStatement = new SimpleStringProperty(course.getEndStatement());
+        checkbox_alert = new SimpleBooleanProperty(course.isAlert());
 
 
         txt_button.addListener((observableValue, oldValue, newValue) -> onButtonTextChange(newValue));
@@ -59,6 +63,26 @@ public class AddCourseVM implements ViewModel{
         txt_refill.addListener((observableValue, oldValue, newValue) -> onRefillTextChange(Integer.parseInt(newValue)));
         txt_title.addListener((observableValue, oldValue, newValue) -> onTitleTextChange(newValue));
         txt_content.addListener((observableValue, oldValue, newValue) -> onContentTextChange(newValue));
+        txt_endStatement.addListener(((observableValue, oldValue, newValue) -> onEndTextChange(newValue)));
+        txt_duration.addListener(((observableValue, oldValue, newValue) -> onDurationChange(newValue)));
+        checkbox_alert.addListener(((observableValue, oldValue, newValue) -> onAlertChange(newValue)));
+    }
+
+
+
+    private void onAlertChange(Boolean newValue) {
+        course.setAlert(newValue);
+    }
+
+    private void onDurationChange(String newValue) {
+        course.setDuration(Integer.parseInt(newValue));
+    }
+
+    private void onEndTextChange(String newValue) {
+        course.setEndStatement(newValue);
+    }
+    public BooleanProperty isAlertProperty() {
+        return checkbox_alert;
     }
 
     private void onContentTextChange(String newValue) {
@@ -111,6 +135,12 @@ public class AddCourseVM implements ViewModel{
 
     public StringProperty txt_titleProperty() {
         return txt_title;
+    }
+    public StringProperty txt_endStatementProperty(){
+        return txt_endStatement;
+    }
+    public StringProperty txt_durationProperty() {
+        return txt_duration;
     }
 
     public Experiment getExperiment() {

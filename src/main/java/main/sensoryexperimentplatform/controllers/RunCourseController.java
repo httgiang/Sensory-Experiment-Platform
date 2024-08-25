@@ -3,7 +3,9 @@ package main.sensoryexperimentplatform.controllers;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -14,6 +16,10 @@ import main.sensoryexperimentplatform.viewmodel.AddCourseVM;
 import main.sensoryexperimentplatform.viewmodel.RunCourseVM;
 
 public class RunCourseController {
+
+    @FXML
+    private Button btn;
+
     @FXML
     private Label contentTxt;
 
@@ -22,6 +28,11 @@ public class RunCourseController {
 
     @FXML
     private Label titleTxt;
+
+    @FXML
+    void buttonListener(ActionEvent event) {
+
+    }
 
     private Course course;
     private AddCourseVM viewModel;

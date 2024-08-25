@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="btm_pane" prefHeight="267.0" prefWidth="460.0" stylesheets="/static/stylesheets/FillName.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.FillNameController">
+<AnchorPane fx:id="btm_pane" prefHeight="267.0" prefWidth="460.0" stylesheets="@../../static/stylesheets/FillName.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.FillNameController">
    <children>
       <AnchorPane fx:id="mainPane" layoutX="7.0" layoutY="34.0" prefHeight="203.0" prefWidth="447.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="46.0">
          <children>
-            <Button fx:id="cancel_btn" layoutX="35.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleCancelBtn" prefHeight="38.0" prefWidth="65.0" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="35.0" />
-            <Button fx:id="approve_btn" layoutX="332.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleApproveBtn" prefHeight="38.0" prefWidth="65.0" text="Continue" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="35.0" />
-            <Label fx:id="instruction_lbl" layoutX="61.0" layoutY="30.0" text="Please enter participant ID" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="30.0" />
-            <TextField fx:id="uid" layoutX="36.0" layoutY="88.0" prefHeight="25.0" prefWidth="361.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
+            <Button fx:id="cancel_btn" layoutX="35.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleCancelBtn" prefHeight="38.0" prefWidth="70.0" stylesheets="@../../static/stylesheets/FillName.css" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="35.0" />
+            <Button fx:id="approve_btn" layoutX="332.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#handleApproveBtn" prefHeight="38.0" prefWidth="70.0" stylesheets="@../../static/stylesheets/FillName.css" text="Continue" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="35.0" />
+            <Label fx:id="instruction_lbl" layoutX="61.0" layoutY="30.0" stylesheets="@../../static/stylesheets/FillName.css" text="Please enter participant ID" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="30.0" />
+            <TextField fx:id="uid" layoutX="36.0" layoutY="88.0" prefHeight="25.0" prefWidth="361.0" stylesheets="@../../static/stylesheets/FillName.css" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" />
          </children>
       </AnchorPane>
       <Label fx:id="top_lbl" layoutX="14.0" layoutY="6.0" prefHeight="38.0" prefWidth="310.0" text="Result File Name" AnchorPane.bottomAnchor="223.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="136.0" AnchorPane.topAnchor="6.0" />
