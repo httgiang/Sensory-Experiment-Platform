@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
-        DataAccess. loadExperiments();
+        DataAccess.loadExperiments();
 
         primaryStage.setTitle("Sense XP");
 
@@ -27,7 +27,6 @@ public class Main extends Application {
         primaryStage.setHeight(850);
         primaryStage.setWidth(1450);
 
-//        primaryStage.sizeToScene();
 
         primaryStage.show();
 

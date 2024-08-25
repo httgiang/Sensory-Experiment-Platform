@@ -33,10 +33,6 @@ public class Base implements Initializable {
     private BorderPane borderPane;
 
 
-    public void setSelectedExp(Experiment selectedExp) {
-        this.selectedExp = selectedExp;
-    }
-
     @FXML
     void openDashBoard(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -45,10 +41,7 @@ public class Base implements Initializable {
 
         try{
             newContent = loader.load();
-            AnchorPane.setTopAnchor(newContent, 0.0);
-            AnchorPane.setBottomAnchor(newContent, 0.0);
-            AnchorPane.setLeftAnchor(newContent, 0.0);
-            AnchorPane.setRightAnchor(newContent, 0.0);
+            setResponsive(newContent);
             mainContent.getChildren().setAll(newContent);
         }
         catch (IOException e){
@@ -75,11 +68,7 @@ public class Base implements Initializable {
         AnchorPane newContent = null;
         try{
             newContent = loader.load();
-            AnchorPane.setTopAnchor(newContent, 0.0);
-            AnchorPane.setBottomAnchor(newContent, 0.0);
-            AnchorPane.setLeftAnchor(newContent, 0.0);
-            AnchorPane.setRightAnchor(newContent, 0.0);
-            mainContent.getChildren().setAll(newContent);
+            setResponsive(newContent);
             DashBoardController view = loader.getController();
 
         }
@@ -124,5 +113,12 @@ public class Base implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void setResponsive(AnchorPane newContent){
+        AnchorPane.setTopAnchor(newContent, 0.0);
+        AnchorPane.setBottomAnchor(newContent, 0.0);
+        AnchorPane.setLeftAnchor(newContent, 0.0);
+        AnchorPane.setRightAnchor(newContent, 0.0);
     }
 }

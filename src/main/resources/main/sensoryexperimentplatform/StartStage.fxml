@@ -10,14 +10,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.StartStageController">
+<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.StartStageController">
     <children>
         <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" prefHeight="253.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
                 <AnchorPane layoutX="10.0" prefWidth="510.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label layoutX="28.0" layoutY="64.0"  text="Title Text:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
+                        <Label layoutX="28.0" layoutY="64.0" text="Title Text:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
 
                         <TextField fx:id="txt_title" layoutX="200.0" layoutY="60.0" onMouseClicked="#txt_question" prefHeight="30.0" prefWidth="300.0" promptText="Simple VAS demo" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="10.399999999999977" />
                   <Label layoutX="28.0" layoutY="114.0" text="Content Text: " AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
@@ -27,21 +26,21 @@
                   <Label layoutX="28.0" layoutY="344.0" text="Does this experiment require a balance:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
                   <CheckBox fx:id="cbx_balance" layoutX="340.0" layoutY="344.0" mnemonicParsing="false" AnchorPane.leftAnchor="340.0" />
                   <Label layoutX="28.0" layoutY="394.0" text="Background color:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
-                  <Button fx:id="btn_changeColor" layoutX="200.0" layoutY="390.0" mnemonicParsing="false" onAction="#btn_changeColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="231.99999999999997" />
+                  <Button fx:id="btn_changeColor" layoutX="200.0" layoutY="390.0" mnemonicParsing="false" onAction="#btn_changeColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" />
                   <Label layoutX="28.0" layoutY="444.0" text="Text Color:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
-                  <Button fx:id="btn_textColor" layoutX="200.0" layoutY="440.0" mnemonicParsing="false" onAction="#btn_textColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="231.99999999999997" />
+                  <Button fx:id="btn_textColor" layoutX="200.0" layoutY="440.0" mnemonicParsing="false" onAction="#btn_textColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" />
                   <Label layoutX="28.0" layoutY="494.0" text="Font:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
-                  <Button fx:id="btn_font" layoutX="200.0" layoutY="490.0" mnemonicParsing="false" onAction="#btn_font" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="231.99999999999997" />
+                  <Button fx:id="btn_font" layoutX="200.0" layoutY="490.0" mnemonicParsing="false" onAction="#btn_font" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" />
                   <ChoiceBox fx:id="chx_change" layoutX="300.0" layoutY="490.0" prefHeight="30.0" prefWidth="196.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.399999999999977" />
                   <Label layoutX="28.0" layoutY="544.0" text="Start of Stage Delay(seconds): " AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
                   <TextField fx:id="txt_StarttimeDelay" layoutX="250.0" layoutY="540.0" onMouseClicked="#txt_question" prefHeight="30.0" prefWidth="250.0" promptText="0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" AnchorPane.leftAnchor="249.6" AnchorPane.rightAnchor="10.399999999999977" />
                   <Label layoutX="28.0" layoutY="594.0" text="End of Stage Delay(seconds): " AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
                   <TextField fx:id="txt_EndtimeDelay" layoutX="250.0" layoutY="590.0" onMouseClicked="#txt_question" prefHeight="30.0" prefWidth="250.0" promptText="0" AnchorPane.leftAnchor="250.39999999999995" AnchorPane.rightAnchor="9.999999999999972" />
                   <Label layoutX="28.0" layoutY="644.0" text="Disable button color:" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
-                  <Button fx:id="btn_DisableColor" layoutX="200.0" layoutY="640.0" mnemonicParsing="false" onAction="#btn_DisableColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="231.99999999999997" />
+                  <Button fx:id="btn_DisableColor" layoutX="200.0" layoutY="640.0" mnemonicParsing="false" onAction="#btn_DisableColor" prefHeight="30.0" prefWidth="78.0" text="Change" AnchorPane.leftAnchor="200.0" />
                   <ColorPicker fx:id="backGroundColor" layoutX="300.0" layoutY="390.0" prefHeight="30.0" prefWidth="196.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.399999999999977" />
                   <ColorPicker fx:id="textColor" layoutX="300.0" layoutY="440.0" prefHeight="30.0" prefWidth="196.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.399999999999977" />
-                  <ColorPicker fx:id="disablebuttoncolor" layoutX="300.0" layoutY="640.0" prefHeight="30.0" prefWidth="196.0" AnchorPane.rightAnchor="10.399999999999977" />
+                  <ColorPicker fx:id="disablebuttoncolor" layoutX="300.0" layoutY="640.0" prefHeight="30.0" prefWidth="196.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="10.399999999999977" />
                   <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="107.19999999999999" />
                     </children>
                 </AnchorPane>

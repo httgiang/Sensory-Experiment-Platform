@@ -4,7 +4,7 @@ package main.sensoryexperimentplatform.models;
 import javafx.collections.ObservableList;
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class AudibleInstruction extends Stage implements Model{
+public class AudibleInstruction extends Stage implements Model {
     private String title;
     private String content;
 

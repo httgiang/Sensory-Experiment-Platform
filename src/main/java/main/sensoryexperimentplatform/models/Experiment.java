@@ -90,6 +90,11 @@ public class Experiment {
                 TasteTest tasteTest = new TasteTest((TasteTest) o);
                 stages.add(tasteTest);
             }
+            else if(o instanceof ConditionalStatement){
+                ConditionalStatement conditionalStatement = new ConditionalStatement((ConditionalStatement) o);
+                stages.add(conditionalStatement);
+            }
+
         }
     }
 
@@ -125,7 +130,6 @@ public class Experiment {
     public void addVasStage(String title, String lowAnchorText, String highAnchorText,
                             int lowAnchorValue, int highAnchorValue, String buttonText,
                             String content, String helpText, boolean isSwap, boolean alert){
-
         Vas stage = new Vas(title, lowAnchorText, highAnchorText,
                 lowAnchorValue, highAnchorValue, buttonText, content,
                 helpText, isSwap, alert);
@@ -160,6 +164,12 @@ public class Experiment {
         stages.add(tasteTest);
         tasteTest.generateTasteTest();
     }
+    public void addConditonalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
+                                       String value2Text, String variable1Choice, String variable2Choice, String compare){
+        ConditionalStatement conditionalStatement = new ConditionalStatement(value1,value2, variable1,variable2,value1Text,value2Text,variable1Choice,variable2Choice,compare);
+        stages.add(conditionalStatement);
+
+    }
     // Audible instruction stage
     public void addAudibleInstruction(String title, String content, String buttonText, String helpText,String soundName,String filePath) {
         AudibleInstruction temp = new AudibleInstruction(title, content, buttonText, helpText,soundName,filePath);
@@ -168,6 +178,7 @@ public class Experiment {
     public void addCourse (Course course){
         stages.add(course);
     }
+
     public void addCourseStage(String title, String content, String buttonText, String endStatement,
                                int refillWeight, int duration, int quantity, String helpText, boolean alert){
         Course temp = new Course(title,content,buttonText,endStatement,refillWeight,duration,quantity,helpText,alert);
@@ -176,13 +187,16 @@ public class Experiment {
     public void addQuestion (Question question){
         stages.add(question);
     }
+
     public void addAudibleInstruction (AudibleInstruction audibleInstruction){
         stages.add(audibleInstruction);
     }
+
     public void addInput(Input input){
         stages.add(input);
     }
-    public void addConditionalStatement(conditionalStatement ConditionalStatement){
+
+    public void addConditionalStatement(ConditionalStatement ConditionalStatement){
         stages.add(ConditionalStatement);
     }
 
@@ -318,4 +332,6 @@ public class Experiment {
     public void addStage(Model stage) {
         stages.add(stage);
     }
+
+
 }

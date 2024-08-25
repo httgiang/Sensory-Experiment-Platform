@@ -1,23 +1,14 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.NoticeStageController;
-import main.sensoryexperimentplatform.controllers.RunNoticeController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Model;
-import main.sensoryexperimentplatform.models.Notice;
-import main.sensoryexperimentplatform.utilz.FeatureType;
+import main.sensoryexperimentplatform.controllers.*;
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-
-import static main.sensoryexperimentplatform.utilz.FeatureType.*;
 
 public class NoticeStage_VM implements ViewModel{
     private StringProperty buttonText ;
@@ -54,6 +45,24 @@ public class NoticeStage_VM implements ViewModel{
     @Override
     public Model getModel() {
         return notice;
+    }
+    public NoticeStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
+        this.notice = new Notice("User input", null,null, null,false);
+        this.buttonText = new SimpleStringProperty(notice.getButtonText());
+        this.helpText = new SimpleStringProperty(notice.getHelpText());
+        this.alert = new SimpleBooleanProperty(notice.isAlert());
+        this.titleText = new SimpleStringProperty(notice.getTitle());
+        this.contentText = new SimpleStringProperty(notice.getContent());
+        ifConditionalStatementVM.addIf(notice);
+    }
+    public NoticeStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
+        this.notice = new Notice("User input", null,null, null,false);
+        this.buttonText = new SimpleStringProperty(notice.getButtonText());
+        this.helpText = new SimpleStringProperty(notice.getHelpText());
+        this.alert = new SimpleBooleanProperty(notice.isAlert());
+        this.titleText = new SimpleStringProperty(notice.getTitle());
+        this.contentText = new SimpleStringProperty(notice.getContent());
+        elseConditionalStatementVM.addElse(notice);
     }
 
     @Override

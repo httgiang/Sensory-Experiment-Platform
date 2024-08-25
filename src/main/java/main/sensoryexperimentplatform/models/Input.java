@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class Input extends Stage implements Model{
+public class Input extends Stage implements Model {
     private String buttonText;
     private String helpText;
     private String questionText;

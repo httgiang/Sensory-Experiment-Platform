@@ -53,6 +53,24 @@ public class AddTasteVM implements ViewModel {
         initListener();
     }
 
+    public AddTasteVM(IfConditionalStatementVM ifConditionalStatementVM){
+        model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
+                "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
+                0,100, false, false, false, 0, false);
+        initBinding(model);
+        initListener();
+        ifConditionalStatementVM.addIf(model);
+    }
+    public AddTasteVM(ElseConditionalStatementVM elseConditionalStatementVM){
+        model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
+                "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
+                0,100, false, false, false, 0, false);
+        initBinding(model);
+        initListener();
+        elseConditionalStatementVM.addIf(model);
+
+    }
+
 
     private void initBinding(TasteTest model){
         txt_initialNotice = new SimpleStringProperty(model.getNoticeStageContent());

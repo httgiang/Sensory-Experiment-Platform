@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class Timer extends Stage{
+public class Timer extends Stage implements Model {
     private boolean alert;
     private boolean isRunning = true;
     private long timeToWait;
