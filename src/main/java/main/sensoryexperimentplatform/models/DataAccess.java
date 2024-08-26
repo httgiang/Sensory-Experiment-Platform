@@ -159,7 +159,16 @@ public class DataAccess {
                     .append(",")
                     .append(((Question) subO).getResult())
                     .append(",")
-                    .append(((Question) subO).getQuestion());
+                    .append(((Question) subO).getQuestion())
+                    .append(",")
+                    .append(((Question) subO).getLeftButtonText())
+                    .append(",")
+                    .append(((Question) subO).getRightButtonText())
+                    .append(",")
+                    .append(((Question) subO).getLeftButtonValue())
+                    .append(",")
+                    .append(((Question) subO).getRightButtonValue());
+
             writer.append("\n");
         }
         if( subO instanceof Input){
