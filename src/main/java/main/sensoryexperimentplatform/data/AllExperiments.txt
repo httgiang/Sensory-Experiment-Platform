@@ -220,3 +220,13 @@ EndElse()
 EndConditionalStatement()
 endExperiment()
 
+ExperimentName: Testing 
+ExperimenterName: Quynh Anhh
+ExperimentID: 0
+Created on: 26.08.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+questionStage("Muốn hỏi gì hỏi đi ","Không có biết ","Gì vậy trời ","đúng ","sai ","null","true")
+inputStage("hỏi đi mà huhu ","oke nha","null","false")
+endExperiment()
+

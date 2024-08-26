@@ -156,6 +156,7 @@ public class DataAccess {
         }
         if( subO instanceof Question){
             writer.append(uid).append(",").append("questionStage ,")
+                    .append(",")
                     .append(((Question) subO).getResult())
                     .append(",")
                     .append(((Question) subO).getQuestion());
@@ -163,6 +164,7 @@ public class DataAccess {
         }
         if( subO instanceof Input){
             writer.append(uid).append(",").append("input ,")
+                    .append(",")
                     .append(((Input) subO).getResult())
                     .append(",")
                     .append(((Input) subO).getQuestionText());

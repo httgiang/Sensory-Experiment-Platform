@@ -1,6 +1,7 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +28,8 @@ public class InputStage_VM implements ViewModel{
     public InputStage_VM( Input input){
         this.input = input;
         initListener();
+
+
     }
     public InputStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
         this.input = new Input("User input", null,null, false);

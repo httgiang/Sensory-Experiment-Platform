@@ -6,17 +6,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.InputStage_VM;
-import main.sensoryexperimentplatform.viewmodel.RunInputVM;
-
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 public class RunInputController {
 
@@ -89,6 +84,10 @@ public class RunInputController {
 
     private void bindViewModel() {
         txt_input.textProperty().bindBidirectional(viewModel.getResult());
+
+        txt_input.textProperty().addListener((_, _, newValue) -> {
+            viewModel.setResult(newValue);
+        });
         txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
 
     }
