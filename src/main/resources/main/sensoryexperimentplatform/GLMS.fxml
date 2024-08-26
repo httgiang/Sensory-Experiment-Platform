@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="largePane" maxHeight="267.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="255.0" prefWidth="534.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.GLMSController">
+<AnchorPane fx:id="largePane" maxHeight="267.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="255.0" prefWidth="534.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.GLMSController">
     <children>
         <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="8.0" layoutY="2.0" prefHeight="253.0" prefWidth="531.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>

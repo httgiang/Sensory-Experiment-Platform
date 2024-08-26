@@ -48,7 +48,7 @@ public class AssignSoundVM {
 
     //set sound name for audible stage
     public void setAudibleSoundName(String soundName){
-      audibleInstruction.setSoundName(soundName);
+        audibleInstruction.setSoundName(soundName);
     }
     //get Audible sound name
     public String getAudibleSoundName(){
@@ -60,15 +60,15 @@ public class AssignSoundVM {
     }
     // method to play sound
     public void playSound(String name) {
-       sound.playSound(name);
+        sound.playSound(name);
     }
     // method to stop sound
     public void stopSound(String name) {
-       sound.stopSound(name);
+        sound.stopSound(name);
     }
     // method to remove sound
     public void removeSound(String name) {
-       sound.getSoundNameshow().remove(name);
+        sound.getSoundNameshow().remove(name);
     }
     // method to set sound path
     public void setSoundPath(String path) {
@@ -90,7 +90,10 @@ public class AssignSoundVM {
     }
     //method to export sound
     public void exportSound( String filePath){
-        sound.exportSoundToFolder(filePath,"src/main/java/main/sensoryexperimentplatform/sound");
+        sound.exportSoundToFolder(filePath,"src/main/resources/sound/");
+    }
+    public String retriveSoundPath(String soundName){
+        return sound. retriveSoundPath(soundName);
     }
 
 

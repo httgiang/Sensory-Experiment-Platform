@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/22"
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" xmlns="http://javafx.com/javafx/11.0.2"
             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunInputController">
     <children>

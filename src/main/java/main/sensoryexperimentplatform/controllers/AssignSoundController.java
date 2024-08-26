@@ -130,7 +130,7 @@ public class AssignSoundController {
         if (selectedRadioButton != null) {
             String soundName = selectedRadioButton.getText();
             viewModel.setAudibleSoundName(soundName);
-            viewModel.setAudibleFilePath(viewModel.getSoundPath());
+            viewModel.setAudibleFilePath(viewModel.retriveSoundPath(soundName));
             Stage currentStage = (Stage) btn_save2.getScene().getWindow();
             currentStage.close();
         }

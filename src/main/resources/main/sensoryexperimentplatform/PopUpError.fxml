@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="300.0" maxWidth="560.0" prefHeight="300.0" prefWidth="474.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.PopUpErrorController">
+<AnchorPane maxHeight="300.0" maxWidth="560.0" prefHeight="300.0" prefWidth="474.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.PopUpErrorController">
     <children>
         <ImageView fitHeight="104.0" fitWidth="218.0" layoutX="136.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
             <image>

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="coverPane" prefHeight="682.0" prefWidth="1309.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.ShowResultController">
+<AnchorPane fx:id="coverPane" prefHeight="682.0" prefWidth="1309.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.ShowResultController">
    <children>
                 <TableView fx:id="tableView" prefHeight="682.0" prefWidth="1318.0"
                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="0.0"

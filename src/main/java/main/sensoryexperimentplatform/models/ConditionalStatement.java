@@ -15,10 +15,12 @@ public class ConditionalStatement implements Model{
     private String compare;
     public List<Model> IfConditional;
     public List<Model> ElseConditional;
+    private int BoutNumber;
 
 
     public ConditionalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
                                 String value2Text, String variable1Choice, String variable2Choice, String compare){
+
         this.value1 = value1;
         this.value2 = value2;
         this.variable1 = variable1;
@@ -28,7 +30,7 @@ public class ConditionalStatement implements Model{
         this.variable1Choice = variable1Choice;
         this.variable2Choice = variable2Choice;
         this.compare = compare;
-
+        this.BoutNumber = 9600;
         IfConditional = new ArrayList<>();
         ElseConditional = new ArrayList<>();
 
@@ -45,7 +47,7 @@ public class ConditionalStatement implements Model{
         this.variable1Choice = other.variable1Choice;
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
-
+        this.BoutNumber = 9600;
        IfConditional = other.getIfConditional();
        ElseConditional = other.getElseConditional();
 

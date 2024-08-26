@@ -15,12 +15,12 @@
                 <Image url="@../../static/images/Help_outline.png" />
             </image>
         </ImageView>
-        <Button fx:id="btn_right" layoutX="629.0" layoutY="203.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="155.0" wrapText="true" AnchorPane.rightAnchor="473.0">
+        <Button fx:id="btn_right" layoutX="629.0" layoutY="203.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="155.0" wrapText="true" AnchorPane.rightAnchor="473.0">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
-        <Button fx:id="btn_left" layoutX="456.0" layoutY="203.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="155.0" wrapText="true" AnchorPane.leftAnchor="456.0">
+        <Button fx:id="btn_left" layoutX="456.0" layoutY="203.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="155.0" wrapText="true" AnchorPane.leftAnchor="456.0">
             <font>
                 <Font size="20.0" />
             </font>

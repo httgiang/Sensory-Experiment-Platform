@@ -108,7 +108,7 @@ public class RunController {
             }
         });
         if (!listView.getItems().isEmpty()) {;
-            showRunningPane(listView.getItems().getFirst());
+            showRunningPane(listView.getItems().get(0));
         }
     }
 

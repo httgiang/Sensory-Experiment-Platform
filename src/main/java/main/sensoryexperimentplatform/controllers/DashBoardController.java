@@ -74,14 +74,15 @@ public class DashBoardController {
     }
 
     private void bindColumnWidths() {
-        lbl_iD.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.075)); // 7.5% of table width
-        lbl_creator.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.15)); // 15% of table width
-        lbl_experimentName.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.25)); // 20% of table width
-        lbl_currentVersion.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 12.5% of table width
-        lbl_result.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.10)); // 10% of table width
-        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.12)); // 20% of table width
-        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.18)); // 25% of table width
+        lbl_iD.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.077)); // 7.7% of table width
+        lbl_creator.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.152)); // 15.2% of table width
+        lbl_experimentName.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.252)); // 25.2% of table width
+        lbl_currentVersion.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.102)); // 10.2% of table width
+        lbl_result.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.102)); // 10.2% of table width
+        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.122)); // 12.2% of table width
+        lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.183)); // 18.3% of table width
     }
+
 
 
     public void bindViewModel() {
