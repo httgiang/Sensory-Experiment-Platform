@@ -18,11 +18,10 @@ public class InputStage_VM implements ViewModel{
     private StringProperty questionText, result, helpText, button;
     private BooleanProperty alert;
 
-    public InputStage_VM(Experiment experiment){
-        this.experiment = experiment;
+    public InputStage_VM(){
         this.input = new Input("User input", null,null, false);
         initListener();
-        experiment.addInput(input);
+       // experiment.addInput(input);
 
     }
     public InputStage_VM( Input input){
@@ -107,6 +106,11 @@ public class InputStage_VM implements ViewModel{
         return input;
     }
 
+
+    @Override
+    public Model getModel() {
+        return input;
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {

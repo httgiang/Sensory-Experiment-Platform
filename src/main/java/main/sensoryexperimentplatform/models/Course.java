@@ -9,6 +9,7 @@ import main.sensoryexperimentplatform.controllers.AddCourseController;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class Course extends ModelContainer implements Model{
     private boolean alert;
@@ -29,6 +30,7 @@ public class Course extends ModelContainer implements Model{
         this.helpText = helpText;
         this.endStatement = endStatement;
         this.alert = alert;
+        children = new ArrayList<>();
     }
     public Course(Course course){
         this.title = course.getTitle();
@@ -40,6 +42,8 @@ public class Course extends ModelContainer implements Model{
         this.helpText = course.getHelpText();
         this.endStatement = course.getEndStatement();
         this.alert = course.isAlert();;
+
+        this.children = course.getChildren();
     }
     //Default
     public Course(String title, String content){
@@ -52,6 +56,7 @@ public class Course extends ModelContainer implements Model{
                 "Click on Meal Finished ONLY when you are sure you have had enough food.";
         buttonText = "Finished";
         endStatement = "End session";
+
     }
     public void setPeriodic(Periodic periodic){
         this.periodic = periodic;
@@ -65,6 +70,18 @@ public class Course extends ModelContainer implements Model{
         System.out.println("helpText: " + helpText);
         System.out.println("endStatement: " + endStatement);
 
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
+    public void setEndStatement(String endStatement) {
+        this.endStatement = endStatement;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public boolean isAlert() {
@@ -132,7 +149,7 @@ public class Course extends ModelContainer implements Model{
         return "startEating(\"" + getTitle() + "\",\"" + getContent() + "\",\""
                 + getButtonText() + "\",\"" + getEndStatement() + "\",\""
                 + getRefillWeight() + "\",\"" + getQuantity() +"\",\""
-                + getDuration() + "\",\"" + getHelpText() + "\")\n"
+                + getDuration() + "\",\"" + getHelpText() + "\",\"" + isAlert() + "\")\n"
                 + componentToString() + "endEating()";
     }
 }

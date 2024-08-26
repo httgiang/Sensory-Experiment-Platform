@@ -3,6 +3,7 @@
     -fx-font-size: 30px;
     -fx-text-fill: #397E82;
     -fx-tile-alignment: center;
+    -fx-text-alignment: center;
     -fx-alignment: CENTER;
 }
 #titleTxt,#title_lbl,#txt_question {
@@ -13,7 +14,7 @@
     -fx-font-size: 36px;
 }
 .text-field{
-    -fx-border-color: #696969;
+    -fx-border-color: #397E82;
     -fx-border-radius: 5px 5px 5px 5px;
     -fx-box-sizing: border-box;
 }

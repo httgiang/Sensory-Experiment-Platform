@@ -378,6 +378,7 @@ public class DataAccess {
 
                     }
                 } else if(line.startsWith("startEating")){
+                    //startEating("aaaa","rrrr","aaaa","qqqq","1111","000","00","bbbbb","xxx")
                     Pattern coursePattern = Pattern.compile("startEating\\(\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\",\"(.?)\"\\)");
                     Matcher matcher = coursePattern.matcher(line);
                     isCourse = true;
@@ -531,7 +532,7 @@ public class DataAccess {
                     isContainer = false;
                 }
                 else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
+                    ExperimentList.addExperiment(currentExperiment);
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
                     currentExperiment = createNewExperiment();
 
@@ -648,17 +649,17 @@ public class DataAccess {
 
                         String soundName = Arrays.toString(matcher.group(5).split(","));
                         String formattedSoundName = soundName.substring(1, soundName.length() - 1);
-                        String soundPath  = Arrays.toString(matcher.group(6).split(","));
+                        String soundPath = Arrays.toString(matcher.group(6).split(","));
                         String formattedSoundPath = soundPath.substring(1, soundPath.length() - 1);
 
                         audibleInstruction.addSoundList(formattedSoundName);
                         audibleInstruction.loadSound(formattedSoundName,formattedSoundPath);
 
 
-                        if (isIf && conditionalStatement !=null && isConditionalStatement){
+                        if (isIf && conditionalStatement != null && isConditionalStatement){
                             conditionalStatement.addIf(audibleInstruction);
                         }
-                        else if (isElse && conditionalStatement !=null && isConditionalStatement){
+                        else if (isElse && conditionalStatement != null && isConditionalStatement){
                             conditionalStatement.addElse(audibleInstruction);
                         }
                         else {
@@ -741,9 +742,8 @@ public class DataAccess {
                     }
                 } else if(line.startsWith("startEating")){
                     //startEating("title","content","button","end","-1","-1","-1","help","alert")
-                    Pattern coursePattern = Pattern.compile(
-                            "startEating\\(\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"\\)"
-                    );
+                    Pattern coursePattern = Pattern.compile("startEating\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+
                     Matcher matcher = coursePattern.matcher(line);
                     isCourse = true;
                     if (matcher.find()) {
@@ -883,8 +883,8 @@ public class DataAccess {
                         currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
                                 Integer.parseInt(matcher.group(2))
                         );
-                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
-                        if(isCourse && course != null){
+                        rc = (RatingContainer) currentExperiment.getStages().getLast();
+                        if(isCourse && course != null && rc != null){
                             course.addChildren(rc);
                         }
                         else if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -899,7 +899,7 @@ public class DataAccess {
                     isContainer = false;
                 }
                 else if (line.startsWith("endExperiment()")){
-                    listOfExperiment.addExperiment(currentExperiment);
+                    ExperimentList.addExperiment(currentExperiment);
                     currentExperiment.setNumber_of_results(DataAccess.countingResults(currentExperiment));
                     currentExperiment = createNewExperiment();
 
@@ -918,7 +918,7 @@ public class DataAccess {
     }
 
     public static void updateFile() throws Exception {
-        ArrayList<Experiment> experiments = listOfExperiment.getInstance();
+        ArrayList<Experiment> experiments = ExperimentList.getInstance();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(saveFilePath))) {
             for (Experiment experiment : experiments) {
                 writer.write(experiment.toString());

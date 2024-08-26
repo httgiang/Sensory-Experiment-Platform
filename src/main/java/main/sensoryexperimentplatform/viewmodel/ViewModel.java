@@ -2,11 +2,13 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import main.sensoryexperimentplatform.models.Model;
 
 import java.io.IOException;
 
 public interface ViewModel {
 
+    Model getModel();
     void loadRunInterface(AnchorPane anchorPane) throws IOException;
     void loadEditInterface(AnchorPane anchorPane) throws IOException;
     void handleEditButtons(Button button1, Button button2, Button button3, Button button4, Button button5,

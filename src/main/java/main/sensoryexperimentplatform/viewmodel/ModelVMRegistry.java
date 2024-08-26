@@ -23,6 +23,8 @@ public class ModelVMRegistry {
         registry.put(Question.class, model -> new QuestionStage_VM((Question) model));
         registry.put(Timer.class, model -> new TimerStage_VM((Timer) model));
         registry.put(RatingContainer.class, model -> new RatingContainer_VM((RatingContainer) model));
+        registry.put(Course.class, model -> new AddCourseVM((Course) model));
+
         registry.put(TasteTest.class, model -> new AddTasteVM((TasteTest) model));
         registry.put(AudibleInstruction.class, model -> {
             try {
@@ -52,4 +54,6 @@ public class ModelVMRegistry {
         }
         return null; //if no view model for that specific model
     }
+
+
 }

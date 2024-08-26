@@ -44,14 +44,13 @@ public class AddTasteVM implements ViewModel {
 //            System.out.println("taste test con: " + o);
 //        }
     }
-    public AddTasteVM(Experiment experiment){
+    public AddTasteVM(){
         this.experiment = experiment;
         model = new TasteTest("Please call the experimenter for the samples","How <taste> is <food>?", "Consumption instruction",
                 "End instruction", "Low Anchor Text","High Anchor Text", "Continue", "",
                 0,100, false, false, false, 0, false);
         initBinding(model);
         initListener();
-        experiment.addNewTasteTest(model);
     }
 
     public AddTasteVM(IfConditionalStatementVM ifConditionalStatementVM){

@@ -9,7 +9,6 @@ import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ConditionalStatementVM implements ViewModel {
     private ConditionalStatement conditionalStatement;
@@ -19,9 +18,9 @@ public class ConditionalStatementVM implements ViewModel {
     private SimpleStringProperty variable2Choice;
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
-    private Experiment experiment;
+
     public ConditionalStatementVM(ConditionalStatement conditionalStatement){
-        this.conditionalStatement = conditionalStatement;
+        this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
         value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(conditionalStatement.getValue2Text());
         variable1Choice = new SimpleStringProperty(conditionalStatement.getVariable1Choice());
@@ -32,11 +31,8 @@ public class ConditionalStatementVM implements ViewModel {
         variable1Choice.addListener((observableValue, oldValue, newValue)->setVariable1Choice(newValue));
         variable2Choice.addListener((observableValue, oldValue, newValue)->setVariable2Choice(newValue));
         compare.addListener((observableValue, oldValue, newValue)->setCompare(newValue));
-        System.out.println(conditionalStatement.getIfConditional());
-        System.out.println(conditionalStatement.getElseConditional());
     }
-    public ConditionalStatementVM(Experiment experiment){
-        this.experiment = experiment;
+    public ConditionalStatementVM(){
         this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
 
         value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
@@ -49,11 +45,8 @@ public class ConditionalStatementVM implements ViewModel {
         variable1Choice.addListener((observableValue, oldValue, newValue)->setVariable1Choice(newValue));
         variable2Choice.addListener((observableValue, oldValue, newValue)->setVariable2Choice(newValue));
         compare.addListener((observableValue, oldValue, newValue)->setCompare(newValue));
-        experiment.addConditionalStatement(conditionalStatement);
 
     }
-
-
 
     public void setValue1Choice(String newValue){
      conditionalStatement.setValue1Choice(newValue);
@@ -102,23 +95,10 @@ public class ConditionalStatementVM implements ViewModel {
     }
 
 
-    public void addChildren(Model object){
-        conditionalStatement.addChildren(object);
-    }
-    // for debugging
-    public List<Model> getChildren(){
-        return conditionalStatement.getIfConditional();
-    }
-    public void addIf(Model object){
-        conditionalStatement.addIf(object);
-    }
-    public void addElse(Model object){
-        conditionalStatement.addElse(object);
-    }
-    public ConditionalStatement getModel(){
+    @Override
+    public Model getModel() {
         return conditionalStatement;
     }
-
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) {
@@ -158,6 +138,30 @@ public class ConditionalStatementVM implements ViewModel {
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back) {
 
+    }
+
+    public ConditionalStatement getConditionalStatement() {
+        return conditionalStatement;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "If "+ conditionalStatement.getVariable1Choice() + " " + conditionalStatement.getCompare() + " Then " + conditionalStatement.getVariable2Choice() ;
+    }
+
+
+    public void addIf(Model object){
+        conditionalStatement.addIf(object);
+    }
+    public void addElse(Model object){
+        conditionalStatement.addElse(object);
+    }
+
+
+    public String getTitle2(){
+        return "Else";
     }
 
 }

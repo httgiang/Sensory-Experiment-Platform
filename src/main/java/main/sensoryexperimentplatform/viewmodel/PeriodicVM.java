@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddPeriodic;
 import main.sensoryexperimentplatform.models.Course;
+import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Periodic;
 import main.sensoryexperimentplatform.utilz.FeatureType;
 
@@ -97,6 +98,11 @@ public class PeriodicVM implements ViewModel {
         return forAmount;
     }
 
+
+    @Override
+    public Model getModel() {
+        return course.getPeriodic();
+    }
 
     @Override
     public void loadRunInterface(AnchorPane anchorPane) throws IOException {

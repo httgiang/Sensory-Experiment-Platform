@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.models.DataAccess;
-import main.sensoryexperimentplatform.models.listOfExperiment;
 
 public class Main extends Application {
 
@@ -28,7 +27,6 @@ public class Main extends Application {
         primaryStage.setHeight(850);
         primaryStage.setWidth(1450);
 
-//        primaryStage.sizeToScene();
 
         primaryStage.show();
 

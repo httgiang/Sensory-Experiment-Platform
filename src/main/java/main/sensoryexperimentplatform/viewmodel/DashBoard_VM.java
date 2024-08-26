@@ -7,7 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.sensoryexperimentplatform.utilz.Observer;
 import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.listOfExperiment;
+import main.sensoryexperimentplatform.models.ExperimentList;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class DashBoard_VM implements Observer {
     private int size;
 
     public DashBoard_VM() {
-        listOfExperiment.attach(this);
+        ExperimentList.attach(this);
         experiments = new SimpleListProperty<>(FXCollections.observableArrayList());
 
         reload();
@@ -46,7 +46,7 @@ public class DashBoard_VM implements Observer {
 
     public void loadItems() throws Exception {
         new Thread(() -> {
-            List<Experiment> experimentList = listOfExperiment.getInstance();
+            List<Experiment> experimentList = ExperimentList.getInstance();
             Platform.runLater(() -> {
                 experiments.setAll(experimentList);
                 size = experiments.size();
@@ -67,7 +67,7 @@ public class DashBoard_VM implements Observer {
     @Override
     public void update() {
         try {
-            experiments.setAll(listOfExperiment.getInstance());
+            experiments.setAll(ExperimentList.getInstance());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -2,7 +2,7 @@ package main.sensoryexperimentplatform.models;
 
 import main.sensoryexperimentplatform.controllers.SoundSingleton;
 
-public class gLMS extends Stage implements containerObject, Model{
+public class gLMS extends Stage implements Model{
     private String title;
     private String questionText;
     private String buttonText;

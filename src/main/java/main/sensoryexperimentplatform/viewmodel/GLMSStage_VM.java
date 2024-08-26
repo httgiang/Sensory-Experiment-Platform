@@ -19,26 +19,21 @@ public class GLMSStage_VM implements ViewModel{
     private StringProperty conducted;
     private Experiment experiment;
     private gLMS glms;
-    public GLMSStage_VM(Experiment experiment){
-        this.experiment = experiment;
+    public GLMSStage_VM(){
         this.glms = new gLMS("User Input",null,null,null, false);;
         initListener();
-        experiment.addGlmsStage(glms);
+       // experiment.addGlmsStage(glms);
     }
     public GLMSStage_VM(gLMS glms){
         this.glms = glms;
         initListener();
     }
 
-    public GLMSStage_VM(RatingContainer_VM rating) {
-        this.glms = new gLMS("User Input",null,null,null, false);;
-        initListener();
-        rating.addContainerStage(glms);
-    }
+
     public GLMSStage_VM (IfConditionalStatementVM ifConditionalStatementVM){
         this.glms = new gLMS("User Input",null,null,null, false);
         initListener();
-      ifConditionalStatementVM.addIf(glms);
+       ifConditionalStatementVM.addIf(glms);
     }
 
     public GLMSStage_VM (ElseConditionalStatementVM elseConditionalStatementVM){
@@ -69,6 +64,11 @@ public class GLMSStage_VM implements ViewModel{
             conducted.set(DataAccess.getCurrentFormattedTime());
             setDate();
         } ));
+    }
+
+    @Override
+    public Model getModel() {
+        return glms;
     }
 
     @Override

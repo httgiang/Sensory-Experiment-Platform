@@ -8,13 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.addRatingContainerController;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.RatingContainer;
-import main.sensoryexperimentplatform.models.Vas;
-import main.sensoryexperimentplatform.models.gLMS;
-import main.sensoryexperimentplatform.models.containerObject;
-import main.sensoryexperimentplatform.utilz.FeatureType;
+import main.sensoryexperimentplatform.controllers.*;
+
+import main.sensoryexperimentplatform.models.*;
 
 import java.io.IOException;
 
@@ -22,21 +18,17 @@ public class RatingContainer_VM implements ViewModel {
     private RatingContainer ratingContainer;
     private IntegerProperty minTime;
     private BooleanProperty isRandomize;
-    private Vas vas;
-    private gLMS glms;
-    private Experiment experiment;
 
-    public RatingContainer_VM(Experiment experiment){
-        this.experiment = experiment;
+    public RatingContainer_VM(){
         this.ratingContainer = new RatingContainer(false,0);
-        minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
-        minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
-        isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
-        isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
-        experiment.addRatingContainerStage(ratingContainer);
+        initListener();
+      //  experiment.addRatingContainerStage(ratingContainer);
     }
     public RatingContainer_VM(RatingContainer rc){
         this.ratingContainer = rc;
+        initListener();
+    }
+    private void initListener(){
         minTime = new SimpleIntegerProperty(ratingContainer.getMinTime());
         minTime.addListener((observableValue, oldValue, newValue) -> onMinTime(newValue));
         isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
@@ -57,6 +49,10 @@ public class RatingContainer_VM implements ViewModel {
         isRandomize = new SimpleBooleanProperty(ratingContainer.isRandomize());
         isRandomize.addListener((observableValue, oldValue, newValue) -> onRandom(newValue));
         elseConditionalStatementVM.addElse(ratingContainer);
+    }
+    @Override
+    public Model getModel() {
+        return ratingContainer;
     }
 
     @Override
@@ -134,10 +130,6 @@ public class RatingContainer_VM implements ViewModel {
     }
     public void setIsRandomize(boolean newValue){
         ratingContainer.setRandomize(newValue);
-    }
-
-    public void addContainerStage(containerObject object){
-        ratingContainer.addStage(object);
     }
     public RatingContainer getRatingContainer(){
         return ratingContainer;

@@ -14,17 +14,7 @@ public class RatingContainer extends ModelContainer implements Model{
     public RatingContainer(RatingContainer other){
         this.isRandomize = other.isRandomize;
         this.minTime = other.minTime;
-        children = new ArrayList<>();
-        for (Model subO : other.children) {
-            if (subO instanceof Vas) {
-                Vas temp = new Vas((Vas) subO);
-                addChildren(temp);
-            }
-            if (subO instanceof gLMS) {
-                gLMS temp = new gLMS((gLMS) subO);
-                addChildren(temp);
-            }
-        }
+        children = other.getChildren();
     }
     public void randomizeContainer(){
         if(isRandomize){
