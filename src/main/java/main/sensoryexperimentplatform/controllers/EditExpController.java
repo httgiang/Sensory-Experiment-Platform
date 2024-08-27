@@ -576,18 +576,19 @@ public class EditExpController {
     @FXML
     void delete(ActionEvent event) throws Exception {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null && selectedItem != startStage) {
+        if(selectedItem == startStage){
+            PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete Start stage", experiment);
+            return;
+        }
+        if (selectedItem != null){
             TreeItem<ViewModel> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if (currentIndex == 0) {
-                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete start stage", experiment);
-                    return;
-                }
+
+               // PopUpVM popUpConfirm = new PopUpVM(CONFIRM, "Are you sure you want to delete this stage?", experiment);
                 Object curr = experiment.getStages().get(currentIndex);
                 parent.getChildren().remove(selectedItem);
                 experiment.getStages().remove(curr);
-                DataAccess.updateFile();
             }
         }
     }
@@ -596,9 +597,15 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
+            if(selectedItem == startStage){
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move Start stage", experiment);
+                return;
+            }
+
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if(currentIndex == parent.getChildren().size() - 1){
+
+                if(currentIndex == parent.getChildren().size() - 1){//last item
                     PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
                     return;
                 }
@@ -621,8 +628,16 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
+            if (selectedItem == startStage) {
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
+                return;
+            }
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if (currentIndex == 0) {
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot switch stage with Start", experiment);
+                    return;
+                }
                 if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
                     TreeItem<ViewModel> lastItem = parent.getChildren().get(currentIndex - 1);
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
@@ -632,8 +647,6 @@ public class EditExpController {
                     experiment.getStages().set(currentIndex, last);
                 }
                 treeView.getSelectionModel().select(currentIndex);
-            } else {
-                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
             }
         }
     }
