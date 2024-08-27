@@ -28,7 +28,7 @@
     -fx-background-radius: 13px;
     -fx-background-insets: 0, 2; /* Adjust the second value to control border width */
     -fx-background-color:
-            linear-gradient(to right bottom, #397E82, #FFFACD), /* Border gradient */
+            /*linear-gradient(to right bottom, #397E82, #FFFACD), !* Border gradient *!*/
             white;
 }
 
@@ -78,14 +78,15 @@
 }
 
 .button {
-    -fx-background-color: #F1F6FB;
+    -fx-background-color: #397E82;
     -fx-background-radius: 30px;
+    -fx-text-fill: #F0F0F0;
     -fx-padding: 18px 32px;
     -fx-effect: innershadow(three-pass-box, rgba(85, 91, 110, 0.15), 5, 0, 0, 5);
 }
 .button:hover{
-    -fx-background-color: #397E82;
-    -fx-text-fill: #F0F0F0;
+    -fx-background-color: #D5E9EA;
+    -fx-text-fill: #FFFF;
     -fx-effect: dropshadow(three-pass-box, rgba(85, 91, 110, 0.15), 5, 0, 0, 5);
 }
 .flex-box {

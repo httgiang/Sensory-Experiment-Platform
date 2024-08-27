@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -73,14 +74,21 @@ public class FillNameController {
             stage.close();
             controller.stopTimer();
         });
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.setFullScreenExitHint("Press any keys to exit full screen");
-        scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.F11) {
-                stage.setFullScreen(!stage.isFullScreen()); // Toggle full-screen mode
+
+        // Disable ESC key from exiting full-screen mode
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                event.consume(); // Consume the ESC key press
             }
         });
+
+        // Disable any key combination from exiting full-screen mode
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Optionally remove the exit hint message
+
         stage.show();
     }
 }

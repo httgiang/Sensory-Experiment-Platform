@@ -44,6 +44,9 @@ public class RunCourseController {
         if (viewModel.txt_helpProperty() != null) {
             tooltip.setText(viewModel.txt_helpProperty().get());
         }
+        if(viewModel.txt_titleProperty() == null) {
+            tooltip.setOpacity(0.0);
+        }
 
         tooltip.setStyle(
                 "-fx-background-color: #e3e2e2;\n" +
@@ -62,6 +65,12 @@ public class RunCourseController {
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
+
+        if(viewModel.txt_helpProperty()  == null || viewModel.txt_helpProperty().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
 
         // Add a listener to detect when the image is set to the ImageView
         help_image.imageProperty().addListener(new ChangeListener<>() {

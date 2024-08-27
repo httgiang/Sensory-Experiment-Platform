@@ -141,6 +141,23 @@ public class ConditionalStatement implements Model{
         return IfConditional;
     }
 
+    private int getValueBasedOnChoice(String choice) {
+        switch (choice) {
+            case "Scale Reading":
+//                return getScaleReading(); // Implement this method to return the actual value
+            case "Bout Number":
+                return BoutNumber; // Implement this method to return the actual value
+            case "Total Eaten Over Course":
+//                return getTotalEatenOverCourse(); // Implement this method to return the actual value
+            case "Total Eaten Over Experiment":
+//                return getTotalEatenOverExperiment(); // Implement this method to return the actual value
+            default:
+                return 0; // Default or error value
+        }
+    }
+
+
+
     @Override
     public String toString() {
         StringBuilder ifBuilder = new StringBuilder();

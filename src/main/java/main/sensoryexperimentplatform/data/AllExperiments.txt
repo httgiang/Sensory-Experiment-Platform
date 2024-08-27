@@ -208,7 +208,7 @@ ExperimentID: 0
 Created on: 25.08.2024
 Version: 3
 startExperiment("Start Experiment","Welcome to CourseTest experiment!","null")
-startEating("Start Eating Phase","Contact experimenter for further instructions","Finished","This is the end of eating phase.","0","450","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","true")
+startEating("Start Eating Phase","Contact experimenter for further instructions","Finished","This is the end of eating phase.","0","0","450","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","true")
 endEating()
 endExperiment()
 
@@ -220,6 +220,17 @@ Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 questionStage("Muốn hỏi gì hỏi đi ","Không có biết ","Gì vậy trời ","đúng ","sai ","null","true")
 inputStage("hỏi đi mà huhu ","oke nha","null","false")
+audio("Default Notice Stage","null","null","null","cccccc","D:\Project\Sensory\Sensory-Experiment-Platform\src\main\resources\sound\g2-89126.wav")
+endExperiment()
+
+ExperimentName: Sample
+ExperimenterName: Quynh Anh
+ExperimentID: 0
+Created on: 27.08.2024
+Version: 2
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+audio("Default Notice Stage","null","null","null","boop","src/main/resources/sound/boop-741-mhz-39314.wav")
+audio("Default Notice Stage","null","null","null","cccccc","D:\Project\Sensory\Sensory-Experiment-Platform\src\main\resources\sound\g2-89126.wav")
 audio("Default Notice Stage","null","null","null","cccccc","D:\Project\Sensory\Sensory-Experiment-Platform\src\main\resources\sound\g2-89126.wav")
 endExperiment()
 

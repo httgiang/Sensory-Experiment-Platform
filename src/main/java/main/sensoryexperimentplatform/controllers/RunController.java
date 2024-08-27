@@ -44,6 +44,8 @@ public class RunController {
         startTimer();
         setListViewListener();
         initButtons();
+
+
     }
 
 

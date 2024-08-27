@@ -49,6 +49,12 @@ public class RunNoticeController {
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
 
+        if(viewModel.getHelpText()  == null || viewModel.getHelpText().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
+
         help_image.imageProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends Image> observable, javafx.scene.image.Image oldImage, javafx.scene.image.Image newImage) {

@@ -65,6 +65,12 @@ public class RunQuestionController {
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
 
+        if(viewModel.getHelpText()  == null || viewModel.getHelpText().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
+
         // Add a listener to detect when the image is set to the ImageView
         help_image.imageProperty().addListener(new ChangeListener<>() {
             @Override

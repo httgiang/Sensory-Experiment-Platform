@@ -34,10 +34,13 @@ public class Sound {
     }
 
     public void addNewSound(String soundName) {
-        // Ensure the list is initialized
         getSoundNameshow();
-        // Add the new sound name to the list
-        soundNameshow.add(soundName);
+
+        // Check if the sound name already exists in the list
+        if (!soundNameshow.contains(soundName)) {
+            // Add the new sound name to the list if it doesn't already exist
+            soundNameshow.add(soundName);
+        }
     }
 
     public void setSoundNameshow(ObservableList<String> soundNameshow) {
