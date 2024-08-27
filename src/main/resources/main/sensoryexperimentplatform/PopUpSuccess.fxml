@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="435.0" style="-fx-background-color: #F0F0F0;" styleClass="anchor-pane" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.PopUpSuccessController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="435.0" style="-fx-background-color: #F0F0F0;" styleClass="anchor-pane" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.PopUpSuccessController">
    <children>
       <Text fx:id="lbl_goodjob" layoutX="140.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success!" />
       <ImageView fitHeight="200.0" fitWidth="155.0" layoutX="140.0" layoutY="14.0">

@@ -46,6 +46,12 @@ public class RunAudibleController {
         tooltip.setWrapText(true);
         tooltip.setMaxWidth(250);
 
+        if(viewModel.getHelpText()  == null || viewModel.getHelpText().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
+
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());

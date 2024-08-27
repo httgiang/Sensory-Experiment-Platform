@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.TimerController">
+<AnchorPane prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/EditExp_CSS.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.TimerController">
     <children>
           <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="30.0" minWidth="0.0" prefHeight="200.0" prefWidth="520.0" style="-fx-background-color: white;" stylesheets="@../../static/stylesheets/Properties.css">
               <children>

@@ -4,13 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Sound {
 
@@ -20,10 +19,11 @@ public class Sound {
 
     private transient Map<String, Clip> soundMap = new HashMap<>();
     private ObservableList<String> soundNameshow = FXCollections.observableArrayList(); // for the appearance of sound
+    private transient Map<String, String> soundPathMap = new HashMap<>(); // Map to store file paths
 
 
     public Sound(){
-     initSound();
+        initSound();
     }
     public ObservableList<String> getSoundNameshow() {
         if (soundNameshow == null) {
@@ -34,10 +34,13 @@ public class Sound {
     }
 
     public void addNewSound(String soundName) {
-        // Ensure the list is initialized
         getSoundNameshow();
-        // Add the new sound name to the list
-        soundNameshow.add(soundName);
+
+        // Check if the sound name already exists in the list
+        if (!soundNameshow.contains(soundName)) {
+            // Add the new sound name to the list if it doesn't already exist
+            soundNameshow.add(soundName);
+        }
     }
 
     public void setSoundNameshow(ObservableList<String> soundNameshow) {
@@ -48,40 +51,23 @@ public class Sound {
     public void initSound(){
         soundNameshow.add("boop");
         soundNameshow.add("stomp");
-        loadSound("boop","src/main/java/main/sensoryexperimentplatform/sound/boop-741-mhz-39314.wav");
-        loadSound("stomp","src/main/java/main/sensoryexperimentplatform/sound/stompwav-14753.wav");
+        loadSound("boop","src/main/resources/sound/boop-741-mhz-39314.wav");
+        loadSound("stomp","src/main/resources/sound/stompwav-14753.wav");
     }
 
 
     public Map<String, Clip> getSoundMap() {
         return soundMap;
     }
-
     public void loadSound(String name, String filePath) {
         try {
-            Clip clip;
-
-            // Attempt to load as a resource
-            InputStream resourceStream = getClass().getResourceAsStream(filePath);
-            if (resourceStream != null) {
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(resourceStream);
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-            } else {
-                // Fallback to file system path
-                File soundFile = new File(filePath);
-                System.out.println("Current working directory: " + new File(".").getAbsolutePath());
-                System.out.println("Attempting to load sound from path: " + soundFile.getAbsolutePath());
-                if (!soundFile.exists()) {
-                    throw new IllegalArgumentException("Sound file not found: " + filePath);
-                }
-
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-                clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-            }
-
+            InputStream fileStream = new FileInputStream(filePath);
+            BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedStream);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
             soundMap.put(name, clip);
+            soundPathMap.put(name, filePath);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
@@ -124,9 +110,14 @@ public class Sound {
         }
     }
 
+    public String retriveSoundPath(String soundName) {
+        return soundPathMap.get(soundName); // Retrieve the file path from the map
+    }
+
+
     public String getSoundPath() {
         File sourceFile = new File(soundPath);
-        File soundFile = new File("src/main/java/main/sensoryexperimentplatform/sound" + File.separator + sourceFile.getName());
+        File soundFile = new File("src/main/resources/sound/" + File.separator + sourceFile.getName());
 
         return soundFile.getAbsolutePath();
 

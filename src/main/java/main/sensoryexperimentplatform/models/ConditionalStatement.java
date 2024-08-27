@@ -13,12 +13,14 @@ public class ConditionalStatement implements Model{
     private String variable1Choice;
     private String variable2Choice;
     private String compare;
-    private List<Model> ifConditional;
-    private List<Model> elseConditional;
+    public List<Model> IfConditional;
+    public List<Model> ElseConditional;
+    private int BoutNumber;
 
 
     public ConditionalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
                                 String value2Text, String variable1Choice, String variable2Choice, String compare){
+
         this.value1 = value1;
         this.value2 = value2;
         this.variable1 = variable1;
@@ -28,8 +30,9 @@ public class ConditionalStatement implements Model{
         this.variable1Choice = variable1Choice;
         this.variable2Choice = variable2Choice;
         this.compare = compare;
-        ifConditional = new ArrayList<>();
-        elseConditional = new ArrayList<>();
+        this.BoutNumber = 9600;
+        IfConditional = new ArrayList<>();
+        ElseConditional = new ArrayList<>();
 
     }
 
@@ -44,7 +47,9 @@ public class ConditionalStatement implements Model{
         this.variable1Choice = other.variable1Choice;
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
-
+        this.BoutNumber = 9600;
+       IfConditional = other.getIfConditional();
+       ElseConditional = other.getElseConditional();
 
     }
     // Add vas for rating container
@@ -122,16 +127,46 @@ public class ConditionalStatement implements Model{
         this.compare = compare;
     }
 
+    public void addIf(Model m){
+        IfConditional.add(m);
+    }
+    public void addElse(Model m){
+        ElseConditional.add(m);
+    }
+
+    public List<Model> getElseConditional() {
+        return ElseConditional;
+    }
+    public List<Model> getIfConditional() {
+        return IfConditional;
+    }
+
+    private int getValueBasedOnChoice(String choice) {
+        switch (choice) {
+            case "Scale Reading":
+//                return getScaleReading(); // Implement this method to return the actual value
+            case "Bout Number":
+                return BoutNumber; // Implement this method to return the actual value
+            case "Total Eaten Over Course":
+//                return getTotalEatenOverCourse(); // Implement this method to return the actual value
+            case "Total Eaten Over Experiment":
+//                return getTotalEatenOverExperiment(); // Implement this method to return the actual value
+            default:
+                return 0; // Default or error value
+        }
+    }
+
+
 
     @Override
     public String toString() {
         StringBuilder ifBuilder = new StringBuilder();
-        for (Model model : ifConditional) {
+        for (Model model : IfConditional) {
             ifBuilder.append(model.toString()).append("\n");
         }
 
         StringBuilder elseBuilder = new StringBuilder();
-        for (Model model : elseConditional) {
+        for (Model model : ElseConditional) {
             elseBuilder.append(model.toString()).append("\n");
         }
         if (!ifBuilder.isEmpty()) ifBuilder.setLength(ifBuilder.length() - 1);
@@ -144,19 +179,7 @@ public class ConditionalStatement implements Model{
     }
 
 
-    public void addIf(Model object) {
-        ifConditional.add(object);
-    }
 
-    public void addElse(Model object) {
-        elseConditional.add(object);
-    }
 
-    public List<Model> getIfConditional() {
-        return ifConditional;
-    }
 
-    public List<Model> getElseConditional() {
-        return elseConditional;
-    }
 }

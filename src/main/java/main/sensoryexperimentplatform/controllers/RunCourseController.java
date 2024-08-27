@@ -3,7 +3,9 @@ package main.sensoryexperimentplatform.controllers;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -14,6 +16,10 @@ import main.sensoryexperimentplatform.viewmodel.AddCourseVM;
 import main.sensoryexperimentplatform.viewmodel.RunCourseVM;
 
 public class RunCourseController {
+
+    @FXML
+    private Button btn;
+
     @FXML
     private Label contentTxt;
 
@@ -22,6 +28,11 @@ public class RunCourseController {
 
     @FXML
     private Label titleTxt;
+
+    @FXML
+    void buttonListener(ActionEvent event) {
+
+    }
 
     private Course course;
     private AddCourseVM viewModel;
@@ -32,6 +43,9 @@ public class RunCourseController {
         Tooltip tooltip = new Tooltip("Help text here!");
         if (viewModel.txt_helpProperty() != null) {
             tooltip.setText(viewModel.txt_helpProperty().get());
+        }
+        if(viewModel.txt_titleProperty() == null) {
+            tooltip.setOpacity(0.0);
         }
 
         tooltip.setStyle(
@@ -51,6 +65,12 @@ public class RunCourseController {
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
+
+        if(viewModel.txt_helpProperty()  == null || viewModel.txt_helpProperty().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
 
         // Add a listener to detect when the image is set to the ImageView
         help_image.imageProperty().addListener(new ChangeListener<>() {

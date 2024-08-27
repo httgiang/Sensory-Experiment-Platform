@@ -4,11 +4,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.SensoryExperimentPlatform;
-import main.sensoryexperimentplatform.controllers.RunInputController;
 import main.sensoryexperimentplatform.models.Input;
 
 import java.io.IOException;
@@ -25,7 +20,6 @@ public class RunInputVM {
         HelpText = new SimpleStringProperty(input.getHelpText());
         playAlert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
-
         result.addListener((observableValue, oldValue, newValue)->setResult(newValue));
 
     }

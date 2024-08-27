@@ -72,6 +72,18 @@ public class Course extends ModelContainer implements Model{
 
     }
 
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
+    public void setEndStatement(String endStatement) {
+        this.endStatement = endStatement;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     public boolean isAlert() {
         return alert;
     }

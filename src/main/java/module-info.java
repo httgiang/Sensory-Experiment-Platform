@@ -1,20 +1,22 @@
-module main.sensoryexpeirmentplatform {
-    requires javafx.controls;
-    requires javafx.fxml;
+module main.sensoryexperimentplatform {
+    requires javafx.controls; // JavaFX Controls
+    requires javafx.fxml; // JavaFX FXML
+    requires javafx.media; // JavaFX Media
+    requires java.desktop; // For Swing and AWT
+    requires org.controlsfx.controls; // ControlsFX
+    requires com.dlsc.formsfx; // FormsFX
+    requires org.kordamp.bootstrapfx.core; // BootstrapFX
+    requires com.almasb.fxgl.all; // FXGL (verify this module name)
+    requires com.fazecast.jSerialComm; // Serial communication
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires org.kordamp.bootstrapfx.core;
-    requires com.almasb.fxgl.all;
-    requires java.desktop;
-    requires javafx.media;
-    requires com.fazecast.jSerialComm;
-
+    // Open packages to JavaFX modules for FXML and other reflective access
     opens main.sensoryexperimentplatform to javafx.fxml;
     opens main.sensoryexperimentplatform.models to javafx.base;
+    opens main.sensoryexperimentplatform.controllers to javafx.fxml;
+    opens main.sensoryexperimentplatform.viewmodel to javafx.fxml;
+
+    // Export packages for other modules or JavaFX
     exports main.sensoryexperimentplatform;
     exports main.sensoryexperimentplatform.controllers;
-    opens main.sensoryexperimentplatform.controllers to javafx.fxml;
     exports main.sensoryexperimentplatform.viewmodel;
-    opens main.sensoryexperimentplatform.viewmodel to javafx.fxml;
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Circle?>
 
 
-<AnchorPane prefHeight="389.0" prefWidth="683.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="389.0" prefWidth="683.0" stylesheets="@../../static/stylesheets/PopUp.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
         <Label id="labelWaiting" layoutX="152.0" layoutY="51.0" stylesheets="@../../static/stylesheets/PopUp.css" text="Waiting for you" />
         <Button fx:id="endButton" layoutX="209.0" layoutY="276.0" mnemonicParsing="false" prefWidth="228.0" text="END" />

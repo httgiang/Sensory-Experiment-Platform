@@ -156,13 +156,24 @@ public class DataAccess {
         }
         if( subO instanceof Question){
             writer.append(uid).append(",").append("questionStage ,")
+                    .append(",")
                     .append(((Question) subO).getResult())
                     .append(",")
-                    .append(((Question) subO).getQuestion());
+                    .append(((Question) subO).getQuestion())
+                    .append(",")
+                    .append(((Question) subO).getLeftButtonText())
+                    .append(",")
+                    .append(((Question) subO).getRightButtonText())
+                    .append(",")
+                    .append(((Question) subO).getLeftButtonValue())
+                    .append(",")
+                    .append(((Question) subO).getRightButtonValue());
+
             writer.append("\n");
         }
         if( subO instanceof Input){
             writer.append(uid).append(",").append("input ,")
+                    .append(",")
                     .append(((Input) subO).getResult())
                     .append(",")
                     .append(((Input) subO).getQuestionText());
@@ -741,7 +752,7 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(6)),Integer.parseInt(matcher.group(7)),
                                 matcher.group(8),Boolean.parseBoolean(matcher.group(9)));
                         currentExperiment.addStage(course);
-                        course = (Course) currentExperiment.getStages().getLast();
+                        course = (Course) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
                     }
                 } else if (line.startsWith("endEating")){
                     course = null;
@@ -872,7 +883,7 @@ public class DataAccess {
                         currentExperiment.addRatingContainerStage(Boolean.parseBoolean(matcher.group(1)),
                                 Integer.parseInt(matcher.group(2))
                         );
-                        rc = (RatingContainer) currentExperiment.getStages().getLast();
+                        rc = (RatingContainer) currentExperiment.getStages().get(currentExperiment.getStages().size()-1);
                         if(isCourse && course != null && rc != null){
                             course.addChildren(rc);
                         }

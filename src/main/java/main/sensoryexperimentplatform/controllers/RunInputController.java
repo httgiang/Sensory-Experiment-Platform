@@ -6,17 +6,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.InputStage_VM;
-import main.sensoryexperimentplatform.viewmodel.RunInputVM;
-
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 public class RunInputController {
 
@@ -63,6 +58,12 @@ public class RunInputController {
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
         help_image.setOnMouseExited(event -> tooltip.hide());
 
+        if(viewModel.getHelpText()  == null || viewModel.getHelpText().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
+
         // Add a listener to detect when the image is set to the ImageView
         help_image.imageProperty().addListener(new ChangeListener<>() {
             @Override
@@ -89,6 +90,10 @@ public class RunInputController {
 
     private void bindViewModel() {
         txt_input.textProperty().bindBidirectional(viewModel.getResult());
+
+        txt_input.textProperty().addListener((_, _, newValue) -> {
+            viewModel.setResult(newValue);
+        });
         txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
 
     }
