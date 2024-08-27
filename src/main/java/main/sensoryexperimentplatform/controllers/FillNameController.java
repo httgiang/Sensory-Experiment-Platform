@@ -65,7 +65,8 @@ public class FillNameController {
         Parent root = loader.load();
 
         RunController controller = loader.getController(); // Get the controller from the loader
-        controller.initRunExperiment(experiment, uid);
+        Experiment s = new Experiment(experiment);
+        controller.initRunExperiment(s, uid);
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);

@@ -9,24 +9,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Deploy demo 1">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Feat | run_exp: model course">
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/AllExperiments.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/Sensory-Expeirment-Platform-21.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/E6 Preload Soup.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/STT_1M_short.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20/11.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20/515.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/CourseTest/112.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/CourseTest/12.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/11.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/113.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/null/1312.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/CourseTest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/CourseTest.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/E6 Preload Soup.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/null.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AddCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AddCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null/1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunCourseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddCourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/AddCourse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/Fill_name.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/Fill_name.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunCourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunCourse.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunRating.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunRating.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +70,12 @@
     &quot;assignee&quot;: &quot;tyri0n11&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/tyri0n11/Sensory-Experiment-Platform.git",
-    "accountId": "3b4e63b0-bfac-4c7e-b9c0-959d55cc3dec"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tyri0n11/Sensory-Experiment-Platform.git&quot;,
+    &quot;accountId&quot;: &quot;3b4e63b0-bfac-4c7e-b9c0-959d55cc3dec&quot;
   }
-}]]></component>
+}</component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
   </component>
@@ -89,34 +101,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.SensoryExperimentPlatform.executor": "Run",
-    "JAR Application.Sensory-Expeirment-Platform.jar (1).executor": "Run",
-    "JAR Application.Sensory-Expeirment-Platform.jar.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "RestructureMVVM",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Program Files/Java/jSerialComm-2.11.0.jar",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.25585938",
-    "project.structure.side.proportion": "0.2710084",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SensoryExperimentPlatform.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Sensory-Expeirment-Platform.jar (1).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Sensory-Expeirment-Platform.jar.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;RestructureMVVM&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jSerialComm-2.11.0.jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.25585938&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2710084&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Tyr1on\Sensory-Experiment-Platform" />
@@ -239,6 +251,8 @@
       <workItem from="1724333158073" duration="6856000" />
       <workItem from="1724414328878" duration="1258000" />
       <workItem from="1724568915802" duration="3171000" />
+      <workItem from="1724597955415" duration="1809000" />
+      <workItem from="1724726542379" duration="2641000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
@@ -264,13 +278,13 @@
       <option name="project" value="LOCAL" />
       <updated>1723824924562</updated>
     </task>
-    <task id="LOCAL-00004" summary="Course model - DataAccess">
+    <task id="LOCAL-00004" summary="Feat | run_exp: model course">
       <option name="closed" value="true" />
-      <created>1724240049103</created>
+      <created>1724598011630</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1724240049103</updated>
+      <updated>1724598011630</updated>
     </task>
     <task id="LOCAL-00005" summary="Deploy demo 1">
       <option name="closed" value="true" />
@@ -280,7 +294,7 @@
       <option name="project" value="LOCAL" />
       <updated>1724516664850</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +317,8 @@
     <MESSAGE value="Course Model - Data to Edit" />
     <MESSAGE value="Course model - DataAccess" />
     <MESSAGE value="Deploy demo 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Course Model - Data to Edit" />
+    <MESSAGE value="Feat | run_exp: model course" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat | run_exp: model course" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
