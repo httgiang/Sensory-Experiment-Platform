@@ -23,52 +23,71 @@
          <left>
                   <VBox fx:id="sideMenu" prefHeight="782.0" styleClass="sidebar_left" BorderPane.alignment="CENTER">
                       <children>
-                          <Button fx:id="btn_Dashboard" mnemonicParsing="false" onAction="#openDashBoard" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" text="Dashboard">
-                              <graphic>
-                                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../static/images/dash_btn.png" />
-                                      </image>
-                                  </ImageView>
-                              </graphic>
+                          <Button fx:id="btn_Dashboard" mnemonicParsing="false" onAction="#openDashBoard" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css">
+                     <graphic>
+                        <Label prefHeight="54.0" prefWidth="218.0" styleClass="lbl_dashboard" text="Dashboard">
+                           <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../static/images/dash_btn.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
                           </Button>
-                          <Button fx:id="btn_ShareExp" mnemonicParsing="false" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" text="Share experiment">
-                              <graphic>
-                                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../static/images/btn_share.png" />
-                                      </image>
-                                  </ImageView>
-                              </graphic>
+                          <Button fx:id="btn_ShareExp" mnemonicParsing="false" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css">
+                     <graphic>
+                        <Label prefHeight="54.0" prefWidth="218.0" styleClass="lbl_dashboard" text="Share experiment">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../static/images/btn_share.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
                           </Button>
 
-                                      <Button fx:id="btn_ImportExp" mnemonicParsing="false" onAction="#importExperiment" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" text="Import experiment">
-
-                                          <graphic>
-                                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../static/images/btn_import.png" />
-                                      </image>
-                                  </ImageView>
-                              </graphic>
+                                      <Button fx:id="btn_ImportExp" mnemonicParsing="false" onAction="#importExperiment" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css">
+                     <graphic>
+                        <Label prefHeight="54.0" prefWidth="218.0" styleClass="lbl_dashboard" text="Import experiment">
+                           <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../static/images/btn_import.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
                           </Button>
-                          <Button fx:id="btn_exportExp" maxWidth="254.0" mnemonicParsing="false" onAction="#exportExperiment" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" text="Export experiment">
-                              <graphic>
-                                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../static/images/btn_export.png" />
-                                      </image>
-                                  </ImageView>
-                              </graphic>
+                          <Button fx:id="btn_exportExp" maxWidth="254.0" mnemonicParsing="false" onAction="#exportExperiment" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css">
+                     <graphic>
+                        <Label prefHeight="54.0" prefWidth="218.0" styleClass="lbl_dashboard" text="Export experiment">
+                           <graphic>
+                                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../static/images/btn_export.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
                           </Button>
-                          <Button fx:id="btn_Config" mnemonicParsing="false" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" text="Configure">
-                              <graphic>
-                                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../static/images/btn_configure.png" />
-                                      </image>
-                                  </ImageView>
-                              </graphic>
+                          <Button fx:id="btn_Config" mnemonicParsing="false" prefHeight="70.0" prefWidth="255.0" styleClass="btn_dashboardButton" stylesheets="@../../static/stylesheets/DashBoard_CSS.css">
+                     <graphic>
+                        <Label prefHeight="54.0" prefWidth="218.0" styleClass="lbl_dashboard" text="Configure">
+                           <graphic>
+                                        <ImageView fitHeight="27.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../static/images/btn_configure.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
+                        </Label>
+                     </graphic>
                           </Button>
                       </children>
                   </VBox>
