@@ -18,7 +18,7 @@ public class ModelVMRegistry {
         registry.put(Vas.class, model -> new VasStage_VM((Vas) model));
         registry.put(Notice.class, model -> new NoticeStage_VM((Notice) model));
         registry.put(gLMS.class, model -> new GLMSStage_VM((gLMS) model));
-        registry.put(ConditionalStatement.class, model -> new IfConditionalStatementVM((ConditionalStatement)model));
+        registry.put(ConditionalStatement.class, model -> new ConditionalStatementVM((ConditionalStatement)model));
         registry.put(Input.class, model -> new InputStage_VM((Input) model));
         registry.put(Question.class, model -> new QuestionStage_VM((Question) model));
         registry.put(Timer.class, model -> new TimerStage_VM((Timer) model));
@@ -47,6 +47,7 @@ public class ModelVMRegistry {
         }
         return instance;
     }
+
     public ViewModel getViewModel(Model model){
         Function<Model, ViewModel> viewModel = registry.get(model.getClass());
         if(viewModel != null){

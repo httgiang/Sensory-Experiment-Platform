@@ -146,12 +146,6 @@ public class ConditionalStatementVM implements ViewModel {
 
 
 
-    @Override
-    public String toString() {
-        return "If "+ conditionalStatement.getVariable1Choice() + " " + conditionalStatement.getCompare() + " Then " + conditionalStatement.getVariable2Choice() ;
-    }
-
-
     public void addIf(Model object){
         conditionalStatement.addIf(object);
     }

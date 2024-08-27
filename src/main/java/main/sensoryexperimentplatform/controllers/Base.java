@@ -69,7 +69,8 @@ public class Base implements Initializable {
         try{
             newContent = loader.load();
             setResponsive(newContent);
-            DashBoardController view = loader.getController();
+            mainContent.getChildren().setAll(newContent);
+            DashBoardController controller = loader.getController();
 
         }
         catch (IOException e){

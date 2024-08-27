@@ -13,8 +13,8 @@ public class ConditionalStatement implements Model{
     private String variable1Choice;
     private String variable2Choice;
     private String compare;
-    public List<Model> IfConditional;
-    public List<Model> ElseConditional;
+    private List<Model> ifConditional;
+    private List<Model> elseConditional;
 
 
     public ConditionalStatement(boolean value1, boolean value2, boolean variable1, boolean variable2, String value1Text,
@@ -28,9 +28,8 @@ public class ConditionalStatement implements Model{
         this.variable1Choice = variable1Choice;
         this.variable2Choice = variable2Choice;
         this.compare = compare;
-
-        IfConditional = new ArrayList<>();
-        ElseConditional = new ArrayList<>();
+        ifConditional = new ArrayList<>();
+        elseConditional = new ArrayList<>();
 
     }
 
@@ -46,8 +45,6 @@ public class ConditionalStatement implements Model{
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
 
-       IfConditional = other.getIfConditional();
-       ElseConditional = other.getElseConditional();
 
     }
     // Add vas for rating container
@@ -125,29 +122,16 @@ public class ConditionalStatement implements Model{
         this.compare = compare;
     }
 
-    public void addIf(Model m){
-        IfConditional.add(m);
-    }
-    public void addElse(Model m){
-        ElseConditional.add(m);
-    }
-
-    public List<Model> getElseConditional() {
-        return ElseConditional;
-    }
-    public List<Model> getIfConditional() {
-        return IfConditional;
-    }
 
     @Override
     public String toString() {
         StringBuilder ifBuilder = new StringBuilder();
-        for (Model model : IfConditional) {
+        for (Model model : ifConditional) {
             ifBuilder.append(model.toString()).append("\n");
         }
 
         StringBuilder elseBuilder = new StringBuilder();
-        for (Model model : ElseConditional) {
+        for (Model model : elseConditional) {
             elseBuilder.append(model.toString()).append("\n");
         }
         if (!ifBuilder.isEmpty()) ifBuilder.setLength(ifBuilder.length() - 1);
@@ -160,7 +144,19 @@ public class ConditionalStatement implements Model{
     }
 
 
+    public void addIf(Model object) {
+        ifConditional.add(object);
+    }
 
+    public void addElse(Model object) {
+        elseConditional.add(object);
+    }
 
+    public List<Model> getIfConditional() {
+        return ifConditional;
+    }
 
+    public List<Model> getElseConditional() {
+        return elseConditional;
+    }
 }
