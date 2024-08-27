@@ -68,6 +68,7 @@ public class Base implements Initializable {
         AnchorPane newContent = null;
         try{
             newContent = loader.load();
+            mainContent.getChildren().setAll(newContent);
             setResponsive(newContent);
             DashBoardController view = loader.getController();
 
@@ -75,7 +76,7 @@ public class Base implements Initializable {
         catch (IOException e){
             e.printStackTrace();
         }
-        /*mainContent.getChildren().setAll(newContent);*/
+
     }
     @FXML
     void importExperiment() throws Exception {

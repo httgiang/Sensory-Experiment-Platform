@@ -117,11 +117,13 @@ noticeStage("Thank you","That completes this part of the study\, please call you
 endExperiment()
 
 ExperimentName: null
-ExperimenterName: hhhh
+ExperimenterName: fffffff
 ExperimentID: 0
 Created on: 27.08.2024
 Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 noticeStage("User input","null","null","null","false")
+inputStage("User input","null","null","false")
+wait("0","Please Wait","false")
 endExperiment()
 

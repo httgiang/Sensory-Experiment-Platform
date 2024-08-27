@@ -10,35 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Feat | run_exp: model course">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/AllExperiments.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/Sensory-Expeirment-Platform-21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/E6 Preload Soup.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/STT_1M_short.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20/11.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/SSP_2308_1_/results/Taste Screener 2019_20/515.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/CourseTest/112.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/CourseTest/12.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/11.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20/113.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/null/1312.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo1408/Sensory-Expeirment-Platform.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/E6 Preload Soup.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null/1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null/1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/FillNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AudibleSound_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/VasStage_VM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +228,8 @@
       <workItem from="1724414328878" duration="1258000" />
       <workItem from="1724568915802" duration="3171000" />
       <workItem from="1724597955415" duration="1809000" />
-      <workItem from="1724726542379" duration="2641000" />
+      <workItem from="1724726542379" duration="4166000" />
+      <workItem from="1724732182470" duration="1994000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
