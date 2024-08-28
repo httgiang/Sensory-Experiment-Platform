@@ -201,3 +201,7 @@ Scale 1: 0.323 kg
 Scale 2: -0.0 kg
 Scale 1: 0.288 kg
 Scale 2: 0.0 kg
+Scale 1: 0.0 kg
+Scale 2: 0.0 kg
+Scale 1: -0.0 kg
+Scale 2: 0.0 kg

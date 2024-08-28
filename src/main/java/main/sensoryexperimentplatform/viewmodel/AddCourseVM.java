@@ -32,8 +32,8 @@ public class AddCourseVM implements ViewModel{
     ModelVMRegistry registry = ModelVMRegistry.getInstance();
     private Course course;
     public AddCourseVM(){
-        this.course = new Course("Start eating stage","Please contact experimenter",
-                "Finished","Stop eating stage"
+        this.course = new Course("Start eating phase","Please contact experimenter",
+                "Meal finished","Stop eating stage"
                 , 0,0,0,
                 "Please remember while eating:\\" +
                 "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
@@ -251,7 +251,7 @@ public class AddCourseVM implements ViewModel{
             if (newValue.doubleValue() >= 0.4) {
                 // Neu nhu nguoi tham gia an dc hon 400g -> nhac nho Refill
                 showNoticeStage("Refill", listView);
-                this.setConsumedWeight(newValue.doubleValue() - 0.4);
+                this.setConsumedWeight(0.0);
             } else {
 
                 for (Model model : course.getChildren()) {
@@ -276,11 +276,11 @@ public class AddCourseVM implements ViewModel{
     private void showNoticeStage(String type, ListView<ViewModel> listView){
         Notice notice = null;
         if(type.equals("Start")){
-            notice = new Notice("Starting a Course", "Please call the experimenter", "Food added", null, false);
+            notice = new Notice(getTxt_title(), getTxt_content(), "Food added", null, false);
         } else if(type.equals("Refill")){
             notice = new Notice("Refill required", "Please call the experimenter", "Food added", null, false);
         } else if(type.equals("End")){
-            notice = new Notice("Stop eating", "Please stop eating", "Meal finished", null, false);
+            notice = new Notice("Stop eating", txt_endStatement.get(), getTxt_button(), null, false);
         }
         NoticeStage_VM noticeStageVm = new NoticeStage_VM(notice);
         listView.getItems().add(noticeStageVm);
