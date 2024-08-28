@@ -14,7 +14,6 @@ import main.sensoryexperimentplatform.models.*;
 import java.io.IOException;
 import java.util.concurrent.*;
 
-import static main.sensoryexperimentplatform.utilz.FeatureType.RUN;
 
 
 public class RunController {
@@ -53,24 +52,30 @@ public class RunController {
         ViewModel stages = registry.getViewModel(model);
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+        if(model instanceof Course){
+            AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
+            courseVM.initRunSetup(listView);
+            return;
+        }
+
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
                 for(Model children : ((ModelContainer) model).getChildren()){
                     buildList(listView, children, registry);
                 }
             }
-            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
-            else if(((ConditionalStatement) model).getIfConditional() != null){
-                for(Model children : ((ConditionalStatement) model).getIfConditional()){
-                    buildList(listView, children, registry);
-                }
-
-            }
-            else if(((ConditionalStatement) model).getElseConditional() != null){
-                for(Model children : ((ConditionalStatement) model).getElseConditional()){
-                    buildList(listView, children, registry);
-                }
-            }
+//            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
+//            else if(((ConditionalStatement) model).getIfConditional() != null){
+//                for(Model children : ((ConditionalStatement) model).getIfConditional()){
+//                    buildList(listView, children, registry);
+//                }
+//
+//            }
+//            else if(((ConditionalStatement) model).getElseConditional() != null){
+//                for(Model children : ((ConditionalStatement) model).getElseConditional()){
+//                    buildList(listView, children, registry);
+//                }
+//            }
 
         } else {
             if(stages != null){

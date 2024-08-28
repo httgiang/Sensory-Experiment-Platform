@@ -6,10 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.fazecast.jSerialComm.SerialPort;
+import main.sensoryexperimentplatform.models.Scale;
+import main.sensoryexperimentplatform.utilz.Observable;
+import main.sensoryexperimentplatform.utilz.Observer;
 
 public class TestArduino {
+
     private static SerialPort comPort;
     private static long startTime;
+
     private static StringBuilder serialBuffer = new StringBuilder();
     private static final double CALIBRATION_FACTOR1 = -418045;
     private static final double CALIBRATION_FACTOR2 = -437885;
@@ -21,6 +26,12 @@ public class TestArduino {
 
     // BufferedWriter to write data to file
     private static BufferedWriter writer;
+    private static Scale weightListener;
+
+    //Method to add weight listener
+    public static void addWeightListener(Scale listener){
+        weightListener = listener;
+    }
 
     // Method to start recording data from the Arduino
     public static void startRecording() {
@@ -84,8 +95,6 @@ public class TestArduino {
 
             private void processReceivedData(String receivedData) {
 
-                System.out.println("Received: " + receivedData);
-
                 if (receivedData.startsWith("S1:") || receivedData.startsWith("S2:")){
                     String[] parts = receivedData.split(" ");
                     try {
@@ -110,9 +119,13 @@ public class TestArduino {
                             weight = rawReading * CALIBRATION_FACTOR4;
                         }
 
+
                         recordedWeights.add(rawReading);
-                       // String output = "Scale " + scaleNumber + ": " + rawReading + " kg";
-                        String output = "Scale " + scaleNumber + ": " + weight + " kg";
+                        notifyWeightUpdate(rawReading);
+
+                        String output = "Scale " + scaleNumber + ": " + rawReading + " kg";
+                        System.out.println(output);
+                       // String output = "Scale " + scaleNumber + ": " + weight + " kg";
 
                         // Write to file instead of printing to console
                         writer.write(output);
@@ -157,5 +170,12 @@ public class TestArduino {
     // Method to retrieve recorded weights
     public static List<Double> getRecordedWeights() {
         return recordedWeights;
+    }
+
+    //Method to notify the scale of the new weight
+    private static void notifyWeightUpdate(double weight){
+        if(weightListener != null){
+            weightListener.setWeight(weight);
+        }
     }
 }

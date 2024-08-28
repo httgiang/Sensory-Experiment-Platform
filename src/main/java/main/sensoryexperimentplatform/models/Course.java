@@ -1,14 +1,16 @@
 package main.sensoryexperimentplatform.models;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
+import javafx.util.Duration;
+import main.sensoryexperimentplatform.arduino.TestArduino;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 
 import java.io.IOException;
-import java.time.Duration;
+
 import java.util.ArrayList;
 
 public class Course extends ModelContainer implements Model{
@@ -19,6 +21,9 @@ public class Course extends ModelContainer implements Model{
     private int duration;
     private int quantity;
     private Periodic periodic;
+
+    private Scale scale = Scale.getScaleInstance();
+    private DoubleProperty consumedWeight;
     public Course(String title, String content, String buttonText, String endStatement,
                   int refillWeight, int duration, int quantity, String helpText, boolean alert){
         this.title = title;
@@ -31,6 +36,8 @@ public class Course extends ModelContainer implements Model{
         this.endStatement = endStatement;
         this.alert = alert;
         children = new ArrayList<>();
+
+
     }
     public Course(Course course){
         this.title = course.getTitle();
@@ -143,6 +150,20 @@ public class Course extends ModelContainer implements Model{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+
+    public double getConsumedWeight() {
+        return consumedWeight.get();
+    }
+
+    public DoubleProperty consumedWeightProperty() {
+        return consumedWeight;
+    }
+
+    public void setConsumedWeight(double consumedWeight) {
+        this.consumedWeight.set(consumedWeight);
     }
 
     public String toString(){

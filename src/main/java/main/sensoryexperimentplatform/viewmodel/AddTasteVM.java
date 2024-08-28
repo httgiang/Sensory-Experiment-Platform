@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
 
@@ -322,17 +321,26 @@ public class AddTasteVM implements ViewModel {
     }
 
     @Override
-    public void handleEditButtons(Button button1, Button button2,
-                                  Button btn_assignSound,
-                                  Button btn_addFoodAndTaste,
-                                  Button button5, Button button6,
-                                  Button button7, Button button8,
-                                  Button button9, Button button10,
-                                  Button button11, Button button12)
-            throws IOException {
+    public void handleEditButtons(Button btn_addPeriodicStage, Button btn_addCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button  btn_addTimer, Button btn_addQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_addConditionalStatement) throws IOException {
         btn_addFoodAndTaste.setDisable(false);
         btn_assignSound.setDisable(true);
+
+        btn_addPeriodicStage.setDisable(true);
+        btn_addAudibleInstruction.setDisable(false);
+        btn_addInput.setDisable(false);
+        btn_noticeStage.setDisable(false);
+        btn_addTimer.setDisable(false);
+        btn_addQuestionStage.setDisable(false);
+        btn_addRatingContainer.setDisable(false);
+        btn_addTasteTest.setDisable(false);
+        btn_addConditionalStatement.setDisable(false);
+        btn_addCourse.setDisable(false);
     }
+
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back) {

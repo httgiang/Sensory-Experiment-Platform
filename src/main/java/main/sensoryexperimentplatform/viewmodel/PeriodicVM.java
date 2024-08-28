@@ -9,7 +9,6 @@ import main.sensoryexperimentplatform.controllers.AddPeriodic;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Periodic;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
 

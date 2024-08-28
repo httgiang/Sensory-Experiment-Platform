@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AddAudibleSoundController">
+<AnchorPane prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AddAudibleSoundController">
     <children>
         <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" prefHeight="247.0" prefWidth="524.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="524.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
                         <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="14.0" />
-                        <Label layoutX="28.0" layoutY="64.0" text="Title Text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="64.0"/>
-                        <TextField fx:id="txt_title" layoutX="222.0" layoutY="64.0" prefHeight="25.0" prefWidth="274.0" promptText="Title" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="64.0"/>
-                        <Label layoutX="28.0" layoutY="114.0" text="Content text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="114.0"/>
-                        <TextArea fx:id="txt_content" layoutX="222.0" layoutY="114.0" prefHeight="160.0" prefWidth="274.0" promptText="Content" wrapText="true" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="114.0"/>
-                        <Label layoutX="28.0" layoutY="290.0" text="Button text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="290.0"/>
-                        <TextField fx:id="txt_buttonText" layoutX="222.0" layoutY="290.0" prefHeight="25.0" prefWidth="274.0" promptText="Button text" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="290.0"/>
-                        <Label layoutX="28.0" layoutY="340.0" text="Help text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="340.0"/>
-                        <TextArea fx:id="txt_helpText" layoutX="222.0" layoutY="340.0" prefHeight="160.0" prefWidth="274.0" promptText="Help text" wrapText="true" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="340.0"/>
+                        <Label layoutX="28.0" layoutY="64.0" text="Title Text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="64.0" />
+                        <TextField fx:id="txt_title" layoutX="222.0" layoutY="64.0" prefHeight="25.0" prefWidth="274.0" promptText="Title" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="64.0" />
+                        <Label layoutX="28.0" layoutY="114.0" text="Content text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="114.0" />
+                        <TextArea fx:id="txt_content" layoutX="222.0" layoutY="114.0" prefHeight="160.0" prefWidth="274.0" promptText="Content" wrapText="true" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="114.0" />
+                        <Label layoutX="28.0" layoutY="290.0" text="Button text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="290.0" />
+                        <TextField fx:id="txt_buttonText" layoutX="222.0" layoutY="290.0" prefHeight="25.0" prefWidth="274.0" promptText="Button text" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="290.0" />
+                        <Label layoutX="28.0" layoutY="340.0" text="Help text" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="340.0" />
+                        <TextArea fx:id="txt_helpText" layoutX="222.0" layoutY="340.0" prefHeight="160.0" prefWidth="274.0" promptText="Help text" wrapText="true" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="340.0" />
+                  <Accordion layoutX="115.0" layoutY="99.0" />
                     </children>
                 </AnchorPane>
             </content>

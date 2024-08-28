@@ -1,4 +1,4 @@
-package main.sensoryexperimentplatform;
+package main.sensoryexperimentplatform.arduino;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;

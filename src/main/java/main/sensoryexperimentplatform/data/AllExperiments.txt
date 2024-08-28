@@ -187,52 +187,14 @@ endExperiment()
 ExperimentName: null
 ExperimenterName: null
 ExperimentID: 0
-Created on: 22.08.2024
-Version: 4
+Created on: 28.08.2024
+Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-ratingsContainer("false","0")
-vasStage("User input","null","null","0","100","null","null","null","false","false")
-glmsStage("User Input","null","null","null","false")
-endRatingsContainer()
+inputStage("User input","null","null","false")
 startEating("Start eating stage","Please contact experimenter","Finished","Stop eating stage","0","0","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","false")
+tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{Biscuits,Cake,Cereal,Cheese,Chocolate,Crisps,Ice Cream,Pasta,Porridge,Sandwiches,Soup,Tomatoes,Yoghurt}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet}","{Alcoholic,Bitter,Creamy,Fruity,Novel,Pleasant,Salty,Savoury,Sour,Spicy,Strong,Sweet}","{Cheese,Cereal}","{Novel,Pleasant}","{}")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
 glmsStage("User Input","null","null","null","false")
 endEating()
-wait("0","Please Wait","false")
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
-vasStage("User input","null","null","0","100","null","null","null","false","false") 
-EndIf() 
-Else() 
- 
-EndElse()
-EndConditionalStatement()
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
- 
-EndIf() 
-Else() 
-glmsStage("User Input","null","null","null","false") 
-EndElse()
-EndConditionalStatement()
-ratingsContainer("false","0")
-endRatingsContainer()
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
-tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}") 
-EndIf() 
-Else() 
- 
-EndElse()
-EndConditionalStatement()
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
- 
-EndIf() 
-Else() 
-ratingsContainer("false","0")
-endRatingsContainer() 
-EndElse()
-EndConditionalStatement()
 endExperiment()
 

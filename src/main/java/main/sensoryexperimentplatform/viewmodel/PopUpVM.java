@@ -3,11 +3,13 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.utilz.*;
+import org.w3c.dom.events.Event;
 
 import java.io.IOException;
 
@@ -57,6 +59,8 @@ public class PopUpVM {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.initModality(Modality.WINDOW_MODAL);
+
         PopUpConfirmController controller = fxmlLoader.getController();
         controller.setMessage(experiment, msg);
         stage.show();
