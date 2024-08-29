@@ -9,7 +9,7 @@
    <children>
       <Label fx:id="titleTxt" layoutX="20.0" layoutY="20.0" minHeight="65.0" minWidth="1217.0" text="title" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <Label fx:id="contentTxt" layoutX="30.0" layoutY="98.0" prefHeight="430.0" prefWidth="1207.0" text="content" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
-      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1176.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1191.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../static/images/Help_outline.png" />
          </image>

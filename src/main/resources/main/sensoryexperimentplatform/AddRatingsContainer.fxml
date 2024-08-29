@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.addRatingContainerController">
+<AnchorPane prefHeight="253.0" prefWidth="540.0" style="-fx-background-color: white;" stylesheets="@../../static/stylesheets/Properties.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.addRatingContainerController">
     <children>
             <Label id="lblProperty" layoutX="36.0" layoutY="16.0" text="Properties" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="16.0" />
             <Label layoutX="36.0" layoutY="66.0" styleClass="normallabel" text="Contains stages appear in a random order? " AnchorPane.leftAnchor="36.0" />

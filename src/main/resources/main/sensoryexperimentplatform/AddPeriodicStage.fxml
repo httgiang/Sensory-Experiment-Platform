@@ -2,26 +2,21 @@
 
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AddPeriodic">
+<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"  xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.AddPeriodic">
     <children>
-        <ScrollPane fitToWidth="true" layoutX="10.0" layoutY="10.0" prefHeight="253.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="520.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <children>
-                        <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="14.0" />
-                        <Label fx:id="forLabel" layoutX="36.0" layoutY="142.0" text="For" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="142.0" />
-                        <ComboBox fx:id="everyFor" layoutX="36.0" layoutY="55.0" prefHeight="26.0" prefWidth="218.0" promptText="Every" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="273.6" AnchorPane.topAnchor="55.0" />
-                        <TextField fx:id="amoutEveryAfter" layoutX="274.4" layoutY="55.0" prefHeight="27.0" prefWidth="226.0" text="-1" AnchorPane.leftAnchor="267.20000000000005" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="55.0" />
-                        <ComboBox fx:id="daiLuongEveryAfter" layoutX="267.0" layoutY="91.0" prefHeight="26.0" prefWidth="218.0" promptText="gram" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="91.0" />
-                        <TextField fx:id="forAmount" layoutX="267.0" layoutY="142.0" prefHeight="26.0" prefWidth="218.0" text="-1" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="142.0" />
-                        <ComboBox fx:id="daiLuongAmount" layoutX="267.0" layoutY="178.0" prefHeight="26.0" prefWidth="218.0" promptText="grams" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="178.0" />
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
+          <AnchorPane layoutX="8.0" layoutY="2.0" minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="520.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+              <children>
+                  <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="14.0" />
+                  <Label fx:id="forLabel" layoutX="36.0" layoutY="142.0" text="For" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="142.0" />
+                  <ComboBox fx:id="everyFor" layoutX="36.0" layoutY="55.0" prefHeight="26.0" prefWidth="218.0" promptText="Every" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="273.6" AnchorPane.topAnchor="55.0" />
+                  <TextField fx:id="amoutEveryAfter" layoutX="274.4" layoutY="55.0" prefHeight="27.0" prefWidth="226.0" text="-1" AnchorPane.leftAnchor="267.20000000000005" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="55.0" />
+                  <ComboBox fx:id="daiLuongEveryAfter" layoutX="267.0" layoutY="91.0" prefHeight="26.0" prefWidth="218.0" promptText="gram" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="91.0" />
+                  <TextField fx:id="forAmount" layoutX="267.0" layoutY="142.0" prefHeight="26.0" prefWidth="218.0" text="-1" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="142.0" />
+                  <ComboBox fx:id="daiLuongAmount" layoutX="267.0" layoutY="178.0" prefHeight="26.0" prefWidth="218.0" promptText="grams" AnchorPane.leftAnchor="267.0" AnchorPane.rightAnchor="34.4" AnchorPane.topAnchor="178.0" />
+              </children>
+          </AnchorPane>
     </children>
 </AnchorPane>

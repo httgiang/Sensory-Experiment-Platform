@@ -203,9 +203,18 @@ public class AddCourseVM implements ViewModel{
                                   Button  btn_addTimer, Button btn_AddQuestionStage,
                                   Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
         btn_AddPeriodicStage.setDisable(false);
-        btn_AddCourse.setDisable(true);
-        btn_noticeStage.setDisable(true);
-        btn_addAudibleInstruction.setDisable(true);
+        btn_AddCourse.setDisable(false);
+        btn_assignSound.setDisable(true);
+        btn_addFoodAndTaste.setDisable(true);
+        btn_addAudibleInstruction.setDisable(false);
+        btn_addInput.setDisable(false);
+        btn_noticeStage.setDisable(false);
+        btn_addTimer.setDisable(false);
+        btn_AddQuestionStage.setDisable(false);
+        btn_addRatingContainer.setDisable(false);
+        btn_addTasteTest.setDisable(false);
+        btn_AddConditionalStatement.setDisable(false);
+
     }
 
     @Override

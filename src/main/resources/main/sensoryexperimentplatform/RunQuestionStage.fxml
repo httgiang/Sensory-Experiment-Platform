@@ -20,7 +20,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1176.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1191.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../static/images/Help_outline.png" />
          </image>
