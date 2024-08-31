@@ -13,6 +13,7 @@ import main.sensoryexperimentplatform.arduino.TestArduino;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 import main.sensoryexperimentplatform.models.*;
 
+import javax.swing.text.View;
 import java.io.IOException;
 
 
@@ -243,34 +244,28 @@ public class AddCourseVM implements ViewModel{
         // Bind bien consumed weight voi cai can. Consumed = weight ban dau - weight hien tai.
         // Bay gio cai nay dang sai, se sua lai sau khi cai can nhan dung gia tri
         this.consumedWeight = new SimpleDoubleProperty(0.0);
-        this.consumedWeight.bindBidirectional(Scale.getScaleInstance().weightProperty());
 
+        this.consumedWeight.bindBidirectional(Scale.getScaleInstance().weightProperty());
 
         // Cai dat listener cho cai can
         this.consumedWeight.addListener((observable, oldValue, newValue) -> {
-            if (newValue.doubleValue() >= 0.4) {
+
+            if (newValue.doubleValue() >= 0.1) {
                 // Neu nhu nguoi tham gia an dc hon 400g -> nhac nho Refill
                 showNoticeStage("Refill", listView);
                 this.setConsumedWeight(0.0);
-            } else {
-
-                for (Model model : course.getChildren()) {
-                    //Dung can sau khi chay het cac stage con
-                    if (model == course.getChildren().getLast()) {
-                        //bao ng dung ngung an
-                        showNoticeStage("End", listView);
-
-                        TestArduino.stopRecording();
-                        return;
-                    }
-                    ViewModel stages = registry.getViewModel(model);
-                    listView.getItems().add(stages);
-                }
             }
         });
 
+        showChildrenPane(listView);
 
-
+    }
+    public void showChildrenPane(ListView<ViewModel> listView){
+        for(Model children : course.getChildren()){
+            listView.getItems().add(registry.getViewModel(children));
+        }
+        showNoticeStage("End", listView);
+        TestArduino.stopRecording();
     }
 
     private void showNoticeStage(String type, ListView<ViewModel> listView){
@@ -279,11 +274,14 @@ public class AddCourseVM implements ViewModel{
             notice = new Notice(getTxt_title(), getTxt_content(), "Food added", null, false);
         } else if(type.equals("Refill")){
             notice = new Notice("Refill required", "Please call the experimenter", "Food added", null, false);
+            System.out.println("REFILL");
         } else if(type.equals("End")){
             notice = new Notice("Stop eating", txt_endStatement.get(), getTxt_button(), null, false);
         }
         NoticeStage_VM noticeStageVm = new NoticeStage_VM(notice);
+
         listView.getItems().add(noticeStageVm);
+
     }
 
 

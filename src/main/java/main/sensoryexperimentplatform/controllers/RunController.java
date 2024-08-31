@@ -138,6 +138,7 @@ public class RunController {
         stage.close();
     }
 
+
     private void setupTimerListener(RunTimerController runTimerController) {
         runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {

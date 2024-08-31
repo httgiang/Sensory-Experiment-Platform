@@ -35,6 +35,7 @@ public class TestArduino {
 
     // Method to start recording data from the Arduino
     public static void startRecording() {
+
         comPort = SerialPort.getCommPort("/COM4"); // Update this to the correct port
         if (comPort == null) {
             System.out.println("COM not found");

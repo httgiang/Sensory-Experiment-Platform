@@ -12,7 +12,6 @@ public class Scale {
         //handle connect logic
         weight = new SimpleDoubleProperty(0.0);
         TestArduino.addWeightListener(this);
-       // initScaleListener();
     }
 
 
