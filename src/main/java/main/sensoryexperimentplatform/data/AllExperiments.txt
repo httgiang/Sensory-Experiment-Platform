@@ -192,7 +192,7 @@ Version: 4
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 ratingsContainer("false","0")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
-glmsStage("User Input","null","null","null","false")
+glmsStage("User Input","null","null","hello","false")
 endRatingsContainer()
 startEating("Start eating stage","Please contact experimenter","Finished","Stop eating stage","0","0","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","false")
 vasStage("User input","null","null","0","100","null","null","null","false","false")

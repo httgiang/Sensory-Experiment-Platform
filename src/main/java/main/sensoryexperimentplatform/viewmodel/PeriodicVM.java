@@ -3,13 +3,14 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddPeriodic;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Model;
 import main.sensoryexperimentplatform.models.Periodic;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
 
@@ -124,7 +125,7 @@ public class PeriodicVM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
 
     }
 

@@ -1,20 +1,23 @@
 package main.sensoryexperimentplatform.controllers;
 
 
-import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage; // Explicit import for JavaFX Stage
+import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.util.concurrent.*;
-
-import static main.sensoryexperimentplatform.utilz.FeatureType.RUN;
 
 
 public class RunController {
@@ -31,6 +34,13 @@ public class RunController {
     @FXML
     private Button btn_next, btn_back;
 
+
+    @FXML
+    private ImageView help_image;
+
+    private Tooltip tooltip;
+
+
 //    @FXML
 //    private Label elapsedTime_label;
 
@@ -44,6 +54,7 @@ public class RunController {
 //        startTimer();
         setListViewListener();
         initButtons();
+        setupToolTip();
 
 
     }
@@ -79,7 +90,6 @@ public class RunController {
                 }
                 listView.getItems().add(stages);
             }
-
         }
     }
     private void loadItems() {
@@ -96,7 +106,8 @@ public class RunController {
 
         content.getChildren().clear();
         runStages.loadRunInterface(content);
-        runStages.handleRunButtons(btn_next, btn_back);
+        runStages.handleRunButtons(btn_next, btn_back,tooltip,help_image);
+
 
     }
     private void setListViewListener() throws IOException {
@@ -118,6 +129,45 @@ public class RunController {
         btn_next.setWrapText(true);
         btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
+    }
+    private void setupToolTip(){
+    tooltip = new Tooltip("Help text here!");
+
+
+        tooltip.setStyle(
+                "-fx-background-color: #e3e2e2;\n" +
+                        "    -fx-text-fill: #397E82;\n" +
+                        "    -fx-font-size: 20px;\n" +
+                        "    -fx-padding: 5px;\n" +
+                        "    -fx-border-color: White;\n" +
+                        "    -fx-border-width: 1px;\n" +
+                        "    -fx-border-radius: 3px;"
+        );
+        tooltip.setShowDelay(Duration.ZERO);
+        tooltip.setAutoHide(true);
+        tooltip.setWrapText(true);
+        tooltip.setMaxWidth(250);
+
+        // Set listeners to show and hide tooltip on mouse enter and exit
+        help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
+        help_image.setOnMouseExited(event -> tooltip.hide());
+
+        help_image.imageProperty().addListener(new ChangeListener<>() {
+            @Override
+            public void changed(ObservableValue<? extends Image> observable, javafx.scene.image.Image oldImage, javafx.scene.image.Image newImage) {
+                if (newImage != null) {
+                    showTooltip(help_image, tooltip);
+                }
+            }
+        });
+    }
+
+    private void showTooltip(ImageView imageView, Tooltip tooltip) {
+        // Get the bounds of the ImageView
+        javafx.geometry.Bounds bounds = imageView.localToScreen(imageView.getBoundsInLocal());
+
+        // Show the tooltip at the top-left position of the ImageView
+        tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
 
 

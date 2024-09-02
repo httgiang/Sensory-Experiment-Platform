@@ -3,6 +3,8 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
@@ -133,7 +135,7 @@ public class VasStage_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_next.textProperty().bind(this.buttonTextProperty());
 
         if (this.conductedTextProperty().get() == null){
@@ -145,6 +147,16 @@ public class VasStage_VM implements ViewModel {
                 btn_next.setDisable(false);
             }
         });
+
+        if (this.helpTextProperty().get() != null) {
+            help_image.setVisible(true);
+            tooltip.textProperty().bind(this.helpText);
+        }
+        if(this.helpTextProperty().get()  == null || this.helpTextProperty().get().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
     }
     public void playAlertSound(){
         vas.playAlertSound();

@@ -6,16 +6,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Model;
-import main.sensoryexperimentplatform.utilz.FeatureType;
 
 import java.io.IOException;
-import java.util.*;
 
 public class AddCourseVM implements ViewModel{
     private StringProperty txt_button;
@@ -192,7 +192,8 @@ public class AddCourseVM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+        help_image.setVisible(false);
 
     }
 

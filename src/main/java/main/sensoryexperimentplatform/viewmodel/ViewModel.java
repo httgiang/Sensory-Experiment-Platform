@@ -1,6 +1,8 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.models.Model;
 
@@ -15,5 +17,5 @@ public interface ViewModel {
                            Button button6, Button button7, Button button8, Button button9, Button button10,
                            Button button11, Button button12) throws IOException;
 
-    void handleRunButtons(Button btn_next, Button btn_back);
+    void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image);
 }
