@@ -160,6 +160,25 @@ public class EditExpController {
         if(model instanceof Start){
             return;
         }
+        //ADD TREE CON CHO CONDITIONAL STATEMENT
+        if(model instanceof ConditionalStatement){
+            IfConditionalStatementVM ifVM = new IfConditionalStatementVM((ConditionalStatement) model);
+            ElseConditionalStatementVM elseVM = new ElseConditionalStatementVM((ConditionalStatement) model);
+            TreeItem<ViewModel> ifVMTreeItem = new TreeItem<>(ifVM);
+            TreeItem<ViewModel> elseVMTreeItem = new TreeItem<>(elseVM);
+            parent.getChildren().add(elseVMTreeItem);
+            if(((ConditionalStatement) model).getIfConditional()!= null){
+                for(Model child : ((ConditionalStatement) model).getIfConditional()){
+
+                    buildTree(ifVMTreeItem, child, registry);
+                }
+                for(Model child : ((ConditionalStatement) model).getElseConditional()){
+                    buildTree(elseVMTreeItem, child, registry);
+                }
+            }
+        }
+
+
         ViewModel stage = registry.getViewModel(model);
         if(stage != null){
 
@@ -174,37 +193,35 @@ public class EditExpController {
                     }
                 }
             }
-//            //ADD TREE CON CHO CONDITIONAL STATEMENT
-//            if(model instanceof ConditionalStatement){
-//                if(((ConditionalStatement) model).getIfConditional()!= null){
-//                    for(Model child : ((ConditionalStatement) model).getIfConditional()){
-//                        buildTree(item, child, registry);
-//                    }
-////                    for(Model child : ((ConditionalStatement) model).getElseConditional()){
-////                        buildTree(item, child, registry);
-////                    }
-//                }
-//            }
+
         }
     }
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
-        if(parent != null && parent.getValue().getModel() instanceof ModelContainer){
+        if(parent == null){
+            experiment.addStage(vm.getModel());
+            startStage.getChildren().add(new TreeItem<>(vm));
+            return;
+        }
+        if(parent.getValue() instanceof IfConditionalStatementVM){
+            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
+            parent.getChildren().add(new TreeItem<>(vm));
+            conditionalStatement.addIf(vm.getModel());
+        } else if (parent.getValue() instanceof ElseConditionalStatementVM){
+            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
+            parent.getChildren().add(new TreeItem<>(vm));
+            conditionalStatement.addElse(vm.getModel());
+        } else if(parent.getValue().getModel() instanceof ModelContainer){
             Model selected = parent.getValue().getModel();
 
             if(!(selected instanceof TasteTest)){
                 parent.getChildren().add(new TreeItem<>(vm));
                 ((ModelContainer) selected).addChildren(vm.getModel());
-                parent.setExpanded(true);
+
             }
-
-        } else {
-            experiment.addStage(vm.getModel());
-            startStage.getChildren().add(new TreeItem<>(vm));
         }
-
-
+        parent.setExpanded(true);
     }
 
 //    void addNewTreeItem(ViewModel vm){
@@ -260,17 +277,20 @@ public class EditExpController {
     @FXML
     void addConditionalStatement(ActionEvent event) {
 
-       ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM();
+        ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM();
         ConditionalStatement conditionalStatement = conditionalStatementVM.getConditionalStatement();
 
         IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
         ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);
-        ifConditional = new TreeItem<>(ifConditionalStatement);
-        elseConditional = new TreeItem<>(elseConditionalStatement);
-        startStage.getChildren().add(ifConditional);
-        startStage.getChildren().add(elseConditional);
+        addNewTreeItem(ifConditionalStatement);
+        addNewTreeItem(elseConditionalStatement);
+//        ifConditional = new TreeItem<>(ifConditionalStatement);
+//        elseConditional = new TreeItem<>(elseConditionalStatement);
+//        startStage.getChildren().add(ifConditional);
+//        startStage.getChildren().add(elseConditional);
 
        }
+
 
    @FXML
     void addCourse(ActionEvent event) {
@@ -556,18 +576,19 @@ public class EditExpController {
     @FXML
     void delete(ActionEvent event) throws Exception {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null && selectedItem != startStage) {
+        if(selectedItem == startStage){
+            PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete Start stage", experiment);
+            return;
+        }
+        if (selectedItem != null){
             TreeItem<ViewModel> parent = selectedItem.getParent();
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if (currentIndex == 0) {
-                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete start stage", experiment);
-                    return;
-                }
+
+               // PopUpVM popUpConfirm = new PopUpVM(CONFIRM, "Are you sure you want to delete this stage?", experiment);
                 Object curr = experiment.getStages().get(currentIndex);
                 parent.getChildren().remove(selectedItem);
                 experiment.getStages().remove(curr);
-                DataAccess.updateFile();
             }
         }
     }
@@ -576,9 +597,15 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
+            if(selectedItem == startStage){
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move Start stage", experiment);
+                return;
+            }
+
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
-                if(currentIndex == parent.getChildren().size() - 1){
+
+                if(currentIndex == parent.getChildren().size() - 1){//last item
                     PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
                     return;
                 }
@@ -601,8 +628,16 @@ public class EditExpController {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
+            if (selectedItem == startStage) {
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
+                return;
+            }
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
+                if (currentIndex == 0) {
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot switch stage with Start", experiment);
+                    return;
+                }
                 if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
                     TreeItem<ViewModel> lastItem = parent.getChildren().get(currentIndex - 1);
                     parent.getChildren().set(currentIndex - 1, parent.getChildren().get(currentIndex));
@@ -612,8 +647,6 @@ public class EditExpController {
                     experiment.getStages().set(currentIndex, last);
                 }
                 treeView.getSelectionModel().select(currentIndex);
-            } else {
-                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
             }
         }
     }

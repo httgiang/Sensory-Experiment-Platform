@@ -1,8 +1,7 @@
 package main.sensoryexperimentplatform.controllers;
 
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -64,6 +63,12 @@ public class RunController {
         ViewModel stages = registry.getViewModel(model);
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+        if(model instanceof Course){
+            AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
+            courseVM.initRunSetup(listView);
+            return;
+        }
+
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
                 for(Model children : ((ModelContainer) model).getChildren()){
@@ -90,6 +95,7 @@ public class RunController {
                 }
                 listView.getItems().add(stages);
             }
+
         }
     }
     private void loadItems() {
@@ -182,6 +188,7 @@ public class RunController {
         stopTimer();
         stage.close();
     }
+
 
     private void setupTimerListener(RunTimerController runTimerController) {
         runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {

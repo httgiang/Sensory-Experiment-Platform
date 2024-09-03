@@ -38,7 +38,7 @@ public class RunInputController {
     private void bindViewModel() {
         txt_input.textProperty().bindBidirectional(viewModel.getResult());
 
-        txt_input.textProperty().addListener((_, _, newValue) -> {
+        txt_input.textProperty().addListener((observableValue, oldValue, newValue) -> {
             viewModel.setResult(newValue);
         });
         txt_question.textProperty().bindBidirectional(viewModel.questionProperty());

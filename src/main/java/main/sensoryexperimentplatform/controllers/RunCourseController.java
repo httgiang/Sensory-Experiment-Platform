@@ -1,6 +1,7 @@
 package main.sensoryexperimentplatform.controllers;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -29,10 +30,8 @@ public class RunCourseController {
     @FXML
     private Label titleTxt;
 
-    @FXML
-    void buttonListener(ActionEvent event) {
+    private DoubleProperty consumedWeight;
 
-    }
 
     private Course course;
     private AddCourseVM viewModel;
@@ -92,5 +91,8 @@ public class RunCourseController {
     private void bindViewModel() {
         titleTxt.textProperty().bind(viewModel.txt_titleProperty());
         contentTxt.textProperty().bind(viewModel.txt_contentProperty());
+        consumedWeight.bindBidirectional(viewModel.consumedWeightProperty());
     }
+
+
 }

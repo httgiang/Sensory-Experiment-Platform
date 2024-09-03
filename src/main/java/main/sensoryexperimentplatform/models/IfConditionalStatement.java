@@ -8,7 +8,7 @@ public class IfConditionalStatement extends ConditionalStatement {
     public IfConditionalStatement(ConditionalStatement other) {
         super(other);
     }
-    public void addIf(Model m){
-       super.addIf(m);
-    }
+//    public void addIf(Model m){
+//       super.addIf(m);
+//    }
 }

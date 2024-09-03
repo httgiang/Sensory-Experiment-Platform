@@ -1,21 +1,21 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
+import main.sensoryexperimentplatform.arduino.TestArduino;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
-import main.sensoryexperimentplatform.models.Course;
-import main.sensoryexperimentplatform.models.Experiment;
-import main.sensoryexperimentplatform.models.Model;
+import main.sensoryexperimentplatform.models.*;
 
+import javax.swing.text.View;
 import java.io.IOException;
+
 
 public class AddCourseVM implements ViewModel{
     private StringProperty txt_button;
@@ -27,11 +27,14 @@ public class AddCourseVM implements ViewModel{
     private StringProperty txt_endStatement;
     private StringProperty txt_title;
     private BooleanProperty checkbox_alert;
+    private Scale scale = Scale.getScaleInstance();
+    private DoubleProperty consumedWeight;
     private Experiment experiment;
+    ModelVMRegistry registry = ModelVMRegistry.getInstance();
     private Course course;
     public AddCourseVM(){
-        this.course = new Course("Start eating stage","Please contact experimenter",
-                "Finished","Stop eating stage"
+        this.course = new Course("Start eating phase","Please contact experimenter",
+                "Meal finished","Stop eating stage"
                 , 0,0,0,
                 "Please remember while eating:\\" +
                 "Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. " +
@@ -69,6 +72,13 @@ public class AddCourseVM implements ViewModel{
     }
 
 
+    public double getConsumedWeight() {
+        return consumedWeight.get();
+    }
+
+    public DoubleProperty consumedWeightProperty() {
+        return consumedWeight;
+    }
 
     private void onAlertChange(Boolean newValue) {
         course.setAlert(newValue);
@@ -171,6 +181,10 @@ public class AddCourseVM implements ViewModel{
         course.setButtonText(newValue);
     }
 
+    public void setConsumedWeight(double consumedWeight) {
+        this.consumedWeight.set(consumedWeight);
+    }
+
     @Override
     public Model getModel() {
         return course;
@@ -192,35 +206,90 @@ public class AddCourseVM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
-        help_image.setVisible(false);
-
+    public void handleRunButtons(Button btn_next, Button btn_back) {
+        btn_back.setDisable(false);
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.txt_buttonProperty());
     }
 
     @Override
-    public void handleEditButtons(Button btn_AddPeriodicStage, Button btn_AddCourse, Button btn_assignSound,
+    public void handleEditButtons(Button btn_addPeriodicStage, Button btn_addCourse, Button btn_assignSound,
                                   Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
             , Button btn_addInput, Button btn_noticeStage,
-                                  Button  btn_addTimer, Button btn_AddQuestionStage,
-                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_AddConditionalStatement) throws IOException {
-        btn_AddPeriodicStage.setDisable(false);
-        btn_AddCourse.setDisable(false);
+                                  Button  btn_addTimer, Button btn_addQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_addConditionalStatement) throws IOException {
+
+        btn_addPeriodicStage.setDisable(false);
         btn_assignSound.setDisable(true);
         btn_addFoodAndTaste.setDisable(true);
         btn_addAudibleInstruction.setDisable(false);
         btn_addInput.setDisable(false);
         btn_noticeStage.setDisable(false);
         btn_addTimer.setDisable(false);
-        btn_AddQuestionStage.setDisable(false);
+        btn_addQuestionStage.setDisable(false);
         btn_addRatingContainer.setDisable(false);
         btn_addTasteTest.setDisable(false);
-        btn_AddConditionalStatement.setDisable(false);
+        btn_addConditionalStatement.setDisable(false);
+        btn_addCourse.setDisable(true);
+    }
+
+    public void initRunSetup(ListView<ViewModel> listView){
+        //Add vao notice stage de nguoi dung thi nghiem bat dau nhan do an
+        showNoticeStage("Start", listView);
+
+        // Bat dau can
+        TestArduino.startRecording();
+
+
+        // Bind bien consumed weight voi cai can. Consumed = weight ban dau - weight hien tai.
+        // Bay gio cai nay dang sai, se sua lai sau khi cai can nhan dung gia tri
+        this.consumedWeight = new SimpleDoubleProperty(0.0);
+
+        this.consumedWeight.bindBidirectional(Scale.getScaleInstance().weightProperty());
+
+        // Cai dat listener cho cai can
+        this.consumedWeight.addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.doubleValue() >= 0.1) {
+                // Neu nhu nguoi tham gia an dc hon 400g -> nhac nho Refill
+                showNoticeStage("Refill", listView);
+                this.setConsumedWeight(0.0);
+            }
+        });
+
+        showChildrenPane(listView);
 
     }
+    public void showChildrenPane(ListView<ViewModel> listView){
+        for(Model children : course.getChildren()){
+            listView.getItems().add(registry.getViewModel(children));
+        }
+        showNoticeStage("End", listView);
+        TestArduino.stopRecording();
+    }
+
+    private void showNoticeStage(String type, ListView<ViewModel> listView){
+        Notice notice = null;
+        if(type.equals("Start")){
+            notice = new Notice(getTxt_title(), getTxt_content(), "Food added", null, false);
+        } else if(type.equals("Refill")){
+            notice = new Notice("Refill required", "Please call the experimenter", "Food added", null, false);
+            System.out.println("REFILL");
+        } else if(type.equals("End")){
+            notice = new Notice("Stop eating", txt_endStatement.get(), getTxt_button(), null, false);
+        }
+        NoticeStage_VM noticeStageVm = new NoticeStage_VM(notice);
+
+        listView.getItems().add(noticeStageVm);
+
+    }
+
 
     @Override
     public String toString() {
         return txt_title.get();
     }
+
+
 
 }

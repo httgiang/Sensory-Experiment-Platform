@@ -31,7 +31,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
                 </TableView>
-      <Button fx:id="btn_redo" layoutX="879.0" layoutY="19.0" mnemonicParsing="false" onAction="#redo" text="Redo" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="19.0" />
       <Pagination fx:id="pagination" layoutX="-3.2" layoutY="72.8" pageCount="0" prefHeight="617.0" prefWidth="1006.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="73.0" />
    </children>
    <padding>
