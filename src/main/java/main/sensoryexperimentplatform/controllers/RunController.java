@@ -52,8 +52,10 @@ public class RunController {
         this.experiment = experiment;
         this.uid = uId;
         loadItems();
-//        startTimer();
+
         setListViewListener();
+
+
         initButtons();
         setupToolTip();
 
@@ -74,7 +76,7 @@ public class RunController {
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
                 for(Model children : ((ModelContainer) model).getChildren()){
-                    buildList(listView, children, registry);
+                    listView.getItems().add(registry.getViewModel(children));
                 }
             }
 //            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
@@ -103,6 +105,7 @@ public class RunController {
         for(Model selectedObject : experiment.getStages()) {
             registry = ModelVMRegistry.getInstance();
             buildList(listView, selectedObject, registry);
+
         }
     }
 
@@ -121,6 +124,7 @@ public class RunController {
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 try {
+
                     showRunningPane(newValue);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -209,15 +213,13 @@ public class RunController {
     @FXML
     void handleBtnNext(MouseEvent event) throws IOException {
         int selectedIndex = listView.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
-            listView.getSelectionModel().select(0);
-        }
-        if (selectedIndex >= 0 && selectedIndex < listView.getItems().size() - 1) {
-            listView.getSelectionModel().select(selectedIndex + 1);
-        }
         if(selectedIndex == listView.getItems().size() - 1){
             handleFinalNext();
+        } else {
+            listView.getSelectionModel().selectNext();
         }
+
+
         DataAccess.quickSave(experiment, uid);
     }
     @FXML

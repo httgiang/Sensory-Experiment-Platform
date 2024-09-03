@@ -26,7 +26,6 @@ public class InputStageController {
     public void setViewModel(InputStage_VM viewModel){
         this.viewModel = viewModel;
         bindViewModel();
-        System.out.println("yolo");
     }
 
     public void bindViewModel(){
