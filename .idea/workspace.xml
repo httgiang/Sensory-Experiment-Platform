@@ -10,17 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Course Model - Data to Edit">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/EditExpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/conditionalStatementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/conditionalStatementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/ConditionalStatementVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/IfConditionalStatementVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/IfConditionalStatementVM.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,34 +72,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.SensoryExperimentPlatform.executor": "Run",
-    "JAR Application.Sensory-Expeirment-Platform.jar (1).executor": "Run",
-    "JAR Application.Sensory-Expeirment-Platform.jar.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Qanh-EditRestructureMVVM",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/SMARTSCALEPROJECT",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.25585938",
-    "project.structure.side.proportion": "0.5965834",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SensoryExperimentPlatform.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Sensory-Expeirment-Platform.jar (1).executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Sensory-Expeirment-Platform.jar.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Qanh-EditRestructureMVVM&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SMARTSCALEPROJECT&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.25585938&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5965834&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Tyr1on\Sensory-Experiment-Platform" />
@@ -199,8 +191,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -239,6 +231,7 @@
       <workItem from="1724414328878" duration="7787000" />
       <workItem from="1724857256657" duration="4014000" />
       <workItem from="1724862515250" duration="6636000" />
+      <workItem from="1725385264090" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
@@ -275,7 +268,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Course-AppliedScale" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -307,6 +312,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/PortScannerGUI.java</url>
           <line>11</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -200,17 +200,18 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
+        TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
+
         if(parent == null){
             experiment.addStage(vm.getModel());
             startStage.getChildren().add(new TreeItem<>(vm));
             return;
         }
+        ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
         if(parent.getValue() instanceof IfConditionalStatementVM){
-            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addIf(vm.getModel());
         } else if (parent.getValue() instanceof ElseConditionalStatementVM){
-            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addElse(vm.getModel());
         } else if(parent.getValue().getModel() instanceof ModelContainer){
