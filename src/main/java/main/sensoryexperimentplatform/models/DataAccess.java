@@ -2,6 +2,11 @@ package main.sensoryexperimentplatform.models;
 
 import java.io.*;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -201,6 +206,22 @@ public class DataAccess {
         boolean isConditionalStatement = false;
         //notice, input, timer, vas, glms, question, rating container, course, audible instruction
 
+        File file = new File(loadFilePath);
+        BasicFileAttributes attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+        // Get the creation time
+        FileTime fileTime = attr.lastModifiedTime();
+
+        // Convert FileTime to LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.ofInstant(fileTime.toInstant(), ZoneId.systemDefault());
+
+        // Format the date to dd.MM.yyyy
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String formattedDate = dateTime.format(formatter);
+        currentExperiment.setLast_modified(formattedDate);
+//        System.out.println("creationTime: " + attr.creationTime());
+//        System.out.println("lastAccessTime: " + attr.lastAccessTime());
+//        System.out.println("lastModifiedTime: " + attr.lastModifiedTime());
+
         try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
             while ((line = reader.readLine()) != null ){
                 if (line.startsWith("ExperimentName")) {
@@ -209,11 +230,11 @@ public class DataAccess {
                 } else if (line.startsWith("ExperimenterName")) {
                     currentExperiment.setCreatorName(line.split(": ")[1].trim());
 
-                } else if (line.startsWith("ExperimentID:")) {
+                } else if (line.startsWith("ExperimentID")) {
                     currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
 
-                } else if (line.startsWith("Created on")) {
-                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
+                } else if (line.startsWith("Last modified")) {
+                    currentExperiment.setLast_modified(line.split(": ")[1].trim());
 
                 } else if (line.startsWith("Version")) {
                     int version = Integer.parseInt(line.split(": ")[1].trim());
@@ -560,8 +581,11 @@ public class DataAccess {
 
         String line;
         //notice, input, timer, vas, glms, question, rating container, course
-
-        try(BufferedReader reader = new BufferedReader(new FileReader(loadFilePath))){
+        File file = new File(loadFilePath);
+        if (!file.exists()){
+            file.createNewFile();
+        }
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
             while ((line = reader.readLine()) != null ){
                 if (line.startsWith("ExperimentName:")) {
                     currentExperiment.setExperimentName(line.split(": ")[1].trim());
@@ -572,8 +596,8 @@ public class DataAccess {
                 } else if (line.startsWith("ExperimentID:")) {
                     currentExperiment.setId(Integer.parseInt(line.split(": ")[1].trim()));
 
-                } else if (line.startsWith("Created on")) {
-                    currentExperiment.setCreated_date(line.split(": ")[1].trim());
+                } else if (line.startsWith("Last modified")) {
+                    currentExperiment.setLast_modified(line.split(": ")[1].trim());
 
                 } else if (line.startsWith("Version")) {
                     int version = Integer.parseInt(line.split(": ")[1].trim());

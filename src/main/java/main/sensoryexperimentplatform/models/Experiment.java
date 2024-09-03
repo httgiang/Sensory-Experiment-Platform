@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.*;
 
 public class Experiment {
-    private String creatorName, experimentName, description, note, created_date;
+    private String creatorName, experimentName, description, note, last_modified;
     public int version, number_of_results, id, elapsedTime;
     ArrayList<Model> stages;
     public Experiment(){
@@ -18,17 +18,17 @@ public class Experiment {
 //       // start = new Start("default","default","default",
 //                false,null, null,
 //                0,100,null);
-        this.created_date = DataAccess.getCurrentFormattedDate();
+        this.last_modified = DataAccess.getCurrentFormattedDate();
     }
 
-    public Experiment(String creatorName, String experimentName, String description, String note, int version, int id, String created_date) {
+    public Experiment(String creatorName, String experimentName, String description, String note, int version, int id, String last_modified) {
         this.creatorName = creatorName;
         this.experimentName = experimentName;
         this.description = description;
         this.note = note;
         this.version = version;
         this.id = id;
-        this.created_date = created_date;
+        this.last_modified = last_modified;
         stages = new ArrayList<>();
         elapsedTime = 0;
         //start = new Start("default","default","default",false,null, null,0,100,null);
@@ -40,7 +40,9 @@ public class Experiment {
         this.note = selectedExperiment.getNote();
         this.version = selectedExperiment.getVersion();
         this.id = selectedExperiment.getId();
-        this.created_date = selectedExperiment.getCreated_date();
+        if (selectedExperiment.getLast_modified()!= null){
+            this.last_modified = selectedExperiment.getLast_modified();
+        }else this.last_modified = "";
         elapsedTime= 0;
         stages = new ArrayList<>();
         for (Object o : selectedExperiment.getStages()) {
@@ -209,13 +211,12 @@ public class Experiment {
         this.stages = stages;
     }
 
-
-    public String getCreated_date() {
-        return created_date;
+    public String getLast_modified() {
+        return last_modified;
     }
 
-    public void setCreated_date(String created_date) {
-        this.created_date = created_date;
+    public void setLast_modified(String last_modified) {
+        this.last_modified = last_modified;
     }
 
     public void setVersion(int version) {
@@ -290,7 +291,7 @@ public class Experiment {
     @Override
     public String toString() {
         return "ExperimentName: " + experimentName + "\nExperimenterName: " + creatorName +
-                "\nExperimentID: "+ id + "\nCreated on: "+ created_date +
+                "\nExperimentID: "+ id + "\nLast modified: "+ last_modified +
                 "\nVersion: "+ version + "\n"+
                 stagesToString() +"endExperiment()\n";
     }

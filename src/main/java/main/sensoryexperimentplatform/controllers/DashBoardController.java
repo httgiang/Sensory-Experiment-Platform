@@ -33,7 +33,6 @@ public class DashBoardController {
     private DashBoard_VM dashBoard_vm;
 
     private ScheduledExecutorService executorService;
-    private long startTime, elapsedTime;
     @FXML
     private TableView<Experiment> contentTable;
 
@@ -52,7 +51,7 @@ public class DashBoardController {
     @FXML
     private TableColumn<Experiment, Integer> lbl_result;
     @FXML
-    private TableColumn<Experiment, String> lbl_createDate;
+    private TableColumn<Experiment, String> lbl_lastModified;
 
     @FXML
     private TableColumn<Experiment, String> lbl_Option;
@@ -79,7 +78,7 @@ public class DashBoardController {
         lbl_experimentName.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.252)); // 25.2% of table width
         lbl_currentVersion.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.102)); // 10.2% of table width
         lbl_result.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.102)); // 10.2% of table width
-        lbl_createDate.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.122)); // 12.2% of table width
+        lbl_lastModified.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.122)); // 12.2% of table width
         lbl_Option.prefWidthProperty().bind(contentTable.widthProperty().multiply(0.183)); // 18.3% of table width
     }
 
@@ -97,7 +96,7 @@ public class DashBoardController {
 
         lbl_result.setCellValueFactory(new PropertyValueFactory<>("number_of_results"));
 
-        lbl_createDate.setCellValueFactory(new PropertyValueFactory<>("created_date"));
+        lbl_lastModified.setCellValueFactory(new PropertyValueFactory<>("last_modified"));
 
         contentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, selectedExperiment) -> {
             this.selectedExperiment = selectedExperiment;

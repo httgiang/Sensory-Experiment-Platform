@@ -71,7 +71,9 @@ public class Vas extends Stage implements Model{
         this.conducted = conduct_day;
     }
     public String getConducted(){
-        return conducted;
+        if(conducted != null){
+            return conducted;
+        }else return " ";
     }
 
     public boolean getAlert() {

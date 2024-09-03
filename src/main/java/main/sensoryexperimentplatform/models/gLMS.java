@@ -125,7 +125,9 @@ public class gLMS extends Stage implements Model{
         this.conducted = currentFormattedTime;
     }
     public String getConducted(){
-        return conducted;
+        if(conducted != null){
+            return conducted;
+        } else return " ";
     }
 
 

@@ -9,15 +9,188 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Course Model - Data to Edit">
+    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Fix - &quot;null&quot; issues">
+      <change afterPath="$PROJECT_DIR$/AllExperiments.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results/Sweet Screen2018/test1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/null/m.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/null/m.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/TestArduino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/TestArduino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/scale_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/scale_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort/091.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Bond Lader.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/114.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CourseTest.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CourseTest/112.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/CourseTest/12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Demo.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Demo/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Preload Soup/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/E6 Umami Main Course.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Ella - Mood Ratings.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/GNG - Mood Ratings.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/GNG - Mood Ratings/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Lab breakfast/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Marie GNG - Mood Ratings/111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Porridge_taste test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/.......csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/00000000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/000000000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/0909.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/1212.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/2108.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/22.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/3333.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/555.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/5555.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/555555.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/56.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/6666666.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/66666666.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/8888.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/a.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/aaa.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/aaaaaa.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/aloha.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/cccccccc.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/dddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ddddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ddddddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/dddddddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ddddđ.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/dđ.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/eeeee.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/eeeeeeeeee.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ffff.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/fffff.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/fffffffffff.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/g.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/hello.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/kkk.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/llllllll.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/m.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/mmmmmm.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/qa.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/qqqqqqqq.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/s.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ssssss.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/testing for idk.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/uuu.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/x.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/ê.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Quynh Anh test/đ.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/STT_1M_full.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/STT_1M_short.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/STT_1M_short/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/00.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/111111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/1111111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/12.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/33.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/44.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/444.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/4444.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/666.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sample/99.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/ScaleTest.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/ScaleTest/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Screener_TastePhenotypes.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sweet Screen2018.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Sweet Screen2018.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sweet Screen2018/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sweet Screen2018_short.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/SweetLikerTest2015.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Tara and Alice Ratings.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Tara and Alice Ratings/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Phenotypes Screener.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/11.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/113.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/141.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/1412.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/14312.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/66.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/99.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/;ool;p;lo.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/[pp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/lkkj.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/lokiki.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste Screener 2019_20/ôppopo.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Taste&amp;Metabolism.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Test1708.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Testing.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/WesternDiet_taste test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/WesternDiet_taste test/aaaaaaaa.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/WesternDiet_taste test/yolo.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/1312.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/m.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/null/n.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/1111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/1111111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/444.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/555555555.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/777.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/ddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/dddddddddd.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/testing/hhh.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/DashBoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/data/AllExperiments.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/DataAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Experiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Vas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/Vas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/gLMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/gLMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/utilz/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/utilz/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/DashBoard_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/DashBoard_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/DashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/DashBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunCourse.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunCourse.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunGLMS.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunGLMS.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunInputStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunInputStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunNotice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunQuestionStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunVas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/DashBoard_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/DashBoard_CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_130824_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_130824_7/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_6/0000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_6/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_6/ssssss.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Demo_7/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/E6 Preload Soup_8.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/E6 Preload Soup_8/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Good morning_27.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Good morning_27/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste Screener 2019_20_1/1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste Screener 2019_20_1/11111.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/Taste Screener 2019_20_1/22222.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_2/000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_2/ccccc.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/results/testing_2/dddddd.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +262,11 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Course-AppliedScale&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Fix-null&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SMARTSCALEPROJECT&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jSerialComm-2.11.0.jar&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,8 +274,8 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.25585938&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5965834&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29979467&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -166,31 +340,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SensoryExperimentPlatform" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.SensoryExperimentPlatform" />
+      <module name="Sensory-Expeirment-Platform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.sensoryexperimentplatform.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Sensory-Expeirment-Platform.jar (1)" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/jar_demo2/Sensory-Expeirment-Platform.jar" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-22.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics " />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
     </configuration>
-    <configuration name="Sensory-Expeirment-Platform.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/jar_demo1/Sensory-Expeirment-Platform.jar" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Application.SensoryExperimentPlatform" />
       <item itemvalue="Application.GUIControl" />
       <item itemvalue="Application.PortScannerGUI" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar" />
       <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SensoryExperimentPlatform" />
         <item itemvalue="Application.GUIControl" />
         <item itemvalue="Application.PortScannerGUI" />
         <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar (1)" />
-        <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -237,6 +419,9 @@
       <workItem from="1724414328878" duration="7787000" />
       <workItem from="1724857256657" duration="4014000" />
       <workItem from="1724862515250" duration="6636000" />
+      <workItem from="1725322689995" duration="2141000" />
+      <workItem from="1725328906282" duration="1914000" />
+      <workItem from="1725351618743" duration="7127000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
@@ -283,7 +468,8 @@
     <MESSAGE value="Fix | start model - completed" />
     <MESSAGE value="merge" />
     <MESSAGE value="Course Model - Data to Edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Course Model - Data to Edit" />
+    <MESSAGE value="Fix - &quot;null&quot; issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix - &quot;null&quot; issues" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
