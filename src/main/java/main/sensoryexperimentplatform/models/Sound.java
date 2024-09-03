@@ -60,8 +60,19 @@ public class Sound {
         return soundMap;
     }
     public void loadSound(String name, String filePath) {
+        // Check if name or filePath is null
+        if (name == null || filePath == null) {
+            return;
+        }
+
+        // Check if the file exists before attempting to load it
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return;
+        }
+
         try {
-            InputStream fileStream = new FileInputStream(filePath);
+            InputStream fileStream = new FileInputStream(file);
             BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedStream);
             Clip clip = AudioSystem.getClip();
@@ -69,9 +80,11 @@ public class Sound {
             soundMap.put(name, clip);
             soundPathMap.put(name, filePath);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println("Error loading sound: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
 
 

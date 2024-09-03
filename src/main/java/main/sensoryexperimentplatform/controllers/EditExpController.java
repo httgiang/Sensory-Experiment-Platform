@@ -166,6 +166,7 @@ public class EditExpController {
             ElseConditionalStatementVM elseVM = new ElseConditionalStatementVM((ConditionalStatement) model);
             TreeItem<ViewModel> ifVMTreeItem = new TreeItem<>(ifVM);
             TreeItem<ViewModel> elseVMTreeItem = new TreeItem<>(elseVM);
+            parent.getChildren().add(ifVMTreeItem);
             parent.getChildren().add(elseVMTreeItem);
             if(((ConditionalStatement) model).getIfConditional()!= null){
                 for(Model child : ((ConditionalStatement) model).getIfConditional()){

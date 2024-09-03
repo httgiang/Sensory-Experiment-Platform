@@ -2,6 +2,8 @@ package main.sensoryexperimentplatform.controllers;
 
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -68,6 +70,10 @@ public class RunController {
             courseVM.initRunSetup(listView);
             return;
         }
+        if(model instanceof ConditionalStatement){
+            ConditionalStatementVM conditionalVM = (ConditionalStatementVM) registry.getViewModel(model);
+            conditionalVM.initRunSetup(listView);
+        }
 
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
@@ -76,19 +82,20 @@ public class RunController {
                 }
             }
             // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
-            else if(((ConditionalStatement) model).getIfConditional() != null){
-                for(Model children : ((ConditionalStatement) model).getIfConditional()){
-                    buildList(listView, children, registry);
-                }
+//            else if(((ConditionalStatement) model).getIfConditional() != null){
+//                for(Model children : ((ConditionalStatement) model).getIfConditional()){
+//                    buildList(listView, children, registry);
+//                }
+//
+//            }
+//            else if(((ConditionalStatement) model).getElseConditional() != null){
+//                for(Model children : ((ConditionalStatement) model).getElseConditional()){
+//                    buildList(listView, children, registry);
+//                }
+//            }
 
-            }
-            else if(((ConditionalStatement) model).getElseConditional() != null){
-                for(Model children : ((ConditionalStatement) model).getElseConditional()){
-                    buildList(listView, children, registry);
-                }
-            }
-
-        } else {
+        }
+        else {
             if(stages != null){
                 if(model instanceof TimerStage_VM){
                     setupTimerListener(((TimerStage_VM) model).getRunController());

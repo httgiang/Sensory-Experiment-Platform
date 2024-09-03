@@ -3,6 +3,7 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,8 @@ public class ConditionalStatementVM implements ViewModel {
     private SimpleStringProperty variable2Choice;
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
+    ModelVMRegistry registry = ModelVMRegistry.getInstance();
+
 
     public ConditionalStatementVM(ConditionalStatement conditionalStatement){
         this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
@@ -94,6 +97,23 @@ public class ConditionalStatementVM implements ViewModel {
     }
     public String getCompare(){
         return compare.get();
+    }
+
+    public void initRunSetup(ListView<ViewModel> listView){
+        showChildrenPane(listView);
+    }
+    public void showChildrenPane(ListView<ViewModel> listView){
+        if(conditionalStatement.evaluateCondition()){
+            for(Model ifConditional: conditionalStatement.getIfConditional()){
+                listView.getItems().add(registry.getViewModel(ifConditional));
+            }
+        }
+        else{
+            for(Model elseConditional: conditionalStatement.getElseConditional()){
+                listView.getItems().add(registry.getViewModel(elseConditional));
+            }
+        }
+
     }
 
 
