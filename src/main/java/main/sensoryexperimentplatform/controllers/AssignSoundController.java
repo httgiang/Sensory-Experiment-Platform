@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import javafx.scene.control.ListCell;
@@ -16,8 +15,6 @@ import javafx.scene.control.ListView;
 
 
 import main.sensoryexperimentplatform.viewmodel.AssignSoundVM;
-import main.sensoryexperimentplatform.viewmodel.AudibleSound_VM;
-import main.sensoryexperimentplatform.viewmodel.RunAudible_VM;
 
 import java.io.IOException;
 

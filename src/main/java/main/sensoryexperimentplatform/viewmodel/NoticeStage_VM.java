@@ -121,8 +121,7 @@ public class NoticeStage_VM implements ViewModel{
             help_image.setVisible(true);
             tooltip.textProperty().bind(this.helpTextProperty());
         }
-        if(this.helpTextProperty().get()  == null || this.helpTextProperty().get().equals("null")) {
-            tooltip.setOpacity(0.0);
+        if(this.helpTextProperty().get()  == null || this.helpTextProperty().get().isEmpty()) {
             help_image.setVisible(false);
             help_image.setManaged(false);
         }
