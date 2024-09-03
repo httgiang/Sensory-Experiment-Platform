@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
@@ -104,9 +106,19 @@ public class QuestionStage_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
+
+        if (this.helpTextProperty().get() != null) {
+            help_image.setVisible(true);
+            tooltip.textProperty().bind(this.helpTextProperty());
+        }
+        if(this.helpTextProperty().get()  == null || this.helpTextProperty().get().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
     }
 
     @Override
