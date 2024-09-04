@@ -5,8 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import main.sensoryexperimentplatform.utilz.PopUpType;
 import main.sensoryexperimentplatform.viewmodel.AssignSoundVM;
+import main.sensoryexperimentplatform.viewmodel.PopUpVM;
+
 import java.io.File;
+import java.io.IOException;
 
 public class AddSoundController {
 
@@ -57,7 +61,7 @@ public class AddSoundController {
     }
 
     @FXML
-    void btn_save(ActionEvent event) {
+    void btn_save(ActionEvent event) throws IOException {
         if (!txt_file.getText().isEmpty() && !txt_name.getText().isEmpty()) {
             // Add the sound name to the list for display purposes
             assignSoundVM.addListSoundshow(txt_name.getText());
@@ -71,6 +75,7 @@ public class AddSoundController {
 
             // Load the sound using the assigned sound path
             assignSoundVM.loadSound(txt_name.getText(), txt_file.getText());
+            PopUpVM popUpVM = new PopUpVM(PopUpType.SUCCESS,"You succesfully add sound");
 
             // Notify the system that a sound has been added
             NotiAddSound.notifyObject();
