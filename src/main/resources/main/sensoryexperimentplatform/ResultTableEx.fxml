@@ -5,21 +5,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="coverPane" prefHeight="682.0" prefWidth="1309.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.ShowResultController">
+<AnchorPane fx:id="coverPane" prefHeight="682.0" prefWidth="1309.0" stylesheets="@../../static/stylesheets/DashBoard_CSS.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.ShowResultController">
    <children>
-                <TableView fx:id="tableView" prefHeight="682.0" prefWidth="1318.0"
-                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="0.0"
-                            minHeight="682" minWidth="1318">
+                <TableView fx:id="tableView" minHeight="682" minWidth="1318" prefHeight="682.0" prefWidth="1325.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TableColumn fx:id="uidColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="50.0" sortable="false" text="UID" />
                         <TableColumn fx:id="typeColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="140.0" sortable="false" text="Type" />
                         <TableColumn fx:id="timeColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="135.0" sortable="false" text="Time" />
                         <TableColumn fx:id="resultColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" text="Result" />
                         <TableColumn fx:id="questionColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" text="Question" />
-                        <TableColumn fx:id="lowAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" text="Low Anchor" />
-                        <TableColumn fx:id="highAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" text="High Anchor" />
-            <TableColumn fx:id="lowValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" text="Low Value" />
-            <TableColumn fx:id="highValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" text="High Value" />
+                        <TableColumn fx:id="lowAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" />
+                        <TableColumn fx:id="highAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" />
+            <TableColumn fx:id="lowValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" />
+            <TableColumn fx:id="highValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="150.0" sortable="false" />
                     </columns>
                 </TableView>
    </children>

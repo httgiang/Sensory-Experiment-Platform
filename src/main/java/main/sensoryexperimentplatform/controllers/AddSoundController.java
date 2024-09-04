@@ -67,7 +67,7 @@ public class AddSoundController {
 
 
             // Set the sound path after export
-            assignSoundVM.setSoundPath(assignSoundVM.getSoundPath());
+            assignSoundVM.setSoundPath(txt_file.getText());
 
             // Load the sound using the assigned sound path
             assignSoundVM.loadSound(txt_name.getText(), txt_file.getText());

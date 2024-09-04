@@ -64,7 +64,7 @@ public class RunController {
     private void buildList(ListView<ViewModel> listView, Model model, ModelVMRegistry registry){
         ViewModel stages = registry.getViewModel(model);
 
-        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG DD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
         if(model instanceof Course){
             AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
             courseVM.initRunSetup(listView);
