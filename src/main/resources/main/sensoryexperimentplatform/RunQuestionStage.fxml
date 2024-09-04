@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunQuestionController">
+<AnchorPane fx:id="anchorPane" maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunQuestionController">
     <children>
         <Label fx:id="txt_question" layoutX="20.0" layoutY="20.0" minHeight="65.0" minWidth="1217.0" text="question" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
         <Button fx:id="btn_right" layoutX="629.0" layoutY="203.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="155.0" wrapText="true" AnchorPane.rightAnchor="473.0">

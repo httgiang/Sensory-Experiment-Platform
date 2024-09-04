@@ -1,1 +1,26 @@
-uid,type,time,result,question,lowAnchorText,highAnchorText,lowAnchorValue,highAnchorValue
+7,Vas, ,50,How hungry are you right now?,Extremely hungry,Not at all hungry,0,100
+7,Vas,2024.09.03.21.52.32.530,69,How full are you right now?,Extremely full,Not at all full,0,100
+7,Vas,2024.09.03.21.52.35.711,60,How thirsty are you right now?,Extremely thirsty,Not at all thirsty,0,100
+7,Vas,2024.09.03.21.52.39.175,78,How happy are you right now?,Extremely happy,Not at all happy,0,100
+7,Vas, ,50,How anxious are you right now?,Extremely anxious,Not at all anxious,0,100
+7,Vas, ,50,How tired are you right now?,Extremely tired,Not at all tired,0,100
+7,Vas, ,50,How much do you like Sample 667?,Dislike extremely,Like extremely,0,100
+7,GLMS , ,0,How sweet is Sample 667?
+7,GLMS , ,0,How bitter is Sample 667?
+7,GLMS , ,0,How sour is Sample 667?
+7,GLMS , ,0,How salty is Sample 667?
+7,Vas, ,50,How much do you like Sample 312?,Dislike extremely,Like extremely,0,100
+7,GLMS , ,0,How sweet is Sample 312?
+7,GLMS , ,0,How bitter is Sample 312?
+7,GLMS , ,0,How sour is Sample 312?
+7,GLMS , ,0,How salty is Sample 312?
+7,Vas, ,50,How much do you like Sample 265?,Dislike extremely,Like extremely,0,100
+7,GLMS , ,0,How sweet is Sample 265?
+7,GLMS , ,0,How bitter is Sample 265?
+7,GLMS , ,0,How sour is Sample 265?
+7,GLMS , ,0,How salty is Sample 265?
+7,Vas, ,50,How much do you like Sample 720?,Dislike extremely,Like extremely,0,100
+7,GLMS , ,0,How sweet is Sample 720?
+7,GLMS , ,0,How bitter is Sample 720?
+7,GLMS , ,0,How sour is Sample 720?
+7,GLMS , ,0,How salty is Sample 720?

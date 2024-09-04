@@ -156,24 +156,29 @@ public class AudibleSound_VM implements ViewModel{
     }
 
     @Override
-    public void handleEditButtons(Button button1, Button button2, Button btn_assignSound, Button button4, Button button5, Button button6, Button button7, Button button8, Button button9, Button button10, Button button11, Button button12) throws IOException {
-
-        button1.setDisable(true);
+    public void handleEditButtons(Button btn_addPeriodicStage, Button btn_addCourse, Button btn_assignSound,
+                                  Button btn_addFoodAndTaste, Button btn_addAudibleInstruction
+            , Button btn_addInput, Button btn_noticeStage,
+                                  Button  btn_addTimer, Button btn_addQuestionStage,
+                                  Button btn_addRatingContainer, Button btn_addTasteTest, Button btn_addConditionalStatement) throws IOException {
+        btn_addFoodAndTaste.setDisable(true);
+        btn_addPeriodicStage.setDisable(true);
+        btn_addAudibleInstruction.setDisable(false);
+        btn_addInput.setDisable(false);
+        btn_noticeStage.setDisable(false);
+        btn_addTimer.setDisable(false);
+        btn_addQuestionStage.setDisable(false);
+        btn_addRatingContainer.setDisable(false);
+        btn_addTasteTest.setDisable(false);
+        btn_addConditionalStatement.setDisable(false);
+        btn_addCourse.setDisable(false);
         btn_assignSound.setDisable(false);
-        button4.setDisable(true);
-        button7.setDisable(false);
-        button5.setDisable(false);
-        button2.setDisable(false);
-        button11.setDisable(false);
-        button6.setDisable(false);
-        button8.setDisable(false);
-        button12.setDisable(false);
-        button10.setDisable(false);
-        button9.setDisable(false);
+
     }
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+        btn_back.setDisable(false);
         btn_next.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 

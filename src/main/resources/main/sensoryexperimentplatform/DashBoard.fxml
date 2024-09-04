@@ -20,11 +20,11 @@
                 <TableView fx:id="contentTable" layoutY="82.0" prefHeight="552.0" prefWidth="1007.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="82.0">
                     <columns>
                         <TableColumn fx:id="lbl_iD" maxWidth="1.7976931348623157E308" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="lbl_creator" maxWidth="1.7976931348623157E308" prefWidth="140.0" text="Creator " />
+                        <TableColumn fx:id="lbl_creator" maxWidth="1.7976931348623157E308" prefWidth="140.0" text="Creator" />
                         <TableColumn fx:id="lbl_experimentName" maxWidth="1.7976931348623157E308" prefWidth="179.0" text="Experiment Name" />
-                        <TableColumn fx:id="lbl_currentVersion" maxWidth="1.7976931348623157E308" prefWidth="161.0" text="Version " />
-                        <TableColumn fx:id="lbl_result" maxWidth="1.7976931348623157E308" prefWidth="88.0" text="Result" />
-                        <TableColumn fx:id="lbl_createDate" maxWidth="1.7976931348623157E308" prefWidth="147.0" text="Created on" />
+                        <TableColumn fx:id="lbl_currentVersion" maxWidth="1.7976931348623157E308" prefWidth="161.0" text="Version" />
+                        <TableColumn fx:id="lbl_result" maxWidth="1.7976931348623157E308" prefWidth="88.0" text="Results" />
+                        <TableColumn fx:id="lbl_lastModified" maxWidth="1.7976931348623157E308" prefWidth="147.0" text="Modified" />
                         <TableColumn fx:id="lbl_Option" maxWidth="1.7976931348623157E308" prefWidth="188.8001708984375" text="Options" />
                     </columns>
          <columnResizePolicy>

@@ -132,10 +132,10 @@ public class GLMSStage_VM implements ViewModel{
             help_image.setVisible(true);
             tooltip.textProperty().bind(this.txt_helpProperty());
         }
-        if(this.txt_helpProperty().get()  == null || this.txt_helpProperty().get().equals("null")) {
-                    tooltip.setOpacity(0.0);
-                help_image.setVisible(false);
-                help_image.setManaged(false);
+        if(this.txt_helpProperty().get()  == null || this.txt_helpProperty().get().isEmpty()) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
         }
     }
 

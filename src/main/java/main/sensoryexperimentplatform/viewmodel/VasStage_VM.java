@@ -136,8 +136,9 @@ public class VasStage_VM implements ViewModel {
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
-        btn_next.textProperty().bind(this.buttonTextProperty());
         btn_back.setDisable(false);
+        btn_next.textProperty().bind(this.buttonTextProperty());
+
         if (this.conductedTextProperty().get() == null){
             btn_next.setDisable(true);
         }else btn_next.setDisable(false);

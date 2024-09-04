@@ -37,13 +37,7 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
-#help_icon{
-    -fx-max-height: 40px;
-    -fx-max-width: 40px;
-    -fx-pref-width: 40px;
-    -fx-pref-height: 40px;
-    -fx-background-image: url("/static/images/Help_outline.png");
-}
+
 #lowAnchor_label, #highAnchor_label{
     -fx-font-family: "Baloo2 SemiBold";
     -fx-font-size: 20px;

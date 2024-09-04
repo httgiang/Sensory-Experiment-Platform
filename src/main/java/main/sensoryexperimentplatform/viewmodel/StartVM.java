@@ -106,6 +106,10 @@ public class StartVM implements ViewModel{
         btn_next.textProperty().bind(this.buttonTextProperty());
         btn_back.setDisable(true);
         help_image.setVisible(false);
+            //code tuyet voi`
+
+            help_image.setVisible(false);
+            help_image.setManaged(false);
     }
 
     @Override

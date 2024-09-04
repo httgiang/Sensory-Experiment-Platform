@@ -64,12 +64,15 @@ public class RunController {
     private void buildList(ListView<ViewModel> listView, Model model, ModelVMRegistry registry){
         ViewModel stages = registry.getViewModel(model);
 
-        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG DD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
         if(model instanceof Course){
             AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
             courseVM.initRunSetup(listView);
             return;
         }
+
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG DD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+
         if(model instanceof ConditionalStatement){
             ConditionalStatementVM conditionalVM = (ConditionalStatementVM) registry.getViewModel(model);
             conditionalVM.initRunSetup(listView);
@@ -102,7 +105,6 @@ public class RunController {
                 }
                 listView.getItems().add(stages);
             }
-
         }
     }
     private void loadItems() {
@@ -196,7 +198,6 @@ public class RunController {
         stage.close();
     }
 
-
     private void setupTimerListener(RunTimerController runTimerController) {
         runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -205,21 +206,21 @@ public class RunController {
         });
     }
 
-    //timer tracks the experiment
-//    private void startTimer() {
-//        executorService = Executors.newSingleThreadScheduledExecutor();
-//        startTime = System.currentTimeMillis();
-//        executorService.scheduleAtFixedRate(() ->{
-//            long currentTime = System.currentTimeMillis();
-//            elapsedTime = (currentTime - startTime) / 1000;
-//            experiment.elapsedTime = Math.toIntExact(elapsedTime);
-//
-//            long minutes = experiment.elapsedTime / 60;
-//            long seconds = experiment.elapsedTime % 60;
-//            String formattedTime = String.format("%d:%02d", minutes, seconds);
-//            Platform.runLater(() -> elapsedTime_label.setText(formattedTime));
-//        }, 0, 1, TimeUnit.SECONDS);
-//    }
+//    timer tracks the experiment
+    private void startTimer() {
+        executorService = Executors.newSingleThreadScheduledExecutor();
+        startTime = System.currentTimeMillis();
+        executorService.scheduleAtFixedRate(() ->{
+            long currentTime = System.currentTimeMillis();
+            elapsedTime = (currentTime - startTime) / 1000;
+            experiment.elapsedTime = Math.toIntExact(elapsedTime);
+
+            long minutes = experiment.elapsedTime / 60;
+            long seconds = experiment.elapsedTime % 60;
+            String formattedTime = String.format("%d:%02d", minutes, seconds);
+            Platform.runLater(() -> elapsedTime_label.setText(formattedTime));
+        }, 0, 1, TimeUnit.SECONDS);
+    }
     //stop tracking time
     public void stopTimer() {
         if (executorService != null && !executorService.isShutdown()) {

@@ -19,7 +19,6 @@ public class DashBoard_VM implements Observer {
     public DashBoard_VM() {
         ExperimentList.attach(this);
         experiments = new SimpleListProperty<>(FXCollections.observableArrayList());
-
         reload();
     }
 

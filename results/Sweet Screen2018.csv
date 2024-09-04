@@ -1,12 +1,96 @@
-1,Vas,null,50,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
-1,Vas,null,50,How full are you right now?,Not at all full,Extremely full,0,100
-1,Vas,null,50,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
-1,Vas,null,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
-1,Vas,null,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
-1,Vas,null,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
-1,Vas,null,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
-1,Vas,null,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
-1,Vas,null,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
-1,Vas,null,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
-1,GLMS ,null,0,Think of listening to a heavy metal song with headphones on maximum volume.
-1,GLMS ,null,0,Think of staring directly at the sun through binoculars
+,Vas, ,50,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+,Vas, ,50,How full are you right now?,Not at all full,Extremely full,0,100
+,Vas, ,50,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+,GLMS , ,0,Think of staring directly at the sun through binoculars
+11,Vas,2024.09.03.21.39.26.257,70,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+11,Vas,2024.09.03.21.39.28.590,69,How full are you right now?,Not at all full,Extremely full,0,100
+11,Vas, ,50,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+11,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+11,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+11,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+11,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+11,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+11,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+11,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+11,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+11,GLMS , ,0,Think of staring directly at the sun through binoculars
+1123,Vas, ,50,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+1123,Vas,2024.09.03.21.57.12.494,79,How full are you right now?,Not at all full,Extremely full,0,100
+1123,Vas,2024.09.03.21.57.15.376,72,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+1123,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+1123,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+1123,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+1123,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+1123,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+1123,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+1123,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+1123,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+1123,GLMS , ,0,Think of staring directly at the sun through binoculars
+66,Vas,2024.09.03.21.49.12.875,59,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+66,Vas,2024.09.03.21.49.16.163,34,How full are you right now?,Not at all full,Extremely full,0,100
+66,Vas, ,50,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+66,Vas,2024.09.03.21.49.19.445,72,How happy are you right now?,Not at all happy,Extremely happy,0,100
+66,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+66,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+66,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+66,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+66,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+66,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+66,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+66,GLMS , ,0,Think of staring directly at the sun through binoculars
+test1,Vas,2024.09.03.18.09.47.506,47,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+test1,Vas,2024.09.03.18.09.48.902,67,How full are you right now?,Not at all full,Extremely full,0,100
+test1,Vas,2024.09.03.18.09.50.107,79,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+test1,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+test1,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+test1,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+test1,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+test1,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+test1,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+test1,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+test1,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+test1,GLMS , ,0,Think of staring directly at the sun through binoculars
+tiramisu,Vas, ,50,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+tiramisu,Vas,2024.09.03.21.48.00.695,67,How full are you right now?,Not at all full,Extremely full,0,100
+tiramisu,Vas,2024.09.03.21.48.03.521,63,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+tiramisu,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+tiramisu,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+tiramisu,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+tiramisu,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+tiramisu,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+tiramisu,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+tiramisu,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+tiramisu,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+tiramisu,GLMS , ,0,Think of staring directly at the sun through binoculars
+ToungeTest,Vas,2024.09.03.21.36.31.944,85,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+ToungeTest,Vas,2024.09.03.21.36.33.912,73,How full are you right now?,Not at all full,Extremely full,0,100
+ToungeTest,Vas,2024.09.03.21.36.36.512,30,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+ToungeTest,Vas,2024.09.03.21.36.38.857,87,How happy are you right now?,Not at all happy,Extremely happy,0,100
+ToungeTest,Vas,2024.09.03.21.36.41.252,92,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+ToungeTest,Vas,2024.09.03.21.36.43.955,78,How tired are you right now?,Not at all tired,Extremely tired,0,100
+ToungeTest,Vas,2024.09.03.21.36.53.692,51,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+ToungeTest,Vas,2024.09.03.21.36.59.703,59,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+ToungeTest,Vas,2024.09.03.21.37.05.524,72,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+ToungeTest,Vas,2024.09.03.21.37.09.144,61,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+ToungeTest,GLMS ,2024.09.03.21.37.14.899,61,Think of listening to a heavy metal song with headphones on maximum volume.
+ToungeTest,GLMS ,2024.09.03.21.37.19.959,40,Think of staring directly at the sun through binoculars
+Xuka,Vas, ,50,How hungry are you right now?,Not at all hungry,Extremely hungry,0,100
+Xuka,Vas, ,50,How full are you right now?,Not at all full,Extremely full,0,100
+Xuka,Vas, ,50,How thirsty are you right now?,Not at all thirsty,Extremely thirsty,0,100
+Xuka,Vas, ,50,How happy are you right now?,Not at all happy,Extremely happy,0,100
+Xuka,Vas, ,50,How anxious are you right now?,Not at all anxious,Extremely anxious,0,100
+Xuka,Vas, ,50,How tired are you right now?,Not at all tired,Extremely tired,0,100
+Xuka,Vas, ,50,Think about walking in the rain. How much do you like walking in the rain?,Dislike extremely,Like extremely,0,100
+Xuka,Vas, ,50,Think about watching your favourite movie. How much do you like watching your favourite movie?,Dislike extremely,LIke extremely,0,100
+Xuka,Vas, ,50,Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?,Dislike extremely,LIke extremely,0,100
+Xuka,Vas, ,50,Think about the sound of a car alarm. How much do you like the sound of a car alarm?,Dislike extremely,LIke extremely,0,100
+Xuka,GLMS , ,0,Think of listening to a heavy metal song with headphones on maximum volume.
+Xuka,GLMS , ,0,Think of staring directly at the sun through binoculars

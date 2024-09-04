@@ -2,17 +2,39 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="jar_demo2" />
+      <artifact name="SSP-2308(1)" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="Course Model - Data to Edit">
+    <list default="true" id="ad2418d8-219b-4d46-8ca3-4c9ac779a07f" name="Changes" comment="thygiang's hot fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AddSoundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AddSoundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/PopUpVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/PopUpVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1MTasteScreenerShort.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/1MTasteScreenerShort.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/Sweet Screen2018.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Sweet Screen2018.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AssignSoundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/AssignSoundController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunCourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunCourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunStartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunTimerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/controllers/RunTimerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/AddCourseVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/GLMSStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/InputStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/InputStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/NoticeStage_VM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunAudible_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunCourseVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunGLMS_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunInputVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunNotice_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunQuestion_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunStartVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunTimer_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/RunVas_VM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/StartVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/viewmodel/StartVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main/sensoryexperimentplatform/RunExperiment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunGLMS_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunGLMS_CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunVas_CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/stylesheets/RunVas_CSS.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,16 +46,16 @@
       <list>
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="3007" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,11 +69,14 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/tyri0n11/Sensory-Experiment-Platform.git&quot;,
-    &quot;accountId&quot;: &quot;21039361-6f69-4911-9e03-a3f256f95840&quot;
+    &quot;accountId&quot;: &quot;3b4e63b0-bfac-4c7e-b9c0-959d55cc3dec&quot;
   }
 }</component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Java/jdk-21/lib/src.zip!/java.desktop/javax/sound/sampled/AudioInputStream.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -77,17 +102,17 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.SensoryExperimentPlatform.executor&quot;: &quot;Run&quot;,
     &quot;JAR Application.Sensory-Expeirment-Platform.jar (1).executor&quot;: &quot;Run&quot;,
-    &quot;JAR Application.Sensory-Expeirment-Platform.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Sensory-Expeirment-Platform.jar.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Qanh-EditRestructureMVVM&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SMARTSCALEPROJECT&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jSerialComm-2.11.0.jar&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -95,8 +120,8 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.25585938&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5965834&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2710084&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -116,28 +141,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="GUIControl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.arduino.GUIControl" />
-      <module name="Sensory-Expeirment-Platform" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.arduino.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
       <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.Main" />
       <module name="Sensory-Expeirment-Platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.arduino.*" />
+          <option name="PATTERN" value="main.sensoryexperimentplatform.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,13 +155,11 @@
       </method>
     </configuration>
     <configuration name="PortScannerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.arduino.PortScannerGUI" />
+      <option name="MAIN_CLASS_NAME" value="main.sensoryexperimentplatform.PortScannerGUI" />
       <module name="Sensory-Expeirment-Platform" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.sensoryexperimentplatform.arduino.*" />
+          <option name="PATTERN" value="main.sensoryexperimentplatform.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,7 +179,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.GUIControl" />
       <item itemvalue="Application.PortScannerGUI" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar" />
@@ -181,18 +187,18 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GUIControl" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar" />
         <item itemvalue="Application.PortScannerGUI" />
         <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar (1)" />
-        <item itemvalue="JAR Application.Sensory-Expeirment-Platform.jar" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -225,15 +231,29 @@
       <workItem from="1723858787366" duration="13602000" />
       <workItem from="1724046016078" duration="5129000" />
       <workItem from="1724083507453" duration="7530000" />
+      <workItem from="1724235677527" duration="4273000" />
+      <workItem from="1724239993963" duration="69000" />
+      <workItem from="1724332524366" duration="2551000" />
+      <workItem from="1724376237824" duration="1546000" />
+      <workItem from="1724377808302" duration="469000" />
+      <workItem from="1724378296452" duration="1472000" />
+      <workItem from="1724379790178" duration="1388000" />
+      <workItem from="1724381193355" duration="9036000" />
+      <workItem from="1724480376757" duration="2000" />
+      <workItem from="1724515492034" duration="2912000" />
+      <workItem from="1724556031073" duration="314000" />
       <workItem from="1724222708287" duration="7963000" />
       <workItem from="1724239536410" duration="10526000" />
       <workItem from="1724333158073" duration="6856000" />
-      <workItem from="1724414328878" duration="7787000" />
-      <workItem from="1724857256657" duration="4014000" />
-      <workItem from="1724862515250" duration="6636000" />
-      <workItem from="1725385264090" duration="403000" />
-      <workItem from="1725433799916" duration="1639000" />
-      <workItem from="1725437607256" duration="8776000" />
+      <workItem from="1724414328878" duration="1258000" />
+      <workItem from="1724568915802" duration="3171000" />
+      <workItem from="1724597955415" duration="1809000" />
+      <workItem from="1724726542379" duration="4166000" />
+      <workItem from="1724732182470" duration="1994000" />
+      <workItem from="1724757002824" duration="79000" />
+      <workItem from="1724757095958" duration="9000" />
+      <workItem from="1725329907770" duration="2175000" />
+      <workItem from="1725372317633" duration="202000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <option name="closed" value="true" />
@@ -259,7 +279,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723824924562</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Feat | run_exp: model course">
+      <option name="closed" value="true" />
+      <created>1724598011630</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724598011630</updated>
+    </task>
+    <task id="LOCAL-00005" summary="thygiang's hot fixes">
+      <option name="closed" value="true" />
+      <created>1724757059174</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724757059174</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,19 +306,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Course-AppliedScale" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -292,7 +316,11 @@
     <MESSAGE value="Fix | start model - completed" />
     <MESSAGE value="merge" />
     <MESSAGE value="Course Model - Data to Edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Course Model - Data to Edit" />
+    <MESSAGE value="Course model - DataAccess" />
+    <MESSAGE value="Deploy demo 1" />
+    <MESSAGE value="Feat | run_exp: model course" />
+    <MESSAGE value="thygiang's hot fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="thygiang's hot fixes" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
@@ -301,24 +329,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/PortScannerGUI.java</url>
-          <line>19</line>
-          <properties class="main.sensoryexperimentplatform.arduino.PortScannerGUI">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/arduino/PortScannerGUI.java</url>
-          <line>11</line>
+          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/AudibleInstruction.java</url>
+          <line>49</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/sensoryexperimentplatform/models/ConditionalStatement.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

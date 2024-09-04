@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunInputController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="/static/stylesheets/RunStage.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunInputController">
     <children>
         <Label fx:id="txt_question" layoutX="20.0" layoutY="20.0" minHeight="65.0" minWidth="1217.0" text="question" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <TextField fx:id="txt_input" layoutX="256.0" layoutY="232.0" prefHeight="33.0" prefWidth="769.0" stylesheets="@../../static/stylesheets/RunStage.css" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="232.0" />

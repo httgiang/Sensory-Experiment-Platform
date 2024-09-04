@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="645.0" minWidth="1054.0" prefHeight="839.0" prefWidth="1280.0" stylesheets="/static/stylesheets/RunEx.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunController">
+<AnchorPane minHeight="645.0" minWidth="1054.0" prefHeight="839.0" prefWidth="1280.0" stylesheets="/static/stylesheets/RunEx.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunController">
    <children>
-      <Button fx:id="btn_back" layoutY="762.0" mnemonicParsing="false" onMouseClicked="#handleBtnBack" prefHeight="60.0" prefWidth="160.0" text="Back" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="316.0">
+      <Button fx:id="btn_back" layoutX="732.0" layoutY="759.0" mnemonicParsing="false" onMouseClicked="#handleBtnBack" prefHeight="60.0" prefWidth="160.0" text="Back" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="388.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -23,7 +23,7 @@
          <children>
             <ListView fx:id="listView" focusTraversable="false" prefHeight="610.0" prefWidth="0.0" />
          </children></AnchorPane>
-      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1172.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="756.0" AnchorPane.rightAnchor="60.0">
+      <ImageView fx:id="help_image" fitHeight="48.0" fitWidth="48.0" layoutX="1190.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="42.0">
          <image>
             <Image url="@../../static/images/Help_outline.png" />
          </image>

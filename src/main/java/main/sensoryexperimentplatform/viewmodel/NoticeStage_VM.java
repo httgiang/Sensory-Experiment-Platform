@@ -113,6 +113,7 @@ public class NoticeStage_VM implements ViewModel{
 
     @Override
     public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+        btn_back.setDisable(false);
         btn_next.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 

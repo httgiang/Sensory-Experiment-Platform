@@ -73,7 +73,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 40;
 }
-#lbl_ID{
+#lbl_ID, #lbl_lastModified{
 
 
     -fx-font-family: 'Montserrat';
