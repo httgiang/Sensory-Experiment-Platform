@@ -72,7 +72,4 @@ public class DashBoard_VM implements Observer {
         }
     }
 
-    public int getExperimentsListSize() {
-        return size;
-    }
 }

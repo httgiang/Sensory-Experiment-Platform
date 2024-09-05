@@ -27,7 +27,7 @@ public class ExperimentList extends Observable {
         if(experimentsName.add(experiment.getExperimentName())){
             getInstance().add(experiment);
         } else {
-            PopUpVM popUpError = new PopUpVM(ERROR, "You already imported this experiment!", experiment);
+
         }
         //DataAccess.saveNewExperiment(experiment);
         notifyAllObservers();

@@ -21,9 +21,6 @@ public class RunGLMSController {
 
     public void setViewModel(GLMSStage_VM viewModel) {
         this.viewModel = viewModel;
-
-        Tooltip helpTooltip = new Tooltip(viewModel.txt_helpProperty().get());
-
         bindViewModel();
 
 

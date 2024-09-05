@@ -1,13 +1,16 @@
 package main.sensoryexperimentplatform.models;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.scene.paint.Color;
 
 import java.util.*;
 
-public class Experiment {
+public class Experiment implements Observable {
     private String creatorName, experimentName, description, note, last_modified;
     public int version, number_of_results, id, elapsedTime;
     ArrayList<Model> stages;
+    private List<InvalidationListener> listeners = new ArrayList<>();
     public Experiment(){
         super();
         Random random = new Random();
@@ -326,6 +329,9 @@ public class Experiment {
         return null;
     }
 
+
+
+
     public void addStart(Start start) {
         stages.add(start);
     }
@@ -335,4 +341,13 @@ public class Experiment {
     }
 
 
+    @Override
+    public void addListener(InvalidationListener invalidationListener) {
+        listeners.add(invalidationListener);
+    }
+
+    @Override
+    public void removeListener(InvalidationListener invalidationListener) {
+        listeners.remove(invalidationListener);
+    }
 }

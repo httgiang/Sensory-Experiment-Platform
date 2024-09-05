@@ -1,14 +1,3 @@
-ExperimentName: 114
-ExperimenterName: 14123
-ExperimentID: 0
-Last modified: 03.09.2024
-Version: 1
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-audio("Default Notice Stage","null","null","null","null","null")
-vasStage("User input","null","null","0","100","null","null","null","false","false")
-glmsStage("User Input","null","null","null","false")
-endExperiment()
-
 ExperimentName: Sweet Screen2018
 ExperimenterName: Martin
 ExperimentID: 999
@@ -93,5 +82,12 @@ glmsStage("How salty is Sample 720?","Next","Session[]","","false")
 endRatingsContainer()
 noticeStage("Rinsing","Please rinse your mouth with the water provided and then expectorate it into the black cup.","Continue","","false")
 noticeStage("Thank you!","That completes the Taste Test: please call your experimenter.","X","","true")
+endExperiment()
+
+ExperimentName: null
+ExperimenterName: null
+ExperimentID: 0
+Last modified: 04.09.2024
+Version: 1
 endExperiment()
 

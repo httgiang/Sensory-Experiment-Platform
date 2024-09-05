@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.*;
 
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import main.sensoryexperimentplatform.models.*;
 
 import java.io.BufferedWriter;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 import static main.sensoryexperimentplatform.utilz.Constants.DEFAULT_DIRECTORY;
 
 
-public class Base implements Initializable {
+public class Base  {
     private boolean isSidebarVisible = true;
 
     @FXML
@@ -31,23 +32,17 @@ public class Base implements Initializable {
     private Experiment selectedExp;
     @FXML
     private BorderPane borderPane;
+    private Stage ownerStage;
 
+
+    public void initialize(Stage ownerStage) {
+        this.ownerStage = ownerStage;
+        showDashBoard(ownerStage);
+    }
 
     @FXML
     void openDashBoard(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/DashBoard.fxml"));
-        AnchorPane newContent = null;
-
-        try{
-            newContent = loader.load();
-            setResponsive(newContent);
-            mainContent.getChildren().setAll(newContent);
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+        showDashBoard(ownerStage);
     }
 
     @FXML
@@ -60,9 +55,7 @@ public class Base implements Initializable {
         }
         isSidebarVisible = !isSidebarVisible;
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void showDashBoard(Stage ownerStage){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/DashBoard.fxml"));
         AnchorPane newContent = null;
@@ -70,15 +63,16 @@ public class Base implements Initializable {
             newContent = loader.load();
             mainContent.getChildren().setAll(newContent);
             setResponsive(newContent);
-            mainContent.getChildren().setAll(newContent);
             DashBoardController controller = loader.getController();
+            controller.initialize(ownerStage);
 
         }
         catch (IOException e){
             e.printStackTrace();
         }
-
     }
+
+
     @FXML
     void importExperiment() throws Exception {
         FileChooser fileChooser = new FileChooser();

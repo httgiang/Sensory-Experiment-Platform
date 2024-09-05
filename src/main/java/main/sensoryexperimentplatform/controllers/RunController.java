@@ -1,7 +1,9 @@
 package main.sensoryexperimentplatform.controllers;
 
 
-import javafx.application.Platform;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -14,10 +16,10 @@ import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.*;
 
 
@@ -26,10 +28,8 @@ public class RunController {
     @FXML
     private ListView<ViewModel> listView;
     private Experiment experiment; private String uid;
-    int processed = 0; //index to keep track of how many stages are processed
 
     private ScheduledExecutorService executorService;
-    private long startTime, elapsedTime;
     @FXML
     private AnchorPane content;
 
@@ -41,25 +41,19 @@ public class RunController {
 
     private Tooltip tooltip;
 
-
-//    @FXML
-//    private Label elapsedTime_label;
-
+    private ListProperty<Experiment> experiments;
     ModelVMRegistry registry;
+    private StringProperty stageIndex;
+    private HashMap<ViewModel, String> map;
 
 
     public void initRunExperiment(Experiment experiment, String uId) throws IOException {
         this.experiment = experiment;
         this.uid = uId;
         loadItems();
-
         setListViewListener();
-
-
         initButtons();
         setupToolTip();
-
-
     }
 
 
@@ -67,11 +61,6 @@ public class RunController {
         ViewModel stages = registry.getViewModel(model);
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
-        if(model instanceof Course){
-            AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
-            courseVM.initRunSetup(listView);
-            return;
-        }
 
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
@@ -101,13 +90,17 @@ public class RunController {
             }
         }
     }
-    private void loadItems() {
-        for(Model selectedObject : experiment.getStages()) {
-            registry = ModelVMRegistry.getInstance();
-            buildList(listView, selectedObject, registry);
 
+    private void loadItems() {
+        map = new HashMap<>();
+
+        for(int i = 0; i < experiment.getStages().size(); i++) {
+            registry = ModelVMRegistry.getInstance();
+            map.put(registry.getViewModel(experiment.getStages().get(i)), i + " ");
+            buildList(listView, experiment.getStages().get(i), registry);
         }
     }
+
 
 
     private void showRunningPane(ViewModel selectedItem) throws IOException {
@@ -121,10 +114,16 @@ public class RunController {
 
     }
     private void setListViewListener() throws IOException {
+        stageIndex = new SimpleStringProperty();
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            stageIndex.set(map.get(newValue));
+            if(newValue instanceof AddCourseVM){
+
+                ((AddCourseVM) newValue).connectToBalance(listView, stageIndex);
+                return;
+            }
             if (newValue != null) {
                 try {
-
                     showRunningPane(newValue);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -144,11 +143,11 @@ public class RunController {
     private void setupToolTip(){
     tooltip = new Tooltip("Help text here!");
 
-
+        //chinh thu font tu 20 - 15, width 250 - 300
         tooltip.setStyle(
                 "-fx-background-color: #e3e2e2;\n" +
                         "    -fx-text-fill: #397E82;\n" +
-                        "    -fx-font-size: 20px;\n" +
+                        "    -fx-font-size: 15px;\n" +
                         "    -fx-padding: 5px;\n" +
                         "    -fx-border-color: White;\n" +
                         "    -fx-border-width: 1px;\n" +
@@ -157,7 +156,7 @@ public class RunController {
         tooltip.setShowDelay(Duration.ZERO);
         tooltip.setAutoHide(true);
         tooltip.setWrapText(true);
-        tooltip.setMaxWidth(250);
+        tooltip.setMaxWidth(300);
 
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
@@ -182,8 +181,11 @@ public class RunController {
     }
 
 
+    public ListProperty<Experiment> experimentsProperty() {
+        return experiments;
+    }
+
     private void handleFinalNext() throws IOException {
-        processed = 0;
         stopTimer();
         autoClose();
     }

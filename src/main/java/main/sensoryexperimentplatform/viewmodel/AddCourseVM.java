@@ -237,13 +237,32 @@ public class AddCourseVM implements ViewModel{
         help_image.setVisible(false);
     }
 
+    public void connectToBalance(ListView listView, StringProperty stageIndex){
+        // Bat dau can
+        TestArduino.startRecording(stageIndex);
+
+        // Bind bien consumed weight voi cai can. Consumed = weight ban dau - weight hien tai.
+        // Bay gio cai nay dang sai, se sua lai sau khi cai can nhan dung gia tri
+        this.consumedWeight = new SimpleDoubleProperty(0.0);
+
+        this.consumedWeight.bindBidirectional(Scale.getScaleInstance().weightProperty());
+
+        // Cai dat listener cho cai can
+        this.consumedWeight.addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.doubleValue() >= 0.1) {
+                // Neu nhu nguoi tham gia an dc hon 400g -> nhac nho Refill
+                showNoticeStage("Refill", listView);
+                this.setConsumedWeight(0.0);
+            }
+        });
+    }
     public void initRunSetup(ListView<ViewModel> listView){
         //Add vao notice stage de nguoi dung thi nghiem bat dau nhan do an
         showNoticeStage("Start", listView);
 
         // Bat dau can
-        TestArduino.startRecording();
-
+       //TestArduino.startRecording();
 
         // Bind bien consumed weight voi cai can. Consumed = weight ban dau - weight hien tai.
         // Bay gio cai nay dang sai, se sua lai sau khi cai can nhan dung gia tri

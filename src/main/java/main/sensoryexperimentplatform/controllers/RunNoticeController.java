@@ -12,8 +12,7 @@ public class RunNoticeController {
     @FXML
     private Label titleTxt, contentTxt;
     private NoticeStage_VM viewModel;
-    @FXML
-    private ImageView help_image;
+
 
 
     public void setViewModel(NoticeStage_VM viewModel){

@@ -49,6 +49,7 @@ public class EditExpController {
     @FXML
     private Button btnCancel;
 
+    private Stage ownerStage;
 
 
     public void initialize() {
@@ -60,6 +61,9 @@ public class EditExpController {
         styleTreeView();
     }
 
+    public void setOwnerStage(Stage ownerStage){
+        this.ownerStage = ownerStage;
+    }
 
     private void setUpTreeViewListener(){
         treeView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -166,16 +170,24 @@ public class EditExpController {
             ElseConditionalStatementVM elseVM = new ElseConditionalStatementVM((ConditionalStatement) model);
             TreeItem<ViewModel> ifVMTreeItem = new TreeItem<>(ifVM);
             TreeItem<ViewModel> elseVMTreeItem = new TreeItem<>(elseVM);
+            parent.getChildren().add(ifVMTreeItem);
             parent.getChildren().add(elseVMTreeItem);
-            if(((ConditionalStatement) model).getIfConditional()!= null){
+
+            if(((ConditionalStatement) model).getIfConditional() != null){
                 for(Model child : ((ConditionalStatement) model).getIfConditional()){
 
                     buildTree(ifVMTreeItem, child, registry);
                 }
-                for(Model child : ((ConditionalStatement) model).getElseConditional()){
+
+            }
+            if(((ConditionalStatement) model).getElseConditional() != null){
+                for(Model child : ((ConditionalStatement) model).getIfConditional()){
+
                     buildTree(elseVMTreeItem, child, registry);
                 }
+
             }
+            return;
         }
 
 
@@ -577,7 +589,7 @@ public class EditExpController {
     void delete(ActionEvent event) throws Exception {
         TreeItem<ViewModel> selectedItem = treeView.getSelectionModel().getSelectedItem();
         if(selectedItem == startStage){
-            PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete Start stage", experiment);
+            PopUpVM popUpError = new PopUpVM(ERROR, "You cannot delete Start stage", experiment, ownerStage);
             return;
         }
         if (selectedItem != null){
@@ -598,7 +610,7 @@ public class EditExpController {
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
             if(selectedItem == startStage){
-                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move Start stage", experiment);
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move Start stage", experiment, ownerStage);
                 return;
             }
 
@@ -606,7 +618,7 @@ public class EditExpController {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
 
                 if(currentIndex == parent.getChildren().size() - 1){//last item
-                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment, ownerStage);
                     return;
                 }
                 if (currentIndex < parent.getChildren().size() - 1 && currentIndex >= 0) {
@@ -629,13 +641,13 @@ public class EditExpController {
         if (selectedItem != null) {
             TreeItem<ViewModel> parent = selectedItem.getParent();
             if (selectedItem == startStage) {
-                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment);
+                PopUpVM popUpError = new PopUpVM(ERROR, "You cannot move stage out of experiment", experiment, ownerStage);
                 return;
             }
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
                 if (currentIndex == 0) {
-                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot switch stage with Start", experiment);
+                    PopUpVM popUpError = new PopUpVM(ERROR, "You cannot switch stage with Start", experiment, ownerStage);
                     return;
                 }
                 if (currentIndex < parent.getChildren().size() && currentIndex > 0) {
@@ -657,7 +669,7 @@ public class EditExpController {
         DataAccess.updateFile();
         this.experiment.version++;
 
-        PopUpVM popUpSuccess = new PopUpVM(SUCCESS, "You successfully saved the experiment!", experiment);
+        PopUpVM popUpSuccess = new PopUpVM(SUCCESS, "You successfully saved the experiment!", experiment, ownerStage);
     }
 
     @FXML

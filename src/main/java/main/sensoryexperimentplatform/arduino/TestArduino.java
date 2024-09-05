@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.fazecast.jSerialComm.SerialPort;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import main.sensoryexperimentplatform.models.DataAccess;
 import main.sensoryexperimentplatform.models.Scale;
 import main.sensoryexperimentplatform.utilz.Observable;
 import main.sensoryexperimentplatform.utilz.Observer;
@@ -34,7 +37,7 @@ public class TestArduino {
     }
 
     // Method to start recording data from the Arduino
-    public static void startRecording() {
+    public static void startRecording(StringProperty currentStageIndex) {
 
         comPort = SerialPort.getCommPort("/COM4"); // Update this to the correct port
         if (comPort == null) {
@@ -90,53 +93,69 @@ public class TestArduino {
                 while ((index = serialBuffer.indexOf("\n")) != -1) {
                     String completeLine = serialBuffer.substring(0, index).trim();
                     serialBuffer.delete(0, index + 1);
-                    processReceivedData(completeLine);
+                    processReceivedData(completeLine, currentStageIndex);
                 }
             }
 
-            private void processReceivedData(String receivedData) {
+            private void processReceivedData(String receivedData, StringProperty currentStageIndex)  {
+                try {
+                    String[] parts = receivedData.split(" "); //separated by space
 
-                if (receivedData.startsWith("S1:") || receivedData.startsWith("S2:")){
-                    String[] parts = receivedData.split(" ");
-                    try {
-                        double rawReading = Double.parseDouble(parts[1]);
-                        double weight = 0;
-                        int scaleNumber = 0;
+                    String scaleTimeStamp = parts[0];
+                    int scaleIndex = Integer.parseInt(parts[1]);
+                    double scale1Reading = Double.parseDouble(parts[2]);
+                    double scale2Reading = Double.parseDouble(parts[3]);
+                    double scale3Reading = Double.parseDouble(parts[4]);
+                    double scale4Reading = Double.parseDouble(parts[5]);
 
-                        if (receivedData.startsWith("S1:")){
-                            scaleNumber = 1;
-                            weight = rawReading * CALIBRATION_FACTOR1;
-                        }
-                        if (receivedData.startsWith("S2:")){
-                            scaleNumber = 2;
-                            weight = rawReading * CALIBRATION_FACTOR2;
-                        }
-                        if (receivedData.startsWith("S3:")){
-                            scaleNumber = 3;
-                            weight = rawReading * CALIBRATION_FACTOR3;
-                        }
-                        if (receivedData.startsWith("S4:")){
-                            scaleNumber = 4;
-                            weight = rawReading * CALIBRATION_FACTOR4;
-                        }
+                    String pcTimeStamp = DataAccess.getCurrentFormattedTime();
 
+                    String currentIndex = currentStageIndex.get();
 
-                        recordedWeights.add(rawReading);
-                        notifyWeightUpdate(rawReading);
+                    String output = pcTimeStamp + " " + scaleTimeStamp + " " + scaleIndex + " " +
+                        scale1Reading + " " + scale2Reading + " " +  scale3Reading + " " +  scale4Reading + " "
+                        + currentIndex + "\n";
 
-                        String output = "Scale " + scaleNumber + ": " + rawReading + " kg";
-                        System.out.println(output);
-                       // String output = "Scale " + scaleNumber + ": " + weight + " kg";
-
+//                if (receivedData.startsWith("S1:") || receivedData.startsWith("S2:")){
+//                    String[] parts = receivedData.split(" ");
+//                    try {
+//                        double rawReading = Double.parseDouble(parts[1]);
+//                        double weight = 0;
+//                        int scaleNumber = 0;
+//
+//                        if (receivedData.startsWith("S1:")){
+//                            scaleNumber = 1;
+//                            weight = rawReading * CALIBRATION_FACTOR1;
+//                        }
+//                        if (receivedData.startsWith("S2:")){
+//                            scaleNumber = 2;
+//                            weight = rawReading * CALIBRATION_FACTOR2;
+//                        }
+//                        if (receivedData.startsWith("S3:")){
+//                            scaleNumber = 3;
+//                            weight = rawReading * CALIBRATION_FACTOR3;
+//                        }
+//                        if (receivedData.startsWith("S4:")){
+//                            scaleNumber = 4;
+//                            weight = rawReading * CALIBRATION_FACTOR4;
+//                        }
+//
+//                        recordedWeights.add(rawReading);
+//                        notifyWeightUpdate(rawReading);
+//
+//                        String output = "Scale " + scaleNumber + ": " + rawReading + " kg";
+//                        System.out.println(output);
+//
+//
                         // Write to file instead of printing to console
-                        writer.write(output);
-                        writer.newLine();
-                        writer.flush(); // Make sure data is written immediately
-                    } catch (Exception e) {
-                        System.out.println("Failed to parse received data " + receivedData);
-                        e.printStackTrace();
-                    }
+                    writer.write(output);
+                    writer.newLine();
+                    writer.flush(); // Make sure data is written immediately
+                } catch (Exception e) {
+                    System.out.println("Failed to parse received data " + receivedData);
+                    e.printStackTrace();
                 }
+            //}
             }
         });
 
@@ -179,4 +198,6 @@ public class TestArduino {
             weightListener.setWeight(weight);
         }
     }
+
+
 }

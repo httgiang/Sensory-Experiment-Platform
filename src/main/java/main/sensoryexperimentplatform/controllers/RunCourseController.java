@@ -36,47 +36,7 @@ public class RunCourseController {
         this.course = viewModel.getCourse();
         this.viewModel = viewModel;
         bindViewModel();
-        Tooltip tooltip = new Tooltip("Help text here!");
-        if (viewModel.txt_helpProperty() != null) {
-            tooltip.setText(viewModel.txt_helpProperty().get());
-        }
-        if(viewModel.txt_titleProperty() == null) {
-            tooltip.setOpacity(0.0);
-        }
 
-        tooltip.setStyle(
-                "-fx-background-color: #e3e2e2;\n" +
-                        "    -fx-text-fill: #397E82;\n" +
-                        "    -fx-font-size: 20px;\n" +
-                        "    -fx-padding: 5px;\n" +
-                        "    -fx-border-color: White;\n" +
-                        "    -fx-border-width: 1px;\n" +
-                        "    -fx-border-radius: 3px;"
-        );
-        tooltip.setShowDelay(Duration.ZERO);
-        tooltip.setAutoHide(true);
-        tooltip.setWrapText(true);
-        tooltip.setMaxWidth(250);
-
-        // Set listeners to show and hide tooltip on mouse enter and exit
-        help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
-        help_image.setOnMouseExited(event -> tooltip.hide());
-
-        if(viewModel.txt_helpProperty()  == null || viewModel.txt_helpProperty().equals("null")) {
-            tooltip.setOpacity(0.0);
-            help_image.setVisible(false);
-            help_image.setManaged(false);
-        }
-
-        // Add a listener to detect when the image is set to the ImageView
-        help_image.imageProperty().addListener(new ChangeListener<>() {
-            @Override
-            public void changed(ObservableValue<? extends Image> observable, javafx.scene.image.Image oldImage, javafx.scene.image.Image newImage) {
-                if (newImage != null) {
-                    showTooltip(help_image, tooltip);
-                }
-            }
-        });
     }
     private void showTooltip(ImageView imageView, Tooltip tooltip) {
         // Get the bounds of the ImageView
