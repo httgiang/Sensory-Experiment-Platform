@@ -3,29 +3,24 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.conditionalStatementController">
+<AnchorPane maxHeight="253.0" maxWidth="540.0" minHeight="253.0" minWidth="540.0" prefHeight="253.0" prefWidth="540.0" stylesheets="@../../static/stylesheets/Properties.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.conditionalStatementController">
     <children>
-        <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="8.0" layoutY="2.0" prefHeight="247.0" prefWidth="524.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="520.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <children>
-                        <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="14.0" />
-                        <ComboBox fx:id="chx_variable2Choice" layoutX="260.0" layoutY="159.0" prefHeight="26.0" prefWidth="218.0" promptText="Every" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="159.0" />
-                        <TextField fx:id="txt_value1Text" layoutX="260.0" layoutY="89.0" prefHeight="26.0" prefWidth="218.0" promptText="Something" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="89.0" />
-                        <ComboBox fx:id="chx_variable1Choice" layoutX="260.0" layoutY="59.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="59.0" />
-                        <TextField fx:id="txt_value2Text" layoutX="260.0" layoutY="189.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="189.0" />
-                        <RadioButton fx:id="cbx_variable1" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" text="Variable" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="64.0" />
-                        <RadioButton fx:id="cbx_value1" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" text="Value" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="94.0" />
-                        <RadioButton fx:id="cbx_variable2" layoutX="14.0" layoutY="164.0" mnemonicParsing="false" text="Variable" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="164.0" />
-                        <RadioButton fx:id="cbx_value2" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" text="Value" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="194.0" />
-                        <ComboBox fx:id="chx_compare" layoutX="260.0" layoutY="123.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="123.0" />
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="260.0" prefWidth="520.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                  <Label id="lblProperty" layoutX="28.0" layoutY="14.0" text="Properties" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="14.0" />
+                  <ComboBox fx:id="chx_variable2Choice" layoutX="260.0" layoutY="159.0" prefHeight="26.0" prefWidth="218.0" promptText="Every" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="159.0" />
+                  <TextField fx:id="txt_value1Text" layoutX="260.0" layoutY="89.0" prefHeight="26.0" prefWidth="218.0" promptText="Something" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="89.0" />
+                  <ComboBox fx:id="chx_variable1Choice" layoutX="260.0" layoutY="59.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="59.0" />
+                  <TextField fx:id="txt_value2Text" layoutX="260.0" layoutY="189.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="189.0" />
+                  <RadioButton fx:id="cbx_variable1" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" text="Variable" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="64.0" />
+                  <RadioButton fx:id="cbx_value1" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" text="Value" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="94.0" />
+                  <RadioButton fx:id="cbx_variable2" layoutX="14.0" layoutY="164.0" mnemonicParsing="false" text="Variable" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="164.0" />
+                  <RadioButton fx:id="cbx_value2" layoutX="14.0" layoutY="194.0" mnemonicParsing="false" text="Value" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="194.0" />
+                  <ComboBox fx:id="chx_compare" layoutX="260.0" layoutY="123.0" prefHeight="26.0" prefWidth="218.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="123.0" />
+              </children>
+          </AnchorPane>
     </children>
 </AnchorPane>

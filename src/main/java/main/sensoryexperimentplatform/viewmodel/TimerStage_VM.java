@@ -3,6 +3,8 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.RunTimerController;
@@ -157,10 +159,11 @@ public class TimerStage_VM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_back.setVisible(runController.getTimeLineCheck());
         btn_next.setVisible(runController.getTimeLineCheck());
         btn_next.setDisable(false);
+        help_image.setVisible(false);
 
         this.runController.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
             btn_back.setVisible(newValue);

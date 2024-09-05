@@ -11,16 +11,6 @@
     -fx-font-size: 36px;
     -fx-font-weight: bold;
 }
-.tooltip {
-    -fx-background-color: #e3e2e2;
-    -fx-text-fill: #397E82;
-    -fx-font-size: 18px;
-    -fx-padding: 8px;
-    -fx-border-color: transparent;
-    -fx-border-width: 1px;
-    -fx-border-radius: 3px;
-}
-
 .slider .thumb{
     -fx-pref-height: 48px;
     -fx-pref-width: 48px;

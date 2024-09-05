@@ -1,10 +1,8 @@
 package main.sensoryexperimentplatform.controllers;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.models.Course;
 import main.sensoryexperimentplatform.viewmodel.AddCourseVM;
-import main.sensoryexperimentplatform.viewmodel.RunCourseVM;
 
 public class RunCourseController {
 

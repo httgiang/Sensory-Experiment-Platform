@@ -27,6 +27,13 @@ public class PopUpVM {
             popUPConfirm(experiment, msg);
         }
     }
+    public PopUpVM(PopUpType type, String msg) throws IOException {
+        if(type == ERROR){
+            popUpError(msg);
+        } else if(type == SUCCESS){
+            popUpSuccess(msg);
+        }
+    }
 
     private void popUpError(String msg) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpError.fxml"));

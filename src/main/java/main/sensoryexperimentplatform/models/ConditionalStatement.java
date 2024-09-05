@@ -141,20 +141,38 @@ public class ConditionalStatement implements Model{
         return IfConditional;
     }
 
-    private int getValueBasedOnChoice(String choice) {
+    private int getVariableBasedOnChoice(String choice) {
         switch (choice) {
-            case "Scale Reading":
-//                return getScaleReading(); // Implement this method to return the actual value
             case "Bout Number":
-                return BoutNumber; // Implement this method to return the actual value
-            case "Total Eaten Over Course":
-//                return getTotalEatenOverCourse(); // Implement this method to return the actual value
-            case "Total Eaten Over Experiment":
-//                return getTotalEatenOverExperiment(); // Implement this method to return the actual value
+                return 9600;
+
             default:
-                return 0; // Default or error value
+                return 0;
         }
     }
+
+    public boolean evaluateCondition() {
+        int leftSideValue = variable1 ? getVariableBasedOnChoice(variable1Choice) : Integer.parseInt(value1Text);
+        int rightSideValue = variable2 ? getVariableBasedOnChoice(variable2Choice) : Integer.parseInt(value2Text);
+
+        switch (compare) {
+            case "less Than (<)":
+                return leftSideValue < rightSideValue;
+            case "greater than (>)":
+                return leftSideValue > rightSideValue;
+            case "equals (=)":
+                return leftSideValue == rightSideValue;
+            case "not equal to (!=)":
+                return leftSideValue != rightSideValue;
+            case "less than or equals to(=>)":
+                return leftSideValue <= rightSideValue;
+            case "greater than or equals to(>=)":
+                return leftSideValue >= rightSideValue;
+            default:
+                return false;
+        }
+    }
+
 
 
 

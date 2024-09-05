@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="190.0" prefWidth="489.0" stylesheets="@../../static/stylesheets/AddSound_CSS.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.addVas">
+<AnchorPane prefHeight="190.0" prefWidth="489.0" stylesheets="@../../static/stylesheets/AddSound_CSS.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.addVas">
     <children>
-        <AnchorPane fx:id="ImportSoundPane" prefHeight="190.0" prefWidth="489.0">
+        <AnchorPane fx:id="ImportSoundPane" prefHeight="190.0" prefWidth="489.0" style="-fx-background-color: white;">
             <children>
                 <Label fx:id="FileLabel" layoutX="22.0" layoutY="48.0" text="Please type the name of the new taste below" />
                 <TextField fx:id="txt_file" layoutX="29.0" layoutY="91.0" prefHeight="30.0" prefWidth="445.0" />

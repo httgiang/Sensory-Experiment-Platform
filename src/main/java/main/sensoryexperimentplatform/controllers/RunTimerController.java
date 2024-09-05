@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
-import main.sensoryexperimentplatform.viewmodel.RunTimer_VM;
 import main.sensoryexperimentplatform.viewmodel.TimerStage_VM;
 
 public class RunTimerController {

@@ -6,6 +6,8 @@ import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -15,7 +17,7 @@ import main.sensoryexperimentplatform.models.*;
 
 import javax.swing.text.View;
 import java.io.IOException;
-
+import java.util.*;
 
 public class AddCourseVM implements ViewModel{
     private StringProperty txt_button;
@@ -205,12 +207,6 @@ public class AddCourseVM implements ViewModel{
         controller.setViewModel(this);
     }
 
-    @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
-        btn_back.setDisable(false);
-        btn_next.setDisable(false);
-        btn_next.textProperty().bind(this.txt_buttonProperty());
-    }
 
     @Override
     public void handleEditButtons(Button btn_addPeriodicStage, Button btn_addCourse, Button btn_assignSound,
@@ -231,6 +227,14 @@ public class AddCourseVM implements ViewModel{
         btn_addTasteTest.setDisable(false);
         btn_addConditionalStatement.setDisable(false);
         btn_addCourse.setDisable(true);
+    }
+
+    @Override
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+        btn_back.setDisable(false);
+        btn_next.setDisable(false);
+        btn_next.textProperty().bind(this.txt_buttonProperty());
+        help_image.setVisible(false);
     }
 
     public void initRunSetup(ListView<ViewModel> listView){
@@ -289,7 +293,5 @@ public class AddCourseVM implements ViewModel{
     public String toString() {
         return txt_title.get();
     }
-
-
 
 }

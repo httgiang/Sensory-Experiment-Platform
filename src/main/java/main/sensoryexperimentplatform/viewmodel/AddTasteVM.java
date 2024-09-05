@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
@@ -343,11 +345,21 @@ public class AddTasteVM implements ViewModel {
 
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
 
         btn_next.textProperty().bind(this.txt_buttontextProperty());
+
+        if (this.txt_helpProperty().get() != null) {
+            help_image.setVisible(true);
+            tooltip.textProperty().bind(this.txt_helpProperty());
+        }
+        if(this.txt_helpProperty().get()  == null || this.txt_helpProperty().get().equals("null")) {
+            tooltip.setOpacity(0.0);
+            help_image.setVisible(false);
+            help_image.setManaged(false);
+        }
 
     }
 

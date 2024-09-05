@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
@@ -100,9 +102,14 @@ public class StartVM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_next.textProperty().bind(this.buttonTextProperty());
         btn_back.setDisable(true);
+        help_image.setVisible(false);
+            //code tuyet voi`
+
+            help_image.setVisible(false);
+            help_image.setManaged(false);
     }
 
     @Override
