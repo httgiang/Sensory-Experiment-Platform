@@ -292,6 +292,7 @@ public class DashBoardController {
         }
 
         Stage stage = new Stage();
+        assert controller != null;
         controller.setOwnerStage(stage);
         stage.initOwner(ownerStage);
         stage.initModality(Modality.WINDOW_MODAL);
@@ -311,7 +312,8 @@ public class DashBoardController {
         Parent root = fxmlLoader.load();
 
         Stage stage = new Stage();
-
+        stage.initOwner(ownerStage);
+        stage.initModality(Modality.WINDOW_MODAL);
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
