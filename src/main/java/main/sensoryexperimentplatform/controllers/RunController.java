@@ -207,20 +207,20 @@ public class RunController {
     }
 
 //    timer tracks the experiment
-    private void startTimer() {
-        executorService = Executors.newSingleThreadScheduledExecutor();
-        startTime = System.currentTimeMillis();
-        executorService.scheduleAtFixedRate(() ->{
-            long currentTime = System.currentTimeMillis();
-            elapsedTime = (currentTime - startTime) / 1000;
-            experiment.elapsedTime = Math.toIntExact(elapsedTime);
-
-            long minutes = experiment.elapsedTime / 60;
-            long seconds = experiment.elapsedTime % 60;
-            String formattedTime = String.format("%d:%02d", minutes, seconds);
-            Platform.runLater(() -> elapsedTime_label.setText(formattedTime));
-        }, 0, 1, TimeUnit.SECONDS);
-    }
+//    private void startTimer() {
+//        executorService = Executors.newSingleThreadScheduledExecutor();
+//        startTime = System.currentTimeMillis();
+//        executorService.scheduleAtFixedRate(() ->{
+//            long currentTime = System.currentTimeMillis();
+//            elapsedTime = (currentTime - startTime) / 1000;
+//            experiment.elapsedTime = Math.toIntExact(elapsedTime);
+//
+//            long minutes = experiment.elapsedTime / 60;
+//            long seconds = experiment.elapsedTime % 60;
+//            String formattedTime = String.format("%d:%02d", minutes, seconds);
+//            Platform.runLater(() -> elapsedTime_label.setText(formattedTime));
+//        }, 0, 1, TimeUnit.SECONDS);
+//    }
     //stop tracking time
     public void stopTimer() {
         if (executorService != null && !executorService.isShutdown()) {
