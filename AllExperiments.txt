@@ -88,44 +88,29 @@ ExperimentName: null
 ExperimenterName: null
 ExperimentID: 0
 Last modified: 05.09.2024
-Version: 2
+Version: 4
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-audio("Default Notice Stage","null","null","null","null","null")
-audio("Default Notice Stage","null","null","null","null","null")
-audio("Default Notice Stage","null","null","null","null","null")
-audio("Default Notice Stage","null","null","null","null","null")
-inputStage("User input","null","null","false")
-inputStage("User input","null","null","false")
-inputStage("User input","null","null","false")
 tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
 startEating("Start eating phase","Please contact experimenter","Meal finished","Stop eating stage","0","0","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","false")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
 noticeStage("User input","null","null","null","false")
-inputStage("User input","null","null","false")
-wait("0","Please Wait","false")
-tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
 ratingsContainer("false","0")
 endRatingsContainer()
 glmsStage("User Input","null","null","null","false")
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
- 
-EndIf() 
-Else() 
- 
-EndElse()
-EndConditionalStatement()
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
- 
-EndIf() 
-Else() 
- 
-EndElse()
-EndConditionalStatement()
-questionStage("Question ","null","null","null","null","null","false")
+endEating()
+endExperiment()
+
+ExperimentName: null
+ExperimenterName: g
+ExperimentID: 0
+Last modified: 07.09.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+startEating("Start eating phase","Please contact experimenter","Meal finished","Stop eating stage","0","0","0","Please remember while eating:\Do not leave your fork in the bowl at any time: if you want to put your fork down, please use the small plate provided. \Please also do not lean on the placemat.\Click on Meal Finished ONLY when you are sure you have had enough food.","false")
+vasStage("User input","null","null","0","100","null","null","null","false","false")
+glmsStage("User Input","null","null","null","false")
 endEating()
 endExperiment()
 
