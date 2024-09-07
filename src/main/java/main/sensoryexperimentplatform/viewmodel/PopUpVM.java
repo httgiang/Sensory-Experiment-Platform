@@ -26,13 +26,7 @@ public class PopUpVM {
             popUPConfirm(experiment, msg, ownerStage);
         }
     }
-    public PopUpVM(PopUpType type, String msg) throws IOException {
-        if(type == ERROR){
-            popUpError(msg);
-        } else if(type == SUCCESS){
-            popUpSuccess(msg);
-        }
-    }
+
 
 
     private void popUpError(String msg, Stage ownerStage) throws IOException {
@@ -52,6 +46,7 @@ public class PopUpVM {
 
     private void popUpSuccess(String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpSuccess.fxml"));
+
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initOwner(ownerStage);
@@ -73,8 +68,6 @@ public class PopUpVM {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.initModality(Modality.WINDOW_MODAL);
-
         PopUpConfirmController controller = fxmlLoader.getController();
         controller.setMessage(experiment, msg);
         stage.show();

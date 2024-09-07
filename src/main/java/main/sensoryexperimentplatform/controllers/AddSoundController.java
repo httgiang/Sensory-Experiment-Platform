@@ -75,7 +75,7 @@ public class AddSoundController {
 
             // Load the sound using the assigned sound path
             assignSoundVM.loadSound(txt_name.getText(), txt_file.getText());
-            PopUpVM popUpVM = new PopUpVM(PopUpType.SUCCESS,"You succesfully add sound");
+           // PopUpVM popUpVM = new PopUpVM(PopUpType.SUCCESS,"You succesfully add sound");
 
             // Notify the system that a sound has been added
             NotiAddSound.notifyObject();
