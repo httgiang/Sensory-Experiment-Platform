@@ -13,11 +13,11 @@ import main.sensoryexperimentplatform.models.ExperimentList;
 import static java.util.Arrays.setAll;
 
 public class NewEx_VM implements Observer {
-    private StringProperty experimentName;
-    private StringProperty creatorName;
-    private StringProperty additionNote;
-    private StringProperty description;
-    private Experiment experiment;
+    private final StringProperty experimentName;
+    private final StringProperty creatorName;
+    private final StringProperty additionNote;
+    private final StringProperty description;
+    private final Experiment experiment;
 
     private ExperimentList ExperimentList;
     private final ListProperty<Experiment> items = new SimpleListProperty<>(FXCollections.observableArrayList());
@@ -28,7 +28,6 @@ public class NewEx_VM implements Observer {
         this.creatorName = new SimpleStringProperty(experiment.getCreatorName());
         this.additionNote = new SimpleStringProperty(experiment.getNote());
         this.description = new SimpleStringProperty(experiment.getNote());
-
         experimentName.addListener((observable, oldValue, newValue) -> {
            setExperimentName(newValue);
 //            System.out.println(experiment);
@@ -93,8 +92,9 @@ public class NewEx_VM implements Observer {
         return items;
     }
     public void saveItems() throws Exception {
-        ExperimentList.addExperiment(experiment);
+        main.sensoryexperimentplatform.models.ExperimentList.addExperiment(experiment);
         DataAccess.saveNewExperiment(experiment);
+        DataAccess.initializeCaches(experiment.getExperimentName());
         //Notification.notify(experiment);
 
 
@@ -102,6 +102,6 @@ public class NewEx_VM implements Observer {
 
     @Override
     public void update() {
-        items.setAll(ExperimentList.getInstance());
+        items.setAll(main.sensoryexperimentplatform.models.ExperimentList.getInstance());
     }
 }

@@ -55,7 +55,7 @@ public class DataAccess {
 
 
 
-    private static void initializeCaches(String experimentName) throws IOException {
+    public static void initializeCaches(String experimentName) throws IOException {
         //./results
         File resultsDirectory = new File(saveResultPath);
 

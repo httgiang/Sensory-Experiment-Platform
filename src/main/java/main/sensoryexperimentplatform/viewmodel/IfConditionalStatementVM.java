@@ -15,6 +15,6 @@ public class IfConditionalStatementVM extends ConditionalStatementVM implements 
 
 
     public String toString(){
-        return "If "+ getVariable1Choice() + " " + getCompare() + " Then " + getVariable2Choice() ;
+        return "If "+  (getVariable1Choice() != null && !getVariable1Choice().isEmpty() ? getVariable1Choice() : getValue1Text()) + " " + getCompare() + " Then " + (getVariable2Choice() != null && !getVariable2Choice().isEmpty() ? getVariable2Choice() : getValue2Text()) ;
     }
 }

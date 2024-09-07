@@ -1,2 +1,3 @@
-package main.sensoryexperimentplatform.models;public class ConditionalContainer {
+package main.sensoryexperimentplatform.models;
+public class ConditionalContainer {
 }

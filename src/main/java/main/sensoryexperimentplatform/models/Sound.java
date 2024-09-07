@@ -37,7 +37,7 @@ public class Sound {
         getSoundNameshow();
 
         // Check if the sound name already exists in the list
-        if (!soundNameshow.contains(soundName)) {
+        if (!soundNameshow.contains(soundName) && soundName == null) {
             // Add the new sound name to the list if it doesn't already exist
             soundNameshow.add(soundName);
         }
@@ -51,8 +51,8 @@ public class Sound {
     public void initSound(){
         soundNameshow.add("boop");
         soundNameshow.add("stomp");
-        loadSound("boop","src/main/resources/sound/boop-741-mhz-39314.wav");
-        loadSound("stomp","src/main/resources/sound/stompwav-14753.wav");
+        loadSound("boop","/sound/boop-741-mhz-39314.wav");
+        loadSound("stomp","/sound/stompwav-14753.wav");
     }
 
 
@@ -61,9 +61,8 @@ public class Sound {
     }
     public void loadSound(String name, String filePath) {
         try {
-            InputStream fileStream = new FileInputStream(filePath);
-            BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedStream);
+            InputStream fileStream = new BufferedInputStream(Objects.requireNonNull(Sound.class.getResourceAsStream(filePath)));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(fileStream);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             soundMap.put(name, clip);
@@ -72,6 +71,7 @@ public class Sound {
             e.printStackTrace();
         }
     }
+
 
 
 

@@ -172,22 +172,15 @@ public class EditExpController {
             TreeItem<ViewModel> elseVMTreeItem = new TreeItem<>(elseVM);
             parent.getChildren().add(ifVMTreeItem);
             parent.getChildren().add(elseVMTreeItem);
-
-            if(((ConditionalStatement) model).getIfConditional() != null){
+            if(((ConditionalStatement) model).getIfConditional()!= null){
                 for(Model child : ((ConditionalStatement) model).getIfConditional()){
 
                     buildTree(ifVMTreeItem, child, registry);
                 }
-
-            }
-            if(((ConditionalStatement) model).getElseConditional() != null){
-                for(Model child : ((ConditionalStatement) model).getIfConditional()){
-
+                for(Model child : ((ConditionalStatement) model).getElseConditional()){
                     buildTree(elseVMTreeItem, child, registry);
                 }
-
             }
-            return;
         }
 
 

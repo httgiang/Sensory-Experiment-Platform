@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.concurrent.*;
 
 
-
 public class RunController {
     @FXML
     private ListView<ViewModel> listView;
@@ -35,6 +34,7 @@ public class RunController {
 
     @FXML
     private Button btn_next, btn_back;
+
 
     @FXML
     private ImageView help_image;
@@ -62,13 +62,20 @@ public class RunController {
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
 
+        //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG DD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
+
+        if(model instanceof ConditionalStatement){
+            ConditionalStatementVM conditionalVM = (ConditionalStatementVM) registry.getViewModel(model);
+            conditionalVM.initRunSetup(listView);
+        }
+
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
                 for(Model children : ((ModelContainer) model).getChildren()){
                     listView.getItems().add(registry.getViewModel(children));
                 }
             }
-//            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
+            // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
 //            else if(((ConditionalStatement) model).getIfConditional() != null){
 //                for(Model children : ((ConditionalStatement) model).getIfConditional()){
 //                    buildList(listView, children, registry);
@@ -81,7 +88,8 @@ public class RunController {
 //                }
 //            }
 
-        } else {
+        }
+        else {
             if(stages != null){
                 if(model instanceof TimerStage_VM){
                     setupTimerListener(((TimerStage_VM) model).getRunController());
@@ -196,7 +204,6 @@ public class RunController {
         stage.close();
     }
 
-
     private void setupTimerListener(RunTimerController runTimerController) {
         runTimerController.timelineFullProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
@@ -205,6 +212,21 @@ public class RunController {
         });
     }
 
+//    timer tracks the experiment
+//    private void startTimer() {
+//        executorService = Executors.newSingleThreadScheduledExecutor();
+//        startTime = System.currentTimeMillis();
+//        executorService.scheduleAtFixedRate(() ->{
+//            long currentTime = System.currentTimeMillis();
+//            elapsedTime = (currentTime - startTime) / 1000;
+//            experiment.elapsedTime = Math.toIntExact(elapsedTime);
+//
+//            long minutes = experiment.elapsedTime / 60;
+//            long seconds = experiment.elapsedTime % 60;
+//            String formattedTime = String.format("%d:%02d", minutes, seconds);
+//            Platform.runLater(() -> elapsedTime_label.setText(formattedTime));
+//        }, 0, 1, TimeUnit.SECONDS);
+//    }
     //stop tracking time
     public void stopTimer() {
         if (executorService != null && !executorService.isShutdown()) {

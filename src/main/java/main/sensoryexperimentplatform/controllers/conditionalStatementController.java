@@ -46,7 +46,7 @@ public class conditionalStatementController {
         this.viewModel = viewModel;
         chx_variable1Choice.getItems().addAll("Scale Reading", "Bout Number","Total Eaten Over Course","Total Eaten Over Experiment");
         chx_variable2Choice.getItems().addAll("Scale Reading", "Bout Number","Total Eaten Over Course","Total Eaten Over Experiment");
-        chx_compare.getItems().addAll("Not equal to (!=)", "Greater than (>)","Less Than (<)","equals (=)","Less than or equals to(<=)","Less than or equals to(=>)");
+        chx_compare.getItems().addAll("not equal to (!=)", "greater than (>)","less Than (<)","equals (=)","less than or equals to(<=)","greater than or equals to(>=)");
         bind();
 
     }
