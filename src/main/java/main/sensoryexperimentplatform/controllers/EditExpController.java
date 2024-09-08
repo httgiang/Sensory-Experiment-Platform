@@ -48,6 +48,7 @@ public class EditExpController {
     //CANCEL BUTTON
     @FXML
     private Button btnCancel;
+    private ConditionalStatement conditionalStatement;
 
     private Stage ownerStage;
 
@@ -591,7 +592,7 @@ public class EditExpController {
             if (parent != null) {
                 int currentIndex = parent.getChildren().indexOf(selectedItem);
 
-               // PopUpVM popUpConfirm = new PopUpVM(CONFIRM, "Are you sure you want to delete this stage?", experiment);
+                // PopUpVM popUpConfirm = new PopUpVM(CONFIRM, "Are you sure you want to delete this stage?", experiment);
                 Object curr = experiment.getStages().get(currentIndex);
                 parent.getChildren().remove(selectedItem);
                 experiment.getStages().remove(curr);

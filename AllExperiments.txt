@@ -84,6 +84,15 @@ noticeStage("Rinsing","Please rinse your mouth with the water provided and then 
 noticeStage("Thank you!","That completes the Taste Test: please call your experimenter.","X","","true")
 endExperiment()
 
+ExperimentName: testing
+ExperimenterName: Quynh Anh
+ExperimentID: 0
+Last modified: 07.09.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
+endExperiment()
+
 ExperimentName: null
 ExperimenterName: null
 ExperimentID: 0
