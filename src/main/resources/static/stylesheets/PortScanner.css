@@ -14,21 +14,22 @@
 
 .button{
     -fx-align-items: center;
-    -fx-pref-width: 132px;
-    -fx-pref-height: 57px;
+    -fx-pref-width: 130px;
+    -fx-pref-height: 40px;
 
-    -fx-background-color: #F1F6FB;
+    -fx-background-color: #397E82;
     -fx-box-shadow: inset 0px 5px 5px rgba(85, 91, 110, 0.15);
     -fx-border-radius: 15px;
+    -fx-background-radius: 10px;
 
 
     -fx-font-family: 'Montserrat';
     -fx-font-style: normal;
     -fx-font-weight: 600;
-    -fx-font-size: 22px;
-    -fx-line-height: 27px;
+    -fx-font-size: 20px;
 
-    -fx-text-fill: #0E0E0E;
+
+    -fx-text-fill: #fff;
 
 }
 

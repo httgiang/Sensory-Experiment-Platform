@@ -139,9 +139,8 @@ public class VasStage_VM implements ViewModel {
         btn_back.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-        }else btn_next.setDisable(false);
+        System.out.println("in" + this.conductedTextProperty().get());
+        btn_next.setDisable(this.conductedTextProperty().get() == null);
 
         this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -154,14 +153,11 @@ public class VasStage_VM implements ViewModel {
             tooltip.textProperty().bind(this.helpText);
         }
         if(this.helpTextProperty().get()  == null || this.helpTextProperty().get().equals("null")) {
-            tooltip.setOpacity(0.0);
             help_image.setVisible(false);
             help_image.setManaged(false);
         }
     }
-    public void playAlertSound(){
-        vas.playAlertSound();
-    }
+
 
     @Override
     public String toString(){

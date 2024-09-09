@@ -66,9 +66,11 @@ public class PopUpVM {
     private void popUPConfirm(Experiment experiment, String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpConfirm.fxml"));
         Parent root = fxmlLoader.load();
+
         Stage stage = new Stage();
         stage.initOwner(ownerStage);
         stage.initModality(Modality.WINDOW_MODAL);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

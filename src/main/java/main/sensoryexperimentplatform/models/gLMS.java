@@ -127,7 +127,7 @@ public class gLMS extends Stage implements Model{
     public String getConducted(){
         if(conducted != null){
             return conducted;
-        } else return " ";
+        } else return null;
     }
 
 
