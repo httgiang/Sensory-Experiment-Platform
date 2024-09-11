@@ -135,25 +135,23 @@ public class VasStage_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-
-        }
-        else {
-            btn_next.setDisable(false);
-            nextButtonTooltip.setOpacity(0.0);
-
-        }
-
-        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+        System.out.println("in" + this.conductedTextProperty().get());
+        btn_next.setDisable(this.conductedTextProperty().get() == null);
+        this.sliderValueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 btn_next.setDisable(false);
             }
         });
+
+//        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                btn_next.setDisable(false);
+//            }
+//        });
 
         if (this.helpTextProperty().get() != null) {
             help_image.setVisible(true);

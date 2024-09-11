@@ -51,6 +51,8 @@ public class PopUpVM {
         PopUpErrorController controller = fxmlLoader.getController();
         controller.setMessage(msg);
 
+
+        stage.showAndWait();
     }
 
     private void popUpSuccess(String msg, Stage ownerStage) throws IOException {
@@ -65,20 +67,24 @@ public class PopUpVM {
         stage.setResizable(false);
         PopUpSuccessController controller = fxmlLoader.getController();
         controller.setMessage(msg);
-        stage.show();
+        stage.showAndWait();
+
+
     }
 
     private void popUPConfirm(Experiment experiment, String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpConfirm.fxml"));
         Parent root = fxmlLoader.load();
+
         Stage stage = new Stage();
         stage.initOwner(ownerStage);
         stage.initModality(Modality.WINDOW_MODAL);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         PopUpConfirmController controller = fxmlLoader.getController();
         controller.setMessage(experiment, msg);
-        stage.show();
+        stage.showAndWait();
     }
 }

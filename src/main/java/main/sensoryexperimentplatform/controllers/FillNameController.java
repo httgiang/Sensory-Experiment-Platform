@@ -90,6 +90,6 @@ public class FillNameController {
         stage.setFullScreen(true);
         stage.setFullScreenExitHint(""); // Optionally remove the exit hint message
 
-        stage.show();
+        stage.showAndWait();
     }
 }

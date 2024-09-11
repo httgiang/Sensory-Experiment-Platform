@@ -73,7 +73,8 @@ public class Vas extends Stage implements Model{
     public String getConducted(){
         if(conducted != null){
             return conducted;
-        }else return " ";
+        }
+        else return null;
     }
 
     public boolean getAlert() {

@@ -114,17 +114,11 @@ public class GLMSStage_VM implements ViewModel{
 
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-
-        }else{
-            btn_next.setDisable(false);
-
-        }
+        btn_next.setDisable(this.conductedTextProperty().get() == null);
 
         this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -136,6 +130,7 @@ public class GLMSStage_VM implements ViewModel{
             help_image.setVisible(true);
             tooltip.textProperty().bind(this.txt_helpProperty());
         }
+
         if(this.txt_helpProperty().get()  == null) {
             tooltip.setOpacity(0.0);
             help_image.setVisible(false);
