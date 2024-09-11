@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="645.0" minWidth="1054.0" prefHeight="839.0" prefWidth="1280.0" stylesheets="/static/stylesheets/RunEx.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunController">
+<AnchorPane fx:id="mainPane" minHeight="645.0" minWidth="1054.0" prefHeight="839.0" prefWidth="1280.0" stylesheets="/static/stylesheets/RunEx.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.sensoryexperimentplatform.controllers.RunController">
    <children>
       <Button fx:id="btn_back" layoutX="732.0" layoutY="759.0" mnemonicParsing="false" onMouseClicked="#handleBtnBack" prefHeight="60.0" prefWidth="160.0" text="Back" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="388.0">
          <font>

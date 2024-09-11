@@ -1,1 +1,27 @@
-uid,type,time,result,question,lowAnchorText,highAnchorText,lowAnchorValue,highAnchorValue
+0,Vas, ,50,User input,null,null,0,100
+0,GLMS , ,0,User Input
+00,Vas, ,50,User input,null,null,0,100
+100,Vas, ,50,User input,null,null,0,100
+11111,Vas, ,50,User input,null,null,0,100
+11111,GLMS , ,0,User Input
+33333,Vas, ,50,User input,null,null,0,100
+7777,Vas, ,50,User input,null,null,0,100
+9,Vas, ,50,User input,null,null,0,100
+99,Vas,2024.09.09.13.51.47.614,84,User input,null,null,0,100
+d,Vas,2024.09.09.13.54.07.618,96,User input,null,null,0,100
+eee,Vas, ,50,User input,null,null,0,100
+eee,GLMS , ,0,User Input
+ff,Vas, ,50,User input,null,null,0,100
+ff,GLMS , ,0,User Input
+fff,Vas,2024.09.09.14.59.56.448,81,User input,null,null,0,100
+fff,GLMS , ,0,User Input
+gg,Vas,2024.09.09.14.42.28.835,96,User input,null,null,0,100
+gg,GLMS , ,0,User Input
+ggg,Vas, ,50,User input,null,null,0,100
+ggg,GLMS , ,0,User Input
+gggggggg,Vas, ,50,User input,null,null,0,100
+hhhhh,Vas,2024.09.09.14.24.19.168,100,User input,null,null,0,100
+hhhhh,GLMS ,2024.09.09.14.24.23.587,51,User Input
+kk,Vas, ,50,User input,null,null,0,100
+kk,GLMS , ,0,User Input
+UUUUUU,Vas, ,50,User input,null,null,0,100

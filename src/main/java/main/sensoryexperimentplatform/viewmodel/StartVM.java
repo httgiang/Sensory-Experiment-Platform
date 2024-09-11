@@ -102,11 +102,14 @@ public class StartVM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
+
         btn_next.textProperty().bind(this.buttonTextProperty());
         btn_back.setDisable(true);
         help_image.setVisible(false);
         help_image.setManaged(false);
+
+
     }
 
     @Override

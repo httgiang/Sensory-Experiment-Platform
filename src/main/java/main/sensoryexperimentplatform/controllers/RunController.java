@@ -8,6 +8,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
@@ -18,12 +20,16 @@ import main.sensoryexperimentplatform.models.*;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.*;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.*;
 
 
 public class RunController {
+    @FXML
+    private AnchorPane mainPane;
+
     @FXML
     private ListView<ViewModel> listView;
     private Experiment experiment; private String uid;
@@ -41,6 +47,8 @@ public class RunController {
 
     private Tooltip tooltip;
 
+    private Tooltip nextButtonTooltip;
+
     private ListProperty<Experiment> experiments;
     ModelVMRegistry registry;
     private StringProperty stageIndex;
@@ -52,6 +60,7 @@ public class RunController {
         this.uid = uId;
         loadItems();
         setListViewListener();
+        setupNextButtonTooltip();
         initButtons();
         setupToolTip();
     }
@@ -117,7 +126,7 @@ public class RunController {
 
         content.getChildren().clear();
         runStages.loadRunInterface(content);
-        runStages.handleRunButtons(btn_next, btn_back,tooltip,help_image);
+        runStages.handleRunButtons(btn_next, btn_back,tooltip, nextButtonTooltip, help_image);
 
 
     }
@@ -145,8 +154,13 @@ public class RunController {
 
     private void initButtons(){
         btn_next.setWrapText(true);
+        btn_next.setWrapText(true);
         btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        mainPane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            int maxButtonWidth = (int) (newValue.doubleValue() * 0.25);
+            btn_next.setMaxWidth(maxButtonWidth); // Set maximum width
+        });
     }
     private void setupToolTip(){
     tooltip = new Tooltip("Help text here!");
@@ -188,6 +202,27 @@ public class RunController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
 
+    private void setupNextButtonTooltip() {
+        nextButtonTooltip = new Tooltip("You need to select an item first before proceeding.");
+        nextButtonTooltip.setStyle(
+                "-fx-background-color: Transparent;\n" +
+
+                        "    -fx-text-fill: #397E82;\n" +
+                        "    -fx-font-size: 15px;\n" +
+                        "    -fx-padding: 5px;\n" +
+                        "    -fx-border-color: White;\n" +
+                        "    -fx-border-width: 1px;\n" +
+                        "    -fx-border-radius: 3px;"
+        );
+        nextButtonTooltip.setShowDelay(Duration.ZERO);
+        nextButtonTooltip.setAutoHide(true);
+        nextButtonTooltip.setWrapText(true);
+        nextButtonTooltip.setMaxWidth(300);
+
+        btn_next.setOnMouseEntered(event -> nextButtonTooltip.show(btn_next, event.getScreenX(), event.getScreenY() + 10));
+        btn_next.setOnMouseExited(event -> nextButtonTooltip.hide());
+
+    }
 
     public ListProperty<Experiment> experimentsProperty() {
         return experiments;
@@ -212,6 +247,7 @@ public class RunController {
         });
     }
 
+
 //    timer tracks the experiment
 //    private void startTimer() {
 //        executorService = Executors.newSingleThreadScheduledExecutor();
@@ -233,6 +269,7 @@ public class RunController {
             executorService.shutdown();
         }
     }
+
 
     @FXML
     void handleBtnNext(MouseEvent event) throws IOException {

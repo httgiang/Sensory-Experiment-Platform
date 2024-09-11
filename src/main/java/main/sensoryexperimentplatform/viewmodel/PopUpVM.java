@@ -26,6 +26,15 @@ public class PopUpVM {
             popUPConfirm(experiment, msg, ownerStage);
         }
     }
+    public PopUpVM(PopUpType type, String msg,  Stage ownerStage) throws IOException {
+        if(type == ERROR){
+            popUpError(msg, ownerStage);
+        } else if(type == SUCCESS){
+            popUpSuccess(msg, ownerStage);
+        }
+    }
+
+
 
 
 

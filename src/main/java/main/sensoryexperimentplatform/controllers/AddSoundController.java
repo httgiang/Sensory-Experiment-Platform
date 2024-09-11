@@ -12,6 +12,8 @@ import main.sensoryexperimentplatform.viewmodel.PopUpVM;
 import java.io.File;
 import java.io.IOException;
 
+import static main.sensoryexperimentplatform.utilz.PopUpType.SUCCESS;
+
 public class AddSoundController {
 
 
@@ -28,8 +30,15 @@ public class AddSoundController {
     @FXML
     private TextField txt_file;
 
+    private Stage ownerStage;
+
+
     @FXML
     private TextField txt_name;
+
+    public void setOwnerStage(Stage ownerStage){
+        this.ownerStage = ownerStage;
+    }
 
 
 
@@ -75,7 +84,7 @@ public class AddSoundController {
 
             // Load the sound using the assigned sound path
             assignSoundVM.loadSound(txt_name.getText(), txt_file.getText());
-//            PopUpVM popUpVM = new PopUpVM(SUCCESS,"You succesfully add sound");
+
 
             // Notify the system that a sound has been added
             NotiAddSound.notifyObject();
@@ -83,6 +92,8 @@ public class AddSoundController {
             // Close the current stage
             Stage currentStage = (Stage) btn_cancel.getScene().getWindow();
             currentStage.close();
+
+            PopUpVM popUpVM = new PopUpVM(SUCCESS,"You succesfully add sound",ownerStage);
         }
 
     }

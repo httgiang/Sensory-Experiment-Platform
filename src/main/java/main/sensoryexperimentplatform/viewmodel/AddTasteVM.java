@@ -345,7 +345,7 @@ public class AddTasteVM implements ViewModel {
 
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
 
@@ -354,11 +354,13 @@ public class AddTasteVM implements ViewModel {
         if (this.txt_helpProperty().get() != null) {
             help_image.setVisible(true);
             tooltip.textProperty().bind(this.txt_helpProperty());
+            nextButtonTooltip.hide();
         }
         if(this.txt_helpProperty().get()  == null || this.txt_helpProperty().get().equals("null")) {
             tooltip.setOpacity(0.0);
             help_image.setVisible(false);
             help_image.setManaged(false);
+
         }
 
     }

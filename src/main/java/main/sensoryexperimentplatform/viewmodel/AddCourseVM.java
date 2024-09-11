@@ -1,7 +1,5 @@
 package main.sensoryexperimentplatform.viewmodel;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -9,15 +7,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.arduino.TestArduino;
 import main.sensoryexperimentplatform.controllers.AddCourseController;
 import main.sensoryexperimentplatform.models.*;
 
-import javax.swing.text.View;
 import java.io.IOException;
-import java.util.*;
 
 public class AddCourseVM implements ViewModel{
     private StringProperty txt_button;
@@ -230,11 +225,12 @@ public class AddCourseVM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
         btn_next.textProperty().bind(this.txt_buttonProperty());
         help_image.setVisible(false);
+
     }
 
     public void connectToBalance(ListView listView, StringProperty stageIndex){

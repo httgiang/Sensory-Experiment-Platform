@@ -17,5 +17,5 @@ public interface ViewModel {
                            Button button6, Button button7, Button button8, Button button9, Button button10,
                            Button button11, Button button12) throws IOException;
 
-    void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image);
+    void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip,ImageView help_image);
 }
