@@ -154,13 +154,11 @@ public class RunController {
 
     private void initButtons(){
         btn_next.setWrapText(true);
-        btn_next.setWrapText(true);
+        btn_back.setWrapText(true);
         btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        mainPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            int maxButtonWidth = (int) (newValue.doubleValue() * 0.25);
-            btn_next.setMaxWidth(maxButtonWidth); // Set maximum width
-        });
+
+
     }
     private void setupToolTip(){
     tooltip = new Tooltip("Help text here!");
@@ -219,8 +217,8 @@ public class RunController {
         nextButtonTooltip.setWrapText(true);
         nextButtonTooltip.setMaxWidth(300);
 
-        btn_next.setOnMouseEntered(event -> nextButtonTooltip.show(btn_next, event.getScreenX(), event.getScreenY() + 10));
-        btn_next.setOnMouseExited(event -> nextButtonTooltip.hide());
+//        btn_next.setOnMouseEntered(event -> nextButtonTooltip.show(btn_next, event.getScreenX(), event.getScreenY() + 10));
+//        btn_next.setOnMouseExited(event -> nextButtonTooltip.hide());
 
     }
 

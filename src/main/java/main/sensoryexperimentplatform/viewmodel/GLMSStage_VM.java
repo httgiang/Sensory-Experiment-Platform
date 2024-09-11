@@ -3,8 +3,10 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
@@ -112,13 +114,13 @@ public class GLMSStage_VM implements ViewModel{
 
     }
 
-
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 
         btn_next.setDisable(this.conductedTextProperty().get() == null);
+
 
         this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -136,7 +138,11 @@ public class GLMSStage_VM implements ViewModel{
             help_image.setVisible(false);
             help_image.setManaged(false);
         }
+
     }
+
+
+
 
     @Override
     public String toString(){
