@@ -141,12 +141,17 @@ public class VasStage_VM implements ViewModel {
 
         System.out.println("in" + this.conductedTextProperty().get());
         btn_next.setDisable(this.conductedTextProperty().get() == null);
-
-        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+        this.sliderValueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 btn_next.setDisable(false);
             }
         });
+
+//        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                btn_next.setDisable(false);
+//            }
+//        });
 
         if (this.helpTextProperty().get() != null) {
             help_image.setVisible(true);
