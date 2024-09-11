@@ -154,6 +154,7 @@ public class EditExpController {
             ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
             for (Model model : stages) {
+                System.out.println("MODEL" + model);
                 buildTree(startStage, model, registry);
             }
 
@@ -169,19 +170,22 @@ public class EditExpController {
         if(model instanceof ConditionalStatement){
             IfConditionalStatementVM ifVM = new IfConditionalStatementVM((ConditionalStatement) model);
             ElseConditionalStatementVM elseVM = new ElseConditionalStatementVM((ConditionalStatement) model);
+
             TreeItem<ViewModel> ifVMTreeItem = new TreeItem<>(ifVM);
             TreeItem<ViewModel> elseVMTreeItem = new TreeItem<>(elseVM);
+
             parent.getChildren().add(ifVMTreeItem);
             parent.getChildren().add(elseVMTreeItem);
-            if(((ConditionalStatement) model).getIfConditional()!= null){
-                for(Model child : ((ConditionalStatement) model).getIfConditional()){
 
+            if(((ConditionalStatement) model).getIfConditional() != null){
+                for(Model child : ((ConditionalStatement) model).getIfConditional()){
                     buildTree(ifVMTreeItem, child, registry);
                 }
                 for(Model child : ((ConditionalStatement) model).getElseConditional()){
                     buildTree(elseVMTreeItem, child, registry);
                 }
             }
+            return;
         }
 
 
@@ -205,17 +209,25 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
+
         if(parent != null && parent.getValue() instanceof IfConditionalStatementVM){
             ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
+
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addIf(vm.getModel());
+            for(Model model : conditionalStatement.getIfConditional()){
+                System.out.println("subm1 " + model);
+            }
             parent.setExpanded(true);
+
         } else if (parent != null && parent.getValue() instanceof ElseConditionalStatementVM){
             ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addElse(vm.getModel());
             parent.setExpanded(true);
-        } else if(parent != null && parent.getValue().getModel() instanceof ModelContainer) {
+
+        }
+        else if(parent != null && parent.getValue().getModel() instanceof ModelContainer) {
             Model selected = parent.getValue().getModel();
 
             if (!(selected instanceof TasteTest)) {
@@ -230,6 +242,10 @@ public class EditExpController {
             startStage.setExpanded(true);
         }
     }
+
+
+
+
 
 //    void addNewTreeItem(ViewModel vm){
 //        TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
@@ -284,19 +300,33 @@ public class EditExpController {
     @FXML
     void addConditionalStatement(ActionEvent event) {
 
-        ConditionalStatementVM conditionalStatementVM = new ConditionalStatementVM();
-        ConditionalStatement conditionalStatement = conditionalStatementVM.getConditionalStatement();
+        ConditionalStatementVM csVM = new ConditionalStatementVM();
+        ConditionalStatement cs = csVM.getConditionalStatement();
 
-        IfConditionalStatementVM ifConditionalStatement = new IfConditionalStatementVM(conditionalStatement);
-        ElseConditionalStatementVM elseConditionalStatement = new ElseConditionalStatementVM(conditionalStatement);
-        addNewTreeItem(ifConditionalStatement);
-        addNewTreeItem(elseConditionalStatement);
-//        ifConditional = new TreeItem<>(ifConditionalStatement);
-//        elseConditional = new TreeItem<>(elseConditionalStatement);
-//        startStage.getChildren().add(ifConditional);
-//        startStage.getChildren().add(elseConditional);
 
-       }
+        IfConditionalStatementVM ifCS = new IfConditionalStatementVM(cs);
+        ElseConditionalStatementVM elseCS = new ElseConditionalStatementVM(cs);
+
+        TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
+
+
+        if(parent != null && parent.getValue().getModel() instanceof ModelContainer) {
+            Model selected = parent.getValue().getModel();
+
+            if (!(selected instanceof TasteTest)) {
+                parent.getChildren().add(new TreeItem<>(ifCS));
+                parent.getChildren().add(new TreeItem<>(elseCS));
+                ((ModelContainer) selected).addChildren(cs);
+
+            }
+            parent.setExpanded(true);
+        } else {
+            experiment.addStage(cs);
+            startStage.getChildren().add(new TreeItem<>(ifCS));
+            startStage.getChildren().add(new TreeItem<>(elseCS));
+            startStage.setExpanded(true);
+        }
+    }
 
 
    @FXML
