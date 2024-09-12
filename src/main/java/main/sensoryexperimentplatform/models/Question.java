@@ -1,5 +1,6 @@
 package main.sensoryexperimentplatform.models;
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+
+import javafx.collections.ObservableList;
 
 public class Question extends Stage implements Model {
     private String question;
@@ -11,6 +12,7 @@ public class Question extends Stage implements Model {
     private boolean alert;
     private Sound sound;
     private String result;
+    private Variable variable;
 
     public Question(String title, String content) {
         super(title, content);
@@ -27,6 +29,7 @@ public class Question extends Stage implements Model {
         this.helpText = helpText;
         this.alert = alert;
         result = null;
+        this.variable = VariableSingleton.getInstance();
         sound = SoundSingleton.getInstance();
     }
 
@@ -40,7 +43,15 @@ public class Question extends Stage implements Model {
         helpText = o.getHelpText();
         alert = o.isAlert();
         result = null;
+        this.variable = VariableSingleton.getInstance();
         sound = SoundSingleton.getInstance();
+    }
+
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
     }
 
     public String getQuestion() {

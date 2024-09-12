@@ -208,9 +208,9 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
-        ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
 //        ConditionalStatementVM ifVM = (ConditionalStatementVM) parent.getValue().getModel();
         if(parent != null && parent.getValue() instanceof IfConditionalStatementVM){
+            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
 
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addIf(vm.getModel());
@@ -218,6 +218,7 @@ public class EditExpController {
             parent.setExpanded(true);
 
         } else if (parent != null && parent.getValue() instanceof ElseConditionalStatementVM){
+            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addElse(vm.getModel());
             parent.setExpanded(true);

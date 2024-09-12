@@ -8,6 +8,9 @@ public class VasController {
     private VasStage_VM vasStageVM;
 
     @FXML
+    private ChoiceBox<String> choiceB_avail;
+
+    @FXML
     private CheckBox checkB_sound;
 
     @FXML
@@ -53,10 +56,17 @@ public class VasController {
         //txt_yes.textProperty().bindBidirectional(vasStageVM.txt_yesProperty());
         checkB_sound.selectedProperty().bindBidirectional(vasStageVM.checkB_soundProperty());
         checkB_swap.selectedProperty().bindBidirectional(vasStageVM.checkB_swapProperty());
+        txt_yes.textProperty().addListener((observable, oldValue, newValue) -> {
+          vasStageVM.setVariableName(newValue);
+        });
+        if(vasStageVM.getVariableName() != null){
+            vasStageVM.addVariable(vasStageVM.getVariableName());
+        }
     }
     public void setViewModel(VasStage_VM vas){
         this.vasStageVM = vas;
         bind();
+        choiceB_avail.getItems().addAll(vasStageVM.getVariable());
 
     }
 

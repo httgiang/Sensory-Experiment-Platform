@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import javafx.collections.ObservableList;
 
 public class gLMS extends Stage implements Model{
     private String title;
@@ -11,6 +11,7 @@ public class gLMS extends Stage implements Model{
     private int result;
     private boolean alert;
     private Sound sound;
+    private Variable variable;
 
     public gLMS(String title, String content){
         super(title,content);
@@ -29,6 +30,7 @@ public class gLMS extends Stage implements Model{
         this.helpText = helpText;
         this.alert = alert;
         this.sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         result=0;
 
     }
@@ -41,12 +43,28 @@ public class gLMS extends Stage implements Model{
         this.helpText = stage.getHelpText();
         this.alert = stage.getAlert();
         this.sound= SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         result=0;
     }
 
     public void setDefaultResult(){
         result = 0;
     }
+
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
+    }
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
+
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
+
     public void setAlert(boolean s){
         this.alert =s;
     }

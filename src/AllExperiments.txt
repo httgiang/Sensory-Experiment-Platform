@@ -22,7 +22,7 @@ ExperimentName: testing
 ExperimenterName: Quynh Anh
 ExperimentID: 0
 Last modified: 11.09.2024
-Version: 1
+Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
 If() 
@@ -33,5 +33,6 @@ noticeStage("User input","null","null","null","false")
 EndElse()
 EndConditionalStatement()
 audio("Default Notice Stage","null","null","null","null","null")
+glmsStage("User Input","null","null","null","false")
 endExperiment()
 

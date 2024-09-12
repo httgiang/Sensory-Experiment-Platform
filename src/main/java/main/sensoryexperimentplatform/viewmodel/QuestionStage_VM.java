@@ -4,6 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -59,6 +60,13 @@ public class QuestionStage_VM implements ViewModel {
         this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+    }
+
+    public void addVariable(String variableName){
+        questionStage.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return questionStage.getVariable();
     }
 
     @Override

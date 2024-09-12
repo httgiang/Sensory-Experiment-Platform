@@ -1,6 +1,7 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -30,6 +31,7 @@ public class VasStage_VM implements ViewModel {
     private final BooleanProperty alert = new SimpleBooleanProperty(true);
     private IntegerProperty sliderValue;
     private StringProperty conducted;
+    private StringProperty variableName;
     private Vas vas;
     public VasStage_VM(Vas vas){
         this.vas= vas;
@@ -68,6 +70,8 @@ public class VasStage_VM implements ViewModel {
         questionText = new SimpleStringProperty(vas.getTitle());
         checkB_sound = new SimpleBooleanProperty(vas.getAlert());
         checkB_swap = new SimpleBooleanProperty(vas.getIsSwap());
+        variableName = new SimpleStringProperty(vas.getVariableName());
+
         checkB_swap.addListener((observableValue, oldValue, newValue) -> onCheckSwap(newValue));
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onCheckSound(newValue));
         highAnchorValue.addListener((observableValue, oldValue, newValue) -> onhighAnchorValue(newValue));
@@ -80,6 +84,8 @@ public class VasStage_VM implements ViewModel {
         highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));
         lowAnchorText.addListener((observableValue, oldValue, newValue) -> onlowAnchorText(newValue));
         questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
+        variableName.addListener((observableValue, oldValue, newValue) -> setVariableName(newValue));
+
 
         sliderValue = new SimpleIntegerProperty(vas.getResult());
         conducted = new SimpleStringProperty(vas.getConducted());
@@ -166,6 +172,20 @@ public class VasStage_VM implements ViewModel {
             help_image.setManaged(false);
         }
     }
+    public void addVariable(String variableName){
+        vas.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return vas.getVariable();
+    }
+
+    public void setVariableName(String newValue){
+        vas.setVariableName(newValue);
+    }
+    public String getVariableName() {
+        return variableName.get();
+    }
+
 
     public void playAlertSound(){
         vas.playAlertSound();

@@ -19,7 +19,6 @@ public class NoticeStageController {
 
     @FXML
     private TextArea txt_helptext;
-
     @FXML
     private TextField txt_title;
     @FXML

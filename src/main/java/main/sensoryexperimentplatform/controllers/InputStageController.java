@@ -3,6 +3,7 @@ package main.sensoryexperimentplatform.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -23,8 +24,15 @@ public class InputStageController {
     @FXML
     private TextField txt_question;
 
+    @FXML
+    private TextField txt_storeVariable;
+
+    @FXML
+    private ComboBox<String> checkVariable;
+
     public void setViewModel(InputStage_VM viewModel){
         this.viewModel = viewModel;
+        checkVariable.getItems().addAll(viewModel.getVariable());
         bindViewModel();
     }
 
@@ -51,6 +59,7 @@ public class InputStageController {
             viewModel.setAlert(newValue);
         });
     }
+
     /*public void initialize() {
         txt_buttonText.textProperty().bindBidirectional(inputStage_vm.buttonTextProperty());
         txt_helptext.textProperty().bindBidirectional(inputStage_vm.contentProperty());

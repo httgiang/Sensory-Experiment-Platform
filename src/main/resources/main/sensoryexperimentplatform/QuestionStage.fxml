@@ -35,7 +35,7 @@
                         <TextField layoutX="222.0" layoutY="400.0" prefHeight="30.0" prefWidth="300.0" promptText="New" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
                         <CheckBox fx:id="cbx_alert" layoutX="250.0" layoutY="634.0" mnemonicParsing="false" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="259.19999999999993" />
 
-                        <ComboBox layoutX="222.0" layoutY="350.0" prefHeight="30.0" prefWidth="295.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <ComboBox fx:id="checkVariable" layoutX="222.0" layoutY="350.0" prefHeight="30.0" prefWidth="295.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
                         <Label fx:id="lblProperty" layoutX="28.0" layoutY="14.0" styleClass="property" text="Properities" />
                   <TextArea fx:id="txt_HelpText" layoutX="222.0" layoutY="450.0" prefHeight="166.0" prefWidth="297.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="15.199999999999932" />
                     </children>

@@ -23,6 +23,10 @@ public class QuestionStageController {
     @FXML
     private TextField txt_rightText;
 
+
+    @FXML
+    private ComboBox<String> checkVariable;
+
     @FXML
     private TextField txt_rightValue;
     @FXML
@@ -30,6 +34,7 @@ public class QuestionStageController {
 
     public void setQuestionStage_vm( QuestionStage_VM viewModel){
         this.viewModel = viewModel;
+        checkVariable.getItems().addAll(viewModel.getVariable());
         bindViewModel();
     }
     public void bindViewModel(){

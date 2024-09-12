@@ -3,7 +3,7 @@ package main.sensoryexperimentplatform.viewmodel;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import main.sensoryexperimentplatform.models.SoundSingleton;
 import main.sensoryexperimentplatform.models.AudibleInstruction;
 import main.sensoryexperimentplatform.models.Sound;
 

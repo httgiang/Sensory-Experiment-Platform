@@ -1,6 +1,6 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import javafx.collections.ObservableList;
 
 public class Vas extends Stage implements Model{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
@@ -9,6 +9,7 @@ public class Vas extends Stage implements Model{
     private String conducted;
     private boolean alert, isSwap;
     private Sound sound;
+    private Variable variable;
 
     public Vas(String title, String lowAnchorText, String highAnchorText,
                int lowAnchorValue, int highAnchorValue, String buttonText,
@@ -24,6 +25,7 @@ public class Vas extends Stage implements Model{
         this.isSwap = isSwap;
         this.alert = alert;
         sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         setDefaultResult();
     }
     public Vas(Vas v){
@@ -37,6 +39,7 @@ public class Vas extends Stage implements Model{
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
         sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         setDefaultResult();
     }
 
@@ -75,6 +78,19 @@ public class Vas extends Stage implements Model{
             return conducted;
         }
         else return null;
+    }
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
+    }
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
+
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
     }
 
     public boolean getAlert() {

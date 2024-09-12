@@ -2,6 +2,7 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -53,6 +54,13 @@ public class InputStage_VM implements ViewModel{
         alert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
     }
+    public void addVariable(String variableName){
+        input.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return input.getVariable();
+    }
+
 
     //questionText
     public StringProperty questionProperty() {

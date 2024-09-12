@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.AddAudibleSoundController;
 import main.sensoryexperimentplatform.controllers.RunAudibleController;
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import main.sensoryexperimentplatform.models.SoundSingleton;
 import main.sensoryexperimentplatform.models.AudibleInstruction;
 import main.sensoryexperimentplatform.models.Experiment;
 import main.sensoryexperimentplatform.models.Model;

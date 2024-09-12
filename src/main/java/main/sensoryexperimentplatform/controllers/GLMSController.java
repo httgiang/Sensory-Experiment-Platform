@@ -14,8 +14,10 @@ public class GLMSController {
     @FXML
     private CheckBox checkB_swap;
 
+
+
     @FXML
-    private ChoiceBox<?> choiceB_avail;
+    private ChoiceBox<String> choiceB_avail;
 
     @FXML
     private Label lbl_buttonText;
@@ -63,10 +65,18 @@ public class GLMSController {
       //  txt_yes.textProperty().bindBidirectional(glmsStageVm.txt_yesProperty());
         checkB_sound.selectedProperty().bindBidirectional(glmsStageVm.checkB_soundProperty());
         checkB_swap.selectedProperty().bindBidirectional(glmsStageVm.checkB_swapProperty());
+        txt_yes.textProperty().addListener((observable, oldValue, newValue) -> {
+            glmsStageVm.setVariableName(newValue);
+        });
+        if(glmsStageVm.getVariableName() != null){
+            glmsStageVm.addVariable(glmsStageVm.getVariableName());
+        }
     }
 
     public void setViewModel(GLMSStage_VM glms) {
         this.glmsStageVm = glms;
         bind();
+        choiceB_avail.getItems().addAll(glmsStageVm.getVariable());
+
     }
 }

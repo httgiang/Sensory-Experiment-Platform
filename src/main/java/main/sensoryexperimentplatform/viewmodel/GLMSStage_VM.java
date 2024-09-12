@@ -1,12 +1,11 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
@@ -22,7 +21,10 @@ public class GLMSStage_VM implements ViewModel{
     private DoubleProperty sliderValue;
     private StringProperty conducted;
     private Experiment experiment;
+    private StringProperty variableName;
     private gLMS glms;
+
+
     public GLMSStage_VM(){
         this.glms = new gLMS("User Input",null,null,null, false);;
         initListener();
@@ -53,6 +55,7 @@ public class GLMSStage_VM implements ViewModel{
         checkB_sound = new SimpleBooleanProperty(glms.getAlert());
         checkB_swap  = new SimpleBooleanProperty(glms.isResponse());
         buttonText = new SimpleStringProperty(glms.getButtonText());
+        variableName = new SimpleStringProperty(glms.getVariableName());
 
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
         txt_LowAncTxt.addListener((observableValue, oldValue, newValue) -> onLowAnc(newValue));
@@ -60,6 +63,7 @@ public class GLMSStage_VM implements ViewModel{
         txt_question.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
         buttonText.addListener((observableValue, oldValue, newValue) -> onButtonChange(newValue));
+        variableName.addListener((observableValue, oldValue, newValue) -> setVariableName(newValue));
 
         sliderValue = new SimpleDoubleProperty(glms.getResult());
         conducted = new SimpleStringProperty(glms.getConducted());
@@ -68,6 +72,12 @@ public class GLMSStage_VM implements ViewModel{
             conducted.set(DataAccess.getCurrentFormattedTime());
             setDate();
         } ));
+    }
+    public void addVariable(String variableName){
+        glms.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+         return glms.getVariable();
     }
 
     @Override
@@ -156,6 +166,9 @@ public class GLMSStage_VM implements ViewModel{
     public void setDate(){
         glms.setConducted(DataAccess.getCurrentFormattedTime());
     }
+    public void setVariableName(String newValue){
+        glms.setVariableName(newValue);
+    }
 
     public void setResult(int result){
         glms.setResult(result);
@@ -187,6 +200,12 @@ public class GLMSStage_VM implements ViewModel{
 
     public StringProperty txt_questionProperty() {
         return txt_question;
+    }
+    public StringProperty txt_variableName() {
+        return variableName;
+    }
+    public String getVariableName() {
+        return variableName.get();
     }
 
     public String getTxt_LowAncTxt() {
