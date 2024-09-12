@@ -1,6 +1,7 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -16,21 +17,23 @@ import java.io.IOException;
 
 
 public class ConditionalStatementVM implements ViewModel {
-    private ConditionalStatement conditionalStatement;
-
+    protected ConditionalStatement conditionalStatement;
     private SimpleStringProperty value1Text;
     private SimpleStringProperty value2Text;
     private SimpleStringProperty variable2Choice;
     private SimpleStringProperty variable1Choice;
     private SimpleStringProperty compare;
+
+
     ModelVMRegistry registry = ModelVMRegistry.getInstance();
 
     public ConditionalStatementVM(ConditionalStatement conditionalStatement){
-        this.conditionalStatement = new ConditionalStatement(true, false,true,false,null,null,"Something","Something else","Less Than");
+        this.conditionalStatement = conditionalStatement;
         value1Text = new SimpleStringProperty(conditionalStatement.getValue1Text());
         value2Text = new SimpleStringProperty(conditionalStatement.getValue2Text());
         variable1Choice = new SimpleStringProperty(conditionalStatement.getVariable1Choice());
         variable2Choice = new SimpleStringProperty(conditionalStatement.getVariable2Choice());
+
         compare = new SimpleStringProperty(conditionalStatement.getCompare());
         value1Text.addListener((observableValue, oldValue, newValue)->setValue1Choice(newValue));
         value2Text.addListener((observableValue, oldValue, newValue)->setValue2Choice(newValue));
@@ -46,6 +49,7 @@ public class ConditionalStatementVM implements ViewModel {
         variable1Choice = new SimpleStringProperty(conditionalStatement.getVariable1Choice());
         variable2Choice = new SimpleStringProperty(conditionalStatement.getVariable2Choice());
         compare = new SimpleStringProperty(conditionalStatement.getCompare());
+
         value1Text.addListener((observableValue, oldValue, newValue)->setValue1Choice(newValue));
         value2Text.addListener((observableValue, oldValue, newValue)->setValue2Choice(newValue));
         variable1Choice.addListener((observableValue, oldValue, newValue)->setVariable1Choice(newValue));
@@ -181,9 +185,11 @@ public class ConditionalStatementVM implements ViewModel {
 
     public void addIf(Model object){
         conditionalStatement.addIf(object);
+
     }
     public void addElse(Model object){
         conditionalStatement.addElse(object);
+
     }
 
 

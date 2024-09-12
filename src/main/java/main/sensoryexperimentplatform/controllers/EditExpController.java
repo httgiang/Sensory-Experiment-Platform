@@ -48,7 +48,6 @@ public class EditExpController {
     //CANCEL BUTTON
     @FXML
     private Button btnCancel;
-    private ConditionalStatement conditionalStatement;
 
     private Stage ownerStage;
 
@@ -209,19 +208,16 @@ public class EditExpController {
 
     void addNewTreeItem(ViewModel vm){
         TreeItem<ViewModel> parent = treeView.getSelectionModel().getSelectedItem();
-
+        ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
+//        ConditionalStatementVM ifVM = (ConditionalStatementVM) parent.getValue().getModel();
         if(parent != null && parent.getValue() instanceof IfConditionalStatementVM){
-            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
 
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addIf(vm.getModel());
-            for(Model model : conditionalStatement.getIfConditional()){
-                System.out.println("subm1 " + model);
-            }
+
             parent.setExpanded(true);
 
         } else if (parent != null && parent.getValue() instanceof ElseConditionalStatementVM){
-            ConditionalStatement conditionalStatement = (ConditionalStatement) parent.getValue().getModel();
             parent.getChildren().add(new TreeItem<>(vm));
             conditionalStatement.addElse(vm.getModel());
             parent.setExpanded(true);
@@ -320,7 +316,8 @@ public class EditExpController {
 
             }
             parent.setExpanded(true);
-        } else {
+        }
+        else {
             experiment.addStage(cs);
             startStage.getChildren().add(new TreeItem<>(ifCS));
             startStage.getChildren().add(new TreeItem<>(elseCS));
