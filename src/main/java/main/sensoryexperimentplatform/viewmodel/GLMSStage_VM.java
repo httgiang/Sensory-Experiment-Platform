@@ -14,7 +14,7 @@ import main.sensoryexperimentplatform.models.*;
 import java.io.IOException;
 
 public class GLMSStage_VM implements ViewModel{
-    private StringProperty txt_question, txt_LowAncTxt, txt_yes, txt_help;
+    private StringProperty txt_question, txt_LowAncTxt, txt_help;
     private StringProperty buttonText;
     private BooleanProperty checkB_swap;
     private BooleanProperty checkB_sound;
@@ -22,11 +22,10 @@ public class GLMSStage_VM implements ViewModel{
     private StringProperty conducted;
     private Experiment experiment;
     private StringProperty variableName;
+    private StringProperty choosenVariable;
     private gLMS glms;
-
-
     public GLMSStage_VM(){
-        this.glms = new gLMS("User Input",null,null,null, false);;
+        this.glms = new gLMS("User Input",null,null,null, false,null );;
         initListener();
        // experiment.addGlmsStage(glms);
     }
@@ -37,13 +36,13 @@ public class GLMSStage_VM implements ViewModel{
 
 
     public GLMSStage_VM (IfConditionalStatementVM ifConditionalStatementVM){
-        this.glms = new gLMS("User Input",null,null,null, false);
+        this.glms = new gLMS("User Input",null,null,null, false, null);
         initListener();
        ifConditionalStatementVM.addIf(glms);
     }
 
     public GLMSStage_VM (ElseConditionalStatementVM elseConditionalStatementVM){
-        this.glms = new gLMS("User Input",null,null,null, false);
+        this.glms = new gLMS("User Input",null,null,null, false,null );
         initListener();
         elseConditionalStatementVM.addElse(glms);
     }
@@ -56,6 +55,8 @@ public class GLMSStage_VM implements ViewModel{
         checkB_swap  = new SimpleBooleanProperty(glms.isResponse());
         buttonText = new SimpleStringProperty(glms.getButtonText());
         variableName = new SimpleStringProperty(glms.getVariableName());
+        choosenVariable = new SimpleStringProperty(glms.getChosenVariable());
+
 
         txt_help.addListener((observableValue, oldValue, newValue) -> onHelp(newValue));
         txt_LowAncTxt.addListener((observableValue, oldValue, newValue) -> onLowAnc(newValue));
@@ -64,6 +65,7 @@ public class GLMSStage_VM implements ViewModel{
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onSoundChange(newValue));
         buttonText.addListener((observableValue, oldValue, newValue) -> onButtonChange(newValue));
         variableName.addListener((observableValue, oldValue, newValue) -> setVariableName(newValue));
+        choosenVariable.addListener((observableValue, oldValue, newValue) -> setChoosenVariable(newValue));
 
         sliderValue = new SimpleDoubleProperty(glms.getResult());
         conducted = new SimpleStringProperty(glms.getConducted());
@@ -159,6 +161,17 @@ public class GLMSStage_VM implements ViewModel{
         return "[GLMS] "+ txt_question.get();
     }
 
+    public void setChoosenVariable(String variableName){
+        glms.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return glms.getChosenVariable();
+    }
+    public StringProperty ChoosenVariableProperty(){
+        return choosenVariable;
+    }
+
+
     public void onButtonChange(String newValue){
         glms.setButtonText(newValue);
     }
@@ -201,9 +214,11 @@ public class GLMSStage_VM implements ViewModel{
     public StringProperty txt_questionProperty() {
         return txt_question;
     }
+
     public StringProperty txt_variableName() {
         return variableName;
     }
+
     public String getVariableName() {
         return variableName.get();
     }
@@ -216,13 +231,11 @@ public class GLMSStage_VM implements ViewModel{
         return txt_LowAncTxt;
     }
 
-    public String getTxt_yes() {
-        return txt_yes.get();
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
     }
 
-    public StringProperty txt_yesProperty() {
-        return txt_yes;
-    }
+
 
     public boolean isCheckB_swap() {
         return checkB_swap.get();

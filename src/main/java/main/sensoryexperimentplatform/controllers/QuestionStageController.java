@@ -23,6 +23,9 @@ public class QuestionStageController {
     @FXML
     private TextField txt_rightText;
 
+    @FXML
+    private TextField txt_storeVariable;
+
 
     @FXML
     private ComboBox<String> checkVariable;
@@ -71,6 +74,13 @@ public class QuestionStageController {
         txt_rightText.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setRightText(newValue);
         });
+        txt_storeVariable.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setVariableName(newValue);
+        });
+
+        if(viewModel.getVariableName() != null){
+            viewModel.addVariable(viewModel.getVariableName());
+        }
 
     }
 

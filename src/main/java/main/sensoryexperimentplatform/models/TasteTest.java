@@ -47,7 +47,7 @@ public class TasteTest extends ModelContainer implements Model{
 
         this.sampleVas = new Vas(question, lowAnchorText, highAnchorText, lowAnchorValue, highAnchorValue,
                 "Next", "",helpText,isSwap,isAlert);
-        this.sampleGLMS = new gLMS(question,"Next","","",isAlert);
+        this.sampleGLMS = new gLMS(question,"Next","","",isAlert, "");
 
         //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
         this.endInstruction = endInstruction;
@@ -80,7 +80,7 @@ public class TasteTest extends ModelContainer implements Model{
 
         this.sampleVas = new Vas(question, lowAnchorText, highAnchorText, lowAnchorValue, highAnchorValue,
                 "Next", "",helpText,isSwap,isAlert);
-        this.sampleGLMS = new gLMS(question,"Next","","",isAlert);
+        this.sampleGLMS = new gLMS(question,"Next","","",isAlert,"" );
 
         //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
         this.endInstruction = tasteTest.endInstruction;
@@ -171,7 +171,7 @@ public class TasteTest extends ModelContainer implements Model{
         convertedQuestion = String.format(convertedQuestion, taste, foodName);
 
         return new gLMS(convertedQuestion, sampleGLMS.getButtonText(), sampleGLMS.getContent(),
-                sampleGLMS.getHelpText(), sampleGLMS.getAlert());
+                sampleGLMS.getHelpText(), sampleGLMS.getAlert(),sampleGLMS.getChosenVariable() );
     }
     private Vas getVas(String foodName, String taste) {
         //USED TO GENERATE QUESTIONS IN VAS

@@ -26,6 +26,7 @@ public class QuestionStage_VM implements ViewModel {
     private StringProperty helpText;
     private BooleanProperty alert;
     private Question questionStage;
+    private StringProperty variableName;
     private Experiment experiment;
 
 
@@ -60,6 +61,8 @@ public class QuestionStage_VM implements ViewModel {
         this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+        this.variableName = new SimpleStringProperty(questionStage.getVariableName());
+
     }
 
     public void addVariable(String variableName){
@@ -68,6 +71,16 @@ public class QuestionStage_VM implements ViewModel {
     public ObservableList<String> getVariable(){
         return questionStage.getVariable();
     }
+    public void setVariableName(String newValue){
+        questionStage.setVariableName(newValue);
+    }
+    public String getVariableName() {
+        return variableName.get();
+    }
+
+
+
+
 
     @Override
     public Model getModel() {

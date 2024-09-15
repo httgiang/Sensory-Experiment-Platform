@@ -80,7 +80,13 @@ public class Question extends Stage implements Model {
     }
 
 
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
 
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
 
 
     public String getType() {

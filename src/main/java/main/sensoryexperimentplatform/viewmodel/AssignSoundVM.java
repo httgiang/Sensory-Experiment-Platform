@@ -41,7 +41,7 @@ public class AssignSoundVM {
         sound.setSoundNameshow(newValue);
 
     }
-    //get list sound name to show
+
     public ListProperty<String> listSoundNameProperty() {
         return listSoundName;
     }

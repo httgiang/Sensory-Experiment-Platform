@@ -6,7 +6,6 @@ Version: 2
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 ratingsContainer("false","0")
 vasStage("User input","null","null","0","100","null","null","null","false","false")
-glmsStage("User Input","null","null","null","false")
 endRatingsContainer()
 conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
 If() 
@@ -22,17 +21,10 @@ ExperimentName: testing
 ExperimenterName: Quynh Anh
 ExperimentID: 0
 Last modified: 11.09.2024
-Version: 2
+Version: 8
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
-noticeStage("User input","null","null","null","false") 
-EndIf() 
-Else() 
-noticeStage("User input","null","null","null","false") 
-EndElse()
-EndConditionalStatement()
-audio("Default Notice Stage","null","null","null","null","null")
-glmsStage("User Input","null","null","null","false")
+tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
+glmsStage("User Input","null","null","null","false","hello","{hello, world, yu}")
+glmsStage("User Input","null","null","null","false","yu","{hello, world, yu}")
 endExperiment()
 

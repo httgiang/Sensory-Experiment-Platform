@@ -69,6 +69,13 @@ public class Input extends Stage implements Model {
     public ObservableList<String> getVariable(){
         return variable.getVariable();
     }
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
+
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
 
     public String getTitle() {
         return title;

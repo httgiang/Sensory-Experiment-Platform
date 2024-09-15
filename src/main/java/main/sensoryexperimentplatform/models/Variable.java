@@ -26,8 +26,11 @@ public class Variable implements Model {
         variable.add("world");
     }
 
-    public void addVariable(String variable) {
-        this.variable.add(variable);
+    public void addVariable(String variableName) {
+        if (!variable.contains(variableName)) {
+            variable.add(variableName);
+        }
+        
     }
     public ObservableList<String> getVariable() {
         return variable;

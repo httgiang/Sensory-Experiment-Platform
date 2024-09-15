@@ -32,7 +32,7 @@
                         <TextField fx:id="txt_rightValue" layoutX="222.0" layoutY="260.0" prefHeight="30.0" prefWidth="300.0" promptText="Right Button Value " AnchorPane.leftAnchor="223.20000000000002" AnchorPane.rightAnchor="14.0" />
                         <RadioButton layoutX="100.0" layoutY="350.0" mnemonicParsing="false" text="Available " AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="60.0" />
                         <RadioButton layoutX="100.0" layoutY="400.0" mnemonicParsing="false" text="New" AnchorPane.leftAnchor="100.8" AnchorPane.rightAnchor="60.7999999999999" />
-                        <TextField layoutX="222.0" layoutY="400.0" prefHeight="30.0" prefWidth="300.0" promptText="New" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
+                        <TextField fx:id="txt_storeVariable" layoutX="222.0" layoutY="400.0" prefHeight="30.0" prefWidth="300.0" promptText="New" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />
                         <CheckBox fx:id="cbx_alert" layoutX="250.0" layoutY="634.0" mnemonicParsing="false" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="259.19999999999993" />
 
                         <ComboBox fx:id="checkVariable" layoutX="222.0" layoutY="350.0" prefHeight="30.0" prefWidth="295.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="14.0" />

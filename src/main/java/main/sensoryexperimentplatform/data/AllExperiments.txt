@@ -126,13 +126,5 @@ ExperimentID: 0
 Last modified: 11.09.2024
 Version: 1
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
-noticeStage("End of ratings","Please call the experimenter","End","","false")
-EndIf() 
-Else() 
-noticeStage("End of ratings","Please call the experimenter","End","","false")
-EndElse()
-EndConditionalStatement()
 endExperiment()
 

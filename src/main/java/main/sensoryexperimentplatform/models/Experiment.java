@@ -143,9 +143,9 @@ public class Experiment implements Observable {
     }
 
     public void addGlmsStage(String question, String buttonText, String content,
-                             String helpText, boolean alert){
+                             String helpText, boolean alert,String choosenVariable){
 
-        gLMS stage = new gLMS(question, buttonText, content, helpText, alert);
+        gLMS stage = new gLMS(question, buttonText, content, helpText, alert,  choosenVariable);
 
         stages.add(stage);
     }

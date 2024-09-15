@@ -441,15 +441,26 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = glmsPattern.matcher(line);
 
+
                     if (matcher.find()) {
+
+
                         gLMS stage = new gLMS(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5)));
+                                Boolean.parseBoolean(matcher.group(5)),matcher.group(6));
+
+                        String[] variable = matcher.group(7).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                stage.addVariable(variableItem.trim());
+                            }
+                        }
+
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
@@ -465,6 +476,7 @@ public class DataAccess {
                             currentExperiment.addStage(stage);
                         }
                     }
+
 
                 } else if (line.startsWith("questionStage")) {
                     Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
@@ -812,15 +824,29 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+
+                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = glmsPattern.matcher(line);
 
+
                     if (matcher.find()) {
+
                         gLMS stage = new gLMS(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
                                 matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5)));
+                                Boolean.parseBoolean(matcher.group(5)), matcher.group(6));
+
+
+                        String[] variable = matcher.group(7).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                stage.addVariable(variableItem.trim());
+                            }
+                        }
+
+
+
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){

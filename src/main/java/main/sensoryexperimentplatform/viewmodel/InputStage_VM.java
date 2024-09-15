@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class InputStage_VM implements ViewModel{
     private Input input;
+    private StringProperty variableName;
     private Experiment experiment;
     //    private final ListProperty<Object> stages = new SimpleListProperty<>(FXCollections.observableArrayList());
     private StringProperty questionText, result, helpText, button;
@@ -53,6 +54,8 @@ public class InputStage_VM implements ViewModel{
         button = new SimpleStringProperty(input.getButtonText());
         alert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
+        variableName = new SimpleStringProperty(input.getVariableName());
+
     }
     public void addVariable(String variableName){
         input.addVariable(variableName);
@@ -60,6 +63,14 @@ public class InputStage_VM implements ViewModel{
     public ObservableList<String> getVariable(){
         return input.getVariable();
     }
+    public void setVariableName(String newValue){
+        input.setVariableName(newValue);
+    }
+
+    public String getVariableName() {
+        return variableName.get();
+    }
+
 
 
     //questionText

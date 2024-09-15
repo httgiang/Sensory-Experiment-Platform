@@ -2,6 +2,8 @@ package main.sensoryexperimentplatform.models;
 
 import javafx.collections.ObservableList;
 
+import java.util.stream.Collectors;
+
 public class gLMS extends Stage implements Model{
     private String title;
     private String questionText;
@@ -10,6 +12,16 @@ public class gLMS extends Stage implements Model{
     private String helpText, conducted;
     private int result;
     private boolean alert;
+
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
+
+    private String chosenVariable;
     private Sound sound;
     private Variable variable;
 
@@ -22,13 +34,14 @@ public class gLMS extends Stage implements Model{
         this.helpText = "";
     }
 
-    public gLMS(String title, String buttonText, String content, String helpText, boolean alert){
+    public gLMS(String title, String buttonText, String content, String helpText, boolean alert, String chosenVariable){
         super(title,content);
         this.title = title;
         this.questionText = title;
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
+        this.chosenVariable = chosenVariable;
         this.sound = SoundSingleton.getInstance();
         this.variable = VariableSingleton.getInstance();
         result=0;
@@ -44,6 +57,7 @@ public class gLMS extends Stage implements Model{
         this.alert = stage.getAlert();
         this.sound= SoundSingleton.getInstance();
         this.variable = VariableSingleton.getInstance();
+        this.chosenVariable = stage.getChosenVariable();
         result=0;
     }
 
@@ -135,9 +149,13 @@ public class gLMS extends Stage implements Model{
     }
     @Override
     public String toString() {
+        String variablesString = variable.getVariable()
+                .stream()
+                .collect(Collectors.joining(", "));
+
         return "glmsStage(\"" + title + "\",\"" + buttonText + "\",\"" +
-                content + "\",\""+ helpText + "\",\"" + alert + "\")";
-    }
+                content + "\",\"" + helpText + "\",\"" + alert +  "\",\""  + chosenVariable + "\"," +
+                "\"{" +  variablesString + "}\")"; }
 
     public void setConducted(String currentFormattedTime) {
         this.conducted = currentFormattedTime;

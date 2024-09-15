@@ -181,28 +181,30 @@ public class UserManager {
                                 );
                             }
                         }
-                    } else if (line.startsWith("glmsStage")) {
-                        Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
-                        Matcher matcher = glmsPattern.matcher(line);
-
-                        if (matcher.find()) {
-                            if (isContainer && rc != null) {
-                                rc.addGlmsStageContainer(matcher.group(1),
-                                        matcher.group(2),
-                                        matcher.group(3),
-                                        matcher.group(4),
-                                        Boolean.parseBoolean(matcher.group(5))
-                                );
-                            } else {
-                                currentExperiment.addGlmsStage(matcher.group(1),
-                                        matcher.group(2),
-                                        matcher.group(3),
-                                        matcher.group(4),
-                                        Boolean.parseBoolean(matcher.group(5))
-                                );
-                            }
-                        }
-                    } else if (line.startsWith("questionStage")) {
+                    }
+//                    else if (line.startsWith("glmsStage")) {
+//                        Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+//                        Matcher matcher = glmsPattern.matcher(line);
+//
+//                        if (matcher.find()) {
+//                            if (isContainer && rc != null) {
+//                                rc.addGlmsStageContainer(matcher.group(1),
+//                                        matcher.group(2),
+//                                        matcher.group(3),
+//                                        matcher.group(4),
+//                                        Boolean.parseBoolean(matcher.group(5))
+//                                );
+//                            } else {
+//                                currentExperiment.addGlmsStage(matcher.group(1),
+//                                        matcher.group(2),
+//                                        matcher.group(3),
+//                                        matcher.group(4),
+//                                        Boolean.parseBoolean(matcher.group(5))
+//                                );
+//                            }
+//                        }
+//                    }
+                    else if (line.startsWith("questionStage")) {
                         Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                         Matcher matcher = questionPattern.matcher(line);
 

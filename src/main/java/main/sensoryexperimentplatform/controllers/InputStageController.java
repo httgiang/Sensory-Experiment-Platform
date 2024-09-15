@@ -58,6 +58,13 @@ public class InputStageController {
         cbx_playsound.selectedProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setAlert(newValue);
         });
+        txt_storeVariable.textProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setVariableName(newValue);
+        });
+        if(viewModel != null){
+            viewModel.addVariable(viewModel.getVariableName());
+        }
+
     }
 
     /*public void initialize() {
