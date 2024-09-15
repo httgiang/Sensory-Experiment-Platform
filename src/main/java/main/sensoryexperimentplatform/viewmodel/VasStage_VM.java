@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import main.sensoryexperimentplatform.SensoryExperimentPlatform;
 import main.sensoryexperimentplatform.controllers.*;
 import main.sensoryexperimentplatform.models.*;
@@ -32,6 +30,7 @@ public class VasStage_VM implements ViewModel {
     private IntegerProperty sliderValue;
     private StringProperty conducted;
     private StringProperty variableName;
+    private StringProperty choosenVariable;
     private Vas vas;
     public VasStage_VM(Vas vas){
         this.vas= vas;
@@ -41,18 +40,18 @@ public class VasStage_VM implements ViewModel {
     public VasStage_VM() {
         this.experiment = experiment;
         this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
+                0, 100, null, null, null, false, false,null);
         initListener();
     }
     public VasStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
         this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
+                0, 100, null, null, null, false, false, null);
      ifConditionalStatementVM.addIf(vas);
         initListener();
     }
     public VasStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
         this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
+                0, 100, null, null, null, false, false,null );
         elseConditionalStatementVM.addElse(vas);
         initListener();
     }
@@ -71,6 +70,10 @@ public class VasStage_VM implements ViewModel {
         checkB_sound = new SimpleBooleanProperty(vas.getAlert());
         checkB_swap = new SimpleBooleanProperty(vas.getIsSwap());
         variableName = new SimpleStringProperty(vas.getVariableName());
+        choosenVariable = new SimpleStringProperty(vas.getChosenVariable());
+
+        choosenVariable.addListener((observableValue, oldValue, newValue) -> setChoosenVariable(newValue));
+
 
         checkB_swap.addListener((observableValue, oldValue, newValue) -> onCheckSwap(newValue));
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onCheckSound(newValue));
@@ -369,6 +372,18 @@ public class VasStage_VM implements ViewModel {
     public void setAlert(boolean alert) {
         this.alert.set(alert);
     }
+
+    public void setChoosenVariable(String variableName){
+        vas.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return vas.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
+    }
+
+
 
     public Vas getVas() {
         return vas;

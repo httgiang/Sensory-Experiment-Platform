@@ -12,15 +12,6 @@ public class gLMS extends Stage implements Model{
     private String helpText, conducted;
     private int result;
     private boolean alert;
-
-    public String getChosenVariable() {
-        return chosenVariable;
-    }
-
-    public void setChosenVariable(String chosenVariable) {
-        this.chosenVariable = chosenVariable;
-    }
-
     private String chosenVariable;
     private Sound sound;
     private Variable variable;
@@ -73,6 +64,13 @@ public class gLMS extends Stage implements Model{
     }
     public String getVariableName() {
         return variable.getVariableName();
+    }
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
     }
 
     public void setVariableName(String variableName) {
@@ -149,6 +147,7 @@ public class gLMS extends Stage implements Model{
     }
     @Override
     public String toString() {
+
         String variablesString = variable.getVariable()
                 .stream()
                 .collect(Collectors.joining(", "));

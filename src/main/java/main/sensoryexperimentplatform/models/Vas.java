@@ -2,18 +2,22 @@ package main.sensoryexperimentplatform.models;
 
 import javafx.collections.ObservableList;
 
+import java.util.stream.Collectors;
+
 public class Vas extends Stage implements Model{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;
     private int result;
     private String conducted;
+
+    private String chosenVariable;
     private boolean alert, isSwap;
     private Sound sound;
     private Variable variable;
 
     public Vas(String title, String lowAnchorText, String highAnchorText,
                int lowAnchorValue, int highAnchorValue, String buttonText,
-               String content, String helpText, boolean isSwap, boolean alert) {
+               String content, String helpText, boolean isSwap, boolean alert,String chosenVariable) {
 
         super(title,content);
         this.lowAnchorValue = lowAnchorValue;
@@ -24,6 +28,7 @@ public class Vas extends Stage implements Model{
         this.helpText = helpText;
         this.isSwap = isSwap;
         this.alert = alert;
+        this.chosenVariable = chosenVariable;
         sound = SoundSingleton.getInstance();
         this.variable = VariableSingleton.getInstance();
         setDefaultResult();
@@ -38,6 +43,7 @@ public class Vas extends Stage implements Model{
         this.isSwap = v.getIsSwap();
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
+        this.chosenVariable = v.getChosenVariable();
         sound = SoundSingleton.getInstance();
         this.variable = VariableSingleton.getInstance();
         setDefaultResult();
@@ -93,6 +99,13 @@ public class Vas extends Stage implements Model{
         variable.setVariableName(variableName);
     }
 
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
     public boolean getAlert() {
         return alert;
     }
@@ -171,11 +184,16 @@ public class Vas extends Stage implements Model{
     }
     @Override
     public String toString() {
+        String variablesString = variable.getVariable()
+                .stream()
+                .collect(Collectors.joining(", "));
+
         return "vasStage(\"" + title + "\",\"" + lowAnchorText + "\",\""+
                 highAnchorText + "\",\"" + lowAnchorValue + "\",\"" +
                 highAnchorValue + "\",\"" + buttonText + "\",\"" +
                 content + "\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
-                alert +"\")";
+                alert +  "\",\""  + chosenVariable + "\"," +
+                "\"{" +  variablesString + "}\")" ;
     }
 
 

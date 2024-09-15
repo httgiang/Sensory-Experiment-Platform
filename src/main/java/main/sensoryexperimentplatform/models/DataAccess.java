@@ -275,11 +275,11 @@ public class DataAccess {
                     }
                 }
                 else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)), matcher.group(5));
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(stage);
@@ -414,7 +414,7 @@ public class DataAccess {
                     course = null;
                     isCourse = false;
                 } else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -427,7 +427,13 @@ public class DataAccess {
                                 matcher.group(7),
                                 matcher.group(8),
                                 Boolean.parseBoolean(matcher.group(9)),
-                                Boolean.parseBoolean(matcher.group(10)));
+                                Boolean.parseBoolean(matcher.group(10)),matcher.group(11));
+                        String[] variable = matcher.group(12).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                stage.addVariable(variableItem.trim());
+                            }
+                        }
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -479,7 +485,7 @@ public class DataAccess {
 
 
                 } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -489,8 +495,16 @@ public class DataAccess {
                                 matcher.group(4),
                                 matcher.group(5),
                                 matcher.group(6),
-                                Boolean.parseBoolean(matcher.group(7))
+                                Boolean.parseBoolean(matcher.group(7)),matcher.group(8)
                         );
+
+                        String[] variable = matcher.group(12).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                question.addVariable(variableItem.trim());
+                            }
+                        }
+
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(question);
                         }
@@ -644,24 +658,26 @@ public class DataAccess {
                             currentExperiment.addStage(stage);
                         }
                     }
-                } else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                }
+                else if (line.startsWith("inputStage")) {
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)), matcher.group(5));
 
-                         if (isIf && conditionalStatement !=null && isConditionalStatement){
+                        if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(stage);
                         }
                         else if (isElse && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addElse(stage);
                         }
-                         else {
-                             currentExperiment.addStage(stage);
-                         }
+                        else {
+                            currentExperiment.addStage(stage);
+                        }
                     }
-                } else if (line.startsWith("wait")) {
+                }
+                else if (line.startsWith("wait")) {
                     Pattern timerPattern = Pattern.compile("wait\\(\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = timerPattern.matcher(line);
 
@@ -794,7 +810,7 @@ public class DataAccess {
                     course = null;
                     isCourse = false;
                 } else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -807,7 +823,14 @@ public class DataAccess {
                                 matcher.group(7),
                                 matcher.group(8),
                                 Boolean.parseBoolean(matcher.group(9)),
-                                Boolean.parseBoolean(matcher.group(10)));
+                                Boolean.parseBoolean(matcher.group(10)),matcher.group(11));
+
+                        String[] variable = matcher.group(12).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                stage.addVariable(variableItem.trim());
+                            }
+                        }
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){
@@ -863,7 +886,7 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("questionStage")) {
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -873,8 +896,15 @@ public class DataAccess {
                                 matcher.group(4),
                                 matcher.group(5),
                                 matcher.group(6),
-                                Boolean.parseBoolean(matcher.group(7))
+                                Boolean.parseBoolean(matcher.group(7)),matcher.group(8)
                         );
+
+                        String[] variable = matcher.group(9).split(",");
+                        for (String variableItem : variable) {
+                            if (!variableItem.isEmpty()) {
+                                question.addVariable(variableItem.trim());
+                            }
+                        }
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(question);
                         }

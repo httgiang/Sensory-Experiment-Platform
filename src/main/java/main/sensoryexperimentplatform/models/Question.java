@@ -2,6 +2,8 @@ package main.sensoryexperimentplatform.models;
 
 import javafx.collections.ObservableList;
 
+import java.util.stream.Collectors;
+
 public class Question extends Stage implements Model {
     private String question;
     private String leftButtonText;
@@ -13,13 +15,14 @@ public class Question extends Stage implements Model {
     private Sound sound;
     private String result;
     private Variable variable;
+    private String chosenVariable;
 
     public Question(String title, String content) {
         super(title, content);
     }
 
     public Question(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-                    String helpText, boolean alert) {
+                    String helpText, boolean alert,String chosenVariable) {
         super(question,rightButtonText);
         this.question = question;
         this.leftButtonText = leftButtonText;
@@ -29,6 +32,7 @@ public class Question extends Stage implements Model {
         this.helpText = helpText;
         this.alert = alert;
         result = null;
+        this.chosenVariable = chosenVariable;
         this.variable = VariableSingleton.getInstance();
         sound = SoundSingleton.getInstance();
     }
@@ -43,6 +47,7 @@ public class Question extends Stage implements Model {
         helpText = o.getHelpText();
         alert = o.isAlert();
         result = null;
+        this.chosenVariable = o.getChosenVariable();
         this.variable = VariableSingleton.getInstance();
         sound = SoundSingleton.getInstance();
     }
@@ -135,10 +140,23 @@ public class Question extends Stage implements Model {
     public void playSound(){
         sound.playSound("boop");
     }
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
+
 
     @Override
     public String toString() {
+        String variablesString = variable.getVariable()
+                .stream()
+                .collect(Collectors.joining(", "));
+
         return "questionStage(\"" + question + "\",\"" + leftButtonText +
-                "\",\"" + rightButtonText +  "\",\"" + leftButtonValue +  "\",\"" + rightButtonValue +  "\",\"" + helpText + "\",\"" + alert + "\")";
+                "\",\"" + rightButtonText +  "\",\"" + leftButtonValue +  "\",\"" + rightButtonValue +  "\",\"" + helpText + "\",\"" + alert +  "\",\""  + chosenVariable + "\"," +
+                "\"{" +  variablesString + "}\")";
     }
 }

@@ -28,10 +28,11 @@ public class QuestionStage_VM implements ViewModel {
     private Question questionStage;
     private StringProperty variableName;
     private Experiment experiment;
+    private StringProperty choosenVariable;
 
 
     public QuestionStage_VM(){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
         initListener();
       //  experiment.addQuestion(questionStage);
     }
@@ -41,13 +42,13 @@ public class QuestionStage_VM implements ViewModel {
     }
 
     public  QuestionStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
         initListener();
         ifConditionalStatementVM.addIf(questionStage);
 
     }
     public  QuestionStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
         initListener();
        elseConditionalStatementVM.addElse(questionStage);
 
@@ -62,6 +63,8 @@ public class QuestionStage_VM implements ViewModel {
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
         this.variableName = new SimpleStringProperty(questionStage.getVariableName());
+        choosenVariable = new SimpleStringProperty(questionStage.getChosenVariable());
+
 
     }
 
@@ -209,6 +212,16 @@ public class QuestionStage_VM implements ViewModel {
     public void setLeftValue(String newValue) {questionStage.setLeftButtonValue(newValue);
     }
     public void setRightValue(String newValue) {questionStage.setRightButtonValue(newValue);
+    }
+
+    public void setChoosenVariable(String variableName){
+        questionStage.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return questionStage.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
     }
 
     public Question getQuestionStage(){

@@ -20,10 +20,11 @@ public class InputStage_VM implements ViewModel{
     private Experiment experiment;
     //    private final ListProperty<Object> stages = new SimpleListProperty<>(FXCollections.observableArrayList());
     private StringProperty questionText, result, helpText, button;
+    private StringProperty choosenVariable;
     private BooleanProperty alert;
 
     public InputStage_VM(){
-        this.input = new Input("User input", null,null, false);
+        this.input = new Input("User input", null,null, false,null );
         initListener();
        // experiment.addInput(input);
 
@@ -35,14 +36,14 @@ public class InputStage_VM implements ViewModel{
 
     }
     public InputStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.input = new Input("User input", null,null, false);
+        this.input = new Input("User input", null,null, false, null);
         initListener();
         ifConditionalStatementVM.addIf(input);
 
 
     }
     public InputStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.input = new Input("User input", null,null, false);
+        this.input = new Input("User input", null,null, false,null );
         initListener();
        elseConditionalStatementVM.addElse(input);
 
@@ -55,6 +56,8 @@ public class InputStage_VM implements ViewModel{
         alert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
         variableName = new SimpleStringProperty(input.getVariableName());
+        choosenVariable = new SimpleStringProperty(input.getChosenVariable());
+
 
     }
     public void addVariable(String variableName){
@@ -208,6 +211,15 @@ public class InputStage_VM implements ViewModel{
     }
     public void setResult(String result) {
         input.setResult(result);
+    }
+    public void setChoosenVariable(String variableName){
+        input.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return input.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
     }
 
 

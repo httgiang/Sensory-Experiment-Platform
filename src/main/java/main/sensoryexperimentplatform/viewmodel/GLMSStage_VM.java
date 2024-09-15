@@ -167,9 +167,7 @@ public class GLMSStage_VM implements ViewModel{
     public String getChoosenVariable(){
         return glms.getChosenVariable();
     }
-    public StringProperty ChoosenVariableProperty(){
-        return choosenVariable;
-    }
+
 
 
     public void onButtonChange(String newValue){

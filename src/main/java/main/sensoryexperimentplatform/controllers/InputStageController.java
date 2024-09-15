@@ -41,6 +41,7 @@ public class InputStageController {
         txt_helptext.textProperty().bindBidirectional(viewModel.helpTextProperty());
         txt_question.textProperty().bindBidirectional(viewModel.questionProperty());
         cbx_playsound.selectedProperty().bindBidirectional(viewModel.alertProperty());
+        txt_storeVariable.textProperty().bindBidirectional(viewModel.choosenVariableProperty());
 
         // Add listeners for immediate update
         txt_buttonText.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -61,9 +62,47 @@ public class InputStageController {
         txt_storeVariable.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setVariableName(newValue);
         });
-        if(viewModel != null){
+//        if(viewModel != null){
+//            viewModel.addVariable(viewModel.getVariableName());
+//        }
+
+        if (viewModel.getChoosenVariable() != null) {
+            checkVariable.setValue(viewModel.getChoosenVariable());
+        }
+
+
+        checkVariable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.setChoosenVariable(newValue);
+            if (newValue != null) {
+                viewModel.addVariable(newValue);
+            }
+        });
+
+
+        txt_storeVariable.setOnAction(event -> {
+            String newValue = txt_storeVariable.getText();
+            if (newValue != null && !newValue.isEmpty()) {
+                viewModel.setChoosenVariable(newValue);
+                viewModel.addVariable(newValue);
+            }
+        });
+
+        txt_storeVariable.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                String newText = txt_storeVariable.getText();
+                if (newText != null && !newText.isEmpty()) {
+                    viewModel.setChoosenVariable(newText);
+                    viewModel.addVariable(newText);
+                }
+            }
+        });
+
+        // If variable name is set (from a previous state), ensure it is added
+        if (viewModel.getVariableName() != null) {
+            viewModel.setChoosenVariable(viewModel.getVariableName());
             viewModel.addVariable(viewModel.getVariableName());
         }
+//        
 
     }
 

@@ -110,8 +110,8 @@ public class Experiment implements Observable {
 
         stages.add(stage);
     }
-    public void addInputStage(String title, String content, String buttonText, boolean alert){
-        Input stage = new Input(title, content, buttonText, alert);
+    public void addInputStage(String title, String content, String buttonText, boolean alert,String chosenVariable){
+        Input stage = new Input(title, content, buttonText, alert,chosenVariable );
 
         stages.add(stage);
     }
@@ -134,10 +134,10 @@ public class Experiment implements Observable {
     }
     public void addVasStage(String title, String lowAnchorText, String highAnchorText,
                             int lowAnchorValue, int highAnchorValue, String buttonText,
-                            String content, String helpText, boolean isSwap, boolean alert){
+                            String content, String helpText, boolean isSwap, boolean alert,String chosenVariable){
         Vas stage = new Vas(title, lowAnchorText, highAnchorText,
                 lowAnchorValue, highAnchorValue, buttonText, content,
-                helpText, isSwap, alert);
+                helpText, isSwap, alert,chosenVariable );
 
         stages.add(stage);
     }
@@ -151,9 +151,9 @@ public class Experiment implements Observable {
     }
 
     public void addQuestionStage(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-                                 String helpText, boolean alert){
+                                 String helpText, boolean alert,String chosenVariable){
 
-        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert);
+        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert,chosenVariable);
 
         stages.add(stage);
     }

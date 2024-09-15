@@ -2,6 +2,8 @@ package main.sensoryexperimentplatform.models;
 
 import javafx.collections.ObservableList;
 
+import java.util.stream.Collectors;
+
 public class Input extends Stage implements Model {
     private String buttonText;
     private String helpText;
@@ -11,18 +13,22 @@ public class Input extends Stage implements Model {
     private Variable variable;
 
 
+    private String chosenVariable;
+
+
     private String result;
 
     public Input(String title, String content) {
         super(title, content);
     }
-    public Input(String questionText, String buttonText, String helpText, boolean alert) {
+    public Input(String questionText, String buttonText, String helpText, boolean alert,String chosenVariable) {
         super(questionText, buttonText);
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.questionText = questionText;
         this.alert = alert;
         result = null;
+        this.chosenVariable = chosenVariable;
         this.variable = VariableSingleton.getInstance();
         this.sound = SoundSingleton.getInstance();
     }
@@ -33,6 +39,8 @@ public class Input extends Stage implements Model {
         helpText = o.getHelpText();
         questionText = o.getQuestionText();
         alert = o.isAlert();
+        this.chosenVariable = o.getChosenVariable();
+
         result = null;
         this.variable = VariableSingleton.getInstance();
         this.sound = SoundSingleton.getInstance();
@@ -108,11 +116,25 @@ public class Input extends Stage implements Model {
         sound.playSound("boop");
     }
 
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
+
+
 
     @Override
     public String toString() {
+        String variablesString = variable.getVariable()
+                .stream()
+                .collect(Collectors.joining(", "));
+
         return "inputStage(\"" + questionText + "\",\"" + buttonText + "\",\"" +
-                helpText + "\",\""+ alert + "\")";
+                helpText + "\",\""+ alert +  "\",\""  + chosenVariable + "\"," +
+                "\"{" +  variablesString + "}\")" ;
     }
 
 }

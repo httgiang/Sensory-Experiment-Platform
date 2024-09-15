@@ -30,7 +30,6 @@ public class Variable implements Model {
         if (!variable.contains(variableName)) {
             variable.add(variableName);
         }
-        
     }
     public ObservableList<String> getVariable() {
         return variable;
