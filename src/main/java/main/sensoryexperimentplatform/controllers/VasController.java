@@ -40,13 +40,19 @@ public class VasController {
     private TextField txt_question;
 
     @FXML
-    private TextField txt_yes;
+    private TextField txt_yes;    @FXML
+    
+    private ToggleGroup variableToggleGroup = new ToggleGroup();
+
+
 
     @FXML
     private RadioButton radioBtn_Yes;
 
     @FXML
     private RadioButton radioBtn_available;
+
+
 
 
 
@@ -104,7 +110,23 @@ public class VasController {
             vasStageVM.setChoosenVariable(vasStageVM.getVariableName());
             vasStageVM.addVariable(vasStageVM.getVariableName());
         }
+        radioBtn_available.setToggleGroup(variableToggleGroup);
+        radioBtn_Yes.setToggleGroup(variableToggleGroup);
+
+        variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (radioBtn_Yes.isSelected()) {
+                txt_yes.setDisable(false);
+                choiceB_avail.setDisable(true);
+            } else if (radioBtn_available.isSelected()) {
+                txt_yes.setDisable(true);
+                choiceB_avail.setDisable(false);
+                txt_yes.setText("LastVasStageResult");
+
+            }
+        });
     }
+    
+   
     public void setViewModel(VasStage_VM vas){
         this.vasStageVM = vas;
         bind();

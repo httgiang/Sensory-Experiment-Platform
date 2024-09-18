@@ -17,9 +17,9 @@
                     <children>
                         <Label layoutX="14.0" layoutY="51.0" styleClass="Name" text="Question" AnchorPane.leftAnchor="14.4" AnchorPane.rightAnchor="134.39999999999998" />
                         <Label layoutX="14.0" layoutY="85.0" text="Store response in A" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="134.8" />
-                        <RadioButton layoutX="73.0" layoutY="126.0" mnemonicParsing="false" text="Available" />
+                        <RadioButton fx:id="rtn_available" layoutX="73.0" layoutY="126.0" mnemonicParsing="false" text="Available" />
                         <ComboBox fx:id="checkVariable" layoutX="216.0" layoutY="121.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="8.0" />
-                        <RadioButton layoutX="73.0" layoutY="173.0" mnemonicParsing="false" text="New" />
+                        <RadioButton fx:id="rtn_new" layoutX="73.0" layoutY="173.0" mnemonicParsing="false" text="New" />
                         <TextField fx:id="txt_storeVariable" layoutX="216.0" layoutY="168.0" minHeight="30.0" prefHeight="30.0" prefWidth="300.0" styleClass="text-field" stylesheets="@../../static/stylesheets/EditExp_CSS.css" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="8.0" />
                         <Label layoutX="14.0" layoutY="227.0" text="Button Text" AnchorPane.leftAnchor="14.0" />
                         <TextField fx:id="txt_buttonText" layoutX="216.0" layoutY="223.0" minHeight="30.0" onAction="#txt_buttonText" onMouseClicked="#txt_question" prefHeight="30.0" prefWidth="300.0" promptText="Button text" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="8.0" />

@@ -30,6 +30,16 @@ public class QuestionStageController {
     @FXML
     private ComboBox<String> checkVariable;
 
+
+    @FXML
+    private RadioButton rtn_available;
+
+    @FXML
+    private RadioButton rtn_new;
+
+    @FXML
+    private ToggleGroup variableToggleGroup = new ToggleGroup();
+
     @FXML
     private TextField txt_rightValue;
     @FXML
@@ -79,6 +89,21 @@ public class QuestionStageController {
 
         txt_storeVariable.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setChoosenVariable(newValue);
+        });
+
+        rtn_available.setToggleGroup(variableToggleGroup);
+        rtn_new.setToggleGroup(variableToggleGroup);
+
+        variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (rtn_new.isSelected()) {
+                txt_storeVariable.setDisable(false);
+                checkVariable.setDisable(true);
+            } else if (rtn_available.isSelected()) {
+                txt_storeVariable.setDisable(true);
+                checkVariable.setDisable(false);
+                txt_storeVariable.setText("LastQuestionStageResult");
+
+            }
         });
 
 //        if(viewModel.getVariableName() != null){

@@ -2,10 +2,7 @@ package main.sensoryexperimentplatform.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import main.sensoryexperimentplatform.viewmodel.InputStage_VM;
 
@@ -29,6 +26,15 @@ public class InputStageController {
 
     @FXML
     private ComboBox<String> checkVariable;
+    @FXML
+    private ToggleGroup variableToggleGroup = new ToggleGroup();
+
+    @FXML
+    private RadioButton rtn_available;
+
+    @FXML
+    private RadioButton rtn_new;
+
 
     public void setViewModel(InputStage_VM viewModel){
         this.viewModel = viewModel;
@@ -65,6 +71,21 @@ public class InputStageController {
 //        if(viewModel != null){
 //            viewModel.addVariable(viewModel.getVariableName());
 //        }
+
+        rtn_available.setToggleGroup(variableToggleGroup);
+        rtn_new.setToggleGroup(variableToggleGroup);
+
+        variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (rtn_new.isSelected()) {
+                txt_storeVariable.setDisable(false);
+                checkVariable.setDisable(true);
+            } else if (rtn_available.isSelected()) {
+                txt_storeVariable.setDisable(true);
+                checkVariable.setDisable(false);
+                txt_storeVariable.setText("LastInputStageResult");
+
+            }
+        });
 
         if (viewModel.getChoosenVariable() != null) {
             checkVariable.setValue(viewModel.getChoosenVariable());

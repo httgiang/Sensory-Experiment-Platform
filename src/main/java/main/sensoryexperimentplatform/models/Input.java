@@ -1,6 +1,8 @@
 package main.sensoryexperimentplatform.models;
 
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ToggleGroup;
 
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ public class Input extends Stage implements Model {
 
 
     private String chosenVariable;
+
 
 
     private String result;
