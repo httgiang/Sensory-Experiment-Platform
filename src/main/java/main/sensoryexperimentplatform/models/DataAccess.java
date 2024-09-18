@@ -414,7 +414,7 @@ public class DataAccess {
                     course = null;
                     isCourse = false;
                 } else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -424,16 +424,14 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(4)),
                                 Integer.parseInt(matcher.group(5)),
                                 matcher.group(6),
-                                matcher.group(7),
                                 matcher.group(8),
                                 Boolean.parseBoolean(matcher.group(9)),
-                                Boolean.parseBoolean(matcher.group(10)),matcher.group(11));
-                        String[] variable = matcher.group(12).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                stage.addVariable(variableItem.trim());
-                            }
-                        }
+                                Boolean.parseBoolean(matcher.group(10)));
+
+                        String variable = matcher.group(7);
+                                stage.addVariable(variable);
+
+
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -810,7 +808,7 @@ public class DataAccess {
                     course = null;
                     isCourse = false;
                 } else if (line.startsWith("vasStage")) {
-                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern vasPattern = Pattern.compile("vasStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = vasPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -820,17 +818,14 @@ public class DataAccess {
                                 Integer.parseInt(matcher.group(4)),
                                 Integer.parseInt(matcher.group(5)),
                                 matcher.group(6),
-                                matcher.group(7),
                                 matcher.group(8),
                                 Boolean.parseBoolean(matcher.group(9)),
-                                Boolean.parseBoolean(matcher.group(10)),matcher.group(11));
+                                Boolean.parseBoolean(matcher.group(10)));
 
-                        String[] variable = matcher.group(12).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                stage.addVariable(variableItem.trim());
-                            }
-                        }
+
+                        String variable = matcher.group(7);
+                        stage.addVariable(variable);
+
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
                         } else if(isCourse && course != null){

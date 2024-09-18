@@ -40,21 +40,10 @@ public class VasStage_VM implements ViewModel {
     public VasStage_VM() {
         this.experiment = experiment;
         this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false,null);
+                0, 100, null,  null, false, false);
         initListener();
     }
-    public VasStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
-        this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false, null);
-     ifConditionalStatementVM.addIf(vas);
-        initListener();
-    }
-    public VasStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
-        this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false,null );
-        elseConditionalStatementVM.addElse(vas);
-        initListener();
-    }
+
 
 
 

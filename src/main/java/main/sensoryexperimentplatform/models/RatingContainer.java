@@ -27,11 +27,11 @@ public class RatingContainer extends ModelContainer implements Model{
     }
     public void addVasStageContainer(String title, String lowAnchorText, String highAnchorText,
                                      int lowAnchorValue, int highAnchorValue, String buttonText,
-                                     String content, String helpText, boolean isSwap, boolean alert,String choosenVariable){
+                                     String helpText, boolean isSwap, boolean alert){
 
         Vas stage = new Vas(title, lowAnchorText, highAnchorText,
-                lowAnchorValue, highAnchorValue, buttonText, content,
-                helpText, isSwap, alert,choosenVariable);
+                lowAnchorValue, highAnchorValue, buttonText,
+                helpText, isSwap, alert);
 
         children.add(stage);
     }

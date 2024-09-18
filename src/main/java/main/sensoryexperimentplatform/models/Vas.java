@@ -17,9 +17,9 @@ public class Vas extends Stage implements Model{
 
     public Vas(String title, String lowAnchorText, String highAnchorText,
                int lowAnchorValue, int highAnchorValue, String buttonText,
-               String content, String helpText, boolean isSwap, boolean alert,String chosenVariable) {
+                String helpText, boolean isSwap, boolean alert) {
 
-        super(title,content);
+        super(title,lowAnchorText);
         this.lowAnchorValue = lowAnchorValue;
         this.highAnchorValue = highAnchorValue;
         this.lowAnchorText = lowAnchorText;
@@ -34,7 +34,7 @@ public class Vas extends Stage implements Model{
         setDefaultResult();
     }
     public Vas(Vas v){
-        super(v.getTitle(), v.getContent());
+        super(v.getTitle(), v.lowAnchorText);
         this.lowAnchorValue = v.lowAnchorValue;
         this.highAnchorValue = v.highAnchorValue;
         this.lowAnchorText = v.getLowAnchorText();
@@ -184,16 +184,13 @@ public class Vas extends Stage implements Model{
     }
     @Override
     public String toString() {
-        String variablesString = variable.getVariable()
-                .stream()
-                .collect(Collectors.joining(", "));
+
 
         return "vasStage(\"" + title + "\",\"" + lowAnchorText + "\",\""+
                 highAnchorText + "\",\"" + lowAnchorValue + "\",\"" +
                 highAnchorValue + "\",\"" + buttonText + "\",\"" +
-                content + "\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
-                alert +  "\",\""  + chosenVariable + "\"," +
-                "\"{" +  variablesString + "}\")" ;
+                "Session[" + chosenVariable + "]\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
+                alert + "\")" ;
     }
 
 
