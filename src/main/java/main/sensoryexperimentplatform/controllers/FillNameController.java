@@ -76,15 +76,15 @@ public class FillNameController {
             controller.stopTimer();
         });
 
-        // Disable ESC key from exiting full-screen mode
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                event.consume(); // Consume the ESC key press
-            }
-        });
-
-        // Disable any key combination from exiting full-screen mode
-        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+//        // Disable ESC key from exiting full-screen mode
+//        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+//            if (event.getCode() == KeyCode.ESCAPE) {
+//                event.consume(); // Consume the ESC key press
+//            }
+//        });
+//
+//        // Disable any key combination from exiting full-screen mode
+//        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
         stage.setScene(scene);
         stage.setFullScreen(true);
