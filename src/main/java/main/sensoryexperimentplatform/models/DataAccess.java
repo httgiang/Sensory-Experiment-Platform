@@ -283,13 +283,13 @@ public class DataAccess {
                 }
                 else if (line.startsWith("inputStage")) {
 
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(5)));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(4), Boolean.parseBoolean(matcher.group(5)));
 
-                        String variable = matcher.group(4);
+                        String variable = matcher.group(3);
                         stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -502,7 +502,7 @@ public class DataAccess {
 
                 } else if (line.startsWith("questionStage")) {
 
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -511,16 +511,15 @@ public class DataAccess {
                                 matcher.group(3),
                                 matcher.group(4),
                                 matcher.group(5),
-                                matcher.group(6),
-                                Boolean.parseBoolean(matcher.group(7)),matcher.group(8)
+                                matcher.group(7),
+                                Boolean.parseBoolean(matcher.group(8))
                         );
 
-                        String[] variable = matcher.group(12).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                question.addVariable(variableItem.trim());
-                            }
-                        }
+                        String variable = matcher.group(6);
+                        question.addVariable(variable);
+
+
+
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(question);
@@ -703,13 +702,13 @@ public class DataAccess {
                 }
                 else if (line.startsWith("inputStage")) {
 
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(5)));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(4), Boolean.parseBoolean(matcher.group(5)));
 
-                        String variable = matcher.group(4);
+                        String variable = matcher.group(3);
                         stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -935,7 +934,7 @@ public class DataAccess {
                     }
                 } else if (line.startsWith("questionStage")) {
 
-                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern questionPattern = Pattern.compile("questionStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\",\"(.*?)\"\\)");
                     Matcher matcher = questionPattern.matcher(line);
 
                     if (matcher.find()) {
@@ -944,16 +943,14 @@ public class DataAccess {
                                 matcher.group(3),
                                 matcher.group(4),
                                 matcher.group(5),
-                                matcher.group(6),
-                                Boolean.parseBoolean(matcher.group(7)),matcher.group(8)
+                                matcher.group(7),
+                                Boolean.parseBoolean(matcher.group(8))
                         );
 
-                        String[] variable = matcher.group(9).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                question.addVariable(variableItem.trim());
-                            }
-                        }
+                        String variable = matcher.group(6);
+                        question.addVariable(variable);
+
+
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(question);
                         }

@@ -151,9 +151,9 @@ public class Experiment implements Observable {
     }
 
     public void addQuestionStage(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-                                 String helpText, boolean alert,String chosenVariable){
+                                 String helpText, boolean alert){
 
-        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert,chosenVariable);
+        Question stage = new Question(question,leftButtonText,rightButtonText,leftButtonValue,rightButtonValue,helpText,alert);
 
         stages.add(stage);
     }

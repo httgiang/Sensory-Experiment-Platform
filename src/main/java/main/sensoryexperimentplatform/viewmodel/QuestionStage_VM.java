@@ -32,7 +32,7 @@ public class QuestionStage_VM implements ViewModel {
 
 
     public QuestionStage_VM(){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
+        this.questionStage = new Question("Question ",null,null,null,null,null,false );
         initListener();
       //  experiment.addQuestion(questionStage);
     }
@@ -41,18 +41,7 @@ public class QuestionStage_VM implements ViewModel {
         initListener();
     }
 
-    public  QuestionStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
-        initListener();
-        ifConditionalStatementVM.addIf(questionStage);
 
-    }
-    public  QuestionStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false,null );
-        initListener();
-       elseConditionalStatementVM.addElse(questionStage);
-
-    }
 
     private void initListener(){
         this.question = new SimpleStringProperty(questionStage.getQuestion());

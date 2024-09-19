@@ -22,7 +22,7 @@ public class Question extends Stage implements Model {
     }
 
     public Question(String question,String leftButtonText, String rightButtonText, String leftButtonValue, String rightButtonValue,
-                    String helpText, boolean alert,String chosenVariable) {
+                    String helpText, boolean alert) {
         super(question,rightButtonText);
         this.question = question;
         this.leftButtonText = leftButtonText;
@@ -151,12 +151,9 @@ public class Question extends Stage implements Model {
 
     @Override
     public String toString() {
-        String variablesString = variable.getVariable()
-                .stream()
-                .collect(Collectors.joining(", "));
+
 
         return "questionStage(\"" + question + "\",\"" + leftButtonText +
-                "\",\"" + rightButtonText +  "\",\"" + leftButtonValue +  "\",\"" + rightButtonValue +  "\",\"" + helpText + "\",\"" + alert +  "\",\""  + chosenVariable + "\"," +
-                "\"{" +  variablesString + "}\")";
+                "\",\"" + rightButtonText +  "\",\"" + leftButtonValue +  "\",\"" + rightButtonValue +  "\",\"" +  "Session[" + chosenVariable + "]\",\"" + helpText + "\",\"" + alert  + "\")";
     }
 }
