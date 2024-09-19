@@ -25,8 +25,8 @@ public class gLMS extends Stage implements Model{
         this.helpText = "";
     }
 
-    public gLMS(String title, String buttonText, String content, String helpText, boolean alert, String chosenVariable){
-        super(title,content);
+    public gLMS(String title, String buttonText, String helpText, boolean alert){
+        super(title,buttonText);
         this.title = title;
         this.questionText = title;
         this.buttonText = buttonText;
@@ -40,7 +40,7 @@ public class gLMS extends Stage implements Model{
     }
 
     public gLMS(gLMS stage) {
-        super(stage.getTitle(), stage.getContent());
+        super(stage.getTitle(), stage.getButtonText());
         this.title = stage.getTitle();
         this.questionText = stage.getTitle();
         this.buttonText = stage.getButtonText();
@@ -148,13 +148,11 @@ public class gLMS extends Stage implements Model{
     @Override
     public String toString() {
 
-        String variablesString = variable.getVariable()
-                .stream()
-                .collect(Collectors.joining(", "));
+
 
         return "glmsStage(\"" + title + "\",\"" + buttonText + "\",\"" +
-                content + "\",\"" + helpText + "\",\"" + alert +  "\",\""  + chosenVariable + "\"," +
-                "\"{" +  variablesString + "}\")"; }
+                 helpText + "\",\"" + "Session[" + chosenVariable + "]\",\"" + alert  +
+           "\")"; }
 
     public void setConducted(String currentFormattedTime) {
         this.conducted = currentFormattedTime;

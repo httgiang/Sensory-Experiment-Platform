@@ -1,58 +1,31 @@
-ExperimentName: COND-FIX
-ExperimenterName: GIANG
-ExperimentID: 0
-Last modified: 11.09.2024
-Version: 2
-startExperiment("Start Experiment","This is the first stage of the experiment","null")
-ratingsContainer("false","0")
-endRatingsContainer()
-conditionalStatement("true","false","true","false","null","null","Something","Something else","Less Than")
-If() 
- 
-EndIf() 
-Else() 
- 
-EndElse()
-EndConditionalStatement()
-endExperiment()
-
-ExperimentName: testing
+ExperimentName: null
 ExperimenterName: Quynh Anh
 ExperimentID: 0
 Last modified: 11.09.2024
-Version: 9
+Version: 11
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
-vasStage("User input","null","null","0","100","null","Session[null]","null","false","false")
+glmsStage("User Input","null","null","Session[00]","false")
 endExperiment()
 
-ExperimentName: Bond Lader
-ExperimenterName: Martin Yeomans
+ExperimentName: Tara and Alice Ratings
+ExperimenterName: Martin
 ExperimentID: 999
-Last modified: 18.09.2024
-Version: 7
-startExperiment("Bond and Lader mood scales","This programme combines the 16 bipolar VAS first used by Bond and Lader 1974\, with 2 appetite ratings.____Scores on the 16 scales can be combined to generate 3 factors:__Alertness\, Calmness and Contentment","Continue")
-noticeStage("Mood ratings","You will be presented with a series of descriptions of your mood.  Each scale is on a simple line: use the mouse to move the slider to the point on each scale which best describes how you feel.","Start the ratings","","false")
+Last modified: 17.01.2018
+Version: 0
+startExperiment("Please complete the mood ratings","You will be asked to complete a series of mood ratings. Please move the bar along the scale on the screen to the place that best represents how you feel right now.____Please press 'start ratings' when you are ready","Start ratings")
 ratingsContainer("true","0")
-vasStage("How do you feel right now?","Alert","Drowsy","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","true")
-vasStage("How do you feel right now?","Calm","Excited","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Strong","Feeble","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Muzzy","Clear-headed","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Well coordinated","Clumsy","0","100","Rating completed","Session[null]","Use the mouse  to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Lethargic","Energetic","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Contented","Discontented","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Troubled","Tranquil","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Mentally slow","Quick witted","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Tense","Relaxed","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Attentive","Dreamy","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Incompetent","Proficient","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Happy","Sad","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Antagonistic","Friendly","0","100","Rating completed","Session[null]","Use the mouse or touchscreen pen to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Interested","Bored","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How do you feel right now?","Withdrawn","Sociable","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How hungry do you feel right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
-vasStage("How thirsty do you feel right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[null]","Use the mouse to move the slider to the point which best describes how you feel.","false","false")
+vasStage("How hungry do you feel right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How full do you feel right now?","Not at all full","Extremely full","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How thirsty do you feel right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How strong is your desire to eat right now?","Very weak","Very strong","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How much do you think you could eat right now?","Nothing at all","A large amount","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How clearheaded do you feel right now?","Not at all clearheaded","Extremely clearheaded","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How tired do you feel right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How headachy do you feel right now?","Not at all headachy","Extremely headachy","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How calm do you feel right now?","Not at all calm","Extremely calm","0","100","Rating completed","Session[null]","","false","false")
+vasStage("How energetic do you feel right now?","Not at all energetic","Extremely energetic","0","100","Rating completed","Session[null]","","false","false")
 endRatingsContainer()
-noticeStage("Ratings completed","That ends this test.  Please call your experimenter.","Finished","","false")
+noticeStage("End of ratings","Please call the experimenter","End","","false")
 endExperiment()
 

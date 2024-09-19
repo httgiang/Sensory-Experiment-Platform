@@ -21,15 +21,19 @@ public class Variable implements Model {
     private String variableName;
 
     public Variable() {
+
         this.variable = FXCollections.observableArrayList();
         variable.add("hello");
         variable.add("world");
     }
 
     public void addVariable(String variableName) {
+
         if (!variable.contains(variableName)) {
             variable.add(variableName);
+            variable.removeAll("null");
         }
+       
     }
     public ObservableList<String> getVariable() {
         return variable;

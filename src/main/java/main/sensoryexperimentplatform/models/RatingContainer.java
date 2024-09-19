@@ -36,10 +36,10 @@ public class RatingContainer extends ModelContainer implements Model{
         children.add(stage);
     }
 
-    public void addGlmsStageContainer(String question, String buttonText, String content,
-                                      String helpText, boolean alert,String choosenVariable){
+    public void addGlmsStageContainer(String question, String buttonText,
+                                      String helpText, boolean alert){
 
-        gLMS stage = new gLMS(question, buttonText, content, helpText, alert,choosenVariable );
+        gLMS stage = new gLMS(question, buttonText, helpText, alert );
 
         children.add(stage);
     }

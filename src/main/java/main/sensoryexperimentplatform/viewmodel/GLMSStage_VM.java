@@ -25,7 +25,7 @@ public class GLMSStage_VM implements ViewModel{
     private StringProperty choosenVariable;
     private gLMS glms;
     public GLMSStage_VM(){
-        this.glms = new gLMS("User Input",null,null,null, false,null );;
+        this.glms = new gLMS("User Input",null, null,false);;
         initListener();
        // experiment.addGlmsStage(glms);
     }
@@ -35,17 +35,7 @@ public class GLMSStage_VM implements ViewModel{
     }
 
 
-    public GLMSStage_VM (IfConditionalStatementVM ifConditionalStatementVM){
-        this.glms = new gLMS("User Input",null,null,null, false, null);
-        initListener();
-       ifConditionalStatementVM.addIf(glms);
-    }
 
-    public GLMSStage_VM (ElseConditionalStatementVM elseConditionalStatementVM){
-        this.glms = new gLMS("User Input",null,null,null, false,null );
-        initListener();
-        elseConditionalStatementVM.addElse(glms);
-    }
 
     private void initListener(){
         txt_help = new SimpleStringProperty(glms.getHelpText());

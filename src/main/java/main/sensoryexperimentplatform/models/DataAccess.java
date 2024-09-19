@@ -445,7 +445,7 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("glmsStage")) {
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
                     Matcher matcher = glmsPattern.matcher(line);
 
 
@@ -455,15 +455,10 @@ public class DataAccess {
                         gLMS stage = new gLMS(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
-                                matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5)),matcher.group(6));
+                                Boolean.parseBoolean(matcher.group(5)));
 
-                        String[] variable = matcher.group(7).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                stage.addVariable(variableItem.trim());
-                            }
-                        }
+                        String variable = matcher.group(4);
+                        stage.addVariable(variable);
 
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
@@ -842,27 +837,20 @@ public class DataAccess {
                         }
                     }
                 } else if (line.startsWith("glmsStage")) {
-
-                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern glmsPattern = Pattern.compile("glmsStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
                     Matcher matcher = glmsPattern.matcher(line);
 
 
                     if (matcher.find()) {
 
+
                         gLMS stage = new gLMS(matcher.group(1),
                                 matcher.group(2),
                                 matcher.group(3),
-                                matcher.group(4),
-                                Boolean.parseBoolean(matcher.group(5)), matcher.group(6));
+                                Boolean.parseBoolean(matcher.group(5)));
 
-
-                        String[] variable = matcher.group(7).split(",");
-                        for (String variableItem : variable) {
-                            if (!variableItem.isEmpty()) {
-                                stage.addVariable(variableItem.trim());
-                            }
-                        }
-
+                        String variable = matcher.group(4);
+                        stage.addVariable(variable);
 
 
                         if (isContainer && rc != null) {
