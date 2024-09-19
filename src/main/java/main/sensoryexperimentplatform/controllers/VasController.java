@@ -76,6 +76,7 @@ public class VasController {
 
         if (vasStageVM.getChoosenVariable() != null) {
             choiceB_avail.setValue(vasStageVM.getChoosenVariable());
+            radioBtn_available.setSelected(true);
         }
 
 
@@ -124,11 +125,13 @@ public class VasController {
 
             }
         });
+        radioBtn_Yes.setSelected(true);
     }
     
    
     public void setViewModel(VasStage_VM vas){
         this.vasStageVM = vas;
+
         bind();
 
     }

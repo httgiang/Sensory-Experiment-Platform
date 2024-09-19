@@ -290,6 +290,7 @@ public class DataAccess {
                         Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(4), Boolean.parseBoolean(matcher.group(5)));
 
                         String variable = matcher.group(3);
+                        stage.setChosenVariable(variable);
                         stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -449,6 +450,7 @@ public class DataAccess {
 
                         String variable = matcher.group(7);
                                 stage.addVariable(variable);
+                                stage.setChosenVariable(variable);
 
 
                         if (isContainer && rc != null) {
@@ -481,6 +483,7 @@ public class DataAccess {
 
                         String variable = matcher.group(3);
                         stage.addVariable(variable);
+                        stage.setChosenVariable(variable);
 
 
                         if (isContainer && rc != null) {
@@ -517,6 +520,7 @@ public class DataAccess {
 
                         String variable = matcher.group(6);
                         question.addVariable(variable);
+                        question.setChosenVariable(variable);
 
 
 
@@ -709,6 +713,7 @@ public class DataAccess {
                         Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(4), Boolean.parseBoolean(matcher.group(5)));
 
                         String variable = matcher.group(3);
+                        stage.setChosenVariable(variable);
                         stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
@@ -880,6 +885,7 @@ public class DataAccess {
 
                         String variable = matcher.group(7);
                         stage.addVariable(variable);
+                        stage.setChosenVariable(variable);
 
                         if (isContainer && rc != null) {
                             rc.addStage(stage);
@@ -915,6 +921,7 @@ public class DataAccess {
 
                         String variable = matcher.group(3);
                         stage.addVariable(variable);
+                        stage.setChosenVariable(variable);
 
 
                         if (isContainer && rc != null) {
@@ -949,6 +956,7 @@ public class DataAccess {
 
                         String variable = matcher.group(6);
                         question.addVariable(variable);
+                        question.setChosenVariable(variable);
 
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){

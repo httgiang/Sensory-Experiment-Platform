@@ -49,6 +49,7 @@ public class InputStageController {
         cbx_playsound.selectedProperty().bindBidirectional(viewModel.alertProperty());
         txt_storeVariable.textProperty().bindBidirectional(viewModel.choosenVariableProperty());
 
+
         // Add listeners for immediate update
         txt_buttonText.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setButtonText(newValue);
@@ -68,13 +69,6 @@ public class InputStageController {
         txt_storeVariable.textProperty().addListener((observable, oldValue, newValue) -> {
             viewModel.setVariableName(newValue);
         });
-//        if(viewModel != null){
-//            viewModel.addVariable(viewModel.getVariableName());
-//        }
-
-        rtn_available.setToggleGroup(variableToggleGroup);
-        rtn_new.setToggleGroup(variableToggleGroup);
-
         variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (rtn_new.isSelected()) {
                 txt_storeVariable.setDisable(false);
@@ -86,10 +80,17 @@ public class InputStageController {
 
             }
         });
+        rtn_available.setToggleGroup(variableToggleGroup);
+        rtn_new.setToggleGroup(variableToggleGroup);
+        rtn_new.setSelected(true);
+
+
+
+
 
         if (viewModel.getChoosenVariable() != null) {
             checkVariable.setValue(viewModel.getChoosenVariable());
-        }
+            rtn_available.setSelected(true);        }
 
 
         checkVariable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

@@ -48,6 +48,7 @@ public class QuestionStageController {
     public void setQuestionStage_vm( QuestionStage_VM viewModel){
         this.viewModel = viewModel;
         checkVariable.getItems().addAll(viewModel.getVariable());
+
         bindViewModel();
     }
     public void bindViewModel(){
@@ -105,12 +106,14 @@ public class QuestionStageController {
 
             }
         });
+        rtn_new.setSelected(true);
 
 //        if(viewModel.getVariableName() != null){
 //            viewModel.addVariable(viewModel.getVariableName());
 //        }
         if (viewModel.getChoosenVariable() != null) {
             checkVariable.setValue(viewModel.getChoosenVariable());
+            rtn_available.setSelected(true);
         }
 
 

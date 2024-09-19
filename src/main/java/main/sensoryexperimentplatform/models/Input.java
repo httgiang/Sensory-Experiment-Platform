@@ -133,7 +133,7 @@ public class Input extends Stage implements Model {
     public String toString() {
 
         return "inputStage(\"" + questionText + "\",\"" + buttonText + "\",\"" +
-                 "Session[" + chosenVariable + "]\",\"" +   helpText + "\",\"" +  alert + "}\")" ;
+                 "Session[" + chosenVariable + "]\",\"" +   helpText + "\",\"" +  alert + "\")" ;
     }
 
 }

@@ -57,6 +57,10 @@ public class GLMSController {
     @FXML
     private ScrollPane scrollPane;
 
+    @FXML
+    private ToggleGroup variableToggleGroup = new ToggleGroup();
+
+
     private void bind() {
         txt_LowAncTxt.textProperty().bindBidirectional(glmsStageVm.txt_LowAncTxtProperty());
         txt_help.textProperty().bindBidirectional(glmsStageVm.txt_helpProperty());
@@ -67,9 +71,29 @@ public class GLMSController {
         txt_yes.textProperty().bindBidirectional(glmsStageVm.choosenVariableProperty());
 
         choiceB_avail.getItems().addAll(glmsStageVm.getVariable());
+        
+        radioBtn_available.setToggleGroup(variableToggleGroup);
+        radioBtn_Yes.setToggleGroup(variableToggleGroup);
+
+        variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (radioBtn_Yes.isSelected()) {
+                txt_yes.setDisable(false);
+                choiceB_avail.setDisable(true);
+            } else if (radioBtn_available.isSelected()) {
+                txt_yes.setDisable(true);
+                choiceB_avail.setDisable(false);
+                txt_yes.setText("LastVasStageResult");
+
+            }
+        });
+
+
+        radioBtn_Yes.setSelected(true);
+
 
         if (glmsStageVm.getChoosenVariable() != null) {
             choiceB_avail.setValue(glmsStageVm.getChoosenVariable());
+            radioBtn_available.setSelected(true);
         }
 
 
@@ -109,6 +133,7 @@ public class GLMSController {
 
     public void setViewModel(GLMSStage_VM glms) {
         this.glmsStageVm = glms;
+
         bind();
 
 
