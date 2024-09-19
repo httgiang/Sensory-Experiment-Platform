@@ -24,7 +24,7 @@ public class Input extends Stage implements Model {
     public Input(String title, String content) {
         super(title, content);
     }
-    public Input(String questionText, String buttonText, String helpText, boolean alert,String chosenVariable) {
+    public Input(String questionText, String buttonText, String helpText, boolean alert) {
         super(questionText, buttonText);
         this.buttonText = buttonText;
         this.helpText = helpText;
@@ -131,13 +131,9 @@ public class Input extends Stage implements Model {
 
     @Override
     public String toString() {
-        String variablesString = variable.getVariable()
-                .stream()
-                .collect(Collectors.joining(", "));
 
         return "inputStage(\"" + questionText + "\",\"" + buttonText + "\",\"" +
-                helpText + "\",\""+ alert +  "\",\""  + chosenVariable + "\"," +
-                "\"{" +  variablesString + "}\")" ;
+                helpText + "\",\"" + "Session[" + chosenVariable + "]\",\"" + "\",\""+ alert + "}\")" ;
     }
 
 }

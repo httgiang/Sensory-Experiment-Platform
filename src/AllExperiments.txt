@@ -5,7 +5,8 @@ Last modified: 11.09.2024
 Version: 11
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
-glmsStage("User Input","null","null","Session[00]","false")
+glmsStage("User Input","null","null","Session[null]","false")
+inputStage("User input","null","null","Session[hhh]","","false}")
 endExperiment()
 
 ExperimentName: Tara and Alice Ratings

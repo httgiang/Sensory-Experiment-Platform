@@ -110,8 +110,8 @@ public class Experiment implements Observable {
 
         stages.add(stage);
     }
-    public void addInputStage(String title, String content, String buttonText, boolean alert,String chosenVariable){
-        Input stage = new Input(title, content, buttonText, alert,chosenVariable );
+    public void addInputStage(String title, String content, String buttonText, boolean alert){
+        Input stage = new Input(title, content, buttonText, alert );
 
         stages.add(stage);
     }

@@ -24,7 +24,7 @@ public class InputStage_VM implements ViewModel{
     private BooleanProperty alert;
 
     public InputStage_VM(){
-        this.input = new Input("User input", null,null, false,null );
+        this.input = new Input("User input", null,null, false);
         initListener();
        // experiment.addInput(input);
 
@@ -35,20 +35,7 @@ public class InputStage_VM implements ViewModel{
 
 
     }
-    public InputStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.input = new Input("User input", null,null, false, null);
-        initListener();
-        ifConditionalStatementVM.addIf(input);
 
-
-    }
-    public InputStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.input = new Input("User input", null,null, false,null );
-        initListener();
-       elseConditionalStatementVM.addElse(input);
-
-
-    }
     private void initListener(){
         questionText = new SimpleStringProperty(input.getQuestionText());
         helpText = new SimpleStringProperty(input.getHelpText());

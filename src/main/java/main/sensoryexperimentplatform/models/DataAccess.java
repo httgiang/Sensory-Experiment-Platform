@@ -275,11 +275,14 @@ public class DataAccess {
                     }
                 }
                 else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)), matcher.group(5));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(5)));
+
+                        String variable = matcher.group(4);
+                        stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(stage);
@@ -653,11 +656,14 @@ public class DataAccess {
                     }
                 }
                 else if (line.startsWith("inputStage")) {
-                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\",\"\\{(.*?)\\}\"\\)");
+                    Pattern inputPattern = Pattern.compile("inputStage\\(\"(.*?)\",\"(.*?)\",\"(.*?)\",\"Session\\[(.*?)\\]\",\"(.*?)\"\\)");
                     Matcher matcher = inputPattern.matcher(line);
 
                     if (matcher.find()) {
-                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(4)), matcher.group(5));
+                        Input stage = new Input(matcher.group(1), matcher.group(2), matcher.group(3), Boolean.parseBoolean(matcher.group(5)));
+
+                        String variable = matcher.group(4);
+                        stage.addVariable(variable);
 
                         if (isIf && conditionalStatement !=null && isConditionalStatement){
                             conditionalStatement.addIf(stage);
