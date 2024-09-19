@@ -5,8 +5,7 @@ Last modified: 11.09.2024
 Version: 11
 startExperiment("Start Experiment","This is the first stage of the experiment","null")
 tasteTest("Please call the experimenter for the samples","How <taste> is <food>?","Consumption instruction","End instruction","Low Anchor Text","High Anchor Text","Continue","","0","100","false","false","false","0","false","{}","{}","{}","{}","{}","{}")
-glmsStage("User Input","null","null","Session[null]","false")
-inputStage("User input","null","null","Session[hhh]","","false}")
+inputStage("User input","null","null","Session[null]","","false}")
 endExperiment()
 
 ExperimentName: Tara and Alice Ratings
@@ -28,5 +27,119 @@ vasStage("How calm do you feel right now?","Not at all calm","Extremely calm","0
 vasStage("How energetic do you feel right now?","Not at all energetic","Extremely energetic","0","100","Rating completed","Session[null]","","false","false")
 endRatingsContainer()
 noticeStage("End of ratings","Please call the experimenter","End","","false")
+endExperiment()
+
+ExperimentName: Taste Screener 2019_20
+ExperimenterName: SIBG
+ExperimentID: 999
+Last modified: 01.10.2019
+Version: 1
+startExperiment("TASTE TEST","","Click mouse to start")
+ratingsContainer("true","0")
+vasStage("Think about walking in the rain. How much do you like walking in the rain?","Dislike extremely","Like extremely","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task.","false","false")
+vasStage("Think about watching your favourite movie. How much do you like watching your favourite movie?","Dislike extremely","Like extremely","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task.","false","false")
+vasStage("Think about a warm fire on a cold day. How much do you like a warm fire on a cold day?","Dislike extremely","Like extremely","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task.__","false","false")
+vasStage("Think about the sound of a car alarm. How much do you like the sound of a car alarm?","Dislike extremely","Like extremely","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how much do you like each activity/task.","false","false")
+endRatingsContainer()
+ratingsContainer("true","0")
+vasStage("How hungry are you right now?","Not at all hungry","Extremely hungry","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How full are you right now?","Not at all full","Extremely full","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How thirsty are you right now?","Not at all thirsty","Extremely thirsty","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How happy are you right now?","Not at all happy","Extremely happy","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel..","false","false")
+vasStage("How anxious are you right now?","Not at all anxious","Extremely anxious","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+vasStage("How tired are you right now?","Not at all tired","Extremely tired","0","100","Rating completed","Session[null]","Use the mouse to move the bar to the position that best describes how you feel.","false","false")
+endRatingsContainer()
+vasStage("How much do you like Sample 667?","Dislike extremely","Like extremely","0","100","Continue","Session[null]","**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+ratingsContainer("true","0")
+endRatingsContainer()
+noticeStage("Rinsing","Please rinse your mouth with the water provided and then expectorate it into the black cup.","Continue","","false")
+vasStage("How much do you like Sample 312?","Dislike extremely","Like extremely","0","100","Continue","Session[null]","**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+ratingsContainer("true","0")
+endRatingsContainer()
+noticeStage("Rinsing","Please rinse your mouth with the water provided and then expectorate it into the black cup.","Continue","","false")
+noticeStage("Waiting time is over!","Please move to the second part of the Solutions Taste Test.","Continue","","true")
+vasStage("How much do you like Sample 265?","Dislike extremely","Like extremely","0","100","Continue","Session[null]","**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+ratingsContainer("true","0")
+endRatingsContainer()
+noticeStage("Rinsing","Please rinse your mouth with the water provided and then expectorate it into the black cup.","Continue","","false")
+vasStage("How much do you like Sample 720?","Dislike extremely","Like extremely","0","100","Continue","Session[null]","**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","false","false")
+ratingsContainer("true","0")
+endRatingsContainer()
+noticeStage("Rinsing","Please rinse your mouth with the water provided and then expectorate it into the black cup.","Continue","","false")
+noticeStage("Thank you!","That completes the taste test: please call your researcher.","X","","true")
+endExperiment()
+
+ExperimentName: Porridge_taste test
+Last modified: 01.10.2019
+ExperimenterName: Vasiliki
+Version: 27
+CanBeRun: True
+BackgroundColour: #BDE7AF
+DisabledButtonColour: #0080FF
+PostStageDelay: 1
+PreStageDelay: 0
+FontColour: Black
+Font: Microsoft Sans Serif
+Size: 12
+Bold: False
+Underlined: False
+Italic: False
+RequiresBalance: False
+Experiment:
+startExperiment("PORRIDGE TASTE TEST","","Click mouse to start")
+noticeStage("Porridge Taste Test","For the second taste test\, porridge samples are presented for you to evaluate. Note you will complete one set of ratings\, have a pause and then complete a second set of ratings.______When prompted by the computer please take the relevant sample and place the entire portion in your mouth. Chew the sample/Keep the sample in your mouth for approximately 10 seconds and then swallow it.______After you complete the ratings of each porridge sample\, a two-step rinsing process will follow. First\, you will be instructed to rinse your mouth  thoroughly with a single very small sip of water (10-15 mL) in order to remove all food particles; this small amount of risning water should eventually be swallowed. Subsequently\, you will be asked to re-rinse your mouth with fresh water (a minimum of one sip) but this time to spit it into the black cup provided.","Ready for the taste test","","False")
+noticeStage("Taste Test","Please place Sample 356 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 356?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 356?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.__","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 975 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 975?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 975?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 455 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 455?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 455?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 908 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 908?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 908?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 202 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 202?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 202?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+wait("2","It is time for a break. Please relax until further instructions displayed on screen.","False")
+noticeStage("Waiting time is over!","Please move to the second part of the Porridge Taste Test.","Continue","","True")
+noticeStage("Taste Test","Please place Sample 839 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 839?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 839?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 163 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 163?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 163?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 526 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 526?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 526?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 772 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 772?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 772?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Taste Test","Please place Sample 637 in your mouth\, chew it/keep it in your mouth for approximately 10 seconds\, and then swallow it.",">>","","False")
+vasStage("How much do you like Sample 637?","Dislike extremely","Like extremely","0","100","Continue","Session[]","__**REMINDER**____The left side of the line corresponds to different levels of disliking and the right side to different levels of liking. The middle of the line represents the neutral point\, in other words\, a stimulus that you ‘Neither Like or Dislike’.","False","False")
+glmsStage("How sweet is Sample 637?","Continue","Session[]","Use the mouse to move the bar to the position that best describes how sweet is the porridge sample.____Note that the labels printed along the scale are there for help. You can place your ratings on a label but also anywhere else on the scale\, as well.","False")
+noticeStage("Rinsing and Swallowing","Please rinse your mouth thoroughly with a single very small sip of water (10-15 mL) to remove all food particles and then swallow it.__","Continue","","False")
+noticeStage("Rinsing and Spitting","Please re- rinse your mouth with fresh water (a minimum of one sip) and then spit it into the black cup provided.","Next","","False")
+noticeStage("Thank you!","That completes the food taste test: please call your researcher.","Continue","","False")
 endExperiment()
 

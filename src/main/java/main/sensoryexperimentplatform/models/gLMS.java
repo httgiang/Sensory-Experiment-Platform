@@ -151,7 +151,7 @@ public class gLMS extends Stage implements Model{
 
 
         return "glmsStage(\"" + title + "\",\"" + buttonText + "\",\"" +
-                 helpText + "\",\"" + "Session[" + chosenVariable + "]\",\"" + alert  +
+                 "Session[" + chosenVariable + "]\",\"" + helpText + "\",\"" + alert  +
            "\")"; }
 
     public void setConducted(String currentFormattedTime) {
