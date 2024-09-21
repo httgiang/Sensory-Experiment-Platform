@@ -1,6 +1,8 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import javafx.collections.ObservableList;
+
+import java.util.stream.Collectors;
 
 public class gLMS extends Stage implements Model{
     private String title;
@@ -10,7 +12,9 @@ public class gLMS extends Stage implements Model{
     private String helpText, conducted;
     private int result;
     private boolean alert;
+    private String chosenVariable;
     private Sound sound;
+    private Variable variable;
 
     public gLMS(String title, String content){
         super(title,content);
@@ -21,32 +25,58 @@ public class gLMS extends Stage implements Model{
         this.helpText = "";
     }
 
-    public gLMS(String title, String buttonText, String content, String helpText, boolean alert){
-        super(title,content);
+    public gLMS(String title, String buttonText, String helpText, boolean alert){
+        super(title,buttonText);
         this.title = title;
         this.questionText = title;
         this.buttonText = buttonText;
         this.helpText = helpText;
         this.alert = alert;
+        this.chosenVariable = chosenVariable;
         this.sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         result=0;
 
     }
 
     public gLMS(gLMS stage) {
-        super(stage.getTitle(), stage.getContent());
+        super(stage.getTitle(), stage.getButtonText());
         this.title = stage.getTitle();
         this.questionText = stage.getTitle();
         this.buttonText = stage.getButtonText();
         this.helpText = stage.getHelpText();
         this.alert = stage.getAlert();
         this.sound= SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
+        this.chosenVariable = stage.getChosenVariable();
         result=0;
     }
 
     public void setDefaultResult(){
         result = 0;
     }
+
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
+    }
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
+
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
+
     public void setAlert(boolean s){
         this.alert =s;
     }
@@ -117,9 +147,12 @@ public class gLMS extends Stage implements Model{
     }
     @Override
     public String toString() {
+
+
+
         return "glmsStage(\"" + title + "\",\"" + buttonText + "\",\"" +
-                content + "\",\""+ helpText + "\",\"" + alert + "\")";
-    }
+                 "Session[" + chosenVariable + "]\",\"" + helpText + "\",\"" + alert  +
+           "\")"; }
 
     public void setConducted(String currentFormattedTime) {
         this.conducted = currentFormattedTime;
@@ -127,7 +160,7 @@ public class gLMS extends Stage implements Model{
     public String getConducted(){
         if(conducted != null){
             return conducted;
-        } else return " ";
+        } else return null;
     }
 
 

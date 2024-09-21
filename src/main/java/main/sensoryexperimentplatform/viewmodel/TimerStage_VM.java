@@ -159,11 +159,12 @@ public class TimerStage_VM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setVisible(runController.getTimeLineCheck());
         btn_next.setVisible(runController.getTimeLineCheck());
         btn_next.setDisable(false);
         help_image.setVisible(false);
+
 
         this.runController.timelineFullProperty().addListener(((observableValue, oldValue, newValue) ->{
             btn_back.setVisible(newValue);

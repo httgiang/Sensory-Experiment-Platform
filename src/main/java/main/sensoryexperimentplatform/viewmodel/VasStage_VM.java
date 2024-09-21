@@ -1,6 +1,7 @@
 package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -28,6 +29,8 @@ public class VasStage_VM implements ViewModel {
     private final BooleanProperty alert = new SimpleBooleanProperty(true);
     private IntegerProperty sliderValue;
     private StringProperty conducted;
+    private StringProperty variableName;
+    private StringProperty choosenVariable;
     private Vas vas;
     public VasStage_VM(Vas vas){
         this.vas= vas;
@@ -37,21 +40,10 @@ public class VasStage_VM implements ViewModel {
     public VasStage_VM() {
         this.experiment = experiment;
         this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
+                0, 100, null,  null, false, false);
         initListener();
     }
-    public VasStage_VM(IfConditionalStatementVM ifConditionalStatementVM) {
-        this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
-     ifConditionalStatementVM.addIf(vas);
-        initListener();
-    }
-    public VasStage_VM(ElseConditionalStatementVM elseConditionalStatementVM) {
-        this.vas = new Vas("User input", null, null,
-                0, 100, null, null, null, false, false);
-        elseConditionalStatementVM.addElse(vas);
-        initListener();
-    }
+
 
 
 
@@ -66,6 +58,12 @@ public class VasStage_VM implements ViewModel {
         questionText = new SimpleStringProperty(vas.getTitle());
         checkB_sound = new SimpleBooleanProperty(vas.getAlert());
         checkB_swap = new SimpleBooleanProperty(vas.getIsSwap());
+        variableName = new SimpleStringProperty(vas.getVariableName());
+        choosenVariable = new SimpleStringProperty(vas.getChosenVariable());
+
+        choosenVariable.addListener((observableValue, oldValue, newValue) -> setChoosenVariable(newValue));
+
+
         checkB_swap.addListener((observableValue, oldValue, newValue) -> onCheckSwap(newValue));
         checkB_sound.addListener((observableValue, oldValue, newValue) -> onCheckSound(newValue));
         highAnchorValue.addListener((observableValue, oldValue, newValue) -> onhighAnchorValue(newValue));
@@ -78,6 +76,8 @@ public class VasStage_VM implements ViewModel {
         highAnchorText.addListener((observableValue, oldValue, newValue) -> onhighAnchorText(newValue));
         lowAnchorText.addListener((observableValue, oldValue, newValue) -> onlowAnchorText(newValue));
         questionText.addListener((observableValue, oldValue, newValue) -> onQuestionTextChange(newValue));
+        variableName.addListener((observableValue, oldValue, newValue) -> setVariableName(newValue));
+
 
         sliderValue = new SimpleIntegerProperty(vas.getResult());
         conducted = new SimpleStringProperty(vas.getConducted());
@@ -135,19 +135,24 @@ public class VasStage_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
 
-        if (this.conductedTextProperty().get() == null){
-            btn_next.setDisable(true);
-        }else btn_next.setDisable(false);
 
-        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+        btn_next.setDisable(this.conductedTextProperty().get() == null);
+
+        this.sliderValueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 btn_next.setDisable(false);
             }
         });
+
+//        this.conductedTextProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                btn_next.setDisable(false);
+//            }
+//        });
 
         if (this.helpTextProperty().get() != null) {
             help_image.setVisible(true);
@@ -159,6 +164,21 @@ public class VasStage_VM implements ViewModel {
             help_image.setManaged(false);
         }
     }
+    public void addVariable(String variableName){
+        vas.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return vas.getVariable();
+    }
+
+    public void setVariableName(String newValue){
+        vas.setVariableName(newValue);
+    }
+    public String getVariableName() {
+        return variableName.get();
+    }
+
+
     public void playAlertSound(){
         vas.playAlertSound();
     }
@@ -341,6 +361,18 @@ public class VasStage_VM implements ViewModel {
     public void setAlert(boolean alert) {
         this.alert.set(alert);
     }
+
+    public void setChoosenVariable(String variableName){
+        vas.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return vas.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
+    }
+
+
 
     public Vas getVas() {
         return vas;

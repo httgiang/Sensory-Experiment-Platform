@@ -46,8 +46,8 @@ public class TasteTest extends ModelContainer implements Model{
         this.isSwap = isSwap;
 
         this.sampleVas = new Vas(question, lowAnchorText, highAnchorText, lowAnchorValue, highAnchorValue,
-                "Next", "",helpText,isSwap,isAlert);
-        this.sampleGLMS = new gLMS(question,"Next","","",isAlert);
+                "Next",helpText,isSwap,isAlert);
+        this.sampleGLMS = new gLMS(question,"Next","",isAlert);
 
         //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
         this.endInstruction = endInstruction;
@@ -79,8 +79,8 @@ public class TasteTest extends ModelContainer implements Model{
         this.isSwap = tasteTest.isSwap;
 
         this.sampleVas = new Vas(question, lowAnchorText, highAnchorText, lowAnchorValue, highAnchorValue,
-                "Next", "",helpText,isSwap,isAlert);
-        this.sampleGLMS = new gLMS(question,"Next","","",isAlert);
+                "Next",helpText,isSwap,isAlert);
+        this.sampleGLMS = new gLMS(question,"Next","",isAlert );
 
         //THE QUESTION FOR VAS AND GLMS WITH VARIABLE <food> AND <taste>
         this.endInstruction = tasteTest.endInstruction;
@@ -170,7 +170,7 @@ public class TasteTest extends ModelContainer implements Model{
         String convertedQuestion = question.replace("<taste>","%s").replace("<food>","%s");
         convertedQuestion = String.format(convertedQuestion, taste, foodName);
 
-        return new gLMS(convertedQuestion, sampleGLMS.getButtonText(), sampleGLMS.getContent(),
+        return new gLMS(convertedQuestion, sampleGLMS.getButtonText(),
                 sampleGLMS.getHelpText(), sampleGLMS.getAlert());
     }
     private Vas getVas(String foodName, String taste) {
@@ -186,7 +186,7 @@ public class TasteTest extends ModelContainer implements Model{
 
         return new Vas(convertedQuestion, convertedLowAnchor,convertedHighAnchor,
                 sampleVas.getLowAnchorValue(), sampleVas.getHighAnchorValue(), sampleVas.getButtonText(),
-                sampleVas.getContent(),sampleVas.getHelpText(), sampleVas.getIsSwap(), sampleVas.getAlert());
+                sampleVas.getHelpText(), sampleVas.getIsSwap(), sampleVas.getAlert());
     }
 
 

@@ -1,6 +1,10 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ToggleGroup;
+
+import java.util.stream.Collectors;
 
 public class Input extends Stage implements Model {
     private String buttonText;
@@ -8,6 +12,11 @@ public class Input extends Stage implements Model {
     private String questionText;
     private Sound sound;
     private boolean alert;
+    private Variable variable;
+
+
+    private String chosenVariable;
+
 
 
     private String result;
@@ -22,6 +31,8 @@ public class Input extends Stage implements Model {
         this.questionText = questionText;
         this.alert = alert;
         result = null;
+        this.chosenVariable = chosenVariable;
+        this.variable = VariableSingleton.getInstance();
         this.sound = SoundSingleton.getInstance();
     }
 
@@ -31,7 +42,10 @@ public class Input extends Stage implements Model {
         helpText = o.getHelpText();
         questionText = o.getQuestionText();
         alert = o.isAlert();
+        this.chosenVariable = o.getChosenVariable();
+
         result = null;
+        this.variable = VariableSingleton.getInstance();
         this.sound = SoundSingleton.getInstance();
     }
 
@@ -60,7 +74,19 @@ public class Input extends Stage implements Model {
     }
 
 
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
+    }
+    public String getVariableName() {
+        return variable.getVariableName();
+    }
 
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
 
     public String getTitle() {
         return title;
@@ -93,11 +119,21 @@ public class Input extends Stage implements Model {
         sound.playSound("boop");
     }
 
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
+
+
 
     @Override
     public String toString() {
+
         return "inputStage(\"" + questionText + "\",\"" + buttonText + "\",\"" +
-                helpText + "\",\""+ alert + "\")";
+                 "Session[" + chosenVariable + "]\",\"" +   helpText + "\",\"" +  alert + "\")" ;
     }
 
 }

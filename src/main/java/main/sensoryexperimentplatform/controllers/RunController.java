@@ -1,11 +1,15 @@
 package main.sensoryexperimentplatform.controllers;
 
 
-import javafx.application.Platform;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
@@ -14,21 +18,23 @@ import javafx.util.Duration;
 import main.sensoryexperimentplatform.viewmodel.*;
 import main.sensoryexperimentplatform.models.*;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.*;
 
 
 public class RunController {
     @FXML
+    private AnchorPane mainPane;
+
+    @FXML
     private ListView<ViewModel> listView;
     private Experiment experiment; private String uid;
-    int processed = 0; //index to keep track of how many stages are processed
 
     private ScheduledExecutorService executorService;
-    private long startTime, elapsedTime;
     @FXML
     private AnchorPane content;
 
@@ -41,23 +47,22 @@ public class RunController {
 
     private Tooltip tooltip;
 
+    private Tooltip nextButtonTooltip;
 
-//    @FXML
-//    private Label elapsedTime_label;
-
+    private ListProperty<Experiment> experiments;
     ModelVMRegistry registry;
+    private StringProperty stageIndex;
+    private HashMap<ViewModel, String> map;
 
 
     public void initRunExperiment(Experiment experiment, String uId) throws IOException {
         this.experiment = experiment;
         this.uid = uId;
         loadItems();
-//        startTimer();
         setListViewListener();
+        setupNextButtonTooltip();
         initButtons();
         setupToolTip();
-
-
     }
 
 
@@ -65,11 +70,6 @@ public class RunController {
         ViewModel stages = registry.getViewModel(model);
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG ADD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
-        if(model instanceof Course){
-            AddCourseVM courseVM = (AddCourseVM) registry.getViewModel(model);
-            courseVM.initRunSetup(listView);
-            return;
-        }
 
         //RATING, TASTE TEST KH HIEN THI MAN HINH RUN NEN KHONG DD VO LISTVIEW, CHI ADD CON CUA TUI NO TH
 
@@ -81,7 +81,7 @@ public class RunController {
         if(model instanceof ModelContainer){
             if(((ModelContainer) model).getChildren() != null){
                 for(Model children : ((ModelContainer) model).getChildren()){
-                    buildList(listView, children, registry);
+                    listView.getItems().add(registry.getViewModel(children));
                 }
             }
             // RUN FOR IF CONDITIONAL STATEMENT ( CONDITION SE ADD SAU )
@@ -107,12 +107,17 @@ public class RunController {
             }
         }
     }
+
     private void loadItems() {
-        for(Model selectedObject : experiment.getStages()) {
+        map = new HashMap<>();
+
+        for(int i = 0; i < experiment.getStages().size(); i++) {
             registry = ModelVMRegistry.getInstance();
-            buildList(listView, selectedObject, registry);
+            map.put(registry.getViewModel(experiment.getStages().get(i)), i + " ");
+            buildList(listView, experiment.getStages().get(i), registry);
         }
     }
+
 
 
     private void showRunningPane(ViewModel selectedItem) throws IOException {
@@ -121,12 +126,19 @@ public class RunController {
 
         content.getChildren().clear();
         runStages.loadRunInterface(content);
-        runStages.handleRunButtons(btn_next, btn_back,tooltip,help_image);
+        runStages.handleRunButtons(btn_next, btn_back,tooltip, nextButtonTooltip, help_image);
 
 
     }
     private void setListViewListener() throws IOException {
+        stageIndex = new SimpleStringProperty();
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            stageIndex.set(map.get(newValue));
+            if(newValue instanceof AddCourseVM){
+
+                ((AddCourseVM) newValue).connectToBalance(listView, stageIndex);
+                return;
+            }
             if (newValue != null) {
                 try {
                     showRunningPane(newValue);
@@ -142,17 +154,20 @@ public class RunController {
 
     private void initButtons(){
         btn_next.setWrapText(true);
+        btn_back.setWrapText(true);
         btn_next.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btn_next.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+
     }
     private void setupToolTip(){
     tooltip = new Tooltip("Help text here!");
 
-
+        //chinh thu font tu 20 - 15, width 250 - 300
         tooltip.setStyle(
                 "-fx-background-color: #e3e2e2;\n" +
                         "    -fx-text-fill: #397E82;\n" +
-                        "    -fx-font-size: 20px;\n" +
+                        "    -fx-font-size: 15px;\n" +
                         "    -fx-padding: 5px;\n" +
                         "    -fx-border-color: White;\n" +
                         "    -fx-border-width: 1px;\n" +
@@ -161,7 +176,7 @@ public class RunController {
         tooltip.setShowDelay(Duration.ZERO);
         tooltip.setAutoHide(true);
         tooltip.setWrapText(true);
-        tooltip.setMaxWidth(250);
+        tooltip.setMaxWidth(300);
 
         // Set listeners to show and hide tooltip on mouse enter and exit
         help_image.setOnMouseEntered(event -> showTooltip(help_image, tooltip));
@@ -185,9 +200,33 @@ public class RunController {
         tooltip.show(imageView, bounds.getMinX() - 250, bounds.getMinY() - tooltip.getHeight());
     }
 
+    private void setupNextButtonTooltip() {
+        nextButtonTooltip = new Tooltip("You need to select an item first before proceeding.");
+        nextButtonTooltip.setStyle(
+                "-fx-background-color: Transparent;\n" +
+
+                        "    -fx-text-fill: #397E82;\n" +
+                        "    -fx-font-size: 15px;\n" +
+                        "    -fx-padding: 5px;\n" +
+                        "    -fx-border-color: White;\n" +
+                        "    -fx-border-width: 1px;\n" +
+                        "    -fx-border-radius: 3px;"
+        );
+        nextButtonTooltip.setShowDelay(Duration.ZERO);
+        nextButtonTooltip.setAutoHide(true);
+        nextButtonTooltip.setWrapText(true);
+        nextButtonTooltip.setMaxWidth(300);
+
+//        btn_next.setOnMouseEntered(event -> nextButtonTooltip.show(btn_next, event.getScreenX(), event.getScreenY() + 10));
+//        btn_next.setOnMouseExited(event -> nextButtonTooltip.hide());
+
+    }
+
+    public ListProperty<Experiment> experimentsProperty() {
+        return experiments;
+    }
 
     private void handleFinalNext() throws IOException {
-        processed = 0;
         stopTimer();
         autoClose();
     }
@@ -205,6 +244,7 @@ public class RunController {
             }
         });
     }
+
 
 //    timer tracks the experiment
 //    private void startTimer() {
@@ -228,18 +268,17 @@ public class RunController {
         }
     }
 
+
     @FXML
     void handleBtnNext(MouseEvent event) throws IOException {
         int selectedIndex = listView.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
-            listView.getSelectionModel().select(0);
-        }
-        if (selectedIndex >= 0 && selectedIndex < listView.getItems().size() - 1) {
-            listView.getSelectionModel().select(selectedIndex + 1);
-        }
         if(selectedIndex == listView.getItems().size() - 1){
             handleFinalNext();
+        } else {
+            listView.getSelectionModel().selectNext();
         }
+
+
         DataAccess.quickSave(experiment, uid);
     }
     @FXML

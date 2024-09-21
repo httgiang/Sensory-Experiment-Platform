@@ -93,7 +93,7 @@ public class RatingContainer_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         //KO CO
     }
 

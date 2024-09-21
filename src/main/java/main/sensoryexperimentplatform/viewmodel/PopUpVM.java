@@ -17,59 +17,74 @@ import static main.sensoryexperimentplatform.utilz.PopUpType.*;
 
 public class PopUpVM {
 
-
-    public PopUpVM(PopUpType type, String msg, Experiment experiment) throws IOException {
+    public PopUpVM(PopUpType type, String msg, Experiment experiment, Stage ownerStage) throws IOException {
         if(type == ERROR){
-            popUpError(msg);
+            popUpError(msg, ownerStage);
         } else if(type == SUCCESS){
-            popUpSuccess(msg);
+            popUpSuccess(msg, ownerStage);
         } else if(type == CONFIRM){
-            popUPConfirm(experiment, msg);
+            popUPConfirm(experiment, msg, ownerStage);
         }
     }
-    public PopUpVM(PopUpType type, String msg) throws IOException {
+    public PopUpVM(PopUpType type, String msg,  Stage ownerStage) throws IOException {
         if(type == ERROR){
-            popUpError(msg);
+            popUpError(msg, ownerStage);
         } else if(type == SUCCESS){
-            popUpSuccess(msg);
+            popUpSuccess(msg, ownerStage);
         }
     }
 
-    private void popUpError(String msg) throws IOException {
+
+
+
+
+    private void popUpError(String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpError.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
+        stage.initOwner(ownerStage);
+        stage.initModality(Modality.WINDOW_MODAL);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         PopUpErrorController controller = fxmlLoader.getController();
         controller.setMessage(msg);
-        stage.show();
+
+
+        stage.showAndWait();
     }
 
-    private void popUpSuccess(String msg) throws IOException {
+    private void popUpSuccess(String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpSuccess.fxml"));
+
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
+        stage.initOwner(ownerStage);
+        stage.initModality(Modality.WINDOW_MODAL);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
         PopUpSuccessController controller = fxmlLoader.getController();
         controller.setMessage(msg);
-        stage.show();
+        stage.showAndWait();
+
+
     }
 
-    private void popUPConfirm(Experiment experiment, String msg) throws IOException {
+    private void popUPConfirm(Experiment experiment, String msg, Stage ownerStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("PopUpConfirm.fxml"));
         Parent root = fxmlLoader.load();
+
         Stage stage = new Stage();
+        stage.initOwner(ownerStage);
+        stage.initModality(Modality.WINDOW_MODAL);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.initModality(Modality.WINDOW_MODAL);
-
         PopUpConfirmController controller = fxmlLoader.getController();
         controller.setMessage(experiment, msg);
-        stage.show();
+        stage.showAndWait();
     }
 }

@@ -1,8 +1,5 @@
-package main.sensoryexperimentplatform.controllers;
+package main.sensoryexperimentplatform.models;
 
-
-import main.sensoryexperimentplatform.models.AudibleInstruction;
-import main.sensoryexperimentplatform.models.Sound;
 
 public class SoundSingleton {
     private static Sound instance;

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.sensoryexperimentplatform.controllers.Base;
 import main.sensoryexperimentplatform.models.DataAccess;
 
 public class Main extends Application {
@@ -19,6 +20,8 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
 
+        Base base = loader.getController();
+        base.initialize(primaryStage);
         DataAccess.loadExperiments();
 
         primaryStage.setTitle("Sense XP");

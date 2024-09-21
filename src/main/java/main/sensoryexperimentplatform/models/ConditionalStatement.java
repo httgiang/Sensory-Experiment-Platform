@@ -1,5 +1,8 @@
 package main.sensoryexperimentplatform.models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +16,8 @@ public class ConditionalStatement implements Model{
     private String variable1Choice;
     private String variable2Choice;
     private String compare;
-    public List<Model> IfConditional;
-    public List<Model> ElseConditional;
+    private ObservableList<Model> ifConditional ;
+    private ObservableList<Model> elseConditional;
     private int BoutNumber;
 
 
@@ -26,13 +29,13 @@ public class ConditionalStatement implements Model{
         this.variable1 = variable1;
         this.variable2 = variable2;
         this.value2Text = value2Text;
-        this.value1Text= value1Text;
+        this.value1Text = value1Text;
         this.variable1Choice = variable1Choice;
         this.variable2Choice = variable2Choice;
         this.compare = compare;
         this.BoutNumber = 9600;
-        IfConditional = new ArrayList<>();
-        ElseConditional = new ArrayList<>();
+        this.ifConditional = FXCollections.observableArrayList();
+        this.elseConditional = FXCollections.observableArrayList();
 
     }
 
@@ -48,8 +51,8 @@ public class ConditionalStatement implements Model{
         this.variable2Choice = other.variable2Choice;
         this.compare = other.compare;
         this.BoutNumber = 9600;
-       IfConditional = other.getIfConditional();
-       ElseConditional = other.getElseConditional();
+        this.ifConditional = FXCollections.observableArrayList(other.ifConditional);
+        this.elseConditional = FXCollections.observableArrayList(other.elseConditional);
 
     }
     // Add vas for rating container
@@ -128,17 +131,20 @@ public class ConditionalStatement implements Model{
     }
 
     public void addIf(Model m){
-        IfConditional.add(m);
+        ifConditional.add(m);
+        System.out.println(ifConditional + "2");
     }
     public void addElse(Model m){
-        ElseConditional.add(m);
+        elseConditional.add(m);
+        System.out.println(elseConditional + "1000");
     }
 
-    public List<Model> getElseConditional() {
-        return ElseConditional;
+    public ObservableList<Model> getIfConditional() {
+        return ifConditional;
     }
-    public List<Model> getIfConditional() {
-        return IfConditional;
+
+    public ObservableList<Model> getElseConditional() {
+        return elseConditional;
     }
 
     private int getVariableBasedOnChoice(String choice) {
@@ -179,23 +185,24 @@ public class ConditionalStatement implements Model{
     @Override
     public String toString() {
         StringBuilder ifBuilder = new StringBuilder();
-        for (Model model : IfConditional) {
+        for (Model model : ifConditional) {
+            System.out.println(getIfConditional() );
             ifBuilder.append(model.toString()).append("\n");
         }
 
         StringBuilder elseBuilder = new StringBuilder();
-        for (Model model : ElseConditional) {
+        for (Model model : elseConditional) {
             elseBuilder.append(model.toString()).append("\n");
         }
+
         if (!ifBuilder.isEmpty()) ifBuilder.setLength(ifBuilder.length() - 1);
         if (!elseBuilder.isEmpty()) elseBuilder.setLength(elseBuilder.length() - 1);
 
-        return "conditionalStatement(\""  + value1 + "\",\""+ value2 + "\",\"" + variable1 + "\",\"" + variable2 +
-                "\",\""+ value1Text + "\",\"" + value2Text + "\",\"" + variable1Choice + "\",\"" +
-                variable2Choice + "\",\"" + compare +  "\")" +"\n" +String.format("If() \n%s \nEndIf() \nElse() \n%s \nEndElse()",
-                ifBuilder.toString(), elseBuilder.toString()) + "\nEndConditionalStatement()";
+        return "conditionalStatement(\"" + value1 + "\",\"" + value2 + "\",\"" + variable1 + "\",\"" + variable2 +
+                "\",\"" + value1Text + "\",\"" + value2Text + "\",\"" + variable1Choice + "\",\"" +
+                variable2Choice + "\",\"" + compare + "\")" + "\n" +
+                String.format("If() \n%s \nEndIf() \nElse() \n%s \nEndElse()", ifBuilder, elseBuilder) + "\nEndConditionalStatement()";
     }
-
 
 
 

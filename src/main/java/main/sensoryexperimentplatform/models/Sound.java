@@ -41,6 +41,7 @@ public class Sound {
             // Add the new sound name to the list if it doesn't already exist
             soundNameshow.add(soundName);
         }
+
     }
 
     public void setSoundNameshow(ObservableList<String> soundNameshow) {
@@ -51,8 +52,8 @@ public class Sound {
     public void initSound(){
         soundNameshow.add("boop");
         soundNameshow.add("stomp");
-        loadSound("boop","/sound/boop-741-mhz-39314.wav");
-        loadSound("stomp","/sound/stompwav-14753.wav");
+        loadSound("boop","src/main/resources/sound/boop-741-mhz-39314.wav");
+        loadSound("stomp","src/main/resources/sound/stompwav-14753.wav");
     }
 
 
@@ -60,14 +61,27 @@ public class Sound {
         return soundMap;
     }
     public void loadSound(String name, String filePath) {
+        // Check if name or filePath is null
+        if (name == null || filePath == null) {
+            return;
+        }
+
+        // Check if the file exists before attempting to load it
+        File file = new File(filePath);
+        if (!file.exists()) {
+            return;
+        }
+
         try {
-            InputStream fileStream = new BufferedInputStream(Objects.requireNonNull(Sound.class.getResourceAsStream(filePath)));
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(fileStream);
+            InputStream fileStream = new FileInputStream(file);
+            BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedStream);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             soundMap.put(name, clip);
             soundPathMap.put(name, filePath);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println("Error loading sound: " + e.getMessage());
             e.printStackTrace();
         }
     }

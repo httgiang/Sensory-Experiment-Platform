@@ -2,6 +2,7 @@ package main.sensoryexperimentplatform.viewmodel;
 
 import javafx.beans.property.*;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -15,9 +16,11 @@ import java.io.IOException;
 
 public class InputStage_VM implements ViewModel{
     private Input input;
+    private StringProperty variableName;
     private Experiment experiment;
     //    private final ListProperty<Object> stages = new SimpleListProperty<>(FXCollections.observableArrayList());
     private StringProperty questionText, result, helpText, button;
+    private StringProperty choosenVariable;
     private BooleanProperty alert;
 
     public InputStage_VM(){
@@ -32,27 +35,33 @@ public class InputStage_VM implements ViewModel{
 
 
     }
-    public InputStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.input = new Input("User input", null,null, false);
-        initListener();
-        ifConditionalStatementVM.addIf(input);
 
-
-    }
-    public InputStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.input = new Input("User input", null,null, false);
-        initListener();
-       elseConditionalStatementVM.addElse(input);
-
-
-    }
     private void initListener(){
         questionText = new SimpleStringProperty(input.getQuestionText());
         helpText = new SimpleStringProperty(input.getHelpText());
         button = new SimpleStringProperty(input.getButtonText());
         alert = new SimpleBooleanProperty(input.isAlert());
         result = new SimpleStringProperty(input.getResult());
+        variableName = new SimpleStringProperty(input.getVariableName());
+        choosenVariable = new SimpleStringProperty(input.getChosenVariable());
+
+
     }
+    public void addVariable(String variableName){
+        input.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return input.getVariable();
+    }
+    public void setVariableName(String newValue){
+        input.setVariableName(newValue);
+    }
+
+    public String getVariableName() {
+        return variableName.get();
+    }
+
+
 
     //questionText
     public StringProperty questionProperty() {
@@ -157,10 +166,11 @@ public class InputStage_VM implements ViewModel{
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
         btn_next.textProperty().bind(this.buttonTextProperty());
+
 
         if (this.helpTextProperty().get() != null) {
             help_image.setVisible(true);
@@ -188,6 +198,15 @@ public class InputStage_VM implements ViewModel{
     }
     public void setResult(String result) {
         input.setResult(result);
+    }
+    public void setChoosenVariable(String variableName){
+        input.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return input.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
     }
 
 

@@ -64,8 +64,10 @@ public class DashBoardController {
     private Stack<Experiment> deletedExp = new Stack<>();
 
     private Experiment selectedExperiment;
+    private Stage ownerStage;
 
-    public void initialize() {
+    public void initialize(Stage ownerStage) {
+       this.ownerStage = ownerStage;
        dashBoard_vm = new DashBoard_VM();
        bindViewModel();
        bindColumnWidths();
@@ -148,7 +150,7 @@ public class DashBoardController {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try {
                                     PopUpVM popUpConfirm = new PopUpVM(CONFIRM,
-                                            "Are you sure you want to delete this experiment?", selectedExperiment);
+                                            "Are you sure you want to delete this experiment?", selectedExperiment, ownerStage);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -167,26 +169,7 @@ public class DashBoardController {
                             });
                             run.setOnAction((ActionEvent) ->{
                                 selectedExperiment = getTableView().getItems().get(getIndex());
-                                try {
-                                    FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/Fill_name.fxml"));
-                                    Parent root = fillNameLoader.load();
-
-                                    FillNameController controller = fillNameLoader.getController();
-                                    //use cloned object
-                                    Experiment newE = new Experiment(selectedExperiment);
-                                    FillName_VM viewModel = new FillName_VM(newE);
-                                    controller.setViewModel(viewModel);
-
-                                    Stage dialog = new Stage();
-                                    dialog.initStyle(StageStyle.TRANSPARENT);
-                                    Scene dialogScene = new Scene(root);
-                                    dialogScene.setFill(Color.TRANSPARENT);
-                                    dialog.setScene(dialogScene);
-
-                                    dialog.showAndWait();
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
+                                runExperiment(selectedExperiment);
                             });
                             HBox managebtn = new HBox(run, edit,delete, result);
                             managebtn.setStyle("-fx-alignment:center");
@@ -239,16 +222,6 @@ public class DashBoardController {
         return contentTable;
     }
 
-    private void deleteEx(Experiment e) throws Exception {
-        deletedExp.push(e);
-        ExperimentList.deleteExperiment(e);
-    }
-
-    public void redo() throws Exception {
-        if(!deletedExp.isEmpty()){
-            ExperimentList.addExperiment(deletedExp.pop());
-        }
-    }
 
     private void showResultEx(Experiment e) throws IOException {
         try {
@@ -260,6 +233,8 @@ public class DashBoardController {
             controller.setViewModel(viewModel);
 
             Stage stage = new Stage();
+            stage.initOwner(ownerStage);
+            stage.initModality(Modality.WINDOW_MODAL);
             stage.setTitle("Data");
 
             Scene scene = new Scene(root);
@@ -273,15 +248,43 @@ public class DashBoardController {
 
     }
 
+    private void runExperiment(Experiment experiment){
+        try {
+            FXMLLoader fillNameLoader = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/Fill_name.fxml"));
+            Parent root = fillNameLoader.load();
+
+            FillNameController controller = fillNameLoader.getController();
+            //use cloned object
+            Experiment newE = new Experiment(experiment);
+            FillName_VM viewModel = new FillName_VM(newE);
+            controller.setViewModel(viewModel);
+
+            Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.TRANSPARENT);
+            dialog.initOwner(ownerStage);
+            dialog.initModality(Modality.WINDOW_MODAL);
+
+            Scene dialogScene = new Scene(root);
+
+           // dialogScene.setFill(Color.TRANSPARENT);
+            dialog.setScene(dialogScene);
+
+            dialog.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void editExperiment(Experiment experiment) throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
 //        c.updateVersion();
         FXMLLoader loader = new FXMLLoader();
+        EditExpController controller = null;
         loader.setLocation(getClass().getResource("/main/sensoryexperimentplatform/EditExperiment.fxml"));
         Parent root = null;
         try{
-            EditExpController controller = new EditExpController();
             root = loader.load();
             controller = loader.getController();
+
             controller.setExperiment(experiment);
         }
         catch (IOException e){
@@ -289,6 +292,9 @@ public class DashBoardController {
         }
 
         Stage stage = new Stage();
+        assert controller != null;
+        controller.setOwnerStage(stage);
+        stage.initOwner(ownerStage);
         stage.initModality(Modality.WINDOW_MODAL);
 
         stage.setTitle("Edit experiment");
@@ -306,7 +312,8 @@ public class DashBoardController {
         Parent root = fxmlLoader.load();
 
         Stage stage = new Stage();
-
+        stage.initOwner(ownerStage);
+        stage.initModality(Modality.WINDOW_MODAL);
         Scene scene = new Scene(root);
         stage.setScene(scene);
 

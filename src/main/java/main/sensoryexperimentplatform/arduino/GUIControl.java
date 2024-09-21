@@ -25,7 +25,7 @@ public class GUIControl {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TestArduino.startRecording();
+              //  TestArduino.startRecording();
             }
         });
 

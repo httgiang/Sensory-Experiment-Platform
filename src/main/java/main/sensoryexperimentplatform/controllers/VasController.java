@@ -8,6 +8,9 @@ public class VasController {
     private VasStage_VM vasStageVM;
 
     @FXML
+    private ChoiceBox<String> choiceB_avail;
+
+    @FXML
     private CheckBox checkB_sound;
 
     @FXML
@@ -37,7 +40,19 @@ public class VasController {
     private TextField txt_question;
 
     @FXML
-    private TextField txt_yes;
+    private TextField txt_yes;    @FXML
+    
+    private ToggleGroup variableToggleGroup = new ToggleGroup();
+
+
+
+    @FXML
+    private RadioButton radioBtn_Yes;
+
+    @FXML
+    private RadioButton radioBtn_available;
+
+
 
 
 
@@ -53,9 +68,70 @@ public class VasController {
         //txt_yes.textProperty().bindBidirectional(vasStageVM.txt_yesProperty());
         checkB_sound.selectedProperty().bindBidirectional(vasStageVM.checkB_soundProperty());
         checkB_swap.selectedProperty().bindBidirectional(vasStageVM.checkB_swapProperty());
+        txt_yes.textProperty().bindBidirectional(vasStageVM.choosenVariableProperty());
+
+
+
+        choiceB_avail.getItems().addAll(vasStageVM.getVariable());
+
+        if (vasStageVM.getChoosenVariable() != null) {
+            choiceB_avail.setValue(vasStageVM.getChoosenVariable());
+            radioBtn_available.setSelected(true);
+        }
+
+
+        choiceB_avail.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            vasStageVM.setChoosenVariable(newValue);
+            if (newValue != null) {
+                vasStageVM.addVariable(newValue);
+            }
+        });
+
+
+        txt_yes.setOnAction(event -> {
+            String newValue = txt_yes.getText();
+            if (newValue != null && !newValue.isEmpty()) {
+                vasStageVM.setChoosenVariable(newValue);
+                vasStageVM.addVariable(newValue);
+            }
+        });
+
+        txt_yes.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                String newText = txt_yes.getText();
+                if (newText != null && !newText.isEmpty()) {
+                    vasStageVM.setChoosenVariable(newText);
+                    vasStageVM.addVariable(newText);
+                }
+            }
+        });
+
+        // If variable name is set (from a previous state), ensure it is added
+        if (vasStageVM.getVariableName() != null) {
+            vasStageVM.setChoosenVariable(vasStageVM.getVariableName());
+            vasStageVM.addVariable(vasStageVM.getVariableName());
+        }
+        radioBtn_available.setToggleGroup(variableToggleGroup);
+        radioBtn_Yes.setToggleGroup(variableToggleGroup);
+
+        variableToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (radioBtn_Yes.isSelected()) {
+                txt_yes.setDisable(false);
+                choiceB_avail.setDisable(true);
+            } else if (radioBtn_available.isSelected()) {
+                txt_yes.setDisable(true);
+                choiceB_avail.setDisable(false);
+                txt_yes.setText("LastVasStageResult");
+
+            }
+        });
+        radioBtn_Yes.setSelected(true);
     }
+    
+   
     public void setViewModel(VasStage_VM vas){
         this.vasStageVM = vas;
+
         bind();
 
     }

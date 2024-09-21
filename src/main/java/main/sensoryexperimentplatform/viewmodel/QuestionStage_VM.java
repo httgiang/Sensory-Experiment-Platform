@@ -4,6 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -25,11 +26,13 @@ public class QuestionStage_VM implements ViewModel {
     private StringProperty helpText;
     private BooleanProperty alert;
     private Question questionStage;
+    private StringProperty variableName;
     private Experiment experiment;
+    private StringProperty choosenVariable;
 
 
     public QuestionStage_VM(){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
+        this.questionStage = new Question("Question ",null,null,null,null,null,false );
         initListener();
       //  experiment.addQuestion(questionStage);
     }
@@ -38,18 +41,7 @@ public class QuestionStage_VM implements ViewModel {
         initListener();
     }
 
-    public  QuestionStage_VM(IfConditionalStatementVM ifConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
-        initListener();
-        ifConditionalStatementVM.addIf(questionStage);
 
-    }
-    public  QuestionStage_VM(ElseConditionalStatementVM elseConditionalStatementVM){
-        this.questionStage = new Question("Question ",null,null,null,null,null,false);
-        initListener();
-       elseConditionalStatementVM.addElse(questionStage);
-
-    }
 
     private void initListener(){
         this.question = new SimpleStringProperty(questionStage.getQuestion());
@@ -59,7 +51,28 @@ public class QuestionStage_VM implements ViewModel {
         this.rightValue = new SimpleStringProperty(questionStage.getRightButtonValue());
         this.helpText = new SimpleStringProperty(questionStage.getHelpText());
         this.alert= new SimpleBooleanProperty(questionStage.isAlert());
+        this.variableName = new SimpleStringProperty(questionStage.getVariableName());
+        choosenVariable = new SimpleStringProperty(questionStage.getChosenVariable());
+
+
     }
+
+    public void addVariable(String variableName){
+        questionStage.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return questionStage.getVariable();
+    }
+    public void setVariableName(String newValue){
+        questionStage.setVariableName(newValue);
+    }
+    public String getVariableName() {
+        return variableName.get();
+    }
+
+
+
+
 
     @Override
     public Model getModel() {
@@ -106,7 +119,7 @@ public class QuestionStage_VM implements ViewModel {
     }
 
     @Override
-    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, ImageView help_image) {
+    public void handleRunButtons(Button btn_next, Button btn_back, Tooltip tooltip, Tooltip nextButtonTooltip, ImageView help_image) {
         btn_back.setDisable(false);
         btn_next.setDisable(false);
 
@@ -188,6 +201,16 @@ public class QuestionStage_VM implements ViewModel {
     public void setLeftValue(String newValue) {questionStage.setLeftButtonValue(newValue);
     }
     public void setRightValue(String newValue) {questionStage.setRightButtonValue(newValue);
+    }
+
+    public void setChoosenVariable(String variableName){
+        questionStage.setChosenVariable(variableName);
+    }
+    public String getChoosenVariable(){
+        return questionStage.getChosenVariable();
+    }
+    public StringProperty choosenVariableProperty(){
+        return choosenVariable;
     }
 
     public Question getQuestionStage(){

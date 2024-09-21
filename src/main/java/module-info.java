@@ -11,7 +11,6 @@ module main.sensoryexperimentplatform {
 
     // Open packages to JavaFX modules for FXML and other reflective access
     opens main.sensoryexperimentplatform to javafx.fxml;
-    opens main.sensoryexperimentplatform.models to javafx.base;
     opens main.sensoryexperimentplatform.controllers to javafx.fxml;
     opens main.sensoryexperimentplatform.viewmodel to javafx.fxml;
 
@@ -21,4 +20,6 @@ module main.sensoryexperimentplatform {
     exports main.sensoryexperimentplatform.viewmodel;
     exports main.sensoryexperimentplatform.arduino;
     opens main.sensoryexperimentplatform.arduino to javafx.fxml;
+    exports main.sensoryexperimentplatform.models;
+    opens main.sensoryexperimentplatform.models to javafx.base, javafx.fxml;
 }

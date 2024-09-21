@@ -50,6 +50,7 @@ public class AssignSoundController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         AddSoundController addSoundController = fxmlLoader.getController();
+        addSoundController.setOwnerStage(stage);
         addSoundController.setViewModel(this,viewModel);
         stage.show();
     }

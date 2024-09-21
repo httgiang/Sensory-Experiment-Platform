@@ -79,10 +79,13 @@
 
 .button {
     -fx-background-color: #397E82;
-    -fx-background-radius: 30px;
+    -fx-background-radius: 30px 30px 30px 30px;
     -fx-text-fill: #F0F0F0;
     -fx-padding: 18px 32px;
     -fx-effect: innershadow(three-pass-box, rgba(85, 91, 110, 0.15), 5, 0, 0, 5);
+    -fx-alignment: center;           /* Ensure text is centered */
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
 }
 .button:hover{
     -fx-background-color: #D5E9EA;

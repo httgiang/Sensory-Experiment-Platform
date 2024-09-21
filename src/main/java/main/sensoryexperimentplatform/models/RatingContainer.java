@@ -27,19 +27,19 @@ public class RatingContainer extends ModelContainer implements Model{
     }
     public void addVasStageContainer(String title, String lowAnchorText, String highAnchorText,
                                      int lowAnchorValue, int highAnchorValue, String buttonText,
-                                     String content, String helpText, boolean isSwap, boolean alert){
+                                     String helpText, boolean isSwap, boolean alert){
 
         Vas stage = new Vas(title, lowAnchorText, highAnchorText,
-                lowAnchorValue, highAnchorValue, buttonText, content,
+                lowAnchorValue, highAnchorValue, buttonText,
                 helpText, isSwap, alert);
 
         children.add(stage);
     }
 
-    public void addGlmsStageContainer(String question, String buttonText, String content,
+    public void addGlmsStageContainer(String question, String buttonText,
                                       String helpText, boolean alert){
 
-        gLMS stage = new gLMS(question, buttonText, content, helpText, alert);
+        gLMS stage = new gLMS(question, buttonText, helpText, alert );
 
         children.add(stage);
     }

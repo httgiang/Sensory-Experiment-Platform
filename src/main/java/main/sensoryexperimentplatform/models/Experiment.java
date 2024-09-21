@@ -1,13 +1,16 @@
 package main.sensoryexperimentplatform.models;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.scene.paint.Color;
 
 import java.util.*;
 
-public class Experiment {
+public class Experiment implements Observable {
     private String creatorName, experimentName, description, note, last_modified;
     public int version, number_of_results, id, elapsedTime;
     ArrayList<Model> stages;
+    private List<InvalidationListener> listeners = new ArrayList<>();
     public Experiment(){
         super();
         Random random = new Random();
@@ -108,7 +111,7 @@ public class Experiment {
         stages.add(stage);
     }
     public void addInputStage(String title, String content, String buttonText, boolean alert){
-        Input stage = new Input(title, content, buttonText, alert);
+        Input stage = new Input(title, content, buttonText, alert );
 
         stages.add(stage);
     }
@@ -131,18 +134,18 @@ public class Experiment {
     }
     public void addVasStage(String title, String lowAnchorText, String highAnchorText,
                             int lowAnchorValue, int highAnchorValue, String buttonText,
-                            String content, String helpText, boolean isSwap, boolean alert){
+                            String helpText, boolean isSwap, boolean alert){
         Vas stage = new Vas(title, lowAnchorText, highAnchorText,
-                lowAnchorValue, highAnchorValue, buttonText, content,
+                lowAnchorValue, highAnchorValue, buttonText,
                 helpText, isSwap, alert);
 
         stages.add(stage);
     }
 
     public void addGlmsStage(String question, String buttonText, String content,
-                             String helpText, boolean alert){
+                             String helpText, boolean alert,String choosenVariable){
 
-        gLMS stage = new gLMS(question, buttonText, content, helpText, alert);
+        gLMS stage = new gLMS(question, buttonText, helpText, alert);
 
         stages.add(stage);
     }
@@ -326,6 +329,9 @@ public class Experiment {
         return null;
     }
 
+
+
+
     public void addStart(Start start) {
         stages.add(start);
     }
@@ -335,4 +341,13 @@ public class Experiment {
     }
 
 
+    @Override
+    public void addListener(InvalidationListener invalidationListener) {
+        listeners.add(invalidationListener);
+    }
+
+    @Override
+    public void removeListener(InvalidationListener invalidationListener) {
+        listeners.remove(invalidationListener);
+    }
 }

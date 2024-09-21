@@ -1,20 +1,25 @@
 package main.sensoryexperimentplatform.models;
 
-import main.sensoryexperimentplatform.controllers.SoundSingleton;
+import javafx.collections.ObservableList;
+
+import java.util.stream.Collectors;
 
 public class Vas extends Stage implements Model{
     private String lowAnchorText, highAnchorText, helpText, buttonText ;
     private int lowAnchorValue, highAnchorValue;
     private int result;
     private String conducted;
+
+    private String chosenVariable;
     private boolean alert, isSwap;
     private Sound sound;
+    private Variable variable;
 
     public Vas(String title, String lowAnchorText, String highAnchorText,
                int lowAnchorValue, int highAnchorValue, String buttonText,
-               String content, String helpText, boolean isSwap, boolean alert) {
+                String helpText, boolean isSwap, boolean alert) {
 
-        super(title,content);
+        super(title,lowAnchorText);
         this.lowAnchorValue = lowAnchorValue;
         this.highAnchorValue = highAnchorValue;
         this.lowAnchorText = lowAnchorText;
@@ -23,11 +28,13 @@ public class Vas extends Stage implements Model{
         this.helpText = helpText;
         this.isSwap = isSwap;
         this.alert = alert;
+        this.chosenVariable = chosenVariable;
         sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         setDefaultResult();
     }
     public Vas(Vas v){
-        super(v.getTitle(), v.getContent());
+        super(v.getTitle(), v.lowAnchorText);
         this.lowAnchorValue = v.lowAnchorValue;
         this.highAnchorValue = v.highAnchorValue;
         this.lowAnchorText = v.getLowAnchorText();
@@ -36,7 +43,9 @@ public class Vas extends Stage implements Model{
         this.isSwap = v.getIsSwap();
         this.helpText = v.getHelpText();
         this.alert = v.getAlert();
+        this.chosenVariable = v.getChosenVariable();
         sound = SoundSingleton.getInstance();
+        this.variable = VariableSingleton.getInstance();
         setDefaultResult();
     }
 
@@ -73,9 +82,30 @@ public class Vas extends Stage implements Model{
     public String getConducted(){
         if(conducted != null){
             return conducted;
-        }else return " ";
+        }
+        else return null;
+    }
+    public void addVariable(String variableName){
+        variable.addVariable(variableName);
+    }
+    public ObservableList<String> getVariable(){
+        return variable.getVariable();
+    }
+    public String getVariableName() {
+        return variable.getVariableName();
     }
 
+    public void setVariableName(String variableName) {
+        variable.setVariableName(variableName);
+    }
+
+    public String getChosenVariable() {
+        return chosenVariable;
+    }
+
+    public void setChosenVariable(String chosenVariable) {
+        this.chosenVariable = chosenVariable;
+    }
     public boolean getAlert() {
         return alert;
     }
@@ -154,11 +184,13 @@ public class Vas extends Stage implements Model{
     }
     @Override
     public String toString() {
+
+
         return "vasStage(\"" + title + "\",\"" + lowAnchorText + "\",\""+
                 highAnchorText + "\",\"" + lowAnchorValue + "\",\"" +
                 highAnchorValue + "\",\"" + buttonText + "\",\"" +
-                content + "\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
-                alert +"\")";
+                "Session[" + chosenVariable + "]\",\"" + helpText + "\",\"" + isSwap + "\",\"" +
+                alert + "\")" ;
     }
 
 
