@@ -46,9 +46,11 @@ public class FillNameController {
 
     @FXML
     void handleApproveBtn(MouseEvent event) throws IOException, CloneNotSupportedException {
+        close();
+
         Experiment experiment = new Experiment(viewModel.getExperiment());
         runExperiment(experiment, viewModel.getUid());
-        close();
+
     }
 
     @FXML
@@ -57,11 +59,14 @@ public class FillNameController {
     }
 
     void close() {
+        // Close the current stage (window)
         Stage stage = (Stage) uid.getScene().getWindow();
-        stage.close();
+        if (stage != null) {
+            stage.close();
+        }
     }
 
-    private void runExperiment(Experiment experiment, String uid) throws IOException, CloneNotSupportedException {
+    private void runExperiment(Experiment experiment, String uid) throws IOException {
         FXMLLoader loader = new FXMLLoader(SensoryExperimentPlatform.class.getResource("RunExperiment.fxml"));
         Parent root = loader.load();
 

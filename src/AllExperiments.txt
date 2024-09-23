@@ -19,3 +19,12 @@ endRatingsContainer()
 noticeStage("End of ratings","Please call the experimenter","End","","false")
 endExperiment()
 
+ExperimentName: Test GLMS
+ExperimenterName: Tyr1on
+ExperimentID: 0
+Last modified: 23.09.2024
+Version: 1
+startExperiment("Start Experiment","This is the first stage of the experiment","null")
+glmsStage("How do you feel?","OK","Session[null]","null","true")
+endExperiment()
+
