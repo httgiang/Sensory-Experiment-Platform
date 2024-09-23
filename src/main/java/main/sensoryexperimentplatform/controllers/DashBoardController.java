@@ -9,7 +9,6 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -140,7 +139,7 @@ public class DashBoardController {
                             result.setOnAction((ActionEvent event) -> {
                                 selectedExperiment = getTableView().getItems().get(getIndex());
                                 try{
-                                    showResultEx(selectedExperiment);
+                                    showParticipants(selectedExperiment);
                                 } catch (Exception e){
 
                                 }
@@ -223,12 +222,38 @@ public class DashBoardController {
     }
 
 
+    private void showParticipants(Experiment e) throws IOException {
+        try {
+            FXMLLoader showParticipants = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/ParticipantsTable.fxml"));
+            Parent root = showParticipants.load();
+
+
+            ShowParticipantVM viewModel = new ShowParticipantVM(e);
+            ShowParticipantsController controller =showParticipants.getController();
+            controller.setViewModel(viewModel);
+
+            Stage stage = new Stage();
+            stage.initOwner(ownerStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Data");
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.err.println("Error loading FXML: " + ex.getMessage());
+        }
+    }
     private void showResultEx(Experiment e) throws IOException {
         try {
             FXMLLoader showResult = new FXMLLoader(getClass().getResource("/main/sensoryexperimentplatform/ResultTableEx.fxml"));
             Parent root = showResult.load();
 
             ShowResultVM viewModel = new ShowResultVM(e);
+//            ShowParticipantsController controller = new ShowParticipantsController();
+//            controller.setViewModel(viewModel);
             ShowResultController controller = showResult.getController();
             controller.setViewModel(viewModel);
 

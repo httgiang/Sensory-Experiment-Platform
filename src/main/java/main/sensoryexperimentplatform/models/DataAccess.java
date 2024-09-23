@@ -81,7 +81,7 @@ public class DataAccess {
 
             try (FileWriter writer = new FileWriter(resultFile)) {
                 // Optionally write headers only for new files
-                writer.write("uid,type,time,result,question,lowAnchorText,highAnchorText,lowAnchorValue,highAnchorValue\n");
+                writer.write(" , , , , , , , , \n");
                 writer.flush();
             }
         }

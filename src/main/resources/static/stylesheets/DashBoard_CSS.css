@@ -23,7 +23,9 @@
     -fx-border-color: black;
     -fx-border-radius: 5px 5px 5px 5px;
 }
-
+#participantTable .table-cell{
+    -fx-font-size: 28px;
+}
 #txt_searchBar{
     -fx-pref-width: 441px;
     -fx-pref-height: 32px;

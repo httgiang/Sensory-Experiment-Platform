@@ -16,9 +16,12 @@
                         <TableColumn fx:id="questionColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" text="Question" />
                         <TableColumn fx:id="lowAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" />
                         <TableColumn fx:id="highAnchorColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="200.0" sortable="false" />
-            <TableColumn fx:id="lowValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" />
-            <TableColumn fx:id="highValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="150.0" sortable="false" />
+                        <TableColumn fx:id="lowValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="125.0" sortable="false" />
+                        <TableColumn fx:id="highValueColumn" editable="false" maxWidth="1.7976931348623157E308" prefWidth="150.0" sortable="false" />
                     </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
                 </TableView>
    </children>
    <padding>

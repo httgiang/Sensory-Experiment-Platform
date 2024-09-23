@@ -65,7 +65,7 @@ public class ShowResultController {
 
 
         }
-        setColumnHeaderWithWrap(lowAnchorColumn,"Low Anchor or Left Button Text");
+        setColumnHeaderWithWrap( lowAnchorColumn,"Low Anchor or Left Button Text");
         setColumnHeaderWithWrap( highAnchorColumn,"High Anchor or Right Button Text");
         setColumnHeaderWithWrap( lowValueColumn,"Low Value or Left Button Value");
         setColumnHeaderWithWrap( highValueColumn,"High Value or Right Button Value");
