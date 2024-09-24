@@ -229,7 +229,7 @@ public class DashBoardController {
 
 
             ShowParticipantVM viewModel = new ShowParticipantVM(e);
-            ShowParticipantsController controller =showParticipants.getController();
+            ShowParticipantsController controller = showParticipants.getController();
             controller.setViewModel(viewModel);
 
             Stage stage = new Stage();

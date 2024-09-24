@@ -53,9 +53,8 @@ public class ShowResultController {
         if (this.viewModel != null) {
             try{
                 ObservableList<SurveyEntry> data = SurveyDataLoader.loadSurveyData(viewModel.getFilePath());
-                if (!(data ==null)){
+                if (data !=null){
                     tableView.setItems(data);
-
                 }else{
                     System.err.println("The system cannot find the file specified");
                 }

@@ -4,8 +4,10 @@ import main.sensoryexperimentplatform.models.Experiment;
 
 public class ShowParticipantVM {
     private String folderPath;
+    Experiment experiment;
 
     public ShowParticipantVM(Experiment experiment) {
+        this.experiment = experiment;
         // Generate the file path based on the experiment
         this.folderPath = generateFolderPath(experiment);
     }
@@ -17,5 +19,8 @@ public class ShowParticipantVM {
 
     public String getFolderPath() {
         return folderPath;
+    }
+    public Experiment getExperiment() {
+        return experiment;
     }
 }
